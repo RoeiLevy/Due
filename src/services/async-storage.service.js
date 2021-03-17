@@ -4,6 +4,7 @@ export const storageService = {
     post,
     put,
     remove,
+    save
 }
 
 function query(entityType) {
@@ -57,7 +58,7 @@ function remove(entityType, entityId) {
 }
 
 
-function _save(entityType, entities) {
+function save(entityType, entities) {
     localStorage.setItem(entityType, JSON.stringify(entities))
 }
 

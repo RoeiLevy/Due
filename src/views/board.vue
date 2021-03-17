@@ -1,7 +1,7 @@
 <template>
   <div class="board-container">
     <ul class="groups-list">
-    <ul>
+    </ul>
   </div>
 </template>
 
@@ -15,9 +15,16 @@ export default {
   },
   methods: {
     async loadBoard() {
-      const boardId = this.$route.params.boardId;
-      const board = await this.$store.dispatch({ type: "loadBoard", boardId });
-      this.board = board;
+      try {
+        const boardId = this.$route.params.boardId;
+        const board = await this.$store.dispatch({
+          type: "loadBoard",
+          boardId,
+        });
+        this.board = board;
+      } catch (err) {
+        console.log("err:", err);
+      }
     },
   },
   computed: {

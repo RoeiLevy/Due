@@ -1,5 +1,6 @@
 <template>
-  <div class="board-container">
+  <div class="flex board-container">
+    <app-header />
     <div v-if="board" class="groups-list">
       <group  v-for="group in board.groups" :group="group" :key="group.id" />
     </div>
@@ -8,6 +9,7 @@
 
 <script>
 import group from "../cmps/group";
+import appHeader from "../cmps/header";
 
 export default {
   name: "board",
@@ -45,6 +47,7 @@ export default {
     this.loadBoard();
   },
   components: {
+    appHeader,
     group
   },
 };

@@ -50,27 +50,23 @@ export default {
       const savedBoard = await this.$store.dispatch("saveBoard", board);
       this.board = savedBoard;
     },
-    addNewGroup() {
-      this.$store.commit('addNewGroup')
+    async addNewGroup() {
+      try {
+        const newBoard = { ...this.board };
+        newBoard.groups.unshift(boardService.getEmptyGroup());
+        await this.$store.dispatch("saveBoard", newBoard);
+        this.board = savedBoard;
+      } catch (err) {}
     },
   },
   computed: {
-    // reviews() {
-    //   return this.$store.getters.reviews;
-    // },
-    // users() {
-    //   return this.$store.getters.users;
-    // },
-    // loggedInUser() {
-    //   return this.$store.getters.loggedinUser;
-    // },
   },
   created() {
     this.loadBoard();
   },
   components: {
     appHeader,
-    group
+    group,
   },
 };
 </script>

@@ -69,6 +69,13 @@ export const boardStore = {
                 throw err
             }
         },
+        // async addNewGroup(context){
+        //     try {
+                
+        //     } catch (err) {
+                
+        //     }
+        // }
 
     }
 }

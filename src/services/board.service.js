@@ -123,7 +123,7 @@ const BOARD_KEY = 'board'
 
 function query() {
     if (!localStorage.getItem(BOARD_KEY)) {
-        storageService.save(BOARD_KEY, boardDB);
+        localStorage.setItem(BOARD_KEY,JSON.stringify(boardDB));
         return Promise.resolve(boardDB);
     }
     return storageService.query(BOARD_KEY);

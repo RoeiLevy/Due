@@ -20,7 +20,7 @@ export const boardStore = {
         setBoards(state, { boards }) {
             state.boards = boards;
         },
-        addNewGroup(state){
+        addNewGroup(state) {
             state.currBoard.groups.push(boardService.getEmptyGroup());
         }
     },
@@ -61,7 +61,7 @@ export const boardStore = {
         },
         async saveTask(context, taskToEdit) {
             try {
-                taskToEdit = await taskService.add(taskToEdit)
+                taskToEdit = await boardService.add(taskToEdit)
                 context.commit({ type: 'saveTask', taskToEdit })
                 return taskToEdit;
             } catch (err) {

@@ -48,19 +48,18 @@ export default {
     },
     async saveBoard(board) {
       const savedBoard = await this.$store.dispatch("saveBoard", board);
-      this.board = savedBoard;
+      this.loadBoard();
     },
     async addNewGroup() {
       try {
-        const newBoard = { ...this.board };
+        const newBoard = JSON.parse(JSON.stringify(this.board));
         newBoard.groups.unshift(boardService.getEmptyGroup());
-        await this.$store.dispatch("saveBoard", newBoard);
-        this.board = savedBoard;
+        const savedBoard = await this.$store.dispatch("saveBoard", newBoard);
+        this.loadBoard();
       } catch (err) {}
     },
   },
-  computed: {
-  },
+  computed: {},
   created() {
     this.loadBoard();
   },

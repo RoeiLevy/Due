@@ -1,0 +1,16 @@
+.tag-group{
+    width: 266px;
+    height: 315px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    border: 1px solid black;
+    position: absolute;
+    padding: 10px;
+    .el-tag{
+        margin: 5px;
+        width: 112px;
+        height: 32px;
+    }
+}

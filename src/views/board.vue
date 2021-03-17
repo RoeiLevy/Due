@@ -48,10 +48,8 @@ export default {
       const savedBoard = await this.$store.dispatch("saveBoard", board);
       this.board = savedBoard;
     },
-    async addNewGroup() {
-      const group = boardService.getEmptyGroup();
-      this.board.groups.push(group);
-      await this.saveBoard(this.board);
+    addNewGroup() {
+      this.$store.commit('addNewGroup')
     },
   },
   computed: {

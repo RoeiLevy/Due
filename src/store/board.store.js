@@ -19,6 +19,9 @@ export const boardStore = {
         },
         setBoards(state, { boards }) {
             state.boards = boards;
+        },
+        addNewGroup(state){
+            state.currBoard.groups.push(boardService.getEmptyGroup());
         }
     },
     actions: {

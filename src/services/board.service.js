@@ -242,9 +242,9 @@ function getEmptyBoard() {
 
 function getEmptyGroup() {
     return {
-        "id": utilSerivce.makeId(),
-        "title": "",
-        "tasks": [],
-        "style": {}
+        id: utilSerivce.makeId(),
+        title: '',
+        tasks: [],
+        style: {}
     }
 }

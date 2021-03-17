@@ -1,8 +1,11 @@
 <template>
   <div class="board-list">
     <ul v-if="boards">
-      <li v-for="board in boards" :key="board._id">
+      <li v-for="board in boards" :key="board._id" @click="showBoard(board._id)">
         <board-preview :board="board" />
+      </li>
+      <li @click="newBoard">
+          Add a new board!
       </li>
     </ul>
   </div>
@@ -15,6 +18,14 @@ export default {
     return {
     //   boards: null,
     };
+  },
+  methods:{
+      showBoard(boardId){
+          this.$router.push(`/board/${boardId}`);
+      },
+      newBoard(){
+          
+      }
   },
   computed: {
     boards() {

@@ -1,10 +1,12 @@
 // import { httpService } from './http.service'
 import { utilService } from './util.service'
 
+import { utilSerivce } from './util.service'
 import { storageService } from './async-storage.service'
 
 export const boardService = {
     add,
+    update,
     query,
     remove,
     getBoard,
@@ -144,20 +146,22 @@ function remove(boardId) {
 async function add(board) {
     // const addedBoard = await httpService.post(`board`, board)
 
-    board.byUser = userService.getLoggedinUser()
-    board.aboutUser = await userService.getById(board.aboutUserId)
+    board.createdBy = userService.getLoggedinUser()
     const addedBoard = storageService.post('board', board)
 
     return addedBoard
 }
 
+async function update(board) {
+    // const addedBoard = await httpService.post(`board`, board)
+    const addedBoard = storageService.put('board', board)
 
-
-
+    return addedBoard
+}
 
 function getEmptyBoard() {
     return {
-        "_id": "b102",
+        "_id": utilSerivce.makeId(),
         "title": "Robot dev proj",
         "createdAt": 1589983468418,
         "createdBy": {
@@ -260,7 +264,7 @@ function getEmptyGroup() {
 
 function getEmptyTask() {
     return {
-        _id: utilService.makeId,
+        id: utilService.makeId,
         title: '',
         createdAt: new Date(),
         status: null

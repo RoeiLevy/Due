@@ -1,13 +1,28 @@
 <template>
-  <div class="board-container">
-    <div v-if="board" class="groups-list">
-      <group  v-for="group in board.groups" :group="group" :key="group.id" />
+  <div v-if="board" class="board-container">
+    <div class="board-header">
+      <h1>{{ board.title }}</h1>
+      <button>Members & Invite</button>
+      <button>Activity</button>
+    </div>
+    <nav class="views">
+      <!-- can collapse -->
+      <button>Main Table</button>
+      <!-- <button>Calander</button> -->
+      <!-- <button>Chart</button> -->
+      <!-- <button>Kanban</button> -->
+      <button>+ Add View</button>
+    </nav>
+    <button class="new-group-btn" @click="addNewGroup">New Group</button>
+    <div class="groups-list">
+      <group v-for="group in board.groups" :group="group" :key="group.id" />
     </div>
   </div>
 </template>
 
 <script>
 import group from "../cmps/group";
+import { boardService } from "../services/board.service";
 
 export default {
   name: "board",
@@ -29,6 +44,15 @@ export default {
         console.log("err:", err);
       }
     },
+    async saveBoard(board) {
+      const savedBoard = await this.$store.dispatch("saveBoard", board);
+      this.board = savedBoard;
+    },
+    async addNewGroup() {
+      const group = boardService.getEmptyGroup();
+      this.board.groups.push(group);
+      await this.saveBoard(this.board);
+    },
   },
   computed: {
     // reviews() {
@@ -45,7 +69,7 @@ export default {
     this.loadBoard();
   },
   components: {
-    group
+    group,
   },
 };
 </script>

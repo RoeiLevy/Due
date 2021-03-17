@@ -1,11 +1,14 @@
 <template>
   <div class="board-container">
-    <ul class="groups-list">
-    </ul>
+    <div v-if="board" class="groups-list">
+      <group  v-for="group in board.groups" :group="group" :key="group.id" />
+    </div>
   </div>
 </template>
 
 <script>
+import group from "../cmps/group";
+
 export default {
   name: "board",
   data() {
@@ -40,6 +43,9 @@ export default {
   },
   created() {
     this.loadBoard();
+  },
+  components: {
+    group
   },
 };
 </script>

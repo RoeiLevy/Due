@@ -2,12 +2,12 @@ import { boardService } from '../services/board.service'
 
 export const boardStore = {
     state: {
-        board: null,
+        currBoard: null,
         boards: []
     },
     getters: {
         boardForDisplay(state) {
-            return state.board
+            return state.currBoard
         },
         boards(state) {
             return state.boards;
@@ -15,7 +15,7 @@ export const boardStore = {
     },
     mutations: {
         setBoard(state, { board }) {
-            state.board = board
+            state.currBoard = board
         },
         setBoards(state, { boards }) {
             state.boards = boards;
@@ -24,8 +24,9 @@ export const boardStore = {
     actions: {
         async loadBoard(context, { boardId }) {
             try {
-                const board = await boardService.query(boardId);
+                const board = await boardService.getBoard(boardId);
                 context.commit({ type: 'setBoard', board })
+                return board
                 // socketService.off(SOCKET_EVENT_REVIEW_ADDED)
                 // socketService.on(SOCKET_EVENT_REVIEW_ADDED, review => {
                 //     context.commit({ type: 'addReview', review })

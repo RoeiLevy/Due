@@ -39,7 +39,6 @@ export default {
     },
   },
   created() {
-    this.$store.dispatch({ type: 'loadGroup' });
   },
   components: {
     taskPreview,

@@ -1,21 +1,28 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/home.vue'
+import home from '../views/home.vue'
 import loginSignup from '../views/login-signup.vue'
 import userProfile from '../views/user-profile.vue'
-import dueApp from '../due-app.vue'
+import board from '../views/board.vue'
+import boardList from '../views/board-list.vue'
 
 Vue.use(VueRouter)
 
 const routes = [{
         path: '/',
         name: 'Home',
-        component: Home
+        component: home
     },
     {
+        path: '/board',
+        name: 'Board List',
+        component: boardList
+    },
+
+    {
         path: '/board/:boardId?',
-        name: 'Due App',
-        component: dueApp,
+        name: 'Board',
+        component: board,
 
     },
     {
@@ -28,8 +35,6 @@ const routes = [{
         name: 'User Profile',
         component: userProfile
     },
-
-
 ]
 
 const router = new VueRouter({

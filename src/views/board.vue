@@ -1,7 +1,21 @@
 <template>
-  <div class="board-container">
-    <div v-if="board" class="groups-list">
-      <group  v-for="group in board.groups" :group="group" :key="group.id" />
+  <div v-if="board" class="board-container">
+    <div class="board-header">
+      <h1>{{ board.title }}</h1>
+      <button>Members & Invite</button>
+      <button>Activity</button>
+    </div>
+    <nav class="views">
+      <!-- can collapse -->
+      <button>Main Table</button>
+      <!-- <button>Calander</button> -->
+      <!-- <button>Chart</button> -->
+      <!-- <button>Kanban</button> -->
+      <button>+ Add View</button>
+    </nav>
+    <button class="new-group-btn">New Group</button>
+    <div class="groups-list">
+      <group v-for="group in board.groups" :group="group" :key="group.id" />
     </div>
   </div>
 </template>
@@ -45,7 +59,7 @@ export default {
     this.loadBoard();
   },
   components: {
-    group
+    group,
   },
 };
 </script>

@@ -21,6 +21,9 @@ export default {
       return this.$store.getters.boards;
     },
   },
+  created() {
+      this.$store.dispatch('loadBoards')
+  },
   components: {
     boardPreview,
   },

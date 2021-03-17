@@ -39,6 +39,7 @@ export default {
     },
   },
   created() {
+    // console.log('group',this.group);
   },
   components: {
     taskPreview,

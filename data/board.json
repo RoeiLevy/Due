@@ -1,17 +1,4 @@
-// import { httpService } from './http.service'
-// import { userService } from './user.service'
-
-import { storageService } from './async-storage.service'
-
-export const boardService = {
-    add,
-    query,
-    remove,
-    getBoard
-}
-
-
-const boardDB = [
+[
     {
         "_id": "b101",
         "title": "Robot dev proj",
@@ -116,38 +103,3 @@ const boardDB = [
         ]
     }
 ]
-
-const BOARD_KEY = 'board'
-
-
-function query() {
-    if (!localStorage.getItem(BOARD_KEY)) {
-        storageService.save(BOARD_KEY, boardDB);
-        return Promise.resolve(boardDB);
-    }
-    return storageService.query(BOARD_KEY);
-}
-
-
-
-function getBoard(boardId) {
-    // var queryStr = (!filterBy) ? '' : `?name=${filterBy.name}&sort=anaAref`
-    // return httpService.get(`board${queryStr}`)
-    return storageService.get(BOARD_KEY, boardId)
-}
-
-function remove(boardId) {
-    // return httpService.delete(`board/${boardId}`)
-    return storageService.delete('board', boardId)
-
-}
-
-async function add(board) {
-    // const addedBoard = await httpService.post(`board`, board)
-
-    board.byUser = userService.getLoggedinUser()
-    board.aboutUser = await userService.getById(board.aboutUserId)
-    const addedBoard = storageService.post('board', board)
-
-    return addedBoard
-}

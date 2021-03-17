@@ -51,28 +51,22 @@ export default {
       this.board = savedBoard;
     },
     async addNewGroup() {
-      const group = boardService.getEmptyGroup();
-      this.board.groups.push(group);
-      await this.saveBoard(this.board);
+      try {
+        const newBoard = { ...this.board };
+        newBoard.groups.unshift(boardService.getEmptyGroup());
+        await this.$store.dispatch("saveBoard", newBoard);
+        this.board = savedBoard;
+      } catch (err) {}
     },
   },
   computed: {
-    // reviews() {
-    //   return this.$store.getters.reviews;
-    // },
-    // users() {
-    //   return this.$store.getters.users;
-    // },
-    // loggedInUser() {
-    //   return this.$store.getters.loggedinUser;
-    // },
   },
   created() {
     this.loadBoard();
   },
   components: {
     appHeader,
-    group
+    group,
   },
 };
 </script>

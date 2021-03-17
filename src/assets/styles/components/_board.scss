@@ -1,9 +1,60 @@
+
+
+.board-container {
+    height: 100%;
+}
+
+
 .header {
-    height: 100vh;
+    height: 100%;
+    width: 66px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    background-color: #292f4c;
+
+    .header-icon {
+        font-size: 20px;
+        color: #ffffff;
+    }
     .logo {
         width: 40px;
+       
+    }
+
+    .top-navigation {
+        flex: 1;
+    }
+
+    .btn-surface {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 8px;
+        background-color: #292f4c;
+    }
+
+    .btn-surface:hover {
+        filter: brightness(150%);
+    }
+    .icon-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 44px;
+        width: 44px;
+        color: #ffffff;
+        font-size: 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        position: relative;
+        outline: none;
+    }
+    .logo-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 12px 0px 14px;
     }
 }

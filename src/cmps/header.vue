@@ -1,24 +1,48 @@
 <template>
   <div class="header">
     <div class="flex column top-navigation">
-      <img class="logo" src="@/assets/imgs/logo.png" />
-      <router-link to="/board">Boards</router-link>
-      <router-link to="/board">notifications</router-link>
-      <router-link to="/board">Inbox</router-link>
+      <div class="logo-wrapper">
+        <img class="logo" src="@/assets/imgs/logo.png" />
+      </div>
+      <div class="btn-surface">
+        <div class="icon-wrapper">
+          <font-awesome-icon class="header-icon" icon="th-large" />
+        </div>
+      </div>
+
+      <div class="btn-surface">
+        <div class="icon-wrapper">
+          <font-awesome-icon class="header-icon" icon="bell" />
+        </div>
+      </div>
+
+      <div class="btn-surface">
+        <div class="icon-wrapper">
+          <font-awesome-icon class="header-icon" icon="inbox" />
+        </div>
+      </div>
     </div>
+
     <div class="flex column bottom-navigation">
-      <button>myWeek</button>
-      <button>Invite</button>
-      <button>Search</button>
-      <button>Help</button>
-      <button>userComponent</button>
-   <font-awesome-icon icon="user-secret" />
+      <div class="btn-surface">
+        <div class="icon-wrapper">
+          <font-awesome-icon class="header-icon" icon="calendar-check" />
+        </div>
+      </div>
+      <div class="btn-surface">
+        <div class="icon-wrapper">
+          <font-awesome-icon class="header-icon" icon="user-plus" />
+        </div>
+      </div>
+      <div class="btn-surface">
+        <div class="icon-wrapper">
+          <font-awesome-icon class="header-icon" icon="search" />
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-
 export default {};
-
 </script>

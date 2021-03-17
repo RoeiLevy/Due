@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     async addTask() {
-      await this.$store.dispatch({ type: 'saveTask', task: this.taskToEdit });
+      await this.$store.dispatch({ type: 'saveTask', task: this.taskToEdit, groupId: this.group.id });
       this.taskToEdit = { title: '' };
     },
   },

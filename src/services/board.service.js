@@ -12,7 +12,8 @@ export const boardService = {
     getBoard,
     getEmptyBoard,
     getEmptyGroup,
-    getEmptyTask
+    getEmptyTask,
+    addTask
 }
 
 
@@ -123,7 +124,7 @@ const BOARD_KEY = 'board'
 
 function query() {
     if (!localStorage.getItem(BOARD_KEY)) {
-        localStorage.setItem(BOARD_KEY,JSON.stringify(boardDB));
+        localStorage.setItem(BOARD_KEY, JSON.stringify(boardDB));
         return Promise.resolve(boardDB);
     }
     return storageService.query(BOARD_KEY);
@@ -157,6 +158,21 @@ async function update(board) {
     const addedBoard = storageService.put('board', board)
 
     return addedBoard
+}
+
+async function addTask(task, groupId, boardId) {
+    try {
+        var currBoard = await getBoard(boardId);
+        console.log('service currBoard', currBoard);
+        // currBoard.groups.find(group => group.id === groupId);
+        const idx = currBoard.groups.findIndex(group => group.id === groupId);
+        currBoard.groups.tasks.splice(idx, 1, {...task });
+    } catch (err) {
+
+    }
+    return storageService.put('board', currBoard);
+
+
 }
 
 function getEmptyBoard() {

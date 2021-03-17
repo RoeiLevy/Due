@@ -23,11 +23,12 @@ export const boardStore = {
         addNewGroup(state) {
             state.currBoard.groups.push(boardService.getEmptyGroup());
         },
-        saveTask(state, { taskToEdit, groupId }) {
-            console.log('state', state)
+        saveTask(state, { task, groupId }) {
             const currGroup = state.currBoard.groups.find(group => group.id === groupId);
-            console.log('currGroup', currGroup)
-            currGroup.tasks.push(taskToEdit);
+            if (!currGroup || !currGroup.tasks) {
+                currGroup.tasks = [];
+            }
+            currGroup.tasks.push(task);
         }
     },
     actions: {
@@ -65,12 +66,11 @@ export const boardStore = {
                 throw err;
             }
         },
-        async saveTask(context, { taskToEdit, groupId }) {
+        async saveTask(context, payload) {
             try {
-                console.log('state.currBoard', context.state.currBoard)
-                taskToEdit = await boardService.addTask(taskToEdit, groupId, context.state.currBoard._id)
-                context.commit({ type: 'saveTask', taskToEdit })
-                return taskToEdit;
+                const task = await boardService.addTask(payload.taskToEdit, payload.groupId, context.state.currBoard._id)
+                context.commit({ type: 'saveTask', task, groupId: payload.groupId })
+                return task;
             } catch (err) {
                 console.log('boardStore: Error in saveTask', err)
                 throw err

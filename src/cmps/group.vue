@@ -24,13 +24,22 @@ export default {
     return {
       taskToEdit: {
         title: '',
+        createdAt: null,
+        status: null
+
       },
     };
   },
   methods: {
     async addTask() {
-      await this.$store.dispatch({ type: 'saveTask', task: this.taskToEdit, groupId: this.group.id });
-      this.taskToEdit = { title: '' };
+        this.taskToEdit.createdAt = Date.now();
+      await this.$store.dispatch({ type: 'saveTask', taskToEdit: this.taskToEdit, groupId: this.group.id });
+      
+      this.taskToEdit = {
+        title: '',
+        createdAt: null,
+        status: null
+      };
     },
   },
   computed: {
@@ -39,7 +48,6 @@ export default {
     },
   },
   created() {
-    // console.log('group',this.group);
   },
   components: {
     taskPreview,

@@ -25,7 +25,6 @@ export default {
     };
   },
   created() {
-    console.log("task", this.task);
   },
   components:{
       statusPicker

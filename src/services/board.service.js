@@ -163,14 +163,14 @@ async function update(board) {
 async function addTask(task, groupId, boardId) {
     try {
         var currBoard = await getBoard(boardId);
-        console.log('service currBoard', currBoard);
-        // currBoard.groups.find(group => group.id === groupId);
         const idx = currBoard.groups.findIndex(group => group.id === groupId);
-        currBoard.groups.tasks.splice(idx, 1, {...task });
-    } catch (err) {
+        currBoard.groups[idx].tasks.push(task);
+        await storageService.put('board', currBoard);
 
+        return task
+    } catch (err) {
+        console.log(err)
     }
-    return storageService.put('board', currBoard);
 
 
 }
@@ -280,7 +280,7 @@ function getEmptyGroup() {
 
 function getEmptyTask() {
     return {
-        id: utilService.makeId,
+        // id: utilService.makeId,
         title: '',
         createdAt: new Date(),
         status: null

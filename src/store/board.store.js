@@ -32,7 +32,7 @@ export const boardStore = {
                 //     context.commit({ type: 'addReview', review })
                 // })
             } catch (err) {
-                console.log('reviewStore: Error in loadBoard', err)
+                console.log('boardStore: Error in loadBoard', err)
                 throw err
             }
         },
@@ -41,8 +41,19 @@ export const boardStore = {
                 const boards = await boardService.query();
                 console.log('boards:', boards)
                 context.commit({ type: 'setBoards', boards });
-            } catch (error) {
-
+            } catch (err) {
+                console.log('boardStore: Error in loadBoards', err);
+                throw err;
+            }
+        },
+        async saveBoard(context, board) {
+            try {
+                const savedBoard = await boardService.update(board);
+                console.log('board:', savedBoard);
+                context.commit({ type: 'setBoard', board });
+            } catch (err) {
+                console.log('boardStore: Error in loadBoards', err);
+                throw err;
             }
         }
     }

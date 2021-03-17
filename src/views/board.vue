@@ -13,7 +13,7 @@
       <!-- <button>Kanban</button> -->
       <button>+ Add View</button>
     </nav>
-    <button class="new-group-btn">New Group</button>
+    <button class="new-group-btn" @click="addNewGroup">New Group</button>
     <div class="groups-list">
       <group v-for="group in board.groups" :group="group" :key="group.id" />
     </div>
@@ -22,6 +22,7 @@
 
 <script>
 import group from "../cmps/group";
+import { boardService } from "../services/board.service";
 
 export default {
   name: "board",
@@ -42,6 +43,15 @@ export default {
       } catch (err) {
         console.log("err:", err);
       }
+    },
+    async saveBoard(board) {
+      const savedBoard = await this.$store.dispatch("saveBoard", board);
+      this.board = savedBoard;
+    },
+    async addNewGroup() {
+      const group = boardService.getEmptyGroup();
+      this.board.groups.push(group);
+      await this.saveBoard(this.board);
     },
   },
   computed: {

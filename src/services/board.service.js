@@ -1,5 +1,5 @@
 // import { httpService } from './http.service'
-// import { userService } from './user.service'
+import { utilService } from './util.service'
 
 import { storageService } from './async-storage.service'
 
@@ -8,7 +8,9 @@ export const boardService = {
     query,
     remove,
     getBoard,
-    getEmptyBoard
+    getEmptyBoard,
+    getEmptyGroup,
+    getEmptyTask
 }
 
 
@@ -83,10 +85,21 @@ const boardDB = [{
         }
     ],
     "statuses": [{
-        "id": "udm876",
-        "title": "Done",
-        "color": "#ffffff"
-    }],
+            "id": "udg2t6",
+            "title": "Done",
+            "color": "#00c875"
+        },
+        {
+            "id": "udm874",
+            "title": "Working on it",
+            "color": "#fdab3d"
+        },
+        {
+            "id": "ud176a",
+            "title": "Stuck",
+            "color": "#e2445c"
+        },
+    ],
     "activities": [{
         "id": "a101",
         "txt": "Changed Color",
@@ -137,6 +150,10 @@ async function add(board) {
 
     return addedBoard
 }
+
+
+
+
 
 function getEmptyBoard() {
     return {
@@ -229,4 +246,24 @@ function getEmptyBoard() {
             }
         }]
     }
+}
+
+function getEmptyGroup() {
+    return {
+        id: utilService.makeId,
+        title: '',
+        tasks: [],
+        style: { color: '#ffffff' }
+
+    }
+}
+
+function getEmptyTask() {
+    return {
+        _id: utilService.makeId,
+        title: '',
+        createdAt: new Date(),
+        status: null
+    };
+
 }

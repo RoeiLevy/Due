@@ -27,10 +27,10 @@ export const boardStore = {
                 const board = await boardService.getBoard(boardId);
                 context.commit({ type: 'setBoard', board })
                 return board
-                // socketService.off(SOCKET_EVENT_REVIEW_ADDED)
-                // socketService.on(SOCKET_EVENT_REVIEW_ADDED, review => {
-                //     context.commit({ type: 'addReview', review })
-                // })
+                    // socketService.off(SOCKET_EVENT_REVIEW_ADDED)
+                    // socketService.on(SOCKET_EVENT_REVIEW_ADDED, review => {
+                    //     context.commit({ type: 'addReview', review })
+                    // })
             } catch (err) {
                 console.log('reviewStore: Error in loadBoard', err)
                 throw err
@@ -44,6 +44,17 @@ export const boardStore = {
             } catch (error) {
 
             }
-        }
+        },
+        async saveTask(context, { taskToEdit }) {
+            try {
+                taskToEdit = await taskService.add(taskToEdit)
+                context.commit({ type: 'saveTask', taskToEdit })
+                return taskToEdit;
+            } catch (err) {
+                console.log('boardStore: Error in saveTask', err)
+                throw err
+            }
+        },
+
     }
 }

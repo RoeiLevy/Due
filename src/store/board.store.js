@@ -3,16 +3,45 @@ import { boardService } from '../services/board.service'
 
 export const boardStore = {
     state: {
-        board: null
+        board: null,
+        boards: [
+            {
+                title: 'a',
+                createdBy: {
+                    fullname: 'a'
+                },
+                createdAt: 1589983468418
+            },
+            {
+                title: 'b',
+                createdBy: {
+                    fullname: 'b'
+                },
+                createdAt: 1589983468418
+            },
+            {
+                title: 'c',
+                createdBy: {
+                    fullname: 'c'
+                },
+                createdAt: 1589983468418
+            }
+        ]
     },
     getters: {
         boardForDisplay(state) {
             return state.board
+        },
+        boards(state) {
+            return state.boards;
         }
     },
     mutations: {
         setBoard(state, { board }) {
             state.board = board
+        },
+        setBoards(state, { boards }) {
+            state.boards = boards;
         }
     },
     actions: {
@@ -29,5 +58,14 @@ export const boardStore = {
                 throw err
             }
         },
+        async loadBoards(context) {
+            try {
+                const boards = await boardService.query();
+                console.log('boards:', boards)
+                context.commit({ type: 'setBoards', boards });
+            } catch (error) {
+
+            }
+        }
     }
 }

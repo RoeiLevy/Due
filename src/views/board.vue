@@ -1,5 +1,5 @@
 <template>
-  <div v-if="board" class="board-container">
+  <div v-if="board" class="flex board-container">
     <app-header />
     <div class="board-header">
       <h1>{{ board.title }}</h1>

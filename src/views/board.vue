@@ -1,5 +1,6 @@
 <template>
   <div v-if="board" class="board-container">
+    <app-header />
     <div class="board-header">
       <h1>{{ board.title }}</h1>
       <button>Members & Invite</button>
@@ -22,6 +23,7 @@
 
 <script>
 import group from "../cmps/group";
+import appHeader from "../cmps/header";
 import { boardService } from "../services/board.service";
 
 export default {
@@ -69,7 +71,8 @@ export default {
     this.loadBoard();
   },
   components: {
-    group,
+    appHeader,
+    group
   },
 };
 </script>

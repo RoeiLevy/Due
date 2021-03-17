@@ -1,7 +1,11 @@
 <template>
-      <div id="nav">
-      <router-link to="/login">Login</router-link> |
-      <router-link to="/login">Sign Up</router-link>
+      <div class="header">
+      <img class="logo" src="@/assets/imgs/logo.png" />
+      <div>
+          <router-link to="/board">Boards</router-link>
+          <router-link to="/board">Boards</router-link>
+          <router-link to="/board">Boards</router-link>
+      </div>
     </div>
 
 </template>
@@ -11,7 +15,3 @@ export default {
 
 }
 </script>
-
-<style>
-
-</style>

@@ -18,16 +18,14 @@
     border-style: none !important;
 }
 
-.el-dropdown-menu.el-popper {
-    left: 115px !important;
-    top: 152px !important;
-}
-
 .drop-down {
     position: relative;
     .el-dropdown-link {
         position: absolute;
         left: -20px;
     }
+}
 
+.el-dropdown-menu {
+    left: 120px !important
 }

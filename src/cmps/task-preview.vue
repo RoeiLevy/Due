@@ -1,5 +1,6 @@
 <template>
   <div class="task-wrapper flex">
+      <font-awesome-icon class="header-icon remove-btn" icon="trash" />
     <input
       v-if="editMode"
       v-model="taskToEdit.title"
@@ -24,9 +25,7 @@
     >
       {{ task.status.title }}
     </h3>
-    <h3 v-else @click="isSelectingStatus = !isSelectingStatus">
-       Status
-    </h3>
+    <h3 v-else @click="isSelectingStatus = !isSelectingStatus">Status</h3>
     <status-picker
       @setStatus="setStatus"
       v-if="isSelectingStatus"
@@ -50,7 +49,7 @@ export default {
   },
   methods: {
     async setStatus(status) {
-      this.isSelectingStatus=false;
+      this.isSelectingStatus = false;
       try {
         this.taskToEdit.status = status;
         this.$emit("updateTask", this.taskToEdit);

@@ -2,17 +2,19 @@
 .task-wrapper {
     display: flex;
     justify-content: space-between;
-    top: 196px;
+    position: relative;
     height: 36px;
     background-color: #f5f6f8;
     align-items: center;
     border-bottom: 1px solid;
     border-bottom-color: #ffffff;
+
     >*{
         width: 120px;
         text-align: center;
         margin: 0 3px;
     }
+
     span{
         width: 120px;
     }
@@ -23,4 +25,18 @@
     div .task-title {
         font-size: 13px;
     }
+    
+
+
+    .remove-btn {
+        font-size: 13px;
+        position: absolute;
+        display: none;
+        left: -23px;
+    }
+
+}
+
+.task-wrapper:hover .remove-btn {
+    display: block;
 }

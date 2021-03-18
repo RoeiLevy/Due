@@ -39,6 +39,12 @@ export const boardStore = {
             const taskIdx = state.currBoard.groups[groupIdx].tasks.findIndex(item => item.id === task.id);
             state.currBoard.groups[groupIdx].tasks.splice(taskIdx, 1, task);
         },
+        removeTask(state, { taskId, groupId }) {
+            console.log('removing task - task', taskId, ' group id', groupId)
+            const groupIdx = state.currBoard.groups.findIndex(group => group.id === groupId);
+            const taskIdx = state.currBoard.groups[groupIdx].tasks.findIndex(item => item.id === taskId);
+            state.currBoard.groups[groupIdx].tasks.splice(taskIdx, 1);
+        },
         saveGroup(state, { group }) {
             const idx = state.currBoard.groups.findIndex(g => g.id === group.id);
             state.currBoard.groups.splice(idx, 1, group);
@@ -107,7 +113,17 @@ export const boardStore = {
                 console.log('boardStore: Error in updateTask', err)
                 throw err
             }
-        }
+        },
+        async removeTask(context, payload) {
+            try {
+                const removed = await boardService.removeTask(payload.taskId, payload.groupId, context.state.currBoard._id)
+                context.commit({ type: 'removeTask', taskId: payload.taskId, groupId: payload.groupId })
+                return removed;
+            } catch (err) {
+                console.log('boardStore: Error in updateTask', err)
+                throw err
+            }
+        },
 
     }
 }

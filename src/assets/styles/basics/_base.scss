@@ -8,18 +8,15 @@ html {
     color: $color-blackish;
 }
 
-
 #app {
     height: 100vh;
 }
 
 body {
     margin: 0;
-    
     // background-image: url('~@/assets/images/cats-pattern-background_1425-90.jpg');
     // background-size: 180px;
     // background-attachment: fixed;
-
 }
 
 h1,
@@ -41,6 +38,6 @@ p {
     margin: 0 0 1rem;
 }
 
-img {
-    width: 100%;
-}
+// img {
+//     width: 100%;
+// }

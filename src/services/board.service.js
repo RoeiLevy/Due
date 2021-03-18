@@ -15,7 +15,7 @@ export const boardService = {
     getEmptyTask,
     addTask,
     saveGroup,
-    saveTask
+    updateTask
 }
 
 
@@ -34,77 +34,81 @@ const boardDB = [{
         "imgUrl": "https://www.google.com"
     }],
     "groups": [{
-            "id": "g101",
-            "title": "Group 1",
-            "tasks": [{
-                    "id": "c101",
-                    "title": "Replace logo"
-                },
-                {
-                    "id": "c102",
-                    "title": "Add Samples"
-                }
-            ],
-            "style": {}
+        "id": "g101",
+        "title": "Group 1",
+        "tasks": [{
+            "id": "c101",
+            "title": "Replace logo"
         },
         {
-            "id": "g102",
-            "title": "Group 2",
-            "tasks": [{
-                    "id": "c103",
-                    "title": "Do that"
-                },
-                {
-                    "id": "c104",
-                    "title": "Help me with Atlas",
-                    "statusId": "statusId",
-                    "comments": [{
-                        "id": "ZdPnm",
-                        "txt": "also @yaronb please CR this",
-                        "createdAt": 1590999817436.0,
-                        "byMember": {
-                            "_id": "u101",
-                            "fullname": "Tal Tarablus",
-                            "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
-                        }
-                    }],
-                    "members": [{
-                        "_id": "u101",
-                        "fullname": "Tal Tarablus",
-                        "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
-                    }],
-                    "createdAt": 1590999730348,
-                    "dueDate": 16156215211,
-                    "byMember": {
-                        "_id": "u101",
-                        "username": "Tal",
-                        "fullname": "Tal Tarablus",
-                        "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
-                    },
-                    "style": {
-                        "bgColor": "#26de81"
-                    }
+            "id": "c102",
+            "title": "Add Samples"
+        }
+        ],
+        "style": {}
+    },
+    {
+        "id": "g102",
+        "title": "Group 2",
+        "tasks": [{
+            "id": "c103",
+            "title": "Do that"
+        },
+        {
+            "id": "c104",
+            "title": "Help me with Atlas",
+            "status": {
+                "id": "udg2t6",
+                "title": "Done",
+                "color": "#00c875"
+            },
+            "comments": [{
+                "id": "ZdPnm",
+                "txt": "also @yaronb please CR this",
+                "createdAt": 1590999817436.0,
+                "byMember": {
+                    "_id": "u101",
+                    "fullname": "Tal Tarablus",
+                    "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
                 }
-            ],
-            "style": {}
+            }],
+            "members": [{
+                "_id": "u101",
+                "fullname": "Tal Tarablus",
+                "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            }],
+            "createdAt": 1590999730348,
+            "dueDate": 16156215211,
+            "byMember": {
+            "_id": "u101",
+            "username": "Tal",
+            "fullname": "Tal Tarablus",
+            "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+        },
+            "style": {
+            "bgColor": "#26de81"
+        }
         }
     ],
-    "statuses": [{
-            "id": "udg2t6",
-            "title": "Done",
-            "color": "#00c875"
-        },
-        {
-            "id": "udm874",
-            "title": "Working on it",
-            "color": "#fdab3d"
-        },
-        {
-            "id": "ud176a",
-            "title": "Stuck",
-            "color": "#e2445c"
-        },
-    ],
+    "style": {}
+}
+],
+"statuses": [{
+    "id": "udg2t6",
+    "title": "Done",
+    "color": "#00c875"
+},
+{
+    "id": "udm874",
+    "title": "Working on it",
+    "color": "#fdab3d"
+},
+{
+    "id": "ud176a",
+    "title": "Stuck",
+    "color": "#e2445c"
+},
+],
     "activities": [{
         "id": "a101",
         "txt": "Changed Color",
@@ -174,12 +178,12 @@ async function addTask(task, groupId, boardId) {
         console.log(err)
     }
 }
-async function saveTask(task, groupId, boardId) {
+async function updateTask(task, groupId, boardId) {
     try {
         var currBoard = await getBoard(boardId);
-        const boardIdx = currBoard.groups.findIndex(group => group.id === groupId);
-        const taskIdx = currBoard.groups[boardIdx].tasks.findIndex(item => item.id === task.id);
-        currBoard.groups[boardIdx].tasks.splice(taskIdx, 1, task);
+        const groupIdx = currBoard.groups.findIndex(group => group.id === groupId);
+        const taskIdx = currBoard.groups[groupIdx].tasks.findIndex(item => item.id === task.id);
+        currBoard.groups[groupIdx].tasks.splice(taskIdx, 1, task);
         await storageService.put('board', currBoard);
 
         return task
@@ -217,66 +221,81 @@ function getEmptyBoard() {
             "imgUrl": "https://www.google.com"
         }],
         "groups": [{
-                "id": "g101",
-                "title": "Group 1",
-                "tasks": [{
-                        "id": "c101",
-                        "title": "Replace logo"
-                    },
-                    {
-                        "id": "c102",
-                        "title": "Add Samples"
-                    }
-                ],
-                "style": {}
+            "id": "g101",
+            "title": "Group 1",
+            "tasks": [{
+                "id": "c101",
+                "title": "Replace logo"
             },
             {
-                "id": "g102",
-                "title": "Group 2",
-                "tasks": [{
-                        "id": "c103",
-                        "title": "Do that"
-                    },
-                    {
-                        "id": "c104",
-                        "title": "Help me with Atlas",
-                        "statusId": "statusId",
-                        "comments": [{
-                            "id": "ZdPnm",
-                            "txt": "also @yaronb please CR this",
-                            "createdAt": 1590999817436.0,
-                            "byMember": {
-                                "_id": "u101",
-                                "fullname": "Tal Tarablus",
-                                "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
-                            }
-                        }],
-                        "members": [{
-                            "_id": "u101",
-                            "fullname": "Tal Tarablus",
-                            "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
-                        }],
-                        "createdAt": 1590999730348,
-                        "dueDate": 16156215211,
-                        "byMember": {
-                            "_id": "u101",
-                            "username": "Tal",
-                            "fullname": "Tal Tarablus",
-                            "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
-                        },
-                        "style": {
-                            "bgColor": "#26de81"
-                        }
+                "id": "c102",
+                "title": "Add Samples"
+            }
+            ],
+            "style": {}
+        },
+        {
+            "id": "g102",
+            "title": "Group 2",
+            "tasks": [{
+                "id": "c103",
+                "title": "Do that"
+            },
+            {
+                "id": "c104",
+                "title": "Help me with Atlas",
+                "status": {
+                    "id": "udg2t6",
+                    "title": "Done",
+                    "color": "#00c875"
+                },
+                "comments": [{
+                    "id": "ZdPnm",
+                    "txt": "also @yaronb please CR this",
+                    "createdAt": 1590999817436.0,
+                    "byMember": {
+                        "_id": "u101",
+                        "fullname": "Tal Tarablus",
+                        "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
                     }
-                ],
-                "style": {}
+                }],
+                "members": [{
+                    "_id": "u101",
+                    "fullname": "Tal Tarablus",
+                    "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                }],
+                "createdAt": 1590999730348,
+                "dueDate": 16156215211,
+                "byMember": {
+                "_id": "u101",
+                "username": "Tal",
+                "fullname": "Tal Tarablus",
+                "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            },
+                "style": {
+                "bgColor": "#26de81"
+            }
             }
         ],
-        "statuses": [{
-            "id": "udm876",
-            "title": "Done",
-            "color": "#ffffff"
-        }],
+        "style": {}
+    }
+        ],
+    "statuses": [{
+        "id": "udg2t6",
+        "title": "Done",
+        "color": "#00c875"
+    },
+    {
+        "id": "udm874",
+        "title": "Working on it",
+        "color": "#fdab3d"
+    },
+    {
+        "id": "ud176a",
+        "title": "Stuck",
+        "color": "#e2445c"
+    },
+    ],
         "activities": [{
             "id": "a101",
             "txt": "Changed Color",
@@ -291,7 +310,7 @@ function getEmptyBoard() {
                 "title": "Replace Logo"
             }
         }]
-    }
+}
 }
 
 function getEmptyGroup() {

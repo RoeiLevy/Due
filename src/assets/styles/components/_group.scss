@@ -1,17 +1,50 @@
 .group-container {
+    .group-title-wrapper{
+        width: 100%;
+        display: flex;
+    }
+    label{
+        width: 140px;
+        text-align: center;
+    }
     .group-title {
+        flex: 1;
         font-size: 18px;
     }
 }
 
 .group-header {
+    width: 100%;
+    min-height: 40px;
+    .group-title-wrapper {
+        width: 40%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        .group-title {
+            padding: 10px 10px 10px 0px;
+        }
+    }
+
+
     .el-dropdown-link {
         cursor: pointer;
         color: #409EFF;
+        font-size: 20px;
       }
       .el-icon-arrow-down {
         font-size: 12px;
       }
+}
+
+.group-footer {
+    height: 116px;
+    width: 100%;
+
+    .add-task-wrapper {
+        @include task-cells;
+    }
 }
 
 .el-popper .popper__arrow, .el-popper .popper__arrow::after {
@@ -22,10 +55,11 @@
     position: relative;
     .el-dropdown-link {
         position: absolute;
-        left: -20px;
+        left: -31px;
+        bottom: 4px;
     }
 }
 
 .el-dropdown-menu {
-    left: 120px !important
+    left: 102px !important;
 }

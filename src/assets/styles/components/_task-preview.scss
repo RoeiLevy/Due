@@ -1,61 +1,106 @@
 .task-wrapper {
     display: flex;
-    justify-content: space-between;
+    align-items: flex-start;
     position: relative;
     height: 36px;
-    background-color: #f5f6f8;
     align-items: center;
-    border-bottom: 1px solid;
-    border-bottom-color: #ffffff;
-
-    >* {
-        cursor: pointer;
-        width: 140px;
-        text-align: center;
-        margin: 0 3px;
-        transition: all .3s;
-    }
-
-
-    >*:hover {
-        opacity: .8;
-    }
+    margin-block-end: 1px;
+    // border-bottom: 1px solid;
+    // border-bottom-color: #ffffff;
 
     .task-title {
-        cursor: pointer;
-        padding: 10px;
-        text-align: start;
         flex: 1;
+        @include task-cells;
+        cursor: pointer;
+        text-align: start;
         font-size: 13px;
+        width: 40%;
+        .task-title-label {
+            padding: 10px;
+        }
     }
 
+    
 
+    .task-members-container {
+        @include task-cells;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 10%;
+    }
+
+    .status-container {
+        @include task-cells;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 140px;
+        h3 {
+            font-size: 13px;
+        }
+    }
+
+    .date-container {
+        @include task-cells;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 20%;
+    }
+
+    .remove-btn-wrapper {
+        left: -50px;
+        width: 50px;
+        height: 20px;
+        align-items: flex-start;
+        font-size: 13px;
+        background-color: transparent;
+        position: absolute;
+        justify-content: center;
+        align-items: center;
+        display: none;
+    }
 
     .remove-btn {
-        font-size: 13px;
-        position: absolute;
         display: none;
-        left: -23px;
+        filter: brightness(250%);
+    }
+
+    .remove-btn:hover {
+        cursor: pointer;
+        filter: brightness(100%);
     }
 
 }
 
-.task-wrapper:hover .remove-btn {
-    display: block;
+.task-wrapper:hover .remove-btn-wrapper {
+    display: flex;
+}
 
-    .task-status {
-        transition: all .3s;
+
+.task-wrapper:hover .remove-btn {
+    display: flex;
+}
+
+
+.task-status {
+    transition: all .3s;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.status-container:hover {
+    opacity: 1;
+
+    .task-status:hover {
+        opacity: .8;
     }
 
-    .status-container:hover {
+    .tag-group:hover {
         opacity: 1;
-
-        .task-status:hover {
-            opacity: .8;
-        }
-
-        .tag-group:hover {
-            opacity: 1;
-        }
     }
 }

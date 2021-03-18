@@ -57,10 +57,10 @@ export const boardStore = {
                 const board = await boardService.getBoard(boardId);
                 context.commit({ type: 'setBoard', board })
                 return board
-                    // socketService.off(SOCKET_EVENT_REVIEW_ADDED)
-                    // socketService.on(SOCKET_EVENT_REVIEW_ADDED, review => {
-                    //     context.commit({ type: 'addReview', review })
-                    // })
+                // socketService.off(SOCKET_EVENT_REVIEW_ADDED)
+                // socketService.on(SOCKET_EVENT_REVIEW_ADDED, review => {
+                //     context.commit({ type: 'addReview', review })
+                // })
             } catch (err) {
                 console.log('boardStore: Error in loadBoard', err)
                 throw err
@@ -113,6 +113,15 @@ export const boardStore = {
                 return task;
             } catch (err) {
                 console.log('boardStore: Error in updateTask', err)
+                throw err
+            }
+        },
+        async addNewBoard(context) {
+            try {
+                var newBoard = boardService.getEmptyBoard();
+                return await boardService.add(newBoard);
+            } catch (err) {
+                console.log('boardStore: Error in Adding New Board', err)
                 throw err
             }
         },

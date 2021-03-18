@@ -3,7 +3,6 @@
     <div class="flex group-header">
       <el-dropdown @command="handleCommand" class="drop-down" trigger="click">
         <span class="el-dropdown-link">
-          <!-- <i class="el-icon-arrow-down el-icon--right"></i> -->
           <font-awesome-icon class="header-icon" icon="caret-square-down" />
         </span>
         <el-dropdown-menu slot="dropdown">
@@ -12,18 +11,24 @@
           <el-dropdown-item>Action 3</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
-    </div>
-    <div class="group-title-wrapper">
-    <input
-      v-if="editMode"
-      v-model="groupToEdit.title"
-      @keyup.enter="saveGroup"
-    />
-    <div v-else>
-      <label class="group-title" @click="editMode = true">
-        {{ groupToEdit.title }}
-      </label>
-    </div>
+      <div class="group-title-wrapper">
+        <input
+          v-if="editMode"
+          v-model="groupToEdit.title"
+          @keyup.enter="saveGroup"
+          class="group-title"
+        />
+        <div class="group-title" v-else>
+          <label @click="editMode = true">
+            {{ groupToEdit.title }}
+          </label>
+        </div>
+        <label v-for="(header, idx) in group.headers" :key="idx">{{
+          header
+        }}</label>
+
+        <!-- <h2 class="group-title">{{ group.title }}</h2> -->
+      </div>
     </div>
     <draggable
       v-model="groupToEdit.tasks"
@@ -38,15 +43,19 @@
         @updateTask="updateTask"
       />
     </draggable>
-    <form @submit.prevent="addTask()">
-      <input
-        class="add-task-input"
-        type="text"
-        placeholder="+Add Task"
-        v-model="taskToEdit.title"
-      />
-      <button v-if="taskToEdit" class="add-task">Add</button>
-    </form>
+    <div class="group-footer">
+      <div class="add-task-wrapper">
+      <form @submit.prevent="addTask()">
+        <input
+          class="add-task-input"
+          type="text"
+          placeholder="Add Task"
+          v-model="taskToEdit.title"
+        />
+        <button v-if="taskToEdit" class="add-task">Add</button>
+      </form>
+      </div>
+    </div>
   </section>
 </template>
 
@@ -66,24 +75,23 @@ export default {
         createdAt: null,
         status: null,
       },
-      editMode: false
+      editMode: false,
     };
   },
   methods: {
-     handleCommand(command) {
-        this.$message('click on item ' + command);
-        switch (command) {
-            case 'removeTask': 
-              this.removeTask()
-        }
-      },
-      async removeTask() { 
-        try {
-          
-        } catch (err) {
-          console.log('err:', err)
-        }
-      },
+    handleCommand(command) {
+      this.$message("click on item " + command);
+      switch (command) {
+        case "removeTask":
+          this.removeTask();
+      }
+    },
+    async removeTask() {
+      try {
+      } catch (err) {
+        console.log("err:", err);
+      }
+    },
     async addTask() {
       this.taskToEdit.createdAt = Date.now();
       await this.$store.dispatch({
@@ -99,7 +107,7 @@ export default {
       };
     },
     async updateTask(task) {
-        console.log('task from group emit', task)
+      console.log("task from group emit", task);
       try {
         await this.$store.dispatch({
           type: "updateTask",
@@ -113,7 +121,7 @@ export default {
     },
     async saveGroup() {
       try {
-                this.editMode = false;
+        this.editMode = false;
 
         await this.$store.dispatch("saveGroup", this.groupToEdit);
         this.groupToEdit = { ...this.group };

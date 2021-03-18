@@ -5,8 +5,10 @@
     height: 36px;
     align-items: center;
     margin-block-end: 1px;
-    // border-bottom: 1px solid;
-    // border-bottom-color: #ffffff;
+    border-bottom: 1px solid #ffffff;
+    font-size: 13px;
+
+
 
     .task-title {
         flex: 1;
@@ -15,12 +17,13 @@
         text-align: start;
         font-size: 13px;
         width: 40%;
+
         .task-title-label {
             padding: 10px;
         }
     }
 
-    
+
 
     .task-members-container {
         @include task-cells;
@@ -36,6 +39,7 @@
         align-items: center;
         justify-content: center;
         width: 140px;
+
         h3 {
             font-size: 13px;
         }
@@ -73,6 +77,12 @@
     }
 
 }
+
+.task-wrapper:hover {
+    filter: brightness(98%);
+    cursor: pointer;
+}
+
 
 .task-wrapper:hover .remove-btn-wrapper {
     display: flex;

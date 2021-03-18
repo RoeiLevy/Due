@@ -1,12 +1,14 @@
 .group-container {
-    .group-title-wrapper{
+    .group-title-wrapper {
         width: 100%;
         display: flex;
     }
-    label{
+
+    label {
         width: 140px;
         text-align: center;
     }
+
     .group-title {
         flex: 1;
         font-size: 18px;
@@ -16,6 +18,7 @@
 .group-header {
     width: 100%;
     min-height: 40px;
+
     .group-title-wrapper {
         width: 40%;
         display: flex;
@@ -32,10 +35,15 @@
         cursor: pointer;
         color: #409EFF;
         font-size: 20px;
-      }
-      .el-icon-arrow-down {
+    }
+
+    .el-dropdown-link:hover {
+        filter: brightness(115%);
+    }
+
+    .el-icon-arrow-down {
         font-size: 12px;
-      }
+    }
 }
 
 .group-footer {
@@ -43,20 +51,43 @@
     width: 100%;
 
     .add-task-wrapper {
-        @include task-cells;
+        // @include task-cells;
+        // display: flex;
+        .add-task-form {
+            height: 100%;
+        }
+
+        .add-task-form button {
+            width: 75px;
+        }
+        .add-task-input {
+            width: 100%;
+            outline: none;
+            border: 1px solid gainsboro;
+            padding: 10px;
+        }
+    }
+
+
+    .add-task-wrapper:hover {
+        filter: brightness(98%);
+        cursor: pointer;
+        border: 1px solid black;
     }
 }
 
-.el-popper .popper__arrow, .el-popper .popper__arrow::after {
+.el-popper .popper__arrow,
+.el-popper .popper__arrow::after {
     border-style: none !important;
 }
 
 .drop-down {
     position: relative;
+
     .el-dropdown-link {
         position: absolute;
         left: -31px;
-        bottom: 4px;
+        bottom: 8px;
     }
 }
 

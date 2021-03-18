@@ -26,12 +26,6 @@
         {{ groupToEdit.title }}
       </label>
     </div>
-
-
-      <!-- <h2 class="group-title">{{ group.title }}</h2> -->
-
-
-
     </div>
     <draggable
       v-model="groupToEdit.tasks"

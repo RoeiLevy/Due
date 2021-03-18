@@ -12,7 +12,7 @@ export const boardStore = {
         boards(state) {
             return state.boards;
         },
-        statuses(state){
+        statuses(state) {
             return state.currBoard.statuses;
         }
     },
@@ -33,12 +33,7 @@ export const boardStore = {
             }
             currGroup.tasks.push(task);
         },
-<<<<<<< HEAD
-        saveGroup(state, group) {
-            console.log('group:', group)
-=======
-        saveGroup(state, {group}) {
->>>>>>> 02cab6d948a5951153884b67f481cff7fdc4c9cf
+        saveGroup(state, { group }) {
             const idx = state.currBoard.groups.findIndex(g => g.id === group.id);
             state.currBoard.groups.splice(idx, 1, group);
             // console.log(state.currBoard);

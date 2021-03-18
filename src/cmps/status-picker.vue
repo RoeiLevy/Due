@@ -34,7 +34,7 @@ export default {
 
     },
     setStatus(status){
-      this.$emit('setStatus',status)
+      this.$emit('setStatus',{...status})
     }
   },
   components: {

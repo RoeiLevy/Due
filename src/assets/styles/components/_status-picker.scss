@@ -1,16 +1,32 @@
-.tag-group{
+.tag-group {
     width: 266px;
     height: 315px;
     background-color: #fff;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
     border: 1px solid black;
     position: absolute;
-    padding: 10px;
-    .el-tag{
+    transform: translateX(-25%);
+    padding: 0;
+    >*:hover{
+        opacity: 1;
+
+    }
+    :hover{
+    }
+    .statuses {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+    div {
+        padding: 10px;
+    }
+    .el-tag {
         margin: 5px;
         width: 112px;
         height: 32px;
+        transition: all.5s;
+    }
+    .el-tag:hover{
+        opacity: .5;
     }
 }

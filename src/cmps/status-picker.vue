@@ -1,7 +1,7 @@
 <template>
   <div class="tag-group">
     <span class="tag-group__title">Labels</span>
-    <draggable
+    <draggable class="statuses"
       v-model="statuses"
       @start="drag = true"
       @end="drag = false"

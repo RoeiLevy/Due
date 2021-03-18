@@ -9,18 +9,32 @@
     border-bottom: 1px solid;
     border-bottom-color: #ffffff;
     >*{
-        width: 120px;
+        cursor: pointer;
+        width: 140px;
         text-align: center;
         margin: 0 3px;
+        transition: all .3s;
     }
-    span{
-        width: 120px;
+    >*:hover{
+        opacity: .8;
     }
-    :first-child{
+    .task-title{
+        cursor: pointer;
+        padding: 10px;
         text-align: start;
         flex: 1;
-    }
-    div .task-title {
         font-size: 13px;
+    }
+    .task-status{
+        transition: all .3s;
+    }
+    .status-container:hover{
+        opacity: 1;
+        .task-status:hover{
+            opacity: .8;
+        }
+        .tag-group:hover{
+            opacity: 1;
+        }
     }
 }

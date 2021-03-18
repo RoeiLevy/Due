@@ -1,5 +1,6 @@
 <template>
   <div class="task-wrapper flex">
+    <div class="task-color-box-start"></div>
     <div class="remove-btn-wrapper">
       <font-awesome-icon class="header-icon remove-btn" icon="trash" />
     </div>
@@ -38,8 +39,14 @@
       ></status-picker>
     </div>
     <div class="date-container">
-      <input type="date" name="due-date" id="due-date" v-model="dueDate" />
+      <!-- <input type="date" name="due-date" id="due-date" v-model="dueDate" /> -->
+      <el-date-picker
+        v-model="dueDate"
+        type="datetime"
+        default-time="12:00:00">
+      </el-date-picker>
     </div>
+    <div class="task-color-box-end"></div>
   </div>
 </template>
 

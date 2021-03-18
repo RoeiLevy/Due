@@ -9,7 +9,6 @@
     font-size: 13px;
 
 
-
     .task-title {
         flex: 1;
         @include task-cells;
@@ -24,13 +23,12 @@
     }
 
 
-
     .task-members-container {
         @include task-cells;
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 10%;
+        width: 140px;
     }
 
     .status-container {
@@ -50,7 +48,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 20%;
+        width: 140px;
     }
 
     .remove-btn-wrapper {
@@ -76,6 +74,17 @@
         filter: brightness(100%);
     }
 
+    .task-color-box-start {
+        @include task-cells;
+        min-width: 8px;
+        border-left:  8px solid $application-border-color;
+    }
+
+    .task-color-box-end {
+        @include task-cells;
+        min-width: 38px;
+        border-right:  8px solid $application-border-color;
+    }
 }
 
 .task-wrapper:hover {
@@ -113,4 +122,13 @@
     .tag-group:hover {
         opacity: 1;
     }
+}
+
+.el-input--prefix .el-input__inner { 
+    border: none;
+    background-color: inherit;
+}
+
+.el-input--prefix .el-input__inner:hover {
+    cursor: pointer;
 }

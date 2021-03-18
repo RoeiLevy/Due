@@ -23,10 +23,20 @@
             {{ groupToEdit.title }}
           </label>
         </div>
-        <label v-for="(header, idx) in group.headers" :key="idx">{{
+        <!-- <label v-for="(header, idx) in group.headers" :key="idx">{{
           header
-        }}</label>
+        }}</label> -->
       </div>
+      <div class="members-wrapper">
+          <label>Members</label>
+      </div>
+      <div class="status-wrapper">
+          <label>Status</label>
+      </div>
+      <div class="dueDate-wrapper">
+          <label>dueDate</label>
+      </div>
+      <div class="space-box"></div>
     </div>
     <draggable
       v-model="groupToEdit.tasks"
@@ -47,10 +57,10 @@
           <input
             class="add-task-input"
             type="text"
-            placeholder="Add Task"
+            placeholder="    + Add Task"
             v-model="taskToEdit.title"
           />
-          <button v-if="taskToEdit" class="add-task">Add</button>
+          <button v-if="taskToEdit" class="add-task-btn">Add</button>
         </form>
       </div>
     </div>

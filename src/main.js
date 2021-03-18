@@ -5,8 +5,11 @@ import router from './router'
 import store from './store'
 import './assets/styles/styles.scss'
 import ElementUI from 'element-ui';
+import locale from 'element-ui/lib/locale'
+
 import 'element-ui/lib/theme-chalk/index.css';
 
+locale.use('EN')
 Vue.use(ElementUI);
 
 

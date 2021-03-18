@@ -2,7 +2,34 @@
     .group-title-wrapper {
         width: 100%;
         display: flex;
+        flex: 1;
     }
+
+    .members-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 140px;
+    }
+
+    .status-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 140px;
+    }
+
+    .dueDate-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 140px;
+    }
+
+    .space-box {
+        width: 38px;
+    }
+
 
     label {
         width: 140px;
@@ -51,29 +78,46 @@
     width: 100%;
 
     .add-task-wrapper {
-        // @include task-cells;
-        // display: flex;
         .add-task-form {
             height: 100%;
-        }
 
-        .add-task-form button {
-            width: 75px;
-        }
-        .add-task-input {
-            width: 100%;
-            outline: none;
-            border: 1px solid gainsboro;
-            padding: 10px;
+
         }
     }
-
 
     .add-task-wrapper:hover {
         filter: brightness(98%);
         cursor: pointer;
-        border: 1px solid black;
+        border: 1px solid rgb(61, 61, 61);
     }
+}
+
+
+.add-task-form:hover .add-task-btn {
+    display: block;
+}
+
+.add-task-btn {
+    width: 75px;
+    border: none;
+    display: none;
+    background-color: $color-basic_blue;
+    color: white;
+    z-index: 5000;
+}
+
+.add-task-input {
+    width: 100%;
+    outline: none;
+    border: 1px solid gainsboro;
+    padding: 10px;
+}
+
+
+.add-task-btn:hover {
+    cursor: pointer;
+    filter: brightness(90%);
+
 }
 
 .el-popper .popper__arrow,
@@ -87,10 +131,12 @@
     .el-dropdown-link {
         position: absolute;
         left: -31px;
-        bottom: 8px;
+        bottom: 11px;
+        font-size: 16px;
     }
 }
 
 .el-dropdown-menu {
     left: 102px !important;
+
 }

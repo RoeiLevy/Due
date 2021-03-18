@@ -14,6 +14,7 @@
   </section>
 </template>
 
+
 <script>
 import taskPreview from "./task-preview.vue";
 
@@ -25,7 +26,8 @@ export default {
       taskToEdit: {
         title: '',
         createdAt: null,
-        status: null
+        status: null,
+        edit: false
 
       },
     };

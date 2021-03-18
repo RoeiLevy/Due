@@ -1,6 +1,12 @@
 <template>
   <div class="task flex">
-    <h4>{{ task.title }}</h4>
+    <!-- <h4 v-if="task">{{ task.title }}</h4> -->
+      <input v-if="editMode" v-model="taskToEdit.title"
+      @keyup.enter="editMode=false">
+            <div v-else>
+        <label @click="editMode = true;"> {{ taskToEdit.title }} </label>
+      </div>
+
     <img
       v-for="member in task.members"
       :key="member._id"
@@ -21,10 +27,15 @@ export default {
   data() {
     return {
       dueDate: "",
-      isSelectingStatus:false
+      isSelectingStatus:false,
+      editMode: false,
+      taskToEdit: null
     };
   },
   created() {
+    console.log('this.task',this.task)
+    this.taskToEdit = {...this.task};
+
   },
   components:{
       statusPicker

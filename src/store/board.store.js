@@ -33,10 +33,9 @@ export const boardStore = {
             }
             currGroup.tasks.push(task);
         },
-        saveGroup(state, { group }) {
+        saveGroup(state, {group}) {
             const idx = state.currBoard.groups.findIndex(g => g.id === group.id);
             state.currBoard.groups.splice(idx, 1, group);
-            // console.log(state.currBoard);
         }
     },
     actions: {

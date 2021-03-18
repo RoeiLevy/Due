@@ -51,14 +51,18 @@
     width: 100%;
 
     .add-task-wrapper {
+
         // @include task-cells;
         // display: flex;
         .add-task-form {
             height: 100%;
         }
 
+
         .add-task-form button {
             width: 75px;
+            border: none;
+            display: none;
         }
         .add-task-input {
             width: 100%;
@@ -66,6 +70,18 @@
             border: 1px solid gainsboro;
             padding: 10px;
         }
+
+        .add-task-input:hover .add-task-form button {
+            display: block;
+            background-color: $color-basic_blue;
+        }
+
+        .add-task-form button:hover {
+            cursor: pointer;
+            filter: brightness(90%);
+
+        }
+
     }
 
 

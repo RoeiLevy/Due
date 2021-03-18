@@ -3,7 +3,7 @@
     <input
       v-if="editMode"
       v-model="taskToEdit.title"
-      @keyup.enter="editMode = false"
+      @keyup.enter="updateTask"
     />
     <div v-else>
       <label class="task-title" @click="editMode = true">
@@ -41,6 +41,11 @@ export default {
   },
   methods: {
     setStatus(status) {},
+     updateTask() {
+       console.log('test')
+       this.editMode = false;
+          this.$emit('updateTask', this.taskToEdit);
+        },
   },
   created() {
     this.taskToEdit = { ...this.task };

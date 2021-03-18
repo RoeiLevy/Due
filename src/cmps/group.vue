@@ -11,6 +11,7 @@
         v-for="task in groupToEdit.tasks"
         :key="task.id"
         :task="task"
+        @updateTask="updateTask"
       />
     </draggable>
     <form @submit.prevent="addTask()">
@@ -47,7 +48,7 @@ export default {
     async addTask() {
       this.taskToEdit.createdAt = Date.now();
       await this.$store.dispatch({
-        type: "saveTask",
+        type: "addTask",
         taskToEdit: this.taskToEdit,
         groupId: this.group.id,
       });
@@ -58,12 +59,25 @@ export default {
         status: null,
       };
     },
+    async updateTask(task) {
+        console.log('task from group emit', task)
+      try {
+        await this.$store.dispatch({
+          type: "updateTask",
+          taskToEdit: task,
+          groupId: this.group.id,
+        });
+      } catch (err) {
+        console.log("Couldn`t update Task", err);
+        throw err;
+      }
+    },
     async saveGroup() {
       try {
         await this.$store.dispatch("saveGroup", this.groupToEdit);
         this.groupToEdit = { ...this.group };
       } catch (err) {
-        console.log('Couldn`t Save Group' ,err);
+        console.log("Couldn`t Save Group", err);
         throw err;
       }
     },
@@ -75,6 +89,7 @@ export default {
   },
   created() {
     this.groupToEdit = { ...this.group };
+    // this.$on("updateTask", this.updateTask);
   },
   components: {
     taskPreview,

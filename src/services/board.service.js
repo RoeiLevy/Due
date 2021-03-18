@@ -22,6 +22,7 @@ export const boardService = {
 const boardDB = [{
     "_id": "b101",
     "title": "Robot dev proj",
+    "thumbnail": 'https://images.unsplash.com/photo-1493243350443-9e3048ce7288?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=897&q=80',
     "createdAt": 1589983468418,
     "createdBy": {
         "_id": "u101",
@@ -36,6 +37,7 @@ const boardDB = [{
     "groups": [{
         "id": "g101",
         "title": "Group 1",
+        "headers":['members','status','dueDate'],
         "tasks": [{
             "id": "c101",
             "title": "Replace logo"
@@ -50,6 +52,114 @@ const boardDB = [{
     {
         "id": "g102",
         "title": "Group 2",
+        "tasks": [{
+            "id": "c103",
+            "title": "Do that"
+        },
+        {
+            "id": "c104",
+            "title": "Help me with Atlas",
+            "headers":['members','status','dueDate'],
+            "status": {
+                "id": "udg2t6",
+                "title": "Done",
+                "color": "#00c875"
+            },
+            "comments": [{
+                "id": "ZdPnm",
+                "txt": "also @yaronb please CR this",
+                "createdAt": 1590999817436.0,
+                "byMember": {
+                    "_id": "u101",
+                    "fullname": "Tal Tarablus",
+                    "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                }
+            }],
+            "members": [{
+                "_id": "u101",
+                "fullname": "Tal Tarablus",
+                "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            }],
+            "createdAt": 1590999730348,
+            "dueDate": 16156215211,
+            "byMember": {
+                "_id": "u101",
+                "username": "Tal",
+                "fullname": "Tal Tarablus",
+                "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            },
+            "style": {
+                "bgColor": "#26de81"
+            }
+        }
+        ],
+        "style": {}
+    }
+    ],
+    "statuses": [{
+        "id": "udg2t6",
+        "title": "Done",
+        "color": "#00c875"
+    },
+    {
+        "id": "udm874",
+        "title": "Working on it",
+        "color": "#fdab3d"
+    },
+    {
+        "id": "ud176a",
+        "title": "Stuck",
+        "color": "#e2445c"
+    },
+    ],
+    "activities": [{
+        "id": "a101",
+        "txt": "Changed Color",
+        "createdAt": 154514,
+        "byMember": {
+            "_id": "u101",
+            "fullname": "Abi Abambi",
+            "imgUrl": "http://some-img"
+        },
+        "task": {
+            "id": "c101",
+            "title": "Replace Logo"
+        }
+    }]
+}, {
+    "_id": "b102",
+    "title": "Robot dev proj",
+    "thumbnail": 'https://images.unsplash.com/photo-1493243350443-9e3048ce7288?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=897&q=80',
+    "createdAt": 1589983468418,
+    "createdBy": {
+        "_id": "u101",
+        "fullname": "Abi Abambi",
+        "imgUrl": "http://some-img"
+    },
+    "members": [{
+        "_id": "u101",
+        "fullname": "Tal Tarablus",
+        "imgUrl": "https://www.google.com"
+    }],
+    "groups": [{
+        "id": "g101",
+        "title": "Group 1",
+        "headers":['members','status','dueDate'],
+        "tasks": [{
+            "id": "c101",
+            "title": "Replace logo"
+        },
+        {
+            "id": "c102",
+            "title": "Add Samples"
+        }
+        ],
+        "style": {}
+    },
+    {
+        "id": "g102",
+        "title": "Group 2",
+        "headers":['members','status','dueDate'],
         "tasks": [{
             "id": "c103",
             "title": "Do that"
@@ -80,35 +190,35 @@ const boardDB = [{
             "createdAt": 1590999730348,
             "dueDate": 16156215211,
             "byMember": {
-            "_id": "u101",
-            "username": "Tal",
-            "fullname": "Tal Tarablus",
-            "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
-        },
+                "_id": "u101",
+                "username": "Tal",
+                "fullname": "Tal Tarablus",
+                "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            },
             "style": {
-            "bgColor": "#26de81"
+                "bgColor": "#26de81"
+            }
         }
-        }
+        ],
+        "style": {}
+    }
     ],
-    "style": {}
-}
-],
-"statuses": [{
-    "id": "udg2t6",
-    "title": "Done",
-    "color": "#00c875"
-},
-{
-    "id": "udm874",
-    "title": "Working on it",
-    "color": "#fdab3d"
-},
-{
-    "id": "ud176a",
-    "title": "Stuck",
-    "color": "#e2445c"
-},
-],
+    "statuses": [{
+        "id": "udg2t6",
+        "title": "Done",
+        "color": "#00c875"
+    },
+    {
+        "id": "udm874",
+        "title": "Working on it",
+        "color": "#fdab3d"
+    },
+    {
+        "id": "ud176a",
+        "title": "Stuck",
+        "color": "#e2445c"
+    },
+    ],
     "activities": [{
         "id": "a101",
         "txt": "Changed Color",
@@ -153,7 +263,7 @@ function remove(boardId) {
 async function add(board) {
     // const addedBoard = await httpService.post(`board`, board)
 
-    board.createdBy = userService.getLoggedinUser()
+    // board.createdBy = userService.getLoggedinUser()
     const addedBoard = storageService.post('board', board)
 
     return addedBoard
@@ -207,110 +317,15 @@ async function saveGroup(group, boardId) {
 
 function getEmptyBoard() {
     return {
-        "_id": utilSerivce.makeId(),
-        "title": "Robot dev proj",
-        "createdAt": 1589983468418,
-        "createdBy": {
-            "_id": "u101",
-            "fullname": "Abi Abambi",
-            "imgUrl": "http://some-img"
-        },
-        "members": [{
-            "_id": "u101",
-            "fullname": "Tal Tarablus",
-            "imgUrl": "https://www.google.com"
-        }],
-        "groups": [{
-            "id": "g101",
-            "title": "Group 1",
-            "tasks": [{
-                "id": "c101",
-                "title": "Replace logo"
-            },
-            {
-                "id": "c102",
-                "title": "Add Samples"
-            }
-            ],
-            "style": {}
-        },
-        {
-            "id": "g102",
-            "title": "Group 2",
-            "tasks": [{
-                "id": "c103",
-                "title": "Do that"
-            },
-            {
-                "id": "c104",
-                "title": "Help me with Atlas",
-                "status": {
-                    "id": "udg2t6",
-                    "title": "Done",
-                    "color": "#00c875"
-                },
-                "comments": [{
-                    "id": "ZdPnm",
-                    "txt": "also @yaronb please CR this",
-                    "createdAt": 1590999817436.0,
-                    "byMember": {
-                        "_id": "u101",
-                        "fullname": "Tal Tarablus",
-                        "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
-                    }
-                }],
-                "members": [{
-                    "_id": "u101",
-                    "fullname": "Tal Tarablus",
-                    "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
-                }],
-                "createdAt": 1590999730348,
-                "dueDate": 16156215211,
-                "byMember": {
-                "_id": "u101",
-                "username": "Tal",
-                "fullname": "Tal Tarablus",
-                "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
-            },
-                "style": {
-                "bgColor": "#26de81"
-            }
-            }
-        ],
-        "style": {}
+        "title": "New Board",
+        "thumbnail": '',
+        "createdAt": Date.now(),
+        "createdBy": {},
+        "members": [],
+        "groups": [],
+        "statuses": [],
+        "activities": []
     }
-        ],
-    "statuses": [{
-        "id": "udg2t6",
-        "title": "Done",
-        "color": "#00c875"
-    },
-    {
-        "id": "udm874",
-        "title": "Working on it",
-        "color": "#fdab3d"
-    },
-    {
-        "id": "ud176a",
-        "title": "Stuck",
-        "color": "#e2445c"
-    },
-    ],
-        "activities": [{
-            "id": "a101",
-            "txt": "Changed Color",
-            "createdAt": 154514,
-            "byMember": {
-                "_id": "u101",
-                "fullname": "Abi Abambi",
-                "imgUrl": "http://some-img"
-            },
-            "task": {
-                "id": "c101",
-                "title": "Replace Logo"
-            }
-        }]
-}
 }
 
 function getEmptyGroup() {
@@ -318,7 +333,8 @@ function getEmptyGroup() {
         id: utilService.makeId(),
         title: 'New Group',
         tasks: [],
-        style: { color: '#ffffff' }
+        style: { color: '#ffffff' },
+        headers:['members','status','dueDate']
 
     }
 }

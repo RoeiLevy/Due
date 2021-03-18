@@ -1,5 +1,14 @@
 .group-container {
+    .group-title-wrapper{
+        width: 100%;
+        display: flex;
+    }
+    label{
+        width: 140px;
+        text-align: center;
+    }
     .group-title {
+        flex: 1;
         font-size: 18px;
     }
 }

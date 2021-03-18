@@ -11,16 +11,18 @@
         {{ taskToEdit.title }}
       </label>
     </div>
-
-    <el-avatar
-      v-for="member in task.members"
-      :key="member._id"
-      :size="30"
-      :src="member.imgUrl"
-    ></el-avatar>
+    <div class="member-container">
+      <el-avatar
+        v-for="member in task.members"
+        :key="member._id"
+        :size="30"
+        :src="member.imgUrl"
+        :title="member.fullname"
+      ></el-avatar>
+    </div>
     <div class="status-container">
       <h3
-      class="task-status"
+        class="task-status"
         @click="isSelectingStatus = !isSelectingStatus"
         v-if="task.status"
         :style="{ 'background-color': task.status.color }"

@@ -14,24 +14,24 @@
           <el-dropdown-item divided>Action 5</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
-    </div>
-    <div class="group-title-wrapper">
-    <input
-      v-if="editMode"
-      v-model="groupToEdit.title"
-      @keyup.enter="saveGroup"
-    />
-    <div v-else>
-      <label class="group-title" @click="editMode = true">
-        {{ groupToEdit.title }}
-      </label>
-    </div>
+      <div class="group-title-wrapper">
+        <input
+          v-if="editMode"
+          v-model="groupToEdit.title"
+          @keyup.enter="saveGroup"
+          class="group-title"
+        />
+        <div class="group-title" v-else>
+          <label @click="editMode = true">
+            {{ groupToEdit.title }}
+          </label>
+        </div>
+        <label v-for="(header, idx) in group.headers" :key="idx">{{
+          header
+        }}</label>
 
-
-      <!-- <h2 class="group-title">{{ group.title }}</h2> -->
-
-
-
+        <!-- <h2 class="group-title">{{ group.title }}</h2> -->
+      </div>
     </div>
     <draggable
       v-model="groupToEdit.tasks"
@@ -74,7 +74,7 @@ export default {
         createdAt: null,
         status: null,
       },
-      editMode: false
+      editMode: false,
     };
   },
   methods: {
@@ -93,7 +93,7 @@ export default {
       };
     },
     async updateTask(task) {
-        console.log('task from group emit', task)
+      console.log("task from group emit", task);
       try {
         await this.$store.dispatch({
           type: "updateTask",
@@ -107,7 +107,7 @@ export default {
     },
     async saveGroup() {
       try {
-                this.editMode = false;
+        this.editMode = false;
 
         await this.$store.dispatch("saveGroup", this.groupToEdit);
         this.groupToEdit = { ...this.group };

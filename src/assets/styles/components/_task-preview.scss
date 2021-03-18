@@ -28,6 +28,9 @@
     .task-status{
         transition: all .3s;
     }
+    .member-container{
+        width: 140px;
+    }
     .status-container:hover{
         opacity: 1;
         .task-status:hover{

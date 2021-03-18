@@ -2,6 +2,7 @@
   <div class="tag-group">
     <span class="tag-group__title">Labels</span>
     <draggable
+      class="statuses"
       v-model="statuses"
       @start="drag = true"
       @end="drag = false"
@@ -29,13 +30,11 @@ export default {
       statuses: this.$store.getters.statuses,
     };
   },
-  methods:{
-    deleteStatus(){
-
+  methods: {
+    deleteStatus() {},
+    setStatus(status) {
+      this.$emit("setStatus", { ...status });
     },
-    setStatus(status){
-      this.$emit('setStatus',{...status})
-    }
   },
   components: {
     draggable,

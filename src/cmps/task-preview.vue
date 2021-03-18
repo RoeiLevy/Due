@@ -5,8 +5,9 @@
       v-if="editMode"
       v-model="taskToEdit.title"
       @keyup.enter="updateTask"
+      @focusout="updateTask"
     />
-    <div v-else>
+    <div v-else class="task-title">
       <label class="task-title" @click="editMode = true">
         {{ taskToEdit.title }}
       </label>
@@ -18,18 +19,21 @@
       :size="30"
       :src="member.imgUrl"
     ></el-avatar>
-    <h3
-      @click="isSelectingStatus = !isSelectingStatus"
-      v-if="task.status"
-      :style="{ 'background-color': task.status.color }"
-    >
-      {{ task.status.title }}
-    </h3>
-    <h3 v-else @click="isSelectingStatus = !isSelectingStatus">Status</h3>
-    <status-picker
-      @setStatus="setStatus"
-      v-if="isSelectingStatus"
-    ></status-picker>
+    <div class="status-container">
+      <h3
+      class="task-status"
+        @click="isSelectingStatus = !isSelectingStatus"
+        v-if="task.status"
+        :style="{ 'background-color': task.status.color }"
+      >
+        {{ task.status.title }}
+      </h3>
+      <h3 v-else @click="isSelectingStatus = !isSelectingStatus">Status</h3>
+      <status-picker
+        @setStatus="setStatus"
+        v-if="isSelectingStatus"
+      ></status-picker>
+    </div>
     <input type="date" name="due-date" id="due-date" v-model="dueDate" />
   </div>
 </template>

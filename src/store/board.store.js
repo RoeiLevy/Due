@@ -1,4 +1,5 @@
 import { boardService } from '../services/board.service'
+import { utilService } from '../services/util.service';
 
 export const boardStore = {
     state: {
@@ -87,6 +88,7 @@ export const boardStore = {
         },
         async addTask(context, payload) {
             try {
+                payload.taskToEdit.id = utilService.makeId();
                 const task = await boardService.addTask(payload.taskToEdit, payload.groupId, context.state.currBoard._id)
                 context.commit({ type: 'addTask', task, groupId: payload.groupId })
                 return task;

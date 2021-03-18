@@ -1,22 +1,32 @@
 <template>
-  <div v-if="board" class="flex board-container">
+  <div v-if="board" class="flex board">
     <app-header />
-    <div class="board-header">
-      <h1>{{ board.title }}</h1>
-      <button>Members & Invite</button>
-      <button>Activity</button>
-    </div>
-    <nav class="views">
-      <!-- can collapse -->
-      <button>Main Table</button>
-      <!-- <button>Calander</button> -->
-      <!-- <button>Chart</button> -->
-      <!-- <button>Kanban</button> -->
-      <button>+ Add View</button>
-    </nav>
-    <button class="new-group-btn" @click="addNewGroup">New Group</button>
-    <div class="groups-list">
-      <group v-for="group in board.groups" :group="group" :key="group.id" />
+    <div class="flex column board-container">
+      <div class="flex column board-header">
+        <div class="flex space-between top-header">
+          <h1 class="board-title">{{ board.title }}</h1>
+          <div class="board-actions">
+            <button>Members & Invite</button>
+            <button>Activity</button>
+          </div>
+        </div>
+        <nav class="flex header-view-bar">
+          <button>Main Table</button>
+          <button>+ Add View</button>
+          <!-- can collapse -->
+          <!-- <button>Calander</button> -->
+          <!-- <button>Chart</button> -->
+          <!-- <button>Kanban</button> -->
+        </nav>
+        <div class="board-tool-bar">
+          <button class="new-group-btn" @click="addNewGroup">New Group</button>
+        </div>
+      </div>
+      <div class="board-content-wrapper">
+        <div class="groups-list">
+          <group v-for="group in board.groups" :group="group" :key="group.id" />
+        </div>
+      </div>
     </div>
   </div>
 </template>

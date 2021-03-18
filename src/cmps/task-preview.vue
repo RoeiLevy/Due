@@ -1,6 +1,6 @@
 <template>
-  <div class="task flex">
-    <h4>{{ task.title }}</h4>
+  <div class="task-wrapper flex">
+    <h4 class="task-title">{{ task.title }}</h4>
     <img
       v-for="member in task.members"
       :key="member._id"

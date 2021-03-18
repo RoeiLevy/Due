@@ -17,7 +17,14 @@
       :size="30"
       :src="member.imgUrl"
     ></el-avatar>
-    <h3 @click="isSelectingStatus = !isSelectingStatus">{{ task.statusId }}</h3>
+    <h3
+      @click="isSelectingStatus = !isSelectingStatus"
+      v-if="task.status"
+      :style="{ 'background-color': task.status.color }"
+    >
+      {{ task.status.title }}
+    </h3>
+    <h3 v-else @click="isSelectingStatus = !isSelectingStatus">Choose Status</h3>
     <status-picker
       @setStatus="setStatus"
       v-if="isSelectingStatus"
@@ -40,7 +47,16 @@ export default {
     };
   },
   methods: {
-    setStatus(status) {},
+    async setStatus(status) {
+      try {
+        this.taskToEdit.status = status;
+        await this.$store.dispatch("updateTask", this.taskToEdit);
+        this.taskToEdit = { ...this.task };
+      } catch (err) {
+        console.log("Couldn`t Save Task", err);
+        throw err;
+      }
+    },
   },
   created() {
     this.taskToEdit = { ...this.task };

@@ -1,7 +1,18 @@
 <template>
   <section class="group-container">
     <h2 class="group-title">{{ group.title }}</h2>
-    <task-preview v-for="task in group.tasks" :key="task.id" :task="task" />
+    <draggable
+      v-model="groupToEdit.tasks"
+      @change="saveGroup"
+      @start="drag = true"
+      @end="drag = false"
+    >
+      <task-preview
+        v-for="task in groupToEdit.tasks"
+        :key="task.id"
+        :task="task"
+      />
+    </draggable>
     <form @submit.prevent="addTask()">
       <input
         class="add-task-input"
@@ -17,31 +28,44 @@
 
 <script>
 import taskPreview from "./task-preview.vue";
+import draggable from "vuedraggable";
 
 export default {
-  name: 'group',
-  props: ['group'],
+  name: "group",
+  props: ["group"],
   data() {
     return {
+      groupToEdit: null,
       taskToEdit: {
-        title: '',
+        title: "",
         createdAt: null,
         status: null,
-        edit: false
-
       },
     };
   },
   methods: {
     async addTask() {
-        this.taskToEdit.createdAt = Date.now();
-      await this.$store.dispatch({ type: 'saveTask', taskToEdit: this.taskToEdit, groupId: this.group.id });
-      
+      this.taskToEdit.createdAt = Date.now();
+      await this.$store.dispatch({
+        type: "saveTask",
+        taskToEdit: this.taskToEdit,
+        groupId: this.group.id,
+      });
+
       this.taskToEdit = {
-        title: '',
+        title: "",
         createdAt: null,
-        status: null
+        status: null,
       };
+    },
+    async saveGroup() {
+      try {
+        const savedGroup=await this.$store.dispatch("saveGroup", this.groupToEdit);
+        this.groupToEdit=savedGroup;
+      } catch (err) {
+        console.log('Couldn`t Save Group' ,err);
+        throw err;
+      }
     },
   },
   computed: {
@@ -50,9 +74,11 @@ export default {
     },
   },
   created() {
+    this.groupToEdit = { ...this.group };
   },
   components: {
     taskPreview,
+    draggable,
   },
 };
 </script>

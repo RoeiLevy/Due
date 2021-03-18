@@ -33,7 +33,6 @@ export default {
     };
   },
   created() {
-    console.log('this.task',this.task)
     this.taskToEdit = {...this.task};
 
   },

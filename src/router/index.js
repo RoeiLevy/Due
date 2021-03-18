@@ -10,29 +10,29 @@ Vue.use(VueRouter)
 
 const routes = [{
         path: '/',
-        name: 'Home',
+        name: 'home',
         component: home
     },
     {
         path: '/board',
-        name: 'Board List',
+        name: 'board list',
         component: boardList
     },
 
     {
         path: '/board/:boardId?',
-        name: 'Board',
+        name: 'board',
         component: board,
 
     },
     {
         path: '/login',
-        name: 'Login Signup',
+        name: 'login signup',
         component: loginSignup
     },
     {
         path: '/user/:userId',
-        name: 'User Profile',
+        name: 'user profile',
         component: userProfile
     },
 ]

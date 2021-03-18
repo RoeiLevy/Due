@@ -60,10 +60,14 @@ export default {
     },
     async saveGroup() {
       try {
-        const savedGroup=await this.$store.dispatch("saveGroup", this.groupToEdit);
-        this.groupToEdit=savedGroup;
+        console.log(this.groupToEdit);
+        const savedGroup = await this.$store.dispatch(
+          "saveGroup",
+          this.groupToEdit
+        );
+        this.groupToEdit = savedGroup;
       } catch (err) {
-        console.log('Couldn`t Save Group' ,err);
+        console.log("Couldn`t Save Group", err);
         throw err;
       }
     },

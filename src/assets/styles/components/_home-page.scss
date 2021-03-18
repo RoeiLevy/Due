@@ -13,7 +13,9 @@
         padding-inline-end: 10px;
     }
     .info-container {
-        padding: 5% 10%;
+        margin: 5% auto;
+        padding: 20px;
+        max-width: 600px;
     }
     .get-started {
         margin: 20px 0;
@@ -22,11 +24,10 @@
         min-width: fit-content;
         align-self: center;
     }
-    .get-started-link {
-        width: 100%;
-        height: 100%;
-    }
     a {
         text-decoration: none;
+    }
+    h1 {
+        font-weight: bold;
     }
 }

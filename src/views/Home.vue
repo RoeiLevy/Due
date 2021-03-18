@@ -10,7 +10,12 @@
       </div>
     </header>
     <section class="info-container flex column">
-      <el-button @click="pushRoute" type="primary" plain round class="get-started"
+      <el-button
+        @click="pushRoute"
+        type="primary"
+        plain
+        round
+        class="get-started"
         >Get Started</el-button
       >
       <h1>DUE</h1>
@@ -23,20 +28,16 @@
         including tracking projects, deadlines, and team collaboration.
       </h4>
     </section>
-  
-
   </div>
-
 </template>
 
 <script>
 export default {
   name: "home",
   methods: {
-    pushRoute(){
-      this.$router.push('/board');
-    }
-
+    pushRoute() {
+      this.$router.push("/board");
+    },
   },
   components: {},
 };

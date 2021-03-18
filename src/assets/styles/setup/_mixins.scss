@@ -58,3 +58,12 @@
         }
     }
   }
+
+  @mixin task-cells {
+      background-color: $cellColor;
+      text-overflow: ellipsis;
+      height: 36px;
+      line-height: 36px;
+  }
+
+  

@@ -33,13 +33,10 @@ export const boardStore = {
             }
             currGroup.tasks.push(task);
         },
-        saveGroup(state, group) {
+        saveGroup(state, {group}) {
             const idx = state.currBoard.groups.findIndex(g => g.id === group.id);
             state.currBoard.groups.splice(idx, 1, group);
-            // if (!currGroup || !currGroup.tasks) {
-            //     currGroup.tasks = [];
-            // }
-            // currGroup.tasks.push(task);
+            // console.log(state.currBoard);
         }
     },
     actions: {
@@ -91,7 +88,6 @@ export const boardStore = {
             try {
                 const savedGroup = await boardService.saveGroup(group, context.state.currBoard._id);
                 context.commit({ type: 'saveGroup', group: savedGroup })
-                return savedGroup;
             } catch (err) {
                 console.log('Board store:Error in saveGroup', err);
                 throw err;

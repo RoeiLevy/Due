@@ -1,6 +1,16 @@
 <template>
-  <div class="task flex">
-    <h4>{{ task.title }}</h4>
+  <div class="task-wrapper flex">
+    <input
+      v-if="editMode"
+      v-model="taskToEdit.title"
+      @keyup.enter="editMode = false"
+    />
+    <div v-else>
+      <label class="task-title" @click="editMode = true">
+        {{ taskToEdit.title }}
+      </label>
+    </div>
+
     <el-avatar
       v-for="member in task.members"
       :key="member._id"
@@ -8,7 +18,10 @@
       :src="member.imgUrl"
     ></el-avatar>
     <h3 @click="isSelectingStatus = !isSelectingStatus">{{ task.statusId }}</h3>
-    <status-picker @setStatus="setStatus" v-if="isSelectingStatus"></status-picker>
+    <status-picker
+      @setStatus="setStatus"
+      v-if="isSelectingStatus"
+    ></status-picker>
     <input type="date" name="due-date" id="due-date" v-model="dueDate" />
   </div>
 </template>
@@ -22,12 +35,15 @@ export default {
     return {
       dueDate: "",
       isSelectingStatus: false,
+      editMode: false,
+      taskToEdit: null,
     };
   },
-  methods:{
-    setStatus(status){
-      
-    }
+  methods: {
+    setStatus(status) {},
+  },
+  created() {
+    this.taskToEdit = { ...this.task };
   },
   components: {
     statusPicker,

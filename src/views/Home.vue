@@ -10,8 +10,8 @@
       </div>
     </header>
     <section class="info-container flex column">
-      <el-button type="primary" plain round class="get-started"
-        ><router-link to="/board">Get Started</router-link></el-button
+      <el-button @click="pushRoute" type="primary" plain round class="get-started"
+        >Get Started</el-button
       >
       <h1>DUE</h1>
       <h2>
@@ -32,6 +32,12 @@
 <script>
 export default {
   name: "home",
+  methods: {
+    pushRoute(){
+      this.$router.push('/board');
+    }
+
+  },
   components: {},
 };
 </script>

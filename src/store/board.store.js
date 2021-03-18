@@ -11,6 +11,9 @@ export const boardStore = {
         },
         boards(state) {
             return state.boards;
+        },
+        statuses(state){
+            return state.currBoard.statuses;
         }
     },
     mutations: {

@@ -1,38 +1,44 @@
 <template>
   <div class="tag-group">
-  <span class="tag-group__title">Dark</span>
-  <el-tag
-    v-for="item in items"
-    :key="item.label"
-    :type="item.type"
-    effect="dark">
-    {{ item.label }}
-  </el-tag>
-</div>
-<!-- <div class="tag-group">
-  <span class="tag-group__title">Plain</span>
-  <el-tag
-    v-for="item in items"
-    :key="item.label"
-    :type="item.type"
-    effect="plain">
-    {{ item.label }}
-  </el-tag>
-</div> -->
+    <span class="tag-group__title">Labels</span>
+    <draggable
+      v-model="statuses"
+      @start="drag = true"
+      @end="drag = false"
+    >
+      <el-tag
+        v-for="status in statuses"
+        :key="status.id"
+        closable
+        @close="deleteStatus"
+        @click="setStatus(status)"
+        :style="{ 'background-color': status.color }"
+        effect="dark"
+      >
+        {{ status.title }}
+      </el-tag>
+    </draggable>
+  </div>
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-        items: [
-          { type: '', label: 'Tag 1' },
-          { type: 'success', label: 'Tag 2' },
-          { type: 'info', label: 'Tag 3' },
-          { type: 'danger', label: 'Tag 4' },
-          { type: 'warning', label: 'Tag 5' }
-        ]
-      }
+import draggable from "vuedraggable";
+export default {
+  data() {
+    return {
+      statuses: this.$store.getters.statuses,
+    };
+  },
+  methods:{
+    deleteStatus(){
+
+    },
+    setStatus(status){
+      this.$emit('setStatus',status)
     }
-  }
+  },
+  components: {
+    draggable,
+  },
+};
 </script>

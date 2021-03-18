@@ -24,7 +24,19 @@
       </div>
       <div class="board-content-wrapper">
         <div class="groups-list">
-          <group v-for="group in board.groups" :group="group" :key="group.id" />
+          <draggable
+            v-model="boardToEdit.groups"
+            @change="saveBoard(boardToEdit)"
+            group="people"
+            @start="drag = true"
+            @end="drag = false"
+          >
+            <group
+              v-for="group in boardToEdit.groups"
+              :group="group"
+              :key="group.id"
+            />
+          </draggable>
         </div>
       </div>
     </div>
@@ -34,6 +46,8 @@
 <script>
 import group from "../cmps/group";
 import appHeader from "../cmps/header";
+import draggable from "vuedraggable";
+
 import { boardService } from "../services/board.service";
 
 export default {
@@ -41,6 +55,7 @@ export default {
   data() {
     return {
       board: null,
+      boardToEdit: null,
     };
   },
   methods: {
@@ -52,12 +67,14 @@ export default {
           boardId,
         });
         this.board = board;
+        this.boardToEdit = { ...board };
       } catch (err) {
         console.log("err:", err);
       }
     },
     async saveBoard(board) {
-      const savedBoard = await this.$store.dispatch("saveBoard", board);
+      console.log("saving");
+      await this.$store.dispatch("saveBoard", board);
       this.loadBoard();
     },
     async addNewGroup() {
@@ -76,6 +93,7 @@ export default {
   components: {
     appHeader,
     group,
+    draggable,
   },
 };
 </script>

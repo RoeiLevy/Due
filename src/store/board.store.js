@@ -29,6 +29,14 @@ export const boardStore = {
                 currGroup.tasks = [];
             }
             currGroup.tasks.push(task);
+        },
+        saveGroup(state, group) {
+            const idx = state.currBoard.groups.findIndex(g => g.id === group.id);
+            state.currBoard.groups.splice(idx, 1, group);
+            // if (!currGroup || !currGroup.tasks) {
+            //     currGroup.tasks = [];
+            // }
+            // currGroup.tasks.push(task);
         }
     },
     actions: {
@@ -37,10 +45,10 @@ export const boardStore = {
                 const board = await boardService.getBoard(boardId);
                 context.commit({ type: 'setBoard', board })
                 return board
-                    // socketService.off(SOCKET_EVENT_REVIEW_ADDED)
-                    // socketService.on(SOCKET_EVENT_REVIEW_ADDED, review => {
-                    //     context.commit({ type: 'addReview', review })
-                    // })
+                // socketService.off(SOCKET_EVENT_REVIEW_ADDED)
+                // socketService.on(SOCKET_EVENT_REVIEW_ADDED, review => {
+                //     context.commit({ type: 'addReview', review })
+                // })
             } catch (err) {
                 console.log('boardStore: Error in loadBoard', err)
                 throw err
@@ -76,13 +84,16 @@ export const boardStore = {
                 throw err
             }
         },
-        // async addNewGroup(context){
-        //     try {
-
-        //     } catch (err) {
-
-        //     }
-        // }
+        async saveGroup(context, group) {
+            try {
+                const savedGroup = await boardService.saveGroup(group, context.state.currBoard._id);
+                context.commit({ type: 'saveGroup', group: savedGroup })
+                return savedGroup;
+            } catch (err) {
+                console.log('Board store:Error in saveGroup', err);
+                throw err;
+            }
+        }
 
     }
 }

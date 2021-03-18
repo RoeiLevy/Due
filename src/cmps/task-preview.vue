@@ -26,10 +26,9 @@ export default {
   },
   methods:{
     setStatus(status){
-
+      
     }
   },
-  created() {},
   components: {
     statusPicker,
   },

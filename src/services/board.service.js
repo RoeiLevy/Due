@@ -14,7 +14,8 @@ export const boardService = {
     getEmptyGroup,
     getEmptyTask,
     addTask,
-    saveGroup
+    saveGroup,
+    saveTask
 }
 
 
@@ -167,22 +168,35 @@ async function addTask(task, groupId, boardId) {
         const idx = currBoard.groups.findIndex(group => group.id === groupId);
         currBoard.groups[idx].tasks.push(task);
         await storageService.put('board', currBoard);
-        
+
+        return task
+    } catch (err) {
+        console.log(err)
+    }
+}
+async function saveTask(task, groupId, boardId) {
+    try {
+        var currBoard = await getBoard(boardId);
+        const boardIdx = currBoard.groups.findIndex(group => group.id === groupId);
+        const taskIdx = currBoard.groups[boardIdx].tasks.findIndex(item => item.id === task.id);
+        currBoard.groups[boardIdx].tasks.splice(taskIdx, 1, task);
+        await storageService.put('board', currBoard);
+
         return task
     } catch (err) {
         console.log(err)
     }
 }
 
-async function saveGroup(group ,boardId){
+async function saveGroup(group, boardId) {
     try {
         var currBoard = await getBoard(boardId);
         const idx = currBoard.groups.findIndex(g => g.id === group.id);
-        currBoard.groups.splice(idx,1,group);
+        currBoard.groups.splice(idx, 1, group);
         await storageService.put('board', currBoard);
         return group;
     } catch (err) {
-        console.log('Error in board Service, couldn`t save group',err);
+        console.log('Error in board Service, couldn`t save group', err);
         throw err;
     }
 }

@@ -25,6 +25,7 @@
   </section>
 </template>
 
+
 <script>
 import taskPreview from "./task-preview.vue";
 import draggable from "vuedraggable";

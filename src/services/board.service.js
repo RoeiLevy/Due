@@ -15,7 +15,7 @@ export const boardService = {
     getEmptyTask,
     addTask,
     saveGroup,
-    saveTask
+    updateTask
 }
 
 
@@ -178,12 +178,12 @@ async function addTask(task, groupId, boardId) {
         console.log(err)
     }
 }
-async function saveTask(task, groupId, boardId) {
+async function updateTask(task, groupId, boardId) {
     try {
         var currBoard = await getBoard(boardId);
-        const boardIdx = currBoard.groups.findIndex(group => group.id === groupId);
-        const taskIdx = currBoard.groups[boardIdx].tasks.findIndex(item => item.id === task.id);
-        currBoard.groups[boardIdx].tasks.splice(taskIdx, 1, task);
+        const groupIdx = currBoard.groups.findIndex(group => group.id === groupId);
+        const taskIdx = currBoard.groups[groupIdx].tasks.findIndex(item => item.id === task.id);
+        currBoard.groups[groupIdx].tasks.splice(taskIdx, 1, task);
         await storageService.put('board', currBoard);
 
         return task

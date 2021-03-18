@@ -3,7 +3,7 @@
     <input
       v-if="editMode"
       v-model="taskToEdit.title"
-      @keyup.enter="editMode = false"
+      @keyup.enter="updateTask"
     />
     <div v-else>
       <label class="task-title" @click="editMode = true">
@@ -24,7 +24,9 @@
     >
       {{ task.status.title }}
     </h3>
-    <h3 v-else @click="isSelectingStatus = !isSelectingStatus">Choose Status</h3>
+    <h3 v-else @click="isSelectingStatus = !isSelectingStatus">
+       Status
+    </h3>
     <status-picker
       @setStatus="setStatus"
       v-if="isSelectingStatus"
@@ -48,14 +50,21 @@ export default {
   },
   methods: {
     async setStatus(status) {
+      this.isSelectingStatus=false;
       try {
         this.taskToEdit.status = status;
-        await this.$store.dispatch("updateTask", this.taskToEdit);
-        this.taskToEdit = { ...this.task };
+        this.$emit("updateTask", this.taskToEdit);
+        // await this.$store.dispatch("updateTask", this.taskToEdit);
+        // this.taskToEdit = { ...this.task };
       } catch (err) {
         console.log("Couldn`t Save Task", err);
         throw err;
       }
+    },
+    updateTask() {
+      console.log("test");
+      this.editMode = false;
+      this.$emit("updateTask", this.taskToEdit);
     },
   },
   created() {

@@ -2,7 +2,9 @@
   <div class="header">
     <div class="flex column top-navigation">
       <div class="logo-wrapper">
-        <img class="logo" src="@/assets/imgs/logo.png" />
+        <router-link to="/">
+          <img class="logo" src="@/assets/imgs/logo.png" />
+        </router-link>
       </div>
       <div class="btn-surface">
         <div class="icon-wrapper">

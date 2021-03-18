@@ -1,17 +1,15 @@
 <template>
   <section class="group-container">
     <div class="flex group-header">
-      <el-dropdown class="drop-down" trigger="click">
+      <el-dropdown @command="handleCommand" class="drop-down" trigger="click">
         <span class="el-dropdown-link">
           <!-- <i class="el-icon-arrow-down el-icon--right"></i> -->
           <font-awesome-icon class="header-icon" icon="caret-square-down" />
         </span>
         <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item>Action 1</el-dropdown-item>
+          <el-dropdown-item command="removeTask">Delete Group</el-dropdown-item>
           <el-dropdown-item>Action 2</el-dropdown-item>
           <el-dropdown-item>Action 3</el-dropdown-item>
-          <el-dropdown-item disabled>Action 4</el-dropdown-item>
-          <el-dropdown-item divided>Action 5</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
       <div class="group-title-wrapper">
@@ -78,6 +76,19 @@ export default {
     };
   },
   methods: {
+    handleCommand(command) {
+      this.$message("click on item " + command);
+      switch (command) {
+        case "removeTask":
+          this.removeTask();
+      }
+    },
+    async removeTask() {
+      try {
+      } catch (err) {
+        console.log("err:", err);
+      }
+    },
     async addTask() {
       this.taskToEdit.createdAt = Date.now();
       await this.$store.dispatch({

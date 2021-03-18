@@ -1,42 +1,58 @@
-
 .task-wrapper {
     display: flex;
     justify-content: space-between;
-    top: 196px;
+    position: relative;
     height: 36px;
     background-color: #f5f6f8;
     align-items: center;
     border-bottom: 1px solid;
     border-bottom-color: #ffffff;
-    >*{
+
+    > * {
         cursor: pointer;
         width: 140px;
         text-align: center;
         margin: 0 3px;
-        transition: all .3s;
+        transition: all 0.3s;
     }
-    >*:hover{
-        opacity: .8;
+
+    > *:hover {
+        opacity: 0.8;
     }
-    .task-title{
+
+    .task-title {
         cursor: pointer;
         padding: 10px;
         text-align: start;
         flex: 1;
         font-size: 13px;
     }
-    .task-status{
-        transition: all .3s;
+
+    .remove-btn {
+        font-size: 13px;
+        position: absolute;
+        display: none;
+        left: -23px;
     }
-    .member-container{
+}
+
+.task-wrapper:hover .remove-btn {
+    display: block;
+
+    .task-status {
+        transition: all 0.3s;
+    }
+    .member-container {
         width: 140px;
     }
-    .status-container:hover{
+    .status-container:hover {
         opacity: 1;
-        .task-status:hover{
-            opacity: .8;
+
+        .task-status:hover {
+            opacity: 0.8;
         }
-        .tag-group:hover{
+
+        .tag-group:hover {
             opacity: 1;
         }
     }

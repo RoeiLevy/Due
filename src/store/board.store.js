@@ -1,4 +1,5 @@
 import { boardService } from '../services/board.service'
+import { utilService } from '../services/util.service';
 
 export const boardStore = {
     state: {
@@ -38,6 +39,12 @@ export const boardStore = {
             const groupIdx = state.currBoard.groups.findIndex(group => group.id === groupId);
             const taskIdx = state.currBoard.groups[groupIdx].tasks.findIndex(item => item.id === task.id);
             state.currBoard.groups[groupIdx].tasks.splice(taskIdx, 1, task);
+        },
+        removeTask(state, { taskId, groupId }) {
+            console.log('removing task - task', taskId, ' group id', groupId)
+            const groupIdx = state.currBoard.groups.findIndex(group => group.id === groupId);
+            const taskIdx = state.currBoard.groups[groupIdx].tasks.findIndex(item => item.id === taskId);
+            state.currBoard.groups[groupIdx].tasks.splice(taskIdx, 1);
         },
         saveGroup(state, { group }) {
             const idx = state.currBoard.groups.findIndex(g => g.id === group.id);
@@ -81,6 +88,7 @@ export const boardStore = {
         },
         async addTask(context, payload) {
             try {
+                payload.taskToEdit.id = utilService.makeId();
                 const task = await boardService.addTask(payload.taskToEdit, payload.groupId, context.state.currBoard._id)
                 context.commit({ type: 'addTask', task, groupId: payload.groupId })
                 return task;
@@ -116,7 +124,17 @@ export const boardStore = {
                 console.log('boardStore: Error in Adding New Board', err)
                 throw err
             }
-        }
+        },
+        async removeTask(context, payload) {
+            try {
+                const removed = await boardService.removeTask(payload.taskId, payload.groupId, context.state.currBoard._id)
+                context.commit({ type: 'removeTask', taskId: payload.taskId, groupId: payload.groupId })
+                return removed;
+            } catch (err) {
+                console.log('boardStore: Error in updateTask', err)
+                throw err
+            }
+        },
 
     }
 }

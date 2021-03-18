@@ -1,5 +1,6 @@
 <template>
   <div class="task-wrapper flex">
+      <font-awesome-icon class="header-icon remove-btn" icon="trash" />
     <input
       v-if="editMode"
       v-model="taskToEdit.title"

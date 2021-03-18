@@ -15,7 +15,8 @@ export const boardService = {
     getEmptyTask,
     addTask,
     saveGroup,
-    updateTask
+    updateTask,
+    removeTask
 }
 
 
@@ -37,29 +38,66 @@ const boardDB = [{
     "groups": [{
         "id": "g101",
         "title": "Group 1",
-        "headers":['members','status','dueDate'],
+        "headers": ['members', 'status', 'dueDate'],
         "tasks": [{
             "id": "c101",
             "title": "Replace logo"
         },
         {
-            "id": "c102",
-            "title": "Add Samples"
+            "id": "g102",
+            "title": "Group 2",
+            "tasks": [{
+                "id": "c103",
+                "title": "Do that"
+            },
+            {
+                "id": "c104",
+                "title": "Help me with Atlas",
+                "status": {
+                    "id": "udg2t6",
+                    "title": "Done",
+                    "color": "#00c875"
+                },
+                "comments": [{
+                    "id": "ZdPnm",
+                    "txt": "also @yaronb please CR this",
+                    "createdAt": 1590999817436.0,
+                    "byMember": {
+                        "_id": "u101",
+                        "fullname": "Tal Tarablus",
+                        "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                    }
+                }],
+                "members": [{
+                    "_id": "u101",
+                    "fullname": "Tal Tarablus",
+                    "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                }],
+                "createdAt": 1590999730348,
+                "dueDate": 16156215211,
+                "byMember": {
+                    "_id": "u101",
+                    "username": "Tal",
+                    "fullname": "Tal Tarablus",
+                    "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                },
+                "style": {
+                    "bgColor": "#26de81"
+                }
+            }
+            ],
+            "style": {}
         }
         ],
-        "style": {}
-    },
-    {
-        "id": "g102",
-        "title": "Group 2",
-        "tasks": [{
-            "id": "c103",
-            "title": "Do that"
+        "statuses": [{
+            "id": "udg2t6",
+            "title": "Done",
+            "color": "#00c875"
         },
         {
             "id": "c104",
             "title": "Help me with Atlas",
-            "headers":['members','status','dueDate'],
+            "headers": ['members', 'status', 'dueDate'],
             "status": {
                 "id": "udg2t6",
                 "title": "Done",
@@ -144,7 +182,7 @@ const boardDB = [{
     "groups": [{
         "id": "g101",
         "title": "Group 1",
-        "headers":['members','status','dueDate'],
+        "headers": ['members', 'status', 'dueDate'],
         "tasks": [{
             "id": "c101",
             "title": "Replace logo"
@@ -159,7 +197,7 @@ const boardDB = [{
     {
         "id": "g102",
         "title": "Group 2",
-        "headers":['members','status','dueDate'],
+        "headers": ['members', 'status', 'dueDate'],
         "tasks": [{
             "id": "c103",
             "title": "Do that"
@@ -217,7 +255,7 @@ const boardDB = [{
         "id": "ud176a",
         "title": "Stuck",
         "color": "#e2445c"
-    },
+    }
     ],
     "activities": [{
         "id": "a101",
@@ -288,15 +326,31 @@ async function addTask(task, groupId, boardId) {
         console.log(err)
     }
 }
+
 async function updateTask(task, groupId, boardId) {
     try {
         var currBoard = await getBoard(boardId);
         const groupIdx = currBoard.groups.findIndex(group => group.id === groupId);
         const taskIdx = currBoard.groups[groupIdx].tasks.findIndex(item => item.id === task.id);
+        console.log('taskIdx', taskIdx)
         currBoard.groups[groupIdx].tasks.splice(taskIdx, 1, task);
         await storageService.put('board', currBoard);
 
         return task
+    } catch (err) {
+        console.log(err)
+    }
+}
+
+
+async function removeTask(taskId, groupId, boardId) {
+    try {
+        var currBoard = await getBoard(boardId);
+        const groupIdx = currBoard.groups.findIndex(group => group.id === groupId);
+        const taskIdx = currBoard.groups[groupIdx].tasks.findIndex(item => item.id === taskId);
+        currBoard.groups[groupIdx].tasks.splice(taskIdx, 1);
+        const removed = await storageService.put('board', currBoard);
+        return removed
     } catch (err) {
         console.log(err)
     }
@@ -326,6 +380,7 @@ function getEmptyBoard() {
         "statuses": [],
         "activities": []
     }
+
 }
 
 function getEmptyGroup() {
@@ -334,7 +389,7 @@ function getEmptyGroup() {
         title: 'New Group',
         tasks: [],
         style: { color: '#ffffff' },
-        headers:['members','status','dueDate']
+        headers: ['members', 'status', 'dueDate']
 
     }
 }
@@ -345,6 +400,7 @@ function getEmptyTask() {
         title: '',
         createdAt: new Date(),
         status: null
-    };
+    }
 
 }
+

@@ -11,10 +11,10 @@ Vue.use(ElementUI);
 
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faThLarge, faBell, faInbox, faCalendarCheck, faUserPlus, faSearch } from '@fortawesome/free-solid-svg-icons'
+import { faThLarge, faBell, faInbox, faCalendarCheck, faUserPlus, faSearch, faCaretSquareDown } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faThLarge, faBell, faInbox, faCalendarCheck, faUserPlus, faSearch)
+library.add(faThLarge, faBell, faInbox, faCalendarCheck, faUserPlus, faSearch, faCaretSquareDown)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 

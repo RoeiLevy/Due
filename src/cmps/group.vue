@@ -1,6 +1,23 @@
 <template>
   <section class="group-container">
-    <h2 class="group-title">{{ group.title }}</h2>
+    <div class="flex group-header">
+      <el-dropdown class="drop-down" trigger="click">
+        <span class="el-dropdown-link">
+          <!-- <i class="el-icon-arrow-down el-icon--right"></i> -->
+          <font-awesome-icon class="header-icon" icon="caret-square-down" />
+        </span>
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item>Action 1</el-dropdown-item>
+          <el-dropdown-item>Action 2</el-dropdown-item>
+          <el-dropdown-item>Action 3</el-dropdown-item>
+          <el-dropdown-item disabled>Action 4</el-dropdown-item>
+          <el-dropdown-item divided>Action 5</el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
+    </div>
+    <div class="group-title-wrapper">
+      <h2 class="group-title">{{ group.title }}</h2>
+    </div>
     <draggable
       v-model="groupToEdit.tasks"
       @change="saveGroup"
@@ -29,7 +46,7 @@
 <script>
 import taskPreview from "./task-preview.vue";
 import draggable from "vuedraggable";
-
+import { Dropdown } from "element-ui";
 export default {
   name: "group",
   props: ["group"],
@@ -63,7 +80,7 @@ export default {
         await this.$store.dispatch("saveGroup", this.groupToEdit);
         this.groupToEdit = { ...this.group };
       } catch (err) {
-        console.log('Couldn`t Save Group' ,err);
+        console.log("Couldn`t Save Group", err);
         throw err;
       }
     },
@@ -79,6 +96,7 @@ export default {
   components: {
     taskPreview,
     draggable,
+    Dropdown,
   },
 };
 </script>

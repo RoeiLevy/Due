@@ -3,3 +3,31 @@
         font-size: 18px;
     }
 }
+
+.group-header {
+    .el-dropdown-link {
+        cursor: pointer;
+        color: #409EFF;
+      }
+      .el-icon-arrow-down {
+        font-size: 12px;
+      }
+}
+
+.el-popper .popper__arrow, .el-popper .popper__arrow::after {
+    border-style: none !important;
+}
+
+.el-dropdown-menu.el-popper {
+    left: 115px !important;
+    top: 152px !important;
+}
+
+.drop-down {
+    position: relative;
+    .el-dropdown-link {
+        position: absolute;
+        left: -20px;
+    }
+
+}

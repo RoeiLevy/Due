@@ -26,8 +26,6 @@
         <label v-for="(header, idx) in group.headers" :key="idx">{{
           header
         }}</label>
-
-        <!-- <h2 class="group-title">{{ group.title }}</h2> -->
       </div>
     </div>
     <draggable
@@ -45,15 +43,15 @@
     </draggable>
     <div class="group-footer">
       <div class="add-task-wrapper">
-      <form @submit.prevent="addTask()">
-        <input
-          class="add-task-input"
-          type="text"
-          placeholder="Add Task"
-          v-model="taskToEdit.title"
-        />
-        <button v-if="taskToEdit" class="add-task">Add</button>
-      </form>
+        <form class="flex add-task-form" @submit.prevent="addTask()">
+          <input
+            class="add-task-input"
+            type="text"
+            placeholder="Add Task"
+            v-model="taskToEdit.title"
+          />
+          <button v-if="taskToEdit" class="add-task">Add</button>
+        </form>
       </div>
     </div>
   </section>

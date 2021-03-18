@@ -1,42 +1,49 @@
 <template>
-  <div v-if="board" class="flex board">
+  <div class="board-surface">
     <app-header />
-    <div class="flex column board-container">
-      <div class="flex column board-header">
-        <div class="flex space-between top-header">
-          <h1 class="board-title">{{ board.title }}</h1>
-          <div class="board-actions">
-            <button>Members & Invite</button>
-            <button>Activity</button>
+
+    <div v-if="board" class="flex board">
+      <div class="flex column board-container">
+        <div class="flex column board-header">
+          <div class="flex space-between top-header">
+            <h1 class="board-title">{{ board.title }}</h1>
+            <div class="board-actions">
+              <button>Members & Invite</button>
+              <button>Activity</button>
+            </div>
+          </div>
+
+          <nav class="flex header-view-bar">
+            <button>Main Table</button>
+            <button>+ Add View</button>
+            <!-- can collapse -->
+            <!-- <button>Calander</button> -->
+            <!-- <button>Chart</button> -->
+            <!-- <button>Kanban</button> -->
+          </nav>
+          <div class="board-tool-bar">
+            <button class="new-group-btn" @click="addNewGroup">
+              New Group
+            </button>
           </div>
         </div>
-        <nav class="flex header-view-bar">
-          <button>Main Table</button>
-          <button>+ Add View</button>
-          <!-- can collapse -->
-          <!-- <button>Calander</button> -->
-          <!-- <button>Chart</button> -->
-          <!-- <button>Kanban</button> -->
-        </nav>
-        <div class="board-tool-bar">
-          <button class="new-group-btn" @click="addNewGroup">New Group</button>
-        </div>
-      </div>
-      <div class="board-content-wrapper">
-        <div class="groups-list">
-          <draggable
-            v-model="boardToEdit.groups"
-            @change="saveBoard(boardToEdit)"
-            group="people"
-            @start="drag = true"
-            @end="drag = false"
-          >
-            <group
-              v-for="group in boardToEdit.groups"
-              :group="group"
-              :key="group.id"
-            />
-          </draggable>
+
+        <div class="board-content-wrapper">
+          <div class="groups-list">
+            <draggable
+              v-model="boardToEdit.groups"
+              @change="saveBoard(boardToEdit)"
+              group="people"
+              @start="drag = true"
+              @end="drag = false"
+            >
+              <group
+                v-for="group in boardToEdit.groups"
+                :group="group"
+                :key="group.id"
+              />
+            </draggable>
+          </div>
         </div>
       </div>
     </div>

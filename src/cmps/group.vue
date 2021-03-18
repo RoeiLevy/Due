@@ -11,21 +11,25 @@
           <el-dropdown-item>Action 3</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
-
       <div class="group-title-wrapper">
         <input
           v-if="editMode"
           v-model="groupToEdit.title"
           @keyup.enter="saveGroup"
+          class="group-title"
         />
-        <div v-else>
-          <label class="group-title" @click="editMode = true">
+        <div class="group-title" v-else>
+          <label @click="editMode = true">
             {{ groupToEdit.title }}
           </label>
         </div>
+        <label v-for="(header, idx) in group.headers" :key="idx">{{
+          header
+        }}</label>
+
+        <!-- <h2 class="group-title">{{ group.title }}</h2> -->
       </div>
     </div>
-
     <draggable
       v-model="groupToEdit.tasks"
       @change="saveGroup"

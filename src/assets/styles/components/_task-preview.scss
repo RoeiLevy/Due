@@ -7,8 +7,6 @@
     margin-block-end: 1px;
     border-bottom: 1px solid #ffffff;
     font-size: 13px;
-
-
     .task-title {
         flex: 1;
         @include task-cells;
@@ -16,13 +14,10 @@
         text-align: start;
         font-size: 13px;
         width: 40%;
-
         .task-title-label {
             padding: 10px;
         }
     }
-
-
     .task-members-container {
         @include task-cells;
         display: flex;
@@ -30,19 +25,32 @@
         justify-content: center;
         width: 140px;
     }
-
+    .avatar-container {
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .avatar,
+    .avatar i {
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #d6d9df
+    }
     .status-container {
         @include task-cells;
         display: flex;
         align-items: center;
         justify-content: center;
         width: 140px;
-
         h3 {
             font-size: 13px;
         }
     }
-
     .date-container {
         @include task-cells;
         display: flex;
@@ -50,7 +58,6 @@
         justify-content: center;
         width: 140px;
     }
-
     .remove-btn-wrapper {
         left: -50px;
         width: 50px;
@@ -63,27 +70,23 @@
         align-items: center;
         display: none;
     }
-
     .remove-btn {
         display: none;
         filter: brightness(250%);
     }
-
     .remove-btn:hover {
         cursor: pointer;
         filter: brightness(100%);
     }
-
     .task-color-box-start {
         @include task-cells;
         min-width: 8px;
-        border-left:  8px solid $application-border-color;
+        border-left: 8px solid $application-border-color;
     }
-
     .task-color-box-end {
         @include task-cells;
         min-width: 38px;
-        border-right:  8px solid $application-border-color;
+        border-right: 8px solid $application-border-color;
     }
 }
 
@@ -92,16 +95,13 @@
     cursor: pointer;
 }
 
-
 .task-wrapper:hover .remove-btn-wrapper {
     display: flex;
 }
 
-
 .task-wrapper:hover .remove-btn {
     display: flex;
 }
-
 
 .task-status {
     transition: all .3s;
@@ -114,17 +114,15 @@
 
 .status-container:hover {
     opacity: 1;
-
     .task-status:hover {
         opacity: .8;
     }
-
     .tag-group:hover {
         opacity: 1;
     }
 }
 
-.el-input--prefix .el-input__inner { 
+.el-input--prefix .el-input__inner {
     border: none;
     background-color: inherit;
 }

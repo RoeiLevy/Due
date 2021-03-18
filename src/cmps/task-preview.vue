@@ -16,12 +16,16 @@
       </label>
     </div>
     <div class="task-members-container">
+      <div  v-if="task.members" class="avatar-container">
       <el-avatar
         v-for="member in task.members"
         :key="member._id"
         :size="30"
         :src="member.imgUrl"
       ></el-avatar>
+      </div>
+      <el-avatar v-else icon="el-icon-user-solid" class="avatar"></el-avatar>
+
     </div>
     <div class="status-container">
       <h3

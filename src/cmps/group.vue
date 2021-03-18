@@ -16,7 +16,22 @@
       </el-dropdown>
     </div>
     <div class="group-title-wrapper">
-      <h2 class="group-title">{{ group.title }}</h2>
+    <input
+      v-if="editMode"
+      v-model="groupToEdit.title"
+      @keyup.enter="saveGroup"
+    />
+    <div v-else>
+      <label class="group-title" @click="editMode = true">
+        {{ groupToEdit.title }}
+      </label>
+    </div>
+
+
+      <!-- <h2 class="group-title">{{ group.title }}</h2> -->
+
+
+
     </div>
     <draggable
       v-model="groupToEdit.tasks"
@@ -59,6 +74,7 @@ export default {
         createdAt: null,
         status: null,
       },
+      editMode: false
     };
   },
   methods: {
@@ -91,6 +107,8 @@ export default {
     },
     async saveGroup() {
       try {
+                this.editMode = false;
+
         await this.$store.dispatch("saveGroup", this.groupToEdit);
         this.groupToEdit = { ...this.group };
       } catch (err) {

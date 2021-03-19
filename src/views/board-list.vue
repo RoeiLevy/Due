@@ -1,5 +1,11 @@
 <template>
   <div class="board-list">
+        <header class="home-header">
+      <router-link to="/">
+        <img class="logo" src="@/assets/imgs/logo.png" />
+      </router-link>
+    </header>
+
     <h3>Select Your Board</h3>
     <el-carousel :interval="4000" type="card" height="200px">
       <el-carousel-item v-for="board in boards" :key="board._id">

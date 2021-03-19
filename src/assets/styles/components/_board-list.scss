@@ -1,7 +1,13 @@
-.board-list{
+.board-list {
     text-align: center;
-    .card{
+    .card {
         min-height: 215px;
         cursor: pointer;
     }
+}
+
+.home-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

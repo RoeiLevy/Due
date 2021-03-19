@@ -6,16 +6,40 @@
       <div class="flex column board-container">
         <div class="flex column board-header">
           <div class="flex space-between top-header">
-            <h1 class="board-title">{{ board.title }}</h1>
+            <!-- <h1 class="board-title">{{ board.title }}</h1> -->
+            <input
+              class="board-title"
+              v-if="editMode"
+              v-model="boardToEdit.title"
+              @keyup.enter="saveBoard"
+              @focusout="saveBoard"
+            />
+            <div v-else>
+              <h1 class="board-title" @click="editMode = true">
+                {{ board.title }}
+              </h1>
+            </div>
+
             <div class="board-actions">
-              <button><font-awesome-icon class="header-icon plus" icon="plus" />    Invite</button>
-              <button><font-awesome-icon class="header-icon" icon="chart-line" />     Activity</button>
+              <button>
+                <font-awesome-icon class="header-icon plus" icon="plus" />
+                Invite
+              </button>
+              <button>
+                <font-awesome-icon class="header-icon" icon="chart-line" />
+                Activity
+              </button>
             </div>
           </div>
 
           <nav class="flex header-view-bar">
             <div class="new-group-wrapper">
-               <el-button class="new-group-btn" @click="addNewGroup" type="primary">New Group</el-button>
+              <el-button
+                class="new-group-btn"
+                @click="addNewGroup"
+                type="primary"
+                >New Group</el-button
+              >
             </div>
             <div class="main-table-wrapper">
               <button>Main Table</button>
@@ -61,6 +85,7 @@ export default {
     return {
       board: null,
       boardToEdit: null,
+      editMode: false,
     };
   },
   methods: {
@@ -80,6 +105,8 @@ export default {
     async saveBoard(board) {
       console.log("saving");
       await this.$store.dispatch("saveBoard", board);
+              this.boardToEdit = board;
+
       this.loadBoard();
     },
     async addNewGroup() {

@@ -6,7 +6,7 @@
       </router-link>
       <div class="nav-links">
         <router-link to="/login">Login</router-link>
-        <router-link to="/login">Sign Up</router-link>
+        <router-link to="/signup">Sign Up</router-link>
       </div>
     </header>
     <section class="info-container flex column">

@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import home from '../views/home.vue'
-import loginSignup from '../views/login-signup.vue'
+import login from '../views/login.vue'
+import signup from '../views/signup.vue'
 import userProfile from '../views/user-profile.vue'
 import board from '../views/board.vue'
 import boardList from '../views/board-list.vue'
@@ -27,8 +28,13 @@ const routes = [{
     },
     {
         path: '/login',
-        name: 'login signup',
-        component: loginSignup
+        name: 'login',
+        component: login
+    },
+    {
+        path: '/signup',
+        name: 'signup',
+        component: signup
     },
     {
         path: '/user/:userId',

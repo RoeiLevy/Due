@@ -7,7 +7,7 @@
     margin-block-end: 1px;
     border-bottom: 1px solid #ffffff;
     font-size: 13px;
-    z-index: 5;
+    // z-index: 5;
     .task-title {
         flex: 1;
         @include task-cells;

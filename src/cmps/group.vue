@@ -16,6 +16,8 @@
           v-if="editMode"
           v-model="groupToEdit.title"
           @keyup.enter="saveGroup"
+                @focusout="saveGroup"
+
           class="group-title"
         />
         <div class="group-title" v-else>

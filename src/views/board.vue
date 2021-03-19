@@ -14,18 +14,16 @@
           </div>
 
           <nav class="flex header-view-bar">
-            <button>Main Table</button>
-            <button>+ Add View</button>
-            <!-- can collapse -->
-            <!-- <button>Calander</button> -->
-            <!-- <button>Chart</button> -->
-            <!-- <button>Kanban</button> -->
+            <div class="new-group-wrapper">
+               <el-button class="new-group-btn" @click="addNewGroup" type="primary">New Group</el-button>
+            </div>
+            <div class="main-table-wrapper">
+              <button>Main Table</button>
+            </div>
+            <div class="add-view-wrapper">
+              <button>+ Add View</button>
+            </div>
           </nav>
-          <div class="board-tool-bar">
-            <button class="new-group-btn" @click="addNewGroup">
-              New Group
-            </button>
-          </div>
         </div>
 
         <div class="board-content-wrapper">

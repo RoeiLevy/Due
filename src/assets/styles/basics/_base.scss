@@ -33,6 +33,10 @@ h1 {
     font-size: rem(50px);
 }
 
+button, a:hover {
+    cursor: pointer;
+}
+
 p {
     max-width: 48ch;
     margin: 0 0 1rem;

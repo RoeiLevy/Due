@@ -1,0 +1,57 @@
+.header-view-bar {
+    margin: 20px 0px 10px 20px;
+    border-bottom: 2px solid #e6e9ef;
+
+    > *{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .new-group-wrapper {
+        padding: 7px 20px 7px 0px;
+    }
+    
+    .main-table-wrapper, .add-view-wrapper {
+        padding: 7px 20px;
+        border-bottom: 2px inset transparent;
+    }
+    
+    .main-table-wrapper button, .add-view-wrapper button {
+        border: none;
+        outline: none;
+        background-color: transparent;
+        font-size: 14px;
+        height: 32px;
+        padding: 7px 20px;
+    }
+    
+    .main-table-wrapper button:hover {
+        background-color: #e6e9ef;
+        cursor: pointer;
+        border-radius: 4px;
+    } 
+    
+    
+    .add-view-wrapper button:hover {
+        background-color: #e6e9ef;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+
+    .main-table-wrapper:hover {
+        border-bottom-color: rgb(0, 133, 255);
+    }
+
+    .add-view-wrapper:hover {
+        border-bottom-color: rgb(0, 133, 255);
+    }
+}
+
+
+
+
+.el-button {
+    height: 32px;
+    line-height: 0 !important;
+}

@@ -103,7 +103,6 @@
     display: none;
     background-color: $color-basic_blue;
     color: white;
-    z-index: 5000;
 }
 
 .add-task-input {
@@ -116,7 +115,7 @@
 
 .add-task-btn:hover {
     cursor: pointer;
-    filter: brightness(90%);
+    filter: brightness(110%);
 
 }
 

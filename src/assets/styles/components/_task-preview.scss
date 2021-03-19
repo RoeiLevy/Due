@@ -93,6 +93,10 @@
 .task-wrapper:hover {
     filter: brightness(98%);
     cursor: pointer;
+
+    .task-title-label {
+        color: $color-link_color;
+    }
 }
 
 .task-wrapper:hover .remove-btn-wrapper {

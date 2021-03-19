@@ -7,7 +7,7 @@
         </router-link>
       </div>
       <div class="btn-surface">
-        <div class="icon-wrapper">
+        <div @click="toBoardList" class="icon-wrapper">
           <font-awesome-icon class="header-icon" icon="th-large" />
         </div>
       </div>
@@ -46,5 +46,11 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    toBoardList() {
+      this.$router.push('/board')
+    }
+  }
+};
 </script>

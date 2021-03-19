@@ -2,7 +2,7 @@
   <div class="task-wrapper flex">
     <div class="task-color-box-start"></div>
     <div class="remove-btn-wrapper">
-      <font-awesome-icon class="header-icon remove-btn" icon="trash" />
+      <font-awesome-icon @click="removeTask" class="header-icon remove-btn" icon="trash" />
     </div>
     <input
       v-if="editMode"
@@ -85,6 +85,10 @@ export default {
       this.editMode = false;
       this.$emit("updateTask", this.taskToEdit);
     },
+    removeTask() {
+      console.log(this.task);
+      this.$emit("removeTask", this.task.id);
+    }
   },
   created() {
     this.taskToEdit = { ...this.task };

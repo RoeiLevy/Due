@@ -8,8 +8,8 @@
           <div class="flex space-between top-header">
             <h1 class="board-title">{{ board.title }}</h1>
             <div class="board-actions">
-              <button>Members & Invite</button>
-              <button>Activity</button>
+              <button><font-awesome-icon class="header-icon plus" icon="plus" />    Invite</button>
+              <button><font-awesome-icon class="header-icon" icon="chart-line" />     Activity</button>
             </div>
           </div>
 

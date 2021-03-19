@@ -6,7 +6,7 @@
           <font-awesome-icon class="header-icon" icon="caret-square-down" />
         </span>
         <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item command="removeTask">Delete Group</el-dropdown-item>
+          <el-dropdown-item command="removeGroup">Delete Group</el-dropdown-item>
           <el-dropdown-item>Action 2</el-dropdown-item>
           <el-dropdown-item>Action 3</el-dropdown-item>
         </el-dropdown-menu>
@@ -28,13 +28,13 @@
         }}</label> -->
       </div>
       <div class="members-wrapper">
-          <label>Members</label>
+        <label>Members</label>
       </div>
       <div class="status-wrapper">
-          <label>Status</label>
+        <label>Status</label>
       </div>
       <div class="dueDate-wrapper">
-          <label>dueDate</label>
+        <label>dueDate</label>
       </div>
       <div class="space-box"></div>
     </div>
@@ -45,6 +45,7 @@
       @end="drag = false"
     >
       <task-preview
+        @removeTask="removeTask"
         v-for="task in groupToEdit.tasks"
         :key="task.id"
         :task="task"
@@ -90,14 +91,8 @@ export default {
     handleCommand(command) {
       this.$message("click on item " + command);
       switch (command) {
-        case "removeTask":
-          this.removeTask();
-      }
-    },
-    async removeTask() {
-      try {
-      } catch (err) {
-        console.log("err:", err);
+        case "removeGroup":
+          this.removeGroup();
       }
     },
     async addTask() {
@@ -127,6 +122,19 @@ export default {
         throw err;
       }
     },
+    async removeTask(taskId) {
+      console.log("task from group emit", taskId);
+      try {
+        await this.$store.dispatch({
+          type: "removeTask",
+          taskId,
+          groupId: this.group.id,
+        });
+      } catch (err) {
+        console.log("Couldn`t remove Task", err);
+        throw err;
+      }
+    },
     async saveGroup() {
       try {
         this.editMode = false;
@@ -136,6 +144,17 @@ export default {
       } catch (err) {
         console.log("Couldn`t Save Group", err);
         throw err;
+      }
+    },
+      async removeGroup() {
+      try {
+        await this.$store.dispatch({
+          type: "removeGroup",
+          groupId: this.group.id,
+        });
+        console.log('removed group successfully');
+      } catch (err) {
+        console.log("err:", err);
       }
     },
   },

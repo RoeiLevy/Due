@@ -49,9 +49,35 @@
 }
 
 
-
-
 .el-button {
     height: 32px;
     line-height: 0 !important;
+}
+
+.board-actions {
+    display: flex;
+    > * {
+        border: none;
+        outline: none;
+        background-color: transparent;
+        font-size: 14px;
+        height: 32px;
+        padding: 7px 20px;
+        border-radius: 4px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .header-icon {
+        padding-right: 5px;
+    }
+    
+    .plus {
+        font-size: 16px;
+    }
+    > *:hover {
+        background-color: #e6e9ef;
+        cursor: pointer;
+    }
 }

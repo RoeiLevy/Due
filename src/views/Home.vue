@@ -16,8 +16,7 @@
         plain
         round
         class="get-started"
-        >Get Started</el-button
-      >
+        >Get Started</el-button>
       <h1>DUE</h1>
       <h2>
         Planning, tracking and delivering your team’s best work has never been

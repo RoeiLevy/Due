@@ -71,13 +71,13 @@
 </template>
 
 <script>
+import html2canvas from "html2canvas";
 import group from "../cmps/group";
 import appHeader from "../cmps/header";
 import draggable from "vuedraggable";
 import taskDetails from "../cmps/task-details";
 
 import { boardService } from "../services/board.service";
-import html2canvas from "html2canvas";
 
 export default {
   name: "board",
@@ -107,11 +107,11 @@ export default {
       }
     },
     async saveBoard(board) {
-      console.log("saving");
-      await this.$store.dispatch("saveBoard", board);
       this.editMode = false;
+      console.log("saving");
+      const boardWithUrl = await this.printScr(board);
+      await this.$store.dispatch("saveBoard", boardWithUrl);
       await this.loadBoard();
-      this.printScr();
     },
     async addNewGroup() {
       try {
@@ -121,15 +121,13 @@ export default {
         this.loadBoard();
       } catch (err) {}
     },
-    printScr() {
-      html2canvas(this.$refs.screen).then((canvas) => {
+    async printScr(board) {
+      return html2canvas(this.$refs.screen).then((canvas) => {
         console.log("canvas:", canvas);
-        var link = document.createElement("a");
-        // link.download = "filename.jpg";
-        link.href = canvas.toDataURL();
-        this.boardToEdit.thumbnail = link.href;
-        this.saveBoard(this.boardToEdit);
-        // link.click();
+                const pageImg = canvas.toDataURL();
+                console.log('pageImg:', pageImg);
+        board.thumbnail = pageImg;
+        return board;
       });
     },
   },
@@ -138,12 +136,8 @@ export default {
       return this.$store.getters.isActivitiesOpen;
     },
   },
-  async created() {
-    try {
-      await this.loadBoard();
-    } finally {
-      this.printScr();
-    }
+   created() {
+      this.loadBoard();
   },
   components: {
     appHeader,

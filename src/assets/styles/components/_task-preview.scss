@@ -135,9 +135,9 @@
     cursor: pointer;
 }
 
-.sortable-ghost,
+.sortable-ghost // .sortable-drag,
 // .sortable-chosen,
-.sortable-drag {
+{
     // overflow: hidden;
     box-shadow: 0 0 20px rgba(51, 51, 51, 0.05);
     transform: rotate(1deg);

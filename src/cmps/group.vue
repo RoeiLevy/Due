@@ -134,7 +134,6 @@ export default {
         taskToEdit: this.taskToEdit,
         groupId: this.group.id,
       });
-
       this.taskToEdit = {
         title: "",
         createdAt: null,

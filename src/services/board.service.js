@@ -24,7 +24,7 @@ export const boardService = {
 const boardDB = [{
     "_id": "b101",
     "title": "Robot dev proj",
-    "thumbnail": 'https://images.unsplash.com/photo-1493243350443-9e3048ce7288?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=897&q=80',
+    "thumbnail": '',
     "createdAt": 1589983468418,
     "createdBy": {
         "_id": "u101",
@@ -168,7 +168,7 @@ const boardDB = [{
 }, {
     "_id": "b102",
     "title": "Robot dev proj",
-    "thumbnail": 'https://images.unsplash.com/photo-1493243350443-9e3048ce7288?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=897&q=80',
+    "thumbnail": '',
     "createdAt": 1589983468418,
     "createdBy": {
         "_id": "u101",

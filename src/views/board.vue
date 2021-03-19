@@ -1,8 +1,8 @@
 <template>
   <div class="board-surface">
+    <!-- <div ref="capture"> -->
     <app-header />
-
-    <div v-if="board" class="flex board">
+    <div v-if="board" class="flex board" ref="screen">
       <task-details :drawer="isActivitiesOpen" />
       <div class="flex column board-container">
         <div class="flex column board-header">
@@ -77,7 +77,7 @@ import draggable from "vuedraggable";
 import taskDetails from "../cmps/task-details";
 
 import { boardService } from "../services/board.service";
-import TaskDetails from '../cmps/task-details.vue';
+import html2canvas from "html2canvas";
 
 export default {
   name: "board",
@@ -90,7 +90,7 @@ export default {
   },
   methods: {
     openActivities() {
-      this.$store.commit({ type: 'toggleActivities'})
+      this.$store.commit({ type: "toggleActivities" });
     },
     async loadBoard() {
       try {
@@ -103,13 +103,15 @@ export default {
         this.boardToEdit = { ...board };
       } catch (err) {
         console.log("err:", err);
+      } finally {
       }
     },
     async saveBoard(board) {
       console.log("saving");
       await this.$store.dispatch("saveBoard", board);
       this.editMode = false;
-      this.loadBoard();
+      await this.loadBoard();
+      this.printScr();
     },
     async addNewGroup() {
       try {
@@ -119,21 +121,36 @@ export default {
         this.loadBoard();
       } catch (err) {}
     },
+    printScr() {
+      html2canvas(this.$refs.screen).then((canvas) => {
+        console.log("canvas:", canvas);
+        var link = document.createElement("a");
+        // link.download = "filename.jpg";
+        link.href = canvas.toDataURL();
+        this.boardToEdit.thumbnail = link.href;
+        this.saveBoard(this.boardToEdit);
+        // link.click();
+      });
+    },
   },
   computed: {
     isActivitiesOpen() {
-      return this.$store.getters.isActivitiesOpen
-    }
+      return this.$store.getters.isActivitiesOpen;
+    },
   },
-  created() {
-    this.loadBoard();
+  async created() {
+    try {
+      await this.loadBoard();
+    } finally {
+      this.printScr();
+    }
   },
   components: {
     appHeader,
     group,
     draggable,
-    taskDetails
+    taskDetails,
   },
 };
 </script>
-    TaskDetails
+    

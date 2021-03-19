@@ -7,6 +7,7 @@
     margin-block-end: 1px;
     border-bottom: 1px solid #ffffff;
     font-size: 13px;
+    z-index: 5;
     .task-title {
         flex: 1;
         @include task-cells;
@@ -93,7 +94,6 @@
 .task-wrapper:hover {
     filter: brightness(98%);
     cursor: pointer;
-
     .task-title-label {
         color: $color-link_color;
     }

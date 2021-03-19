@@ -14,6 +14,7 @@
       <label class="task-title-label" @click="editMode = true">
         {{ taskToEdit.title }}
       </label>
+      <font-awesome-icon @click="openActivities" class="header-icon" icon="comment" />
     </div>
     <div class="task-members-container">
       <div v-if="task.members" class="avatar-container">

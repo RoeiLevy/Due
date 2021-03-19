@@ -123,9 +123,9 @@ export default {
     },
     async printScr(board) {
       return html2canvas(this.$refs.screen).then((canvas) => {
-        console.log("canvas:", canvas);
+        // console.log("canvas:", canvas);
                 const pageImg = canvas.toDataURL();
-                console.log('pageImg:', pageImg);
+                // console.log('pageImg:', pageImg);
         board.thumbnail = pageImg;
         return board;
       });

@@ -1,8 +1,8 @@
 <template>
   <section class="group-container">
     <div class="flex group-header">
-      <el-dropdown @command="handleCommand" class="drop-down" trigger="click">
-        <span class="el-dropdown-link">
+      <el-dropdown  @command="handleCommand" class="drop-down" trigger="click">
+        <span :style="groupColor" class="el-dropdown-link">
           <font-awesome-icon class="header-icon" icon="caret-square-down" />
         </span>
         <el-dropdown-menu slot="dropdown">
@@ -62,6 +62,7 @@
     >
       <transition-group type="transition">
         <task-preview
+          :groupColor="group.style.color"
           @removeTask="removeTask"
           v-for="task in groupToEdit.tasks"
           :key="task.id"
@@ -193,6 +194,9 @@ export default {
     loggedInUser() {
       return this.$store.getters.loggedinUser;
     },
+    groupColor() {
+      return `color: ${this.group.style.color}`
+    },
     dragOptions() {
       return {
         animation: 0,
@@ -203,6 +207,7 @@ export default {
     },
   },
   created() {
+    console.log(this.group);
     this.groupToEdit = { ...this.group };
     // this.$on("updateTask", this.updateTask);
   },

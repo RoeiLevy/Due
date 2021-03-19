@@ -56,9 +56,9 @@
               v-model="boardToEdit.groups"
               @change="saveBoard(boardToEdit)"
               group="people"
-              @start="drag = true"
-              @end="drag = false"
             >
+              <!-- @start="drag = true"
+              @end="drag = false" -->
               <group
                 v-for="group in boardToEdit.groups"
                 :group="group"

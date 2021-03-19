@@ -12,8 +12,8 @@
               class="board-title"
               v-if="editMode"
               v-model="boardToEdit.title"
-              @keyup.enter="saveBoard"
-              @focusout="saveBoard"
+              @keyup.enter="saveBoard(boardToEdit)"
+              @focusout="saveBoard(boardToEdit)"
             />
             <div v-else>
               <h1 class="board-title" @click="editMode = true">
@@ -108,8 +108,7 @@ export default {
     async saveBoard(board) {
       console.log("saving");
       await this.$store.dispatch("saveBoard", board);
-              this.boardToEdit = board;
-
+      this.editMode = false;
       this.loadBoard();
     },
     async addNewGroup() {

@@ -3,6 +3,7 @@
     <app-header />
 
     <div v-if="board" class="flex board">
+      <task-details :drawer="isActivitiesOpen" />
       <div class="flex column board-container">
         <div class="flex column board-header">
           <div class="flex space-between top-header">
@@ -25,7 +26,7 @@
                 <font-awesome-icon class="header-icon plus" icon="plus" />
                 Invite
               </button>
-              <button>
+              <button @click="openActivities">
                 <font-awesome-icon class="header-icon" icon="chart-line" />
                 Activity
               </button>
@@ -73,8 +74,10 @@
 import group from "../cmps/group";
 import appHeader from "../cmps/header";
 import draggable from "vuedraggable";
+import taskDetails from "../cmps/task-details";
 
 import { boardService } from "../services/board.service";
+import TaskDetails from '../cmps/task-details.vue';
 
 export default {
   name: "board",
@@ -86,6 +89,9 @@ export default {
     };
   },
   methods: {
+    openActivities() {
+      this.$store.commit({ type: 'toggleActivities'})
+    },
     async loadBoard() {
       try {
         const boardId = this.$route.params.boardId;
@@ -115,7 +121,11 @@ export default {
       } catch (err) {}
     },
   },
-  computed: {},
+  computed: {
+    isActivitiesOpen() {
+      return this.$store.getters.isActivitiesOpen
+    }
+  },
   created() {
     this.loadBoard();
   },
@@ -123,6 +133,8 @@ export default {
     appHeader,
     group,
     draggable,
+    taskDetails
   },
 };
 </script>
+    TaskDetails

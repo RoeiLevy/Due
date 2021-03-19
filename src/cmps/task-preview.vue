@@ -65,6 +65,9 @@ export default {
     };
   },
   methods: {
+    openActivities() {
+      this.$store.commit({ type:'toggleActivities'})
+    },
     async setStatus(status) {
       this.isSelectingStatus = false;
       try {

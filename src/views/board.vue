@@ -103,14 +103,13 @@ export default {
         this.boardToEdit = { ...board };
       } catch (err) {
         console.log("err:", err);
-      } finally {
       }
     },
     async saveBoard(board) {
       console.log("saving");
       await this.$store.dispatch("saveBoard", board);
       this.editMode = false;
-      await this.loadBoard();
+      this.loadBoard();
       this.printScr();
     },
     async addNewGroup() {
@@ -124,26 +123,22 @@ export default {
     printScr() {
       html2canvas(this.$refs.screen).then((canvas) => {
         console.log("canvas:", canvas);
-        var link = document.createElement("a");
-        // link.download = "filename.jpg";
-        link.href = canvas.toDataURL();
-        this.boardToEdit.thumbnail = link.href;
+        this.boardToEdit.thumbnail = canvas.toDataURL();
         this.saveBoard(this.boardToEdit);
-        // link.click();
       });
     },
+  },
+  mounted() {
+    // if(this.board)this.printScr()
+    // else setTimeout(()=>this.printScr(),1000);
   },
   computed: {
     isActivitiesOpen() {
       return this.$store.getters.isActivitiesOpen;
     },
   },
-  async created() {
-    try {
-      await this.loadBoard();
-    } finally {
-      this.printScr();
-    }
+  created() {
+    this.loadBoard();
   },
   components: {
     appHeader,

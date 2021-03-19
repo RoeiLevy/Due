@@ -6,7 +6,9 @@
           <font-awesome-icon class="header-icon" icon="caret-square-down" />
         </span>
         <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item command="removeGroup">Delete Group</el-dropdown-item>
+          <el-dropdown-item command="removeGroup"
+            >Delete Group</el-dropdown-item
+          >
           <el-dropdown-item>Action 2</el-dropdown-item>
           <el-dropdown-item>Action 3</el-dropdown-item>
         </el-dropdown-menu>
@@ -16,8 +18,7 @@
           v-if="editMode"
           v-model="groupToEdit.title"
           @keyup.enter="saveGroup"
-                @focusout="saveGroup"
-
+          @focusout="saveGroup"
           class="group-title"
         />
         <div class="group-title" v-else>
@@ -148,13 +149,13 @@ export default {
         throw err;
       }
     },
-      async removeGroup() {
+    async removeGroup() {
       try {
         await this.$store.dispatch({
           type: "removeGroup",
           groupId: this.group.id,
         });
-        console.log('removed group successfully');
+        console.log("removed group successfully");
       } catch (err) {
         console.log("err:", err);
       }

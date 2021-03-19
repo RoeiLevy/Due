@@ -3,6 +3,7 @@ import { utilService } from '../services/util.service';
 
 export const boardStore = {
     state: {
+        isActivitiesOpen: false,
         currBoard: null,
         boards: []
     },
@@ -15,9 +16,15 @@ export const boardStore = {
         },
         statuses(state) {
             return state.currBoard.statuses;
+        },
+        isActivitiesOpen(state) {
+            return state.isActivitiesOpen
         }
-    },
+     },
     mutations: {
+        toggleActivities(state) {
+            state.isActivitiesOpen = !state.isActivitiesOpen
+        },
         setBoard(state, { board }) {
             state.currBoard = board
         },

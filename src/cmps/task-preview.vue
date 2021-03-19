@@ -1,8 +1,8 @@
 <template>
   <div class="task-wrapper flex">
     <div class="task-color-box-start"></div>
-    <div class="remove-btn-wrapper">
-      <font-awesome-icon @click="removeTask" class="header-icon remove-btn" icon="trash" />
+    <div class="remove-btn-wrapper" @click.stop="removeTask">
+      <font-awesome-icon class="header-icon remove-btn" icon="trash" />
     </div>
     <input
       v-if="editMode"
@@ -16,16 +16,15 @@
       </label>
     </div>
     <div class="task-members-container">
-      <div  v-if="task.members" class="avatar-container">
-      <el-avatar
-        v-for="member in task.members"
-        :key="member._id"
-        :size="30"
-        :src="member.imgUrl"
-      ></el-avatar>
+      <div v-if="task.members" class="avatar-container">
+        <el-avatar
+          v-for="member in task.members"
+          :key="member._id"
+          :size="30"
+          :src="member.imgUrl"
+        ></el-avatar>
       </div>
       <el-avatar v-else icon="el-icon-user-solid" class="avatar"></el-avatar>
-
     </div>
     <div class="status-container">
       <h3
@@ -44,10 +43,7 @@
     </div>
     <div class="date-container">
       <!-- <input type="date" name="due-date" id="due-date" v-model="dueDate" /> -->
-      <el-date-picker
-        v-model="dueDate"
-        type="datetime"
-        default-time="12:00:00">
+      <el-date-picker v-model="dueDate" type="datetime" default-time="12:00:00">
       </el-date-picker>
     </div>
     <div class="task-color-box-end"></div>
@@ -88,7 +84,7 @@ export default {
     removeTask() {
       console.log(this.task);
       this.$emit("removeTask", this.task.id);
-    }
+    },
   },
   created() {
     this.taskToEdit = { ...this.task };

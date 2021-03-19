@@ -41,11 +41,9 @@
       </div>
       <div class="space-box"></div>
     </div>
-    <draggable
+    <!-- <draggable
       v-model="groupToEdit.tasks"
       @change="saveGroup"
-      @start="drag = true"
-      @end="drag = false"
     >
       <task-preview
         @removeTask="removeTask"
@@ -54,6 +52,37 @@
         :task="task"
         @updateTask="updateTask"
       />
+    </draggable> -->
+    <draggable
+      v-model="groupToEdit.tasks"
+      @change="saveGroup"
+      v-bind="dragOptions"
+      @start="isDragging = true"
+      @end="isDragging = false"
+    >
+      <transition-group type="transition">
+        <task-preview
+          @removeTask="removeTask"
+          v-for="task in groupToEdit.tasks"
+          :key="task.id"
+          :task="task"
+          @updateTask="updateTask"
+        />
+        <!-- <li
+          class="list-group-item"
+          v-for="element in list"
+          :key="element.order"
+        >
+          <i
+            :class="
+              element.fixed ? 'fa fa-anchor' : 'glyphicon glyphicon-pushpin'
+            "
+            @click="element.fixed = !element.fixed"
+            aria-hidden="true"
+          ></i>
+          {{ element.name }}
+        </li> -->
+      </transition-group>
     </draggable>
     <div class="group-footer">
       <div class="add-task-wrapper">
@@ -164,6 +193,14 @@ export default {
   computed: {
     loggedInUser() {
       return this.$store.getters.loggedinUser;
+    },
+    dragOptions() {
+      return {
+        animation: 0,
+        group: "description",
+        disabled: false,
+        ghostClass: "ghost",
+      };
     },
   },
   created() {

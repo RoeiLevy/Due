@@ -4,38 +4,31 @@
         display: flex;
         flex: 1;
     }
-
     .members-wrapper {
         display: flex;
         align-items: center;
         justify-content: center;
         width: 140px;
     }
-
     .status-wrapper {
         display: flex;
         align-items: center;
         justify-content: center;
         width: 140px;
     }
-
     .dueDate-wrapper {
         display: flex;
         align-items: center;
         justify-content: center;
         width: 140px;
     }
-
     .space-box {
         width: 38px;
     }
-
-
     label {
         width: 140px;
         text-align: center;
     }
-
     .group-title {
         flex: 1;
         font-size: 18px;
@@ -45,29 +38,23 @@
 .group-header {
     width: 100%;
     min-height: 40px;
-
     .group-title-wrapper {
         width: 40%;
         display: flex;
         justify-content: flex-start;
         align-items: center;
-
         .group-title {
             padding: 10px 10px 10px 0px;
         }
     }
-
-
     .el-dropdown-link {
         cursor: pointer;
         color: #409EFF;
         font-size: 20px;
     }
-
     .el-dropdown-link:hover {
         filter: brightness(115%);
     }
-
     .el-icon-arrow-down {
         font-size: 12px;
     }
@@ -76,22 +63,17 @@
 .group-footer {
     height: 80px;
     width: 100%;
-
     .add-task-wrapper {
         .add-task-form {
             height: 100%;
-
-
         }
     }
-
     .add-task-wrapper:hover {
         filter: brightness(98%);
         cursor: pointer;
         border: 1px solid rgb(61, 61, 61);
     }
 }
-
 
 .add-task-form:hover .add-task-btn {
     display: block;
@@ -112,11 +94,9 @@
     padding: 10px;
 }
 
-
 .add-task-btn:hover {
     cursor: pointer;
     filter: brightness(110%);
-
 }
 
 .el-popper .popper__arrow,
@@ -126,7 +106,6 @@
 
 .drop-down {
     position: relative;
-
     .el-dropdown-link {
         position: absolute;
         left: -31px;
@@ -137,5 +116,36 @@
 
 .el-dropdown-menu {
     left: 102px !important;
+}
 
+.el-color-dropdown__btns {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.el-button.el-color-dropdown__btn.el-button--default.el-button--mini.is-plain::before {
+    content: "Confirm";
+}
+
+.el-button.el-color-dropdown__link-btn.el-button--text.el-button--mini::before {
+    content: "clear";
+    margin-inline-start: 30px;
+}
+
+.el-dropdown-menu__item.dropdown-change-color {
+    display: flex !important;
+    align-content: center !important;
+    justify-content: space-between !important;
+    position: relative;
+}
+
+// .el-color-picker--mini,
+.el-color-picker__trigger {
+    margin-inline-start: 10px;
+    align-self: center;
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    top: 3px;
 }

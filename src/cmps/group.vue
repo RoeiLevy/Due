@@ -1,7 +1,7 @@
 <template>
   <section class="group-container">
     <div class="flex group-header">
-      <el-dropdown  @command="handleCommand" class="drop-down" trigger="click">
+      <el-dropdown @command="handleCommand" class="drop-down" trigger="click">
         <span :style="groupColor" class="el-dropdown-link">
           <font-awesome-icon class="header-icon" icon="caret-square-down" />
         </span>
@@ -9,7 +9,10 @@
           <el-dropdown-item command="removeGroup"
             >Delete Group</el-dropdown-item
           >
-          <el-dropdown-item>Action 2</el-dropdown-item>
+          <el-dropdown-item class="dropdown-change-color"
+            >Change Group Color
+            <el-color-picker @change="saveGroup" v-model="groupToEdit.style.color" size="mini"></el-color-picker>
+          </el-dropdown-item>
           <el-dropdown-item>Action 3</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
@@ -126,6 +129,8 @@ export default {
       switch (command) {
         case "removeGroup":
           this.removeGroup();
+        case "saveGroup":
+          this.saveGroup();
       }
     },
     async addTask() {
@@ -169,10 +174,12 @@ export default {
     },
     async saveGroup() {
       try {
+        console.log('saving group')
         this.editMode = false;
 
         await this.$store.dispatch("saveGroup", this.groupToEdit);
-        this.groupToEdit = { ...this.group };
+        this.groupToEdit = JSON.parse(JSON.stringify(this.group));
+        // { ...this.group };
       } catch (err) {
         console.log("Couldn`t Save Group", err);
         throw err;
@@ -195,7 +202,7 @@ export default {
       return this.$store.getters.loggedinUser;
     },
     groupColor() {
-      return `color: ${this.group.style.color}`
+      return `color: ${this.group.style.color}`;
     },
     dragOptions() {
       return {

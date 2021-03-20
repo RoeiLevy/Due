@@ -8,6 +8,9 @@ export const boardStore = {
         boards: []
     },
     getters: {
+        currBoardId(state) {
+            return state.currBoard._id
+        },
         boardForDisplay(state) {
             return state.currBoard
         },
@@ -157,5 +160,8 @@ export const boardStore = {
                 throw err
             }
         },
+        async getTask(context, { taskId }) {
+            console.log(taskId);
+        }
     }
 }

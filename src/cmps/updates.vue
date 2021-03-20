@@ -5,7 +5,7 @@
     </div>
 
     <div class="updates-container">
-        <update-preview />
+        <!-- <update-preview v-for="comment in comments"  /> -->
     </div>
   </div>
 </template>
@@ -13,7 +13,6 @@
 <script>
 
 import updatePreview from "./update-preview";
-import UpdatePreview from './update-preview.vue';
 export default {
   props: ["comments"],
   components: {
@@ -21,5 +20,3 @@ export default {
   }
 };
 </script>
-
-    UpdatePreview

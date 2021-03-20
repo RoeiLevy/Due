@@ -167,7 +167,7 @@ const boardDB = [{
     }]
 }, {
     "_id": "b102",
-    "title": "Robot dev proj",
+    "title": "Due",
     "thumbnail": '',
     "createdAt": 1589983468418,
     "createdBy": {

@@ -18,11 +18,13 @@
     }
 
     .main-table-wrapper.active {
-        border-bottom-color: rgb(0, 133, 255);
+        // border-bottom-color: rgb(0, 133, 255);
+        box-shadow: 2px -22px 0px -20px #0085ff  inset;
     }
     
     .add-view-wrapper.active {
-        border-bottom-color: rgb(0, 133, 255);
+        // border-bottom-color: rgb(0, 133, 255);
+        box-shadow: 2px -22px 0px -20px #0085ff  inset;
     }
 
     
@@ -55,9 +57,6 @@
         // border-bottom-color: rgb(0, 133, 255);
     }
 }
-
-
-
 
 .el-button {
     height: 32px;

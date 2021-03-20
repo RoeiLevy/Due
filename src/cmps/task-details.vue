@@ -40,6 +40,9 @@ export default {
     activityLog,
     updates
   },
+  created() {
+    console.log('task in details', this.task);
+  }
 };
 </script>
 

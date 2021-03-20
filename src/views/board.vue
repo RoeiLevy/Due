@@ -83,12 +83,9 @@
               v-model="boardToEdit.groups"
               @change="saveBoard(boardToEdit)"
               v-bind="dragOptions"
-              @start="drag = true"
-              @end="drag = false"
             >
               <transition-group
                 type="transition"
-                :name="!drag ? 'flip-list' : null"
               >
                 <!-- <li
                   class="list-group-item"

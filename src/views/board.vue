@@ -2,6 +2,8 @@
   <div class="board-surface">
     <!-- <div ref="capture"> -->
     <app-header />
+    <!-- <bar-chart v-if="board" :board="board"></bar-chart> -->
+
     <div v-if="board" class="flex board" ref="screen">
       <task-details :drawer="isActivitiesOpen" />
       <div class="flex column board-container">
@@ -11,12 +13,13 @@
             <input
               class="board-title"
               v-if="editMode"
+              ref="input"
               v-model="boardToEdit.title"
               @keyup.enter="saveBoard(boardToEdit)"
               @focusout="saveBoard(boardToEdit)"
             />
             <div v-else>
-              <h1 class="board-title" @click="editMode = true">
+              <h1 class="board-title" @click="handleEdit">
                 {{ boardToEdit.title }}
               </h1>
             </div>
@@ -42,12 +45,35 @@
                 >New Group</el-button
               >
             </div>
-            <div :class="tableActive" @click="activateMainTable" class="main-table-wrapper">
+            <div
+              :class="tableActive"
+              @click="activateMainTable"
+              class="main-table-wrapper"
+            >
               <button>Main Table</button>
             </div>
-            <div :class="viewActive" @click="activateView" class="add-view-wrapper">
-              <button>+ Add View</button>
+            <div
+              v-for="(view, idx) in board.views"
+              :key="idx"
+              class="main-table-wrapper"
+            >
+              <button>{{ view }}</button>
             </div>
+            <el-dropdown
+              @command="handleCommand"
+              class="views-drop-down"
+              trigger="click"
+            >
+              <span class="views-el-dropdown-link">
+                <font-awesome-icon class="header-icon" icon="plus" />
+                Add View
+              </span>
+              <el-dropdown-menu slot="dropdown">
+                <el-dropdown-item command="calander">Calander</el-dropdown-item>
+                <el-dropdown-item command="chart">Chart</el-dropdown-item>
+                <el-dropdown-item command="kanban">Kanban</el-dropdown-item>
+              </el-dropdown-menu>
+            </el-dropdown>
           </nav>
         </div>
 
@@ -56,12 +82,36 @@
             <draggable
               v-model="boardToEdit.groups"
               @change="saveBoard(boardToEdit)"
+              v-bind="dragOptions"
+              @start="drag = true"
+              @end="drag = false"
             >
-              <group
-                v-for="group in boardToEdit.groups"
-                :group="group"
-                :key="group.id"
-              />
+              <transition-group
+                type="transition"
+                :name="!drag ? 'flip-list' : null"
+              >
+                <!-- <li
+                  class="list-group-item"
+                  v-for="element in list"
+                  :key="element.order"
+                >
+                  <i
+                    :class="
+                      element.fixed
+                        ? 'fa fa-anchor'
+                        : 'glyphicon glyphicon-pushpin'
+                    "
+                    @click="element.fixed = !element.fixed"
+                    aria-hidden="true"
+                  ></i>
+                  {{ element.name }}
+                </li> -->
+                <group
+                  v-for="group in boardToEdit.groups"
+                  :group="group"
+                  :key="group.id"
+                />
+              </transition-group>
             </draggable>
           </div>
         </div>
@@ -76,6 +126,7 @@ import group from "../cmps/group";
 import appHeader from "../cmps/header";
 import draggable from "vuedraggable";
 import taskDetails from "../cmps/task-details";
+import barChart from "../cmps/bar-chart";
 
 import { boardService } from "../services/board.service";
 
@@ -87,18 +138,28 @@ export default {
       boardToEdit: null,
       editMode: false,
       mainTable: true,
-      addView: false
+      addView: false,
     };
   },
   methods: {
+    handleCommand(command) {
+      this.boardToEdit.views.push(command);
+      this.saveBoard(this.boardToEdit);
+    },
+    handleEdit() {
+      this.editMode = true;
+      setTimeout(() => {
+        this.$refs.input.focus();
+      }, 0);
+    },
     activateMainTable() {
-      this.addView = false
-      this.mainTable = true
+      this.addView = false;
+      this.mainTable = true;
       console.log(this.mainTable);
     },
     activateView() {
-      this.mainTable = false
-      this.addView = true
+      this.mainTable = false;
+      this.addView = true;
       console.log(this.mainTable);
     },
     openActivities() {
@@ -135,8 +196,8 @@ export default {
     async printScr(board) {
       return html2canvas(this.$refs.screen).then((canvas) => {
         // console.log("canvas:", canvas);
-                const pageImg = canvas.toDataURL();
-                // console.log('pageImg:', pageImg);
+        const pageImg = canvas.toDataURL();
+        // console.log('pageImg:', pageImg);
         board.thumbnail = pageImg;
         return board;
       });
@@ -151,20 +212,29 @@ export default {
       return this.$store.getters.isActivitiesOpen;
     },
     viewActive() {
-      return { active: this.addView }
+      return { active: this.addView };
     },
     tableActive() {
-      return { active: this.mainTable }
+      return { active: this.mainTable };
+    },
+    dragOptions() {
+      return {
+        animation: 200,
+        group: "description",
+        disabled: false,
+        ghostClass: "ghost"
+      };
     }
   },
-   created() {
-      this.loadBoard();
+  created() {
+    this.loadBoard();
   },
   components: {
     appHeader,
     group,
     draggable,
     taskDetails,
+    barChart,
   },
 };
 </script>

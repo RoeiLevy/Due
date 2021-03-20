@@ -19,13 +19,14 @@
       <div class="group-title-wrapper">
         <input
           v-if="editMode"
+          ref="input"
           v-model="groupToEdit.title"
           @keyup.enter="saveGroup"
           @focusout="saveGroup"
           class="group-title"
         />
         <div class="group-title" v-else>
-          <label @click="editMode = true">
+          <label @click="handleEdit">
             {{ groupToEdit.title }}
           </label>
         </div>
@@ -125,6 +126,12 @@ export default {
     };
   },
   methods: {
+    handleEdit() {
+      this.editMode = true;
+      setTimeout(() => {
+        this.$refs.input.focus();
+      }, 0);
+    },
     handleCommand(command) {
       this.$message("click on item " + command);
       switch (command) {

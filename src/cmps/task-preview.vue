@@ -14,6 +14,7 @@
       v-model="taskToEdit.title"
       @keyup.enter="updateTask"
       @focusout="updateTask"
+      class="task-title-input"
     />
     <div v-else class="task-title">
       <label class="task-title-label" @click="handleEdit">

@@ -32,6 +32,15 @@
     .group-title {
         flex: 1;
         font-size: 18px;
+        border: 1px dashed transparent;
+        padding: 0;
+    }
+    input.group-title {
+        outline: none;
+        border: 1px dashed gray;
+    }
+    .group-title:hover {
+        border: 1px dashed gray;
     }
 }
 
@@ -43,9 +52,9 @@
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        .group-title {
-            padding: 10px 10px 10px 0px;
-        }
+        // .group-title {
+        //     padding: 10px 10px 10px 0px;
+        // }
     }
     .el-dropdown-link {
         cursor: pointer;

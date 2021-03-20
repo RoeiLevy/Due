@@ -8,7 +8,6 @@
     border-bottom: 1px solid #ffffff;
     font-size: 13px;
 
-
     input {
         flex: 1;
         outline: none;
@@ -24,7 +23,13 @@
         text-align: start;
         font-size: 13px;
         width: 40%;
-
+        :hover{
+            cursor: text;
+            border: 1px dashed gray;
+        }
+        input{
+            border: 1px dashed gray;
+        }
         .header-icon {
             color: #d6d9df;
             margin-right: 10px;
@@ -44,7 +49,18 @@
             justify-content: flex-start;
             align-items: center;
             white-space: nowrap;
+            // border: 1px dashed transparent;
         }
+        // .task-title-label:hover {
+        //     border: 1px dashed gray;
+        // }
+        // input.task-title-label {
+        //     outline: none;
+        //     border: 1px dashed gray;
+        // }
+    }
+    .task-title-input{
+        border: 1px dashed gray;
     }
 
     .task-members-container {
@@ -70,7 +86,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: #d6d9df
+        background-color: #d6d9df;
     }
 
     .status-container {
@@ -147,7 +163,7 @@
 }
 
 .task-status {
-    transition: all .3s;
+    transition: all 0.3s;
     width: 100%;
     display: flex;
     align-items: center;
@@ -159,7 +175,7 @@
     opacity: 1;
 
     .task-status:hover {
-        opacity: .8;
+        opacity: 0.8;
     }
 
     .tag-group:hover {
@@ -179,7 +195,7 @@
 .sortable-ghost // .sortable-drag,
 
 // .sortable-chosen,
-    {
+{
     // overflow: hidden;
     box-shadow: 0 0 20px rgba(51, 51, 51, 0.05);
     transform: rotate(1deg);

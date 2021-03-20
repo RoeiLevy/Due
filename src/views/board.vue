@@ -9,7 +9,6 @@
       <div class="flex column board-container">
         <div class="flex column board-header">
           <div class="flex space-between top-header">
-            <!-- <h1 class="board-title">{{ board.title }}</h1> -->
             <input
               class="board-title"
               v-if="editMode"
@@ -51,17 +50,13 @@
               class="main-table-wrapper"
             >
               <button>Main Table</button>
-            </div>
-            <div
-              v-for="(view, idx) in board.views"
-              :key="idx"
-              class="main-table-wrapper"
-            >
-              <button>{{ view }}</button>
+              <div v-for="(view, idx) in board.views" :key="idx">
+                <button>{{ view }}</button>
+              </div>
             </div>
             <el-dropdown
+              class="main-table-wrapper views-drop-down"
               @command="handleCommand"
-              class="views-drop-down"
               trigger="click"
             >
               <span class="views-el-dropdown-link">
@@ -69,9 +64,9 @@
                 Add View
               </span>
               <el-dropdown-menu slot="dropdown">
-                <el-dropdown-item command="calander">Calander</el-dropdown-item>
-                <el-dropdown-item command="chart">Chart</el-dropdown-item>
-                <el-dropdown-item command="kanban">Kanban</el-dropdown-item>
+                <el-dropdown-item command="Calander">Calander</el-dropdown-item>
+                <el-dropdown-item command="Chart">Chart</el-dropdown-item>
+                <el-dropdown-item command="Kanban">Kanban</el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
           </nav>
@@ -79,37 +74,19 @@
 
         <div class="board-content-wrapper">
           <div class="groups-list">
-            <draggable
+            <!-- <draggable
               v-model="boardToEdit.groups"
               @change="saveBoard(boardToEdit)"
               v-bind="dragOptions"
             >
-              <transition-group
-                type="transition"
-              >
-                <!-- <li
-                  class="list-group-item"
-                  v-for="element in list"
-                  :key="element.order"
-                >
-                  <i
-                    :class="
-                      element.fixed
-                        ? 'fa fa-anchor'
-                        : 'glyphicon glyphicon-pushpin'
-                    "
-                    @click="element.fixed = !element.fixed"
-                    aria-hidden="true"
-                  ></i>
-                  {{ element.name }}
-                </li> -->
-                <group
-                  v-for="group in boardToEdit.groups"
-                  :group="group"
-                  :key="group.id"
-                />
-              </transition-group>
-            </draggable>
+              <transition-group type="transition"> -->
+            <group
+              v-for="group in boardToEdit.groups"
+              :group="group"
+              :key="group.id"
+            />
+            <!-- </transition-group>
+            </draggable> -->
           </div>
         </div>
       </div>
@@ -219,9 +196,9 @@ export default {
         animation: 200,
         group: "description",
         disabled: false,
-        ghostClass: "ghost"
+        ghostClass: "ghost",
       };
-    }
+    },
   },
   created() {
     this.loadBoard();

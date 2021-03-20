@@ -25,11 +25,11 @@
           @focusout="saveGroup"
           class="group-title"
         />
-        <div class="group-title" v-else>
-          <label @click="handleEdit">
-            {{ groupToEdit.title }}
-          </label>
-        </div>
+        <div v-else>
+              <h1 class="group-title" @click="handleEdit">
+                {{ groupToEdit.title }}
+              </h1>
+            </div>
         <!-- <label v-for="(header, idx) in group.headers" :key="idx">{{
           header
         }}</label> -->
@@ -45,18 +45,6 @@
       </div>
       <div class="space-box"></div>
     </div>
-    <!-- <draggable
-      v-model="groupToEdit.tasks"
-      @change="saveGroup"
-    >
-      <task-preview
-        @removeTask="removeTask"
-        v-for="task in groupToEdit.tasks"
-        :key="task.id"
-        :task="task"
-        @updateTask="updateTask"
-      />
-    </draggable> -->
     <draggable
       v-model="groupToEdit.tasks"
       @change="saveGroup"
@@ -72,20 +60,6 @@
           :task="task"
           @updateTask="updateTask"
         />
-        <!-- <li
-          class="list-group-item"
-          v-for="element in list"
-          :key="element.order"
-        >
-          <i
-            :class="
-              element.fixed ? 'fa fa-anchor' : 'glyphicon glyphicon-pushpin'
-            "
-            @click="element.fixed = !element.fixed"
-            aria-hidden="true"
-          ></i>
-          {{ element.name }}
-        </li> -->
       </transition-group>
     </draggable>
     <div class="group-footer">
@@ -210,7 +184,7 @@ export default {
     },
     dragOptions() {
       return {
-        animation: 0,
+        animation: 200,
         group: "description",
         disabled: false,
         ghostClass: "ghost",

@@ -30,6 +30,16 @@
     .board-title {
         font-size: 28px;
         padding-inline-start: 20px;
+        border: 1px dashed transparent;
+        padding: 0;
+        height: 50px;
+    }
+    input.board-title {
+        outline: none;
+        border: 1px dashed gray;
+    }
+    .board-title:hover{
+        border: 1px dashed gray;
     }
 }
 

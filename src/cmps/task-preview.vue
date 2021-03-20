@@ -1,5 +1,6 @@
 <template>
   <div class="task-wrapper flex">
+    <task-details :isOpen="isActivitiesOpen" :task="task" />
     <div :style="taskColor" class="task-color-box-start"></div>
     <div class="remove-btn-wrapper">
       <font-awesome-icon
@@ -62,6 +63,8 @@
 <script>
 import moment from "moment";
 import statusPicker from "./status-picker.vue";
+import taskDetails from "./task-details";
+
 export default {
   props: ["task", "groupColor"],
   data() {
@@ -72,12 +75,13 @@ export default {
       taskToEdit: null,
       styles: {
          'border-color': this.groupColor,
-      }
+      },
+      isActivitiesOpen: false
     };
   },
   methods: {
     openActivities() {
-      this.$store.commit({ type: "toggleActivities" });
+      this.isActivitiesOpen = true
     },
     async setStatus(status) {
       this.isSelectingStatus = false;
@@ -103,7 +107,7 @@ export default {
   },
   computed: {
     taskColor() {
-      return `border-color: ${this.groupColor}`
+      return `border-left-color: ${this.groupColor}`
     },
   },
   created() {
@@ -112,6 +116,7 @@ export default {
   },
   components: {
     statusPicker,
+    taskDetails
   },
 };
 </script>

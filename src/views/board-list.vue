@@ -7,7 +7,7 @@
     </header>
 
     <div class="board-list">
-      <h3>Select Your Board</h3>
+      <h2>Select Your Board</h2>
       <el-carousel class="carousel" :interval="4000" type="card" height="300px">
         <el-carousel-item v-for="board in boards" :key="board._id">
           <h3 class="medium" @click="showBoard(board._id)">

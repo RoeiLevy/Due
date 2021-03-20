@@ -61,8 +61,6 @@
       v-model="groupToEdit.tasks"
       @change="saveGroup"
       v-bind="dragOptions"
-      @start="isDragging = true"
-      @end="isDragging = false"
     >
       <transition-group type="transition">
         <task-preview
@@ -220,7 +218,7 @@ export default {
     },
   },
   created() {
-    this.groupToEdit = { ...this.group };
+    this.groupToEdit =  JSON.parse(JSON.stringify(this.group)) ;
     // this.$on("updateTask", this.updateTask);
   },
   components: {

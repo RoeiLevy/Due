@@ -104,7 +104,7 @@ export const boardStore = {
             try {
                 const savedGroup = await boardService.saveGroup(group, context.state.currBoard._id);
                 context.commit({ type: 'saveGroup', group: savedGroup })
-                return savedGroup;
+                // return savedGroup;
             } catch (err) {
                 console.log('Board store:Error in saveGroup', err);
                 throw err;

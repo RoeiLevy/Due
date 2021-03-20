@@ -6,13 +6,11 @@
         justify-content: center;
         align-items: center;
     }
-
-    .views-drop-down{
+    .views-drop-down {
         color: unset;
         margin-top: 7px;
         cursor: pointer;
     }
-
     .new-group-wrapper {
         padding: 7px 20px 7px 0px;
     }
@@ -48,12 +46,12 @@
         cursor: pointer;
         border-radius: 4px;
     }
-    .main-table-wrapper:hover {
-        // border-bottom-color: rgb(0, 133, 255);
-    }
-    .add-view-wrapper:hover {
-        // border-bottom-color: rgb(0, 133, 255);
-    }
+    // .main-table-wrapper:hover {
+    //     // border-bottom-color: rgb(0, 133, 255);
+    // }
+    // .add-view-wrapper:hover {
+    //     // border-bottom-color: rgb(0, 133, 255);
+    // }
 }
 
 .el-button {

@@ -1,8 +1,56 @@
-
 .el-drawer__open .el-drawer.rtl {
-    width: 40% !important;
+    width: 50% !important;
 }
 
 .el-drawer__wrapper:hover {
     cursor: pointer;
+}
+
+.el-drawer__header>:first-child {
+    order: 1;
+}
+
+.el-drawer__body {
+    padding: 20px;
+}
+
+.task-details {
+   
+}
+
+
+
+
+.activity-menu {
+    height: 40px;
+    border-bottom: 1px solid #efefef;
+
+    .activity-btn-wrapper, .updates-btn-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0px 8px;
+    }
+
+    .activity-btn-wrapper:hover {
+        box-shadow: 2px -22px 0px -20px #0085ff  inset;
+    }
+
+    .updates-btn-wrapper:hover {
+        box-shadow: 2px -22px 0px -20px #0085ff inset;
+    }
+
+    .activity-btn-wrapper button {
+        background-color: transparent;
+    }
+    
+    .updates-btn-wrapper button {
+        background-color: transparent;
+    }
+
+
+
+
+
+
 }

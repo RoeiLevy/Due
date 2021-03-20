@@ -7,18 +7,46 @@
     margin-block-end: 1px;
     border-bottom: 1px solid #ffffff;
     font-size: 13px;
-    // z-index: 5;
+
+
+    input {
+        flex: 1;
+        outline: none;
+        height: 100%;
+    }
     .task-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         flex: 1;
         @include task-cells;
         cursor: pointer;
         text-align: start;
         font-size: 13px;
         width: 40%;
+
+        .header-icon {
+            color: #d6d9df;
+            margin-right: 10px;
+        }
+
+        .header-icon:hover {
+            filter: brightness(70%);
+        }
+
         .task-title-label {
+            height: 36px;
+            flex: 1;
+            margin-right: 10px;
+            overflow: hidden;
             padding: 10px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            white-space: nowrap;
         }
     }
+
     .task-members-container {
         @include task-cells;
         display: flex;
@@ -26,6 +54,7 @@
         justify-content: center;
         width: 140px;
     }
+
     .avatar-container {
         width: 30px;
         height: 30px;
@@ -33,6 +62,7 @@
         align-items: center;
         justify-content: center;
     }
+
     .avatar,
     .avatar i {
         width: 30px;
@@ -42,16 +72,19 @@
         justify-content: center;
         background-color: #d6d9df
     }
+
     .status-container {
         @include task-cells;
         display: flex;
         align-items: center;
         justify-content: center;
         width: 140px;
+
         h3 {
             font-size: 13px;
         }
     }
+
     .date-container {
         @include task-cells;
         display: flex;
@@ -59,6 +92,7 @@
         justify-content: center;
         width: 140px;
     }
+
     .remove-btn-wrapper {
         left: -50px;
         width: 50px;
@@ -71,19 +105,23 @@
         align-items: center;
         display: none;
     }
+
     .remove-btn {
         display: none;
         filter: brightness(250%);
     }
+
     .remove-btn:hover {
         cursor: pointer;
         filter: brightness(100%);
     }
+
     .task-color-box-start {
         @include task-cells;
         min-width: 8px;
         border-left: 8px solid $application-border-color;
     }
+
     .task-color-box-end {
         @include task-cells;
         min-width: 38px;
@@ -94,6 +132,7 @@
 .task-wrapper:hover {
     filter: brightness(98%);
     cursor: pointer;
+
     .task-title-label {
         color: $color-link_color;
     }
@@ -118,9 +157,11 @@
 
 .status-container:hover {
     opacity: 1;
+
     .task-status:hover {
         opacity: .8;
     }
+
     .tag-group:hover {
         opacity: 1;
     }
@@ -136,8 +177,9 @@
 }
 
 .sortable-ghost // .sortable-drag,
+
 // .sortable-chosen,
-{
+    {
     // overflow: hidden;
     box-shadow: 0 0 20px rgba(51, 51, 51, 0.05);
     transform: rotate(1deg);

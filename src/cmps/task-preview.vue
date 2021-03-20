@@ -1,8 +1,12 @@
 <template>
   <div class="task-wrapper flex">
-    <div class="task-color-box-start"></div>
-    <div class="remove-btn-wrapper" >
-      <font-awesome-icon @click="removeTask" class="header-icon remove-btn" icon="trash" />
+    <div :style="taskColor" class="task-color-box-start"></div>
+    <div class="remove-btn-wrapper">
+      <font-awesome-icon
+        @click="removeTask"
+        class="header-icon remove-btn"
+        icon="trash"
+      />
     </div>
     <input
       v-if="editMode"
@@ -14,6 +18,11 @@
       <label class="task-title-label" @click="editMode = true">
         {{ taskToEdit.title }}
       </label>
+      <font-awesome-icon
+        @click="openActivities"
+        class="header-icon"
+        icon="comment"
+      />
     </div>
     <div class="task-members-container">
       <div v-if="task.members" class="avatar-container">
@@ -54,16 +63,22 @@
 import moment from "moment";
 import statusPicker from "./status-picker.vue";
 export default {
-  props: ["task"],
+  props: ["task", "groupColor"],
   data() {
     return {
       dueDate: "",
       isSelectingStatus: false,
       editMode: false,
       taskToEdit: null,
+      styles: {
+         'border-color': this.groupColor,
+      }
     };
   },
   methods: {
+    openActivities() {
+      this.$store.commit({ type: "toggleActivities" });
+    },
     async setStatus(status) {
       this.isSelectingStatus = false;
       try {
@@ -86,7 +101,13 @@ export default {
       this.$emit("removeTask", this.task.id);
     },
   },
+  computed: {
+    taskColor() {
+      return `border-color: ${this.groupColor}`
+    },
+  },
   created() {
+    console.log(this.groupColor);
     this.taskToEdit = { ...this.task };
   },
   components: {

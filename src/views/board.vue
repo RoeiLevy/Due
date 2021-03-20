@@ -42,10 +42,10 @@
                 >New Group</el-button
               >
             </div>
-            <div class="main-table-wrapper">
+            <div :class="tableActive" @click="activateMainTable" class="main-table-wrapper">
               <button>Main Table</button>
             </div>
-            <div class="add-view-wrapper">
+            <div :class="viewActive" @click="activateView" class="add-view-wrapper">
               <button>+ Add View</button>
             </div>
           </nav>
@@ -86,9 +86,21 @@ export default {
       board: null,
       boardToEdit: null,
       editMode: false,
+      mainTable: true,
+      addView: false
     };
   },
   methods: {
+    activateMainTable() {
+      this.addView = false
+      this.mainTable = true
+      console.log(this.mainTable);
+    },
+    activateView() {
+      this.mainTable = false
+      this.addView = true
+      console.log(this.mainTable);
+    },
     openActivities() {
       this.$store.commit({ type: "toggleActivities" });
     },
@@ -122,9 +134,9 @@ export default {
     },
     async printScr(board) {
       return html2canvas(this.$refs.screen).then((canvas) => {
-        console.log("canvas:", canvas);
+        // console.log("canvas:", canvas);
                 const pageImg = canvas.toDataURL();
-                console.log('pageImg:', pageImg);
+                // console.log('pageImg:', pageImg);
         board.thumbnail = pageImg;
         return board;
       });
@@ -138,6 +150,12 @@ export default {
     isActivitiesOpen() {
       return this.$store.getters.isActivitiesOpen;
     },
+    viewActive() {
+      return { active: this.addView }
+    },
+    tableActive() {
+      return { active: this.mainTable }
+    }
   },
    created() {
       this.loadBoard();

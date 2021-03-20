@@ -183,6 +183,9 @@ const boardDB = [{
     "groups": [{
         "id": "g101",
         "title": "Group 1",
+        "style": {
+            "color": 'red;'
+        },
         "headers": ['members', 'status', 'dueDate'],
         "tasks": [{
             "id": "c101",
@@ -193,11 +196,13 @@ const boardDB = [{
             "title": "Add Samples"
         }
         ],
-        "style": {}
     },
     {
         "id": "g102",
         "title": "Group 2",
+        "style": {
+            "color": 'blue;'
+        },
         "headers": ['members', 'status', 'dueDate'],
         "tasks": [{
             "id": "c103",
@@ -238,8 +243,7 @@ const boardDB = [{
                 "bgColor": "#26de81"
             }
         }
-        ],
-        "style": {}
+        ]
     }
     ],
     "statuses": [{
@@ -402,7 +406,7 @@ function getEmptyGroup() {
         id: utilService.makeId(),
         title: 'New Group',
         tasks: [],
-        style: { color: '#ffffff' },
+        style: { color: '#e6e9ef;' },
         headers: ['members', 'status', 'dueDate']
 
     }

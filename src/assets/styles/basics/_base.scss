@@ -37,6 +37,14 @@ button, a:hover {
     cursor: pointer;
 }
 
+button {
+    outline: none;
+    border: none;
+}
+
+
+
+
 p {
     max-width: 48ch;
     margin: 0 0 1rem;

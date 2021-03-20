@@ -1,6 +1,5 @@
 <template>
   <div class="task-wrapper flex">
-    <task-details :isOpen="isActivitiesOpen" :task="task" />
     <div :style="taskColor" class="task-color-box-start"></div>
     <div class="remove-btn-wrapper">
       <font-awesome-icon
@@ -64,10 +63,9 @@
 <script>
 import moment from "moment";
 import statusPicker from "./status-picker.vue";
-import taskDetails from "./task-details";
 
 export default {
-  props: ["task", "groupColor"],
+  props: ["task", "groupColor", "groupId"],
   data() {
     return {
       dueDate: "",
@@ -88,7 +86,9 @@ export default {
       }, 0);
     },
     openActivities() {
-      this.isActivitiesOpen = true;
+      this.isActivitiesOpen = true
+      this.$store.commit( { type: 'toggleActivities'})
+      this.$router.push(`/board/${this.boardId}/${this.groupId}/task/${this.task.id}`)
     },
     async setStatus(status) {
       this.isSelectingStatus = false;
@@ -103,12 +103,10 @@ export default {
       }
     },
     updateTask() {
-      console.log("test");
       this.editMode = false;
       this.$emit("updateTask", this.taskToEdit);
     },
     removeTask() {
-      console.log(this.task);
       this.$emit("removeTask", this.task.id);
     },
   },
@@ -116,14 +114,15 @@ export default {
     taskColor() {
       return `border-left-color: ${this.groupColor}`;
     },
+    boardId() {
+      return this.$store.getters.currBoardId
+    }
   },
   created() {
-    console.log(this.groupColor);
     this.taskToEdit = { ...this.task };
   },
   components: {
     statusPicker,
-    taskDetails,
   },
 };
 </script>

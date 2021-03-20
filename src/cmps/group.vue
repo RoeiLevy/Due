@@ -9,7 +9,10 @@
           <el-dropdown-item command="removeGroup"
             >Delete Group</el-dropdown-item
           >
-          <el-dropdown-item>Action 2</el-dropdown-item>
+          <el-dropdown-item class="dropdown-change-color"
+            >Change Group Color
+            <el-color-picker @change="saveGroup" v-model="groupToEdit.style.color" size="mini"></el-color-picker>
+          </el-dropdown-item>
           <el-dropdown-item>Action 3</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
@@ -63,6 +66,7 @@
     >
       <transition-group type="transition">
         <task-preview
+          :groupId="group.id"
           :groupColor="group.style.color"
           @removeTask="removeTask"
           v-for="task in groupToEdit.tasks"
@@ -133,6 +137,8 @@ export default {
       switch (command) {
         case "removeGroup":
           this.removeGroup();
+        case "saveGroup":
+          this.saveGroup();
       }
     },
     async addTask() {
@@ -149,7 +155,6 @@ export default {
       };
     },
     async updateTask(task) {
-      console.log("task from group emit", task);
       try {
         await this.$store.dispatch({
           type: "updateTask",
@@ -176,10 +181,11 @@ export default {
     },
     async saveGroup() {
       try {
+        console.log('saving group')
         this.editMode = false;
-
         await this.$store.dispatch("saveGroup", this.groupToEdit);
-        this.groupToEdit = { ...this.group };
+        this.groupToEdit = JSON.parse(JSON.stringify(this.group));
+        // { ...this.group };
       } catch (err) {
         console.log("Couldn`t Save Group", err);
         throw err;
@@ -214,7 +220,6 @@ export default {
     },
   },
   created() {
-    console.log(this.group);
     this.groupToEdit = { ...this.group };
     // this.$on("updateTask", this.updateTask);
   },

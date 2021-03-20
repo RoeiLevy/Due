@@ -8,6 +8,9 @@ export const boardStore = {
         boards: []
     },
     getters: {
+        currBoardId(state) {
+            return state.currBoard._id
+        },
         boardForDisplay(state) {
             return state.currBoard
         },
@@ -20,7 +23,7 @@ export const boardStore = {
         isActivitiesOpen(state) {
             return state.isActivitiesOpen
         }
-     },
+    },
     mutations: {
         toggleActivities(state) {
             state.isActivitiesOpen = !state.isActivitiesOpen
@@ -68,10 +71,10 @@ export const boardStore = {
                 const board = await boardService.getBoard(boardId);
                 context.commit({ type: 'setBoard', board })
                 return board
-                // socketService.off(SOCKET_EVENT_REVIEW_ADDED)
-                // socketService.on(SOCKET_EVENT_REVIEW_ADDED, review => {
-                //     context.commit({ type: 'addReview', review })
-                // })
+                    // socketService.off(SOCKET_EVENT_REVIEW_ADDED)
+                    // socketService.on(SOCKET_EVENT_REVIEW_ADDED, review => {
+                    //     context.commit({ type: 'addReview', review })
+                    // })
             } catch (err) {
                 console.log('boardStore: Error in loadBoard', err)
                 throw err
@@ -101,6 +104,7 @@ export const boardStore = {
             try {
                 const savedGroup = await boardService.saveGroup(group, context.state.currBoard._id);
                 context.commit({ type: 'saveGroup', group: savedGroup })
+                return savedGroup;
             } catch (err) {
                 console.log('Board store:Error in saveGroup', err);
                 throw err;
@@ -108,9 +112,9 @@ export const boardStore = {
         },
         async removeGroup({ commit, state }, { groupId }) {
             try {
-                await boardService.removeGroup(groupId, state.currBoard._id,)
-                commit({ type: 'removeGroup', groupId})
-                return groupId
+                await boardService.removeGroup(groupId, state.currBoard._id, )
+                commit({ type: 'removeGroup', groupId })
+                return groupId;
             } catch (err) {
                 console.log('err:', err)
             }
@@ -156,5 +160,8 @@ export const boardStore = {
                 throw err
             }
         },
+        async getTask(context, { taskId }) {
+            console.log(taskId);
+        }
     }
 }

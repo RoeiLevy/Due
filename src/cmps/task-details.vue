@@ -17,8 +17,8 @@
         <button>Activity Log</button>
       </div>
     </nav>
-  <updates />
-  <!-- <activity-log /> -->
+    <updates />
+    <!-- <activity-log /> -->
   </el-drawer>
 </template>
 
@@ -27,22 +27,42 @@ import activityLog from "./activity-log";
 import updates from "./updates";
 
 export default {
-  props: ["drawer", "task"],
+  props: ["drawer"],
   data() {
-    return {};
+    return {
+      task: null,
+    };
   },
   methods: {
     closeActivities() {
+      const taskId = this.$route.params.taskId;
+      if (taskId) this.$router.go(-1);
       this.$store.commit({ type: "toggleActivities" });
+    },
+    getTask(taskId) {
+      console.log(taskId);
+      const taskToShow = this.$store.dispatch({ type: "getTask", taskId });
+      this.task = taskToShow;
+    },
+  },
+  computed: {
+    boardId() {
+      return this.$route.params.boardId;
     },
   },
   components: {
     activityLog,
-    updates
+    updates,
   },
   created() {
-    console.log('task in details', this.task);
-  }
+    const taskId = this.$route.params.taskId;
+    if (taskId) this.getTask(taskId);
+  },
+  watch: {
+    $route(to, from) {
+      console.log(to);
+    },
+  },
 };
 </script>
 

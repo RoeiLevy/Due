@@ -61,10 +61,10 @@
             </div>
             <el-dropdown
               @command="handleCommand"
-              class="views-drop-down"
+              class="views-drop-down add-view-wrapper"
               trigger="click"
             >
-              <span class="views-el-dropdown-link">
+              <span class="views-el-dropdown-link add-view-wrapper">
                 <font-awesome-icon class="header-icon" icon="plus" />
                 Add View
               </span>

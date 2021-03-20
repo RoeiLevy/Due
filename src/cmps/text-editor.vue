@@ -1,9 +1,6 @@
 <template>
   <div id="app">
-<<<<<<< HEAD
     <!-- <button @click="saveContent"></button> -->
-=======
->>>>>>> 3da0ae283e4ba981f2c61c8fca5a34bab614f2fe
     <vue-editor v-model="content"></vue-editor>
     <button @click="saveContent">Save Update</button>
   </div>

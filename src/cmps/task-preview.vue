@@ -1,6 +1,5 @@
 <template>
   <div class="task-wrapper flex">
-    <task-details :isOpen="isActivitiesOpen" :task="task" />
     <div :style="taskColor" class="task-color-box-start"></div>
     <div class="remove-btn-wrapper">
       <font-awesome-icon
@@ -63,7 +62,6 @@
 <script>
 import moment from "moment";
 import statusPicker from "./status-picker.vue";
-import taskDetails from "./task-details";
 
 export default {
   props: ["task", "groupColor", "groupId"],
@@ -118,7 +116,6 @@ export default {
   },
   components: {
     statusPicker,
-    taskDetails
   },
 };
 </script>

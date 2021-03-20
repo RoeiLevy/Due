@@ -19,7 +19,7 @@
             />
             <div v-else>
               <h1 class="board-title" @click="handleEdit">
-                {{ board.title }}
+                {{ boardToEdit.title }}
               </h1>
             </div>
 
@@ -54,12 +54,13 @@
                 <button>{{ view }}</button>
               </div>
             </div>
+              <!-- class="main-table-wrapper views-drop-down" -->
             <el-dropdown
-              class="main-table-wrapper views-drop-down"
               @command="handleCommand"
+              class="views-drop-down add-view-wrapper"
               trigger="click"
             >
-              <span class="views-el-dropdown-link">
+              <span class="views-el-dropdown-link add-view-wrapper">
                 <font-awesome-icon class="header-icon" icon="plus" />
                 Add View
               </span>

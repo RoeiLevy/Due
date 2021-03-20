@@ -1,6 +1,6 @@
 <template>
   <div class="task-wrapper flex">
-    <task-details :task="task" />
+    <task-details :isOpen="isActivitiesOpen" :task="task" />
     <div :style="taskColor" class="task-color-box-start"></div>
     <div class="remove-btn-wrapper">
       <font-awesome-icon
@@ -75,12 +75,13 @@ export default {
       taskToEdit: null,
       styles: {
          'border-color': this.groupColor,
-      }
+      },
+      isActivitiesOpen: false
     };
   },
   methods: {
     openActivities() {
-      this.$store.commit({ type: "toggleActivities" });
+      this.isActivitiesOpen = true
     },
     async setStatus(status) {
       this.isSelectingStatus = false;

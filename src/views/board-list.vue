@@ -37,7 +37,7 @@
             </div>
           </el-card>
         </el-col>
-        <el-col :span="5" :offset="1">
+        <el-col :span="5" :offset="1" @click="addNewBoard">
           <el-card class="card" :body-style="{ height: '100%' }">
             <div @click="addNewBoard">
               <i class="el-icon-plus" style="font-size: 40px"></i>

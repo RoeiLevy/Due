@@ -115,7 +115,6 @@ export default {
         this.boardToEdit = { ...board };
       } catch (err) {
         console.log("err:", err);
-      } finally {
       }
     },
     async saveBoard(board) {
@@ -142,6 +141,10 @@ export default {
         return board;
       });
     },
+  },
+  mounted() {
+    // if(this.board)this.printScr()
+    // else setTimeout(()=>this.printScr(),1000);
   },
   computed: {
     isActivitiesOpen() {

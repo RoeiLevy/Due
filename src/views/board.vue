@@ -11,12 +11,13 @@
             <input
               class="board-title"
               v-if="editMode"
+              ref="input"
               v-model="boardToEdit.title"
               @keyup.enter="saveBoard(boardToEdit)"
               @focusout="saveBoard(boardToEdit)"
             />
             <div v-else>
-              <h1 class="board-title" @click="editMode = true">
+              <h1 class="board-title" @click="handleEdit">
                 {{ board.title }}
               </h1>
             </div>
@@ -42,12 +43,35 @@
                 >New Group</el-button
               >
             </div>
-            <div :class="tableActive" @click="activateMainTable" class="main-table-wrapper">
+            <div
+              :class="tableActive"
+              @click="activateTable"
+              class="main-table-wrapper"
+            >
               <button>Main Table</button>
             </div>
-            <div :class="viewActive" @click="activateView" class="add-view-wrapper">
-              <button>+ Add View</button>
+            <div
+              class="main-table-wrapper"
+              v-for="(view, idx) in board.views"
+              :key="idx"
+            >
+              <button>{{ view }}</button>
             </div>
+            <el-dropdown
+              @command="addView"
+              class="views-drop-down"
+              trigger="click"
+            >
+              <span class="views-el-dropdown-link">
+                <font-awesome-icon class="header-icon" icon="plus" />
+                Add View
+              </span>
+              <el-dropdown-menu slot="dropdown">
+                <el-dropdown-item command="calander">Calander</el-dropdown-item>
+                <el-dropdown-item command="chart">Chart</el-dropdown-item>
+                <el-dropdown-item command="kanban">Kanban</el-dropdown-item>
+              </el-dropdown-menu>
+            </el-dropdown>
           </nav>
         </div>
 
@@ -87,18 +111,28 @@ export default {
       boardToEdit: null,
       editMode: false,
       mainTable: true,
-      addView: false
+      addView: false,
     };
   },
   methods: {
+    addView(command) {
+      this.boardToEdit.views.push(command);
+      this.saveBoard(this.boardToEdit);
+    },
+    handleEdit() {
+      this.editMode = true;
+      setTimeout(() => {
+        this.$refs.input.focus();
+      }, 0);
+    },
     activateMainTable() {
-      this.addView = false
-      this.mainTable = true
+      this.addView = false;
+      this.mainTable = true;
       console.log(this.mainTable);
     },
     activateView() {
-      this.mainTable = false
-      this.addView = true
+      this.mainTable = false;
+      this.addView = true;
       console.log(this.mainTable);
     },
     openActivities() {
@@ -135,8 +169,8 @@ export default {
     async printScr(board) {
       return html2canvas(this.$refs.screen).then((canvas) => {
         // console.log("canvas:", canvas);
-                const pageImg = canvas.toDataURL();
-                // console.log('pageImg:', pageImg);
+        const pageImg = canvas.toDataURL();
+        // console.log('pageImg:', pageImg);
         board.thumbnail = pageImg;
         return board;
       });
@@ -151,14 +185,14 @@ export default {
       return this.$store.getters.isActivitiesOpen;
     },
     viewActive() {
-      return { active: this.addView }
+      return { active: this.addView };
     },
     tableActive() {
-      return { active: this.mainTable }
-    }
+      return { active: this.mainTable };
+    },
   },
-   created() {
-      this.loadBoard();
+  created() {
+    this.loadBoard();
   },
   components: {
     appHeader,

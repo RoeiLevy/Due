@@ -11,12 +11,13 @@
     </div>
     <input
       v-if="editMode"
+      ref="input"
       v-model="taskToEdit.title"
       @keyup.enter="updateTask"
       @focusout="updateTask"
     />
     <div v-else class="task-title">
-      <label class="task-title-label" @click="editMode = true">
+      <label class="task-title-label" @click="handleEdit">
         {{ taskToEdit.title }}
       </label>
       <font-awesome-icon
@@ -74,14 +75,20 @@ export default {
       editMode: false,
       taskToEdit: null,
       styles: {
-         'border-color': this.groupColor,
+        "border-color": this.groupColor,
       },
-      isActivitiesOpen: false
+      isActivitiesOpen: false,
     };
   },
   methods: {
+    handleEdit() {
+      this.editMode = true;
+      setTimeout(() => {
+        this.$refs.input.focus();
+      }, 0);
+    },
     openActivities() {
-      this.isActivitiesOpen = true
+      this.isActivitiesOpen = true;
     },
     async setStatus(status) {
       this.isSelectingStatus = false;
@@ -107,7 +114,7 @@ export default {
   },
   computed: {
     taskColor() {
-      return `border-left-color: ${this.groupColor}`
+      return `border-left-color: ${this.groupColor}`;
     },
   },
   created() {
@@ -116,7 +123,7 @@ export default {
   },
   components: {
     statusPicker,
-    taskDetails
+    taskDetails,
   },
 };
 </script>

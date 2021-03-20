@@ -1,7 +1,7 @@
 <template>
   <section class="group-container">
     <div class="flex group-header">
-      <el-dropdown  @command="handleCommand" class="drop-down" trigger="click">
+      <el-dropdown @command="handleCommand" class="drop-down" trigger="click">
         <span :style="groupColor" class="el-dropdown-link">
           <font-awesome-icon class="header-icon" icon="caret-square-down" />
         </span>
@@ -16,13 +16,14 @@
       <div class="group-title-wrapper">
         <input
           v-if="editMode"
+          ref="input"
           v-model="groupToEdit.title"
           @keyup.enter="saveGroup"
           @focusout="saveGroup"
           class="group-title"
         />
         <div class="group-title" v-else>
-          <label @click="editMode = true">
+          <label @click="handleEdit">
             {{ groupToEdit.title }}
           </label>
         </div>
@@ -121,6 +122,12 @@ export default {
     };
   },
   methods: {
+    handleEdit() {
+      this.editMode = true;
+      setTimeout(() => {
+        this.$refs.input.focus();
+      }, 0);
+    },
     handleCommand(command) {
       this.$message("click on item " + command);
       switch (command) {
@@ -195,7 +202,7 @@ export default {
       return this.$store.getters.loggedinUser;
     },
     groupColor() {
-      return `color: ${this.group.style.color}`
+      return `color: ${this.group.style.color}`;
     },
     dragOptions() {
       return {

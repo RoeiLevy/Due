@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <button @click="saveContent"></button>
+    <!-- <button @click="saveContent"></button> -->
     <vue-editor v-model="content"></vue-editor>
   </div>
 </template>

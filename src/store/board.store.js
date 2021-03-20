@@ -8,6 +8,9 @@ export const boardStore = {
         boards: []
     },
     getters: {
+        currBoardId(state) {
+            return state.currBoard._id
+        },
         boardForDisplay(state) {
             return state.currBoard
         },
@@ -101,6 +104,7 @@ export const boardStore = {
             try {
                 const savedGroup = await boardService.saveGroup(group, context.state.currBoard._id);
                 context.commit({ type: 'saveGroup', group: savedGroup })
+                return savedGroup
             } catch (err) {
                 console.log('Board store:Error in saveGroup', err);
                 throw err;
@@ -156,5 +160,8 @@ export const boardStore = {
                 throw err
             }
         },
+        async getTask(context, { taskId }) {
+            console.log(taskId);
+        }
     }
 }

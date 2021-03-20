@@ -62,6 +62,7 @@
     >
       <transition-group type="transition">
         <task-preview
+          :groupId="group.id"
           :groupColor="group.style.color"
           @removeTask="removeTask"
           v-for="task in groupToEdit.tasks"
@@ -142,7 +143,6 @@ export default {
       };
     },
     async updateTask(task) {
-      console.log("task from group emit", task);
       try {
         await this.$store.dispatch({
           type: "updateTask",
@@ -170,7 +170,6 @@ export default {
     async saveGroup() {
       try {
         this.editMode = false;
-
         await this.$store.dispatch("saveGroup", this.groupToEdit);
         this.groupToEdit = { ...this.group };
       } catch (err) {
@@ -207,7 +206,6 @@ export default {
     },
   },
   created() {
-    console.log(this.group);
     this.groupToEdit = { ...this.group };
     // this.$on("updateTask", this.updateTask);
   },

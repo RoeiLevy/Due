@@ -6,41 +6,48 @@ import signup from '../views/signup.vue'
 import userProfile from '../views/user-profile.vue'
 import board from '../views/board.vue'
 import boardList from '../views/board-list.vue'
+import taskDetails from '../cmps/task-details'
 
 Vue.use(VueRouter)
 
 const routes = [{
-        path: '/',
-        name: 'home',
-        component: home
-    },
-    {
-        path: '/board',
-        name: 'board list',
-        component: boardList
-    },
+    path: '/',
+    name: 'home',
+    component: home
+},
+{
+    path: '/board',
+    name: 'board list',
+    component: boardList
+},
 
-    {
-        path: '/board/:boardId?',
-        name: 'board',
-        component: board,
-
-    },
-    {
-        path: '/login',
-        name: 'login',
-        component: login
-    },
-    {
-        path: '/signup',
-        name: 'signup',
-        component: signup
-    },
-    {
-        path: '/user/:userId',
-        name: 'user profile',
-        component: userProfile
-    },
+{
+    path: '/board/:boardId',
+    name: 'board',
+    component: board,
+    children: [
+        {
+            path: ':groupId/task/:taskId',
+            name: 'task details',
+            component: taskDetails,
+        }
+    ]
+},
+{
+    path: '/login',
+    name: 'login',
+    component: login
+},
+{
+    path: '/signup',
+    name: 'signup',
+    component: signup
+},
+{
+    path: '/user/:userId',
+    name: 'user profile',
+    component: userProfile
+},
 ]
 
 const router = new VueRouter({

@@ -2,6 +2,8 @@
   <div class="board-surface">
     <!-- <div ref="capture"> -->
     <app-header />
+    <!-- <bar-chart v-if="board" :board="board"></bar-chart> -->
+
     <div v-if="board" class="flex board" ref="screen">
       <task-details :drawer="isActivitiesOpen" />
       <div class="flex column board-container">
@@ -45,20 +47,20 @@
             </div>
             <div
               :class="tableActive"
-              @click="activateTable"
+              @click="activateMainTable"
               class="main-table-wrapper"
             >
               <button>Main Table</button>
             </div>
             <div
-              class="main-table-wrapper"
               v-for="(view, idx) in board.views"
               :key="idx"
+              class="main-table-wrapper"
             >
               <button>{{ view }}</button>
             </div>
             <el-dropdown
-              @command="addView"
+              @command="handleCommand"
               class="views-drop-down"
               trigger="click"
             >
@@ -80,12 +82,36 @@
             <draggable
               v-model="boardToEdit.groups"
               @change="saveBoard(boardToEdit)"
+              v-bind="dragOptions"
+              @start="drag = true"
+              @end="drag = false"
             >
-              <group
-                v-for="group in boardToEdit.groups"
-                :group="group"
-                :key="group.id"
-              />
+              <transition-group
+                type="transition"
+                :name="!drag ? 'flip-list' : null"
+              >
+                <!-- <li
+                  class="list-group-item"
+                  v-for="element in list"
+                  :key="element.order"
+                >
+                  <i
+                    :class="
+                      element.fixed
+                        ? 'fa fa-anchor'
+                        : 'glyphicon glyphicon-pushpin'
+                    "
+                    @click="element.fixed = !element.fixed"
+                    aria-hidden="true"
+                  ></i>
+                  {{ element.name }}
+                </li> -->
+                <group
+                  v-for="group in boardToEdit.groups"
+                  :group="group"
+                  :key="group.id"
+                />
+              </transition-group>
             </draggable>
           </div>
         </div>
@@ -100,6 +126,7 @@ import group from "../cmps/group";
 import appHeader from "../cmps/header";
 import draggable from "vuedraggable";
 import taskDetails from "../cmps/task-details";
+import barChart from "../cmps/bar-chart";
 
 import { boardService } from "../services/board.service";
 
@@ -115,7 +142,7 @@ export default {
     };
   },
   methods: {
-    addView(command) {
+    handleCommand(command) {
       this.boardToEdit.views.push(command);
       this.saveBoard(this.boardToEdit);
     },
@@ -190,6 +217,14 @@ export default {
     tableActive() {
       return { active: this.mainTable };
     },
+    dragOptions() {
+      return {
+        animation: 200,
+        group: "description",
+        disabled: false,
+        ghostClass: "ghost"
+      };
+    }
   },
   created() {
     this.loadBoard();
@@ -199,6 +234,7 @@ export default {
     group,
     draggable,
     taskDetails,
+    barChart,
   },
 };
 </script>

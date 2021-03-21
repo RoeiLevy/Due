@@ -34,6 +34,7 @@
         font-size: 18px;
         border: 1px dashed transparent;
         padding: 0;
+        text-transform: capitalize;
     }
     input.group-title {
         outline: none;
@@ -80,7 +81,7 @@
     .add-task-wrapper:hover {
         filter: brightness(98%);
         cursor: pointer;
-        border: 1px solid rgb(61, 61, 61);
+        // border: 1px solid rgb(50, 51, 56);
     }
 }
 
@@ -97,10 +98,21 @@
 }
 
 .add-task-input {
+    height: 36px;
     width: 100%;
     outline: none;
     border: 1px solid gainsboro;
     padding: 10px;
+    border-left: 8.5px solid;
+    opacity: .6;
+    transition: all .4s;
+}
+.add-task-input:focus{
+    opacity: 1;
+
+}
+.add-task-input:hover{
+    opacity: 1;
 }
 
 .add-task-btn:hover {

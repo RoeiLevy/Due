@@ -4,48 +4,54 @@
     <app-header />
     <!-- <bar-chart v-if="board" :board="board"></bar-chart> -->
 
-    <div v-if="board" class="flex board" ref="screen">
+    <div v-if="boardToEdit" class="flex board" ref="screen">
+      <social-modal
+        v-if="isAddingMembers"
+        :members="board.members"
+      ></social-modal>
       <task-details :drawer="isActivitiesOpen" />
       <div class="flex column board-container">
         <div class="flex column board-header">
           <div class="flex space-between top-header">
             <div class="board-title-container">
-            <input
-              class="board-title"
-              v-if="titleEditMode"
-              ref="title"
-              v-model="boardToEdit.title"
-              @keyup.enter="saveBoard(boardToEdit)"
-              @focusout="saveBoard(boardToEdit)"
-            />
-            <div v-else>
-              <h1 class="board-title" @click="handleEdit('title')">
-                {{ boardToEdit.title }}
-              </h1>
+              <input
+                class="board-title"
+                v-if="titleEditMode"
+                ref="title"
+                v-model="boardToEdit.title"
+                @keyup.enter="saveBoard(boardToEdit)"
+                @focusout="saveBoard(boardToEdit)"
+              />
+              <div v-else>
+                <h1 class="board-title" @click="handleEdit('title')">
+                  {{ boardToEdit.title }}
+                </h1>
+              </div>
+
+              <!-- //////////////////////////////////// -->
+
+              <input
+                class="board-description"
+                v-if="descEditMode"
+                ref="description"
+                v-model="boardToEdit.description"
+                @keyup.enter="saveBoard(boardToEdit)"
+                @focusout="saveBoard(boardToEdit)"
+              />
+              <div v-else>
+                <p class="board-description" @click="handleEdit('description')">
+                  {{ boardToEdit.description }}
+                </p>
+              </div>
             </div>
 
-<!-- //////////////////////////////////// -->
-
-            <input
-              class="board-description"
-              v-if="descEditMode"
-              ref="description"
-              v-model="boardToEdit.description"
-              @keyup.enter="saveBoard(boardToEdit)"
-              @focusout="saveBoard(boardToEdit)"
-            />
-            <div v-else>
-              <p class="board-description" @click="handleEdit('description')">
-                {{ boardToEdit.description }}
-              </p>
-            </div>
-          </div>
-
-<!-- //////////////////////////////////// -->
+            <!-- //////////////////////////////////// -->
 
             <div class="board-actions">
-              <button>
-                <font-awesome-icon class="header-icon plus" icon="plus" />
+              <button @click="isAddingMembers = !isAddingMembers">
+                <font-awesome-icon class="header-icon" icon="user-friends" />
+                Members/
+                <font-awesome-icon class="header-icon plus" icon="user-plus" />
                 Invite
               </button>
               <button @click="openActivities">
@@ -76,32 +82,38 @@
                   <!-- <span class="view-menu-btn">Menu</span> -->
                   <el-dropdown trigger="click" class="view-menu-btn">
                     <span class="el-dropdown-link">
-                      <i
-                        class="el-icon-more"
-                      ></i>
+                      <i class="el-icon-more"></i>
                     </span>
                     <el-dropdown-menu slot="dropdown">
                       <el-dropdown-item>Rename</el-dropdown-item>
                       <el-dropdown-item>Duplicate</el-dropdown-item>
-                      <el-dropdown-item style="'background-color:red'">Remove</el-dropdown-item>
+                      <el-dropdown-item style="'background-color:red'"
+                        >Remove</el-dropdown-item
+                      >
                     </el-dropdown-menu>
                   </el-dropdown>
                 </button>
               </div>
             </div>
             <el-dropdown
-              @command="addView"
               class="views-drop-down add-view-wrapper"
               trigger="click"
             >
               <span class="views-el-dropdown-link add-view-wrapper">
-                
-                <button><font-awesome-icon class="header-icon" icon="plus" /> Add View</button>
+                <button>
+                  <font-awesome-icon class="header-icon" icon="plus" /> Add View
+                </button>
               </span>
               <el-dropdown-menu slot="dropdown">
-                <el-dropdown-item command="Calander">Calander</el-dropdown-item>
-                <el-dropdown-item command="Chart">Chart</el-dropdown-item>
-                <el-dropdown-item command="Kanban">Kanban</el-dropdown-item>
+                <el-dropdown-item @click="addView('Calander')"
+                  >Calander</el-dropdown-item
+                >
+                <el-dropdown-item @click="addView('Chart')"
+                  >Chart</el-dropdown-item
+                >
+                <el-dropdown-item @click="addView('Kanban')"
+                  >Kanban</el-dropdown-item
+                >
               </el-dropdown-menu>
             </el-dropdown>
           </nav>
@@ -121,6 +133,10 @@
               :group="group"
               @loadBoard="loadBoard"
               @removeTask="removeTask"
+              @updateTask="updateTask"
+              @saveGroup="saveGroup"
+              @addTask="addTask"
+              @removeGroup="removeGroup"
             />
             <!-- </transition-group>
             </draggable> -->
@@ -134,78 +150,145 @@
 <script>
 import html2canvas from "html2canvas";
 import group from "../cmps/group";
+import socialModal from "../cmps/social-modal";
 import appHeader from "../cmps/header";
 import draggable from "vuedraggable";
 import taskDetails from "../cmps/task-details";
 import barChart from "../cmps/bar-chart";
 
 import { boardService } from "../services/board.service";
+import { utilService } from "../services/util.service";
 
 export default {
   name: "board",
   data() {
     return {
       groups: [],
-      board: null,
       boardToEdit: null,
       titleEditMode: false,
       descEditMode: false,
       mainTable: true,
-      addView: false,
+      addingView: false,
+      isAddingMembers: false,
     };
   },
   methods: {
-    async removeTask(taskId, groupId){
-      console.log('group id:', groupId)
-      console.log('task id:', taskId)
-      
-        const groupIdx = this.boardToEdit.groups.findIndex(group => group.id === groupId);
-            const taskIdx = this.boardToEdit.groups[groupIdx].tasks.findIndex(item => item.id === taskId);
-            this.boardToEdit.groups[groupIdx].tasks.splice(taskIdx, 1);
-            this.saveBoard({...this.boardToEdit});
-      //       try {
-      //   await this.$store.dispatch({
-      //     type: "removeTask",
-      //     taskId,
-      //     groupId,
-      //   });
-      // } catch (err) {
-      //   console.log("Couldn`t remove Task", err);
-      //   throw err;
-      // }
+    async removeGroup(groupId) {
+      try {
+        const groupIdx = this.boardToEdit.groups.findIndex(
+          (g) => g.id === groupId
+        );
+        this.boardToEdit.groups.splice(groupIdx, 1);
 
+        await this.$store.dispatch({
+          type: "saveBoard",
+          boardToSave: this.boardToEdit,
+        });
+        // Add user msg
+      } catch (err) {
+        console.log("Couldn`t remove Group", err);
+        throw err;
+      }
+    },
+    async saveGroup(groupToEdit) {
+      console.log("saving");
+      try {
+        const groupIdx = this.boardToEdit.groups.findIndex(
+          (g) => g.id === groupToEdit.id
+        );
+        this.boardToEdit.groups.splice(groupIdx, 1, groupToEdit);
+        await this.$store.dispatch({
+          type: "saveBoard",
+          boardToSave: this.boardToEdit,
+        });
+        // Add user msg
+      } catch (err) {
+        console.log("Couldn`t Save Group", err);
+        throw err;
+      }
+    },
+    async addTask(newTask, groupId) {
+      try {
+        newTask.createdAt = Date.now();
+        newTask.id = utilService.makeId();
+        const groupIdx = this.boardToEdit.groups.findIndex(
+          (g) => g.id === groupId
+        );
+        this.boardToEdit.groups[groupIdx].tasks.push(newTask);
+        await this.$store.dispatch({
+          type: "saveBoard",
+          boardToSave: this.boardToEdit,
+        });
+        // Add user msg
+      } catch (err) {
+        console.log("err:", err);
+      }
+    },
+    async updateTask(task, groupId) {
+      try {
+        const groupIdx = this.boardToEdit.groups.findIndex(
+          (g) => g.id === groupId
+        );
+        const taskIdx = this.boardToEdit.groups[groupIdx].tasks.findIndex(
+          (t) => t.id === task.id
+        );
+        this.boardToEdit.groups[groupIdx].tasks.splice(taskIdx, 1, task);
+        await this.$store.dispatch({
+          type: "saveBoard",
+          boardToSave: this.boardToEdit,
+        });
+        // Add user msg
+      } catch (err) {
+        console.log("Couldn`t remove Task", err);
+        throw err;
+      }
+    },
+    async removeTask(taskId, groupId) {
+      try {
+        const groupIdx = this.boardToEdit.groups.findIndex(
+          (group) => group.id === groupId
+        );
+        const taskIdx = this.boardToEdit.groups[groupIdx].tasks.findIndex(
+          (item) => item.id === taskId
+        );
+        this.boardToEdit.groups[groupIdx].tasks.splice(taskIdx, 1);
+        await this.$store.dispatch({
+          type: "saveBoard",
+          boardToSave: this.boardToEdit,
+        });
+        // Add user msg
+      } catch (err) {
+        console.log("err:", err);
+      }
     },
     addView(command) {
       this.boardToEdit.views.push(command);
       this.saveBoard(this.boardToEdit);
     },
     handleEdit(item) {
-      switch (item){
-        case 'description':           
-        this.descEditMode = true;
+      switch (item) {
+        case "description":
+          this.descEditMode = true;
           setTimeout(() => {
             this.$refs.description.focus();
           }, 0);
           break;
 
-        case 'title': 
+        case "title":
           this.titleEditMode = true;
           setTimeout(() => {
             this.$refs.title.focus();
           }, 0);
           break;
-
-        
       }
     },
     activateMainTable() {
-      this.addView = false;
+      this.addingView = false;
       this.mainTable = true;
-      console.log(this.mainTable);
     },
     activateView() {
       this.mainTable = false;
-      this.addView = true;
+      this.addingView = true;
       console.log(this.mainTable);
     },
     openActivities() {
@@ -218,35 +301,41 @@ export default {
           type: "loadBoard",
           boardId,
         });
-        console.log("board:", board);
-        // this.groups = { ...board.groups };
-        this.board = board;
-        this.boardToEdit = { ...board };
+        this.boardToEdit = JSON.parse(JSON.stringify(board));
       } catch (err) {
         console.log("err:", err);
       }
     },
     async saveBoard(board) {
-      this.titleEditMode = false;
-      this.descEditMode = false;
-      console.log("saving");
-      const boardWithUrl = await this.printScr(board);
-      await this.$store.dispatch("saveBoard", boardWithUrl);
-      await this.loadBoard();
+      try {
+        this.titleEditMode = false;
+        this.descEditMode = false;
+        const boardWithUrl = await this.printScr(board);
+        await this.$store.dispatch(
+          "saveBoard",
+          JSON.parse(JSON.stringify(boardWithUrl))
+        );
+        this.loadBoard();
+      } catch (err) {
+        console.log("err:", err);
+      }
     },
     async addNewGroup() {
       try {
-        const newBoard = JSON.parse(JSON.stringify(this.board));
-        newBoard.groups.unshift(boardService.getEmptyGroup());
-        const savedBoard = await this.$store.dispatch("saveBoard", newBoard);
-        this.loadBoard();
-      } catch (err) {}
+        const newGroup = boardService.getEmptyGroup();
+        this.boardToEdit.groups.unshift(newGroup);
+        await this.$store.dispatch({
+          type: "saveBoard",
+          boardToSave: this.boardToEdit,
+        });
+        // Add user msg
+      } catch (err) {
+        console.log("err:", err);
+      }
     },
     async printScr(board) {
       return html2canvas(this.$refs.screen).then((canvas) => {
-        // console.log("canvas:", canvas);
         const pageImg = canvas.toDataURL();
-        // console.log('pageImg:', pageImg);
         board.thumbnail = pageImg;
         return board;
       });
@@ -264,7 +353,7 @@ export default {
       return this.$store.getters.isActivitiesOpen;
     },
     viewActive() {
-      return { active: this.addView };
+      return { active: this.addingView };
     },
     tableActive() {
       return { active: this.mainTable };
@@ -287,6 +376,7 @@ export default {
     draggable,
     taskDetails,
     barChart,
+    socialModal,
   },
 };
 </script>

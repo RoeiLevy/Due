@@ -87,21 +87,16 @@ export default {
       }, 0);
     },
     openActivities() {
-      this.isActivitiesOpen = true
-      this.$store.commit( { type: 'toggleActivities'})
-      this.$router.push(`/board/${this.boardId}/${this.groupId}/task/${this.task.id}`)
+      this.isActivitiesOpen = true;
+      this.$store.commit({ type: "toggleActivities" });
+      this.$router.push(
+        `/board/${this.boardId}/${this.groupId}/task/${this.task.id}`
+      );
     },
-    async setStatus(status) {
+    setStatus(status) {
       this.isSelectingStatus = false;
-      try {
-        this.taskToEdit.status = status;
-        this.$emit("updateTask", this.taskToEdit);
-        // await this.$store.dispatch("updateTask", this.taskToEdit);
-        // this.taskToEdit = { ...this.task };
-      } catch (err) {
-        console.log("Couldn`t Save Task", err);
-        throw err;
-      }
+      this.taskToEdit.status = status;
+      this.$emit("updateTask", this.taskToEdit);
     },
     updateTask() {
       this.editMode = false;
@@ -116,11 +111,11 @@ export default {
       return `border-left-color: ${this.groupColor}`;
     },
     boardId() {
-      return this.$store.getters.currBoardId
-    }
+      return this.$store.getters.currBoardId;
+    },
   },
   created() {
-    this.taskToEdit = { ...this.task };
+    this.taskToEdit = JSON.parse(JSON.stringify(this.task));
   },
   components: {
     statusPicker,

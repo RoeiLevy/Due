@@ -5,13 +5,13 @@
         <img class="logo" src="@/assets/imgs/logo.png" />
       </router-link>
       <div class="switch-container">
-      <p>Switch View</p>
    <el-switch
    class="switch"
   v-model="viewValue"
-  active-color="#13ce66"
-  inactive-color="#ff4949">
+  active-color="#323338"
+  inactive-color="#323338">
 </el-switch>
+      <p>Switch View</p>
       </div>
 
 

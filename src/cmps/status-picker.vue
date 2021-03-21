@@ -18,29 +18,8 @@
       >
         {{ status.title }}
       </el-tag>
-      <el-tag
-        v-if="!isAdding"
-        @click="isAdding = !isAdding"
-        effect="dark"
-        style="{ 'background-color':gray }"
-      >
-        New Status
-      </el-tag>
-      <!-- <el-tag
-        v-else
-        @click="isAdding = !isAdding"
-        :style="{ 'background-color': status.color }"
-        effect="dark"
-      >
-        {{ status.title }}
-      </el-tag> -->
-      <div v-else>
-        <el-input placeholder="Please input" v-model="newStatus.title"></el-input>
-        <el-color-picker
-          v-model="newStatus.color"
-          size="mini"
-        ></el-color-picker>
-      </div>
+      <button v-if="editMode=false" @click="editMode=true">Add/Edit Statuses</button>
+      <button v-else @click="editMode=false">Apply</button>
     </draggable>
   </div>
 </template>
@@ -55,7 +34,7 @@ export default {
         color: "",
         title: "",
       },
-      isAdding:false
+      editMode:false
     };
   },
   methods: {

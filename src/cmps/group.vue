@@ -21,7 +21,8 @@
         </el-dropdown-menu>
       </el-dropdown>
       <div class="group-title-wrapper">
-        <input required
+        <input
+          required
           v-if="editMode"
           ref="input"
           v-model="groupToEdit.title"
@@ -35,7 +36,7 @@
             class="group-title"
             @click="handleEdit"
           >
-            {{ groupToEdit.title }}
+            {{ group.title }}
           </h1>
         </div>
         <!-- <label v-for="(header, idx) in group.headers" :key="idx">{{
@@ -74,7 +75,7 @@
       <div class="add-task-wrapper">
         <form class="flex add-task-form" @submit.prevent="addTask()">
           <input
-            :style="{'border-left-color':group.style.color}"
+            :style="{ 'border-left-color': group.style.color }"
             class="add-task-input"
             type="text"
             placeholder="    + Add Task"
@@ -89,9 +90,10 @@
 
 
 <script>
-import taskPreview from "./task-preview.vue";
+import taskPreview from "./task-preview";
 import draggable from "vuedraggable";
 import { Dropdown } from "element-ui";
+
 export default {
   name: "group",
   props: ["group"],
@@ -125,7 +127,7 @@ export default {
       }
     },
     addTask() {
-      const newTask = JSON.parse(JSON.stringify(this.taskToEdit))
+      const newTask = JSON.parse(JSON.stringify(this.taskToEdit));
       this.$emit("addTask", newTask, this.group.id);
       this.taskToEdit = {
         title: "",
@@ -139,12 +141,16 @@ export default {
     removeTask(taskId) {
       this.$emit("removeTask", taskId, this.group.id);
     },
-    saveGroup() {
-      this.editMode = false;
-      this.$emit("saveGroup", this.groupToEdit);
+    async saveGroup() {
+      try {
+        this.editMode = false;
+        await this.$emit("saveGroup", this.groupToEdit);
+      } catch (err) {
+        console.log("err:", err);
+      }
     },
     removeGroup() {
-      this.$emit('removeGroup', this.group.id)
+      this.$emit("removeGroup", this.group.id);
     },
   },
   computed: {
@@ -165,6 +171,11 @@ export default {
   },
   created() {
     this.groupToEdit = JSON.parse(JSON.stringify(this.group));
+  },
+  watch: {
+    group: function (newVal, oldVal) {
+      this.groupToEdit = JSON.parse(JSON.stringify(newVal))
+    },
   },
   components: {
     taskPreview,

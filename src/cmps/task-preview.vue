@@ -70,6 +70,7 @@ import moment from "moment";
 import statusPicker from "./status-picker.vue";
 
 export default {
+  name: 'task-preview',
   props: ["task", "groupColor", "groupId"],
   data() {
     return {
@@ -123,6 +124,11 @@ export default {
   },
   created() {
     this.taskToEdit = JSON.parse(JSON.stringify(this.task));
+  },
+    watch: {
+    task: function (newVal, oldVal) {
+      this.taskToEdit = JSON.parse(JSON.stringify(newVal))
+    },
   },
   components: {
     statusPicker,

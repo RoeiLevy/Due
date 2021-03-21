@@ -46,11 +46,14 @@ export const boardStore = {
             state.currBoard.groups.splice(idx, 1);
         },
         addTask(state, { task, groupId }) {
+            console.log('groupId:', groupId)
+            console.log('task:', task)
             const currGroup = state.currBoard.groups.find(group => group.id === groupId);
             if (!currGroup || !currGroup.tasks) {
                 currGroup.tasks = [];
             }
             currGroup.tasks.push(task);
+            console.log('currGroup', currGroup);
         },
         updateTask(state, { task, groupId }) {
             console.log('update task - task', task, ' group id', groupId)

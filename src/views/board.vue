@@ -61,8 +61,8 @@
               trigger="click"
             >
               <span class="views-el-dropdown-link add-view-wrapper">
-                <font-awesome-icon class="header-icon" icon="plus" />
-                Add View
+                
+                <button><font-awesome-icon class="header-icon" icon="plus" /> Add View</button>
               </span>
               <el-dropdown-menu slot="dropdown">
                 <el-dropdown-item command="Calander">Calander</el-dropdown-item>

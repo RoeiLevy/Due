@@ -1,12 +1,8 @@
 <template>
   <div class="task-wrapper flex">
     <div :style="taskColor" class="task-color-box-start"></div>
-    <div class="remove-btn-wrapper">
-      <font-awesome-icon
-        @click="removeTask"
-        class="header-icon remove-btn"
-        icon="trash"
-      />
+    <div class="remove-btn-wrapper" @click="removeTask">
+      <font-awesome-icon class="header-icon remove-btn" icon="trash" />
     </div>
     <input
       v-if="editMode"
@@ -26,7 +22,8 @@
         icon="comment"
       />
     </div>
-    <div class="task-members-container">
+    <div class="task-members-container" @click="addTaskMembers">
+      <font-awesome-icon class="add-btn" icon="plus" />
       <div v-if="task.members" class="avatar-container">
         <el-avatar
           v-for="member in task.members"
@@ -49,6 +46,7 @@
       <h3 v-else @click="isSelectingStatus = !isSelectingStatus">Status</h3>
       <status-picker
         @setStatus="setStatus"
+        @addStatus="addStatus"
         v-if="isSelectingStatus"
       ></status-picker>
     </div>
@@ -66,7 +64,7 @@ import moment from "moment";
 import statusPicker from "./status-picker.vue";
 
 export default {
-  name: 'task-preview',
+  name: "task-preview",
   props: ["task", "groupColor", "groupId"],
   data() {
     return {
@@ -81,6 +79,7 @@ export default {
     };
   },
   methods: {
+    addTaskMembers() {},
     handleEdit() {
       this.editMode = true;
       setTimeout(() => {
@@ -98,6 +97,9 @@ export default {
       this.isSelectingStatus = false;
       this.taskToEdit.status = status;
       this.$emit("updateTask", this.taskToEdit);
+    },
+    addStatus(status) {
+      this.$emit("addStatus", status);
     },
     updateTask() {
       this.editMode = false;
@@ -118,9 +120,9 @@ export default {
   created() {
     this.taskToEdit = JSON.parse(JSON.stringify(this.task));
   },
-    watch: {
+  watch: {
     task: function (newVal, oldVal) {
-      this.taskToEdit = JSON.parse(JSON.stringify(newVal))
+      this.taskToEdit = JSON.parse(JSON.stringify(newVal));
     },
   },
   components: {

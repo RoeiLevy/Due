@@ -14,10 +14,10 @@ Vue.use(ElementUI);
 
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faComment, faChartLine, faPlus, faThLarge, faBell, faInbox, faCalendarCheck, faUserPlus, faSearch, faCaretSquareDown, faTrash , faClosedCaptioning,faUserFriends} from '@fortawesome/free-solid-svg-icons'
+import { faTh, faComment, faChartLine, faPlus, faThLarge, faBell, faInbox, faCalendarCheck, faUserPlus, faSearch, faCaretSquareDown, faTrash , faClosedCaptioning,faUserFriends} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add( faComment, faChartLine, faPlus, faThLarge, faBell, faInbox, faCalendarCheck, faUserPlus, faSearch, faCaretSquareDown, faTrash, faClosedCaptioning,faUserFriends)
+library.add( faTh, faComment, faChartLine, faPlus, faThLarge, faBell, faInbox, faCalendarCheck, faUserPlus, faSearch, faCaretSquareDown, faTrash, faClosedCaptioning,faUserFriends)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 

@@ -21,7 +21,7 @@
         </el-dropdown-menu>
       </el-dropdown>
       <div class="group-title-wrapper">
-        <input
+        <input required
           v-if="editMode"
           ref="input"
           v-model="groupToEdit.title"
@@ -56,9 +56,8 @@
     <draggable
       v-model="groupToEdit.tasks"
       @change="saveGroup"
-      v-bind="dragOptions"
-    >
-      <transition-group type="transition">
+      v-bind="dragOptions">
+   <transition-group type="transition">
         <task-preview
           :groupId="group.id"
           :groupColor="group.style.color"
@@ -68,7 +67,7 @@
           :task="task"
           @updateTask="updateTask"
         />
-      </transition-group>
+      </transition-group> 
     </draggable>
     <div class="group-footer">
       <div class="add-task-wrapper">
@@ -129,8 +128,8 @@ export default {
         taskToEdit: this.taskToEdit,
         groupId: this.group.id,
       });
-      // this.groupToEdit.tasks.push(task)
-      this.$emit("loadBoard");
+      this.groupToEdit.tasks.push(task)
+      this.$emit('loadBoard');
       this.taskToEdit = {
         title: "",
         createdAt: null,
@@ -151,16 +150,17 @@ export default {
     },
     async removeTask(taskId) {
       console.log("task from group emit", taskId);
-      try {
-        await this.$store.dispatch({
-          type: "removeTask",
-          taskId,
-          groupId: this.group.id,
-        });
-      } catch (err) {
-        console.log("Couldn`t remove Task", err);
-        throw err;
-      }
+        this.$emit('removeTask', taskId, this.group.id);
+      // try {
+      //   await this.$store.dispatch({
+      //     type: "removeTask",
+      //     taskId,
+      //     groupId: this.group.id,
+      //   });
+      // } catch (err) {
+      //   console.log("Couldn`t remove Task", err);
+      //   throw err;
+      // }
     },
     async saveGroup() {
       try {

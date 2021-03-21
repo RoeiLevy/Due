@@ -10,6 +10,7 @@
       <div class="flex column board-container">
         <div class="flex column board-header">
           <div class="flex space-between top-header">
+            <div class="board-title-container">
             <input
               class="board-title"
               v-if="editMode"
@@ -20,9 +21,28 @@
             />
             <div v-else>
               <h1 class="board-title" @click="handleEdit">
-                {{ currBoard.title }}
+                {{ boardToEdit.title }}
               </h1>
             </div>
+
+<!-- //////////////////////////////////// -->
+
+            <input
+              class="board-description"
+              v-if="editMode"
+              ref="input"
+              v-model="boardToEdit.description"
+              @keyup.enter="saveBoard(boardToEdit)"
+              @focusout="saveBoard(boardToEdit)"
+            />
+            <div v-else>
+              <p class="board-description" @click="handleEdit">
+                {{ boardToEdit.description }}
+              </p>
+            </div>
+          </div>
+
+<!-- //////////////////////////////////// -->
 
             <div class="board-actions">
               <button @click="isAddingMembers=!isAddingMembers">
@@ -105,10 +125,11 @@
             >
               <transition-group type="transition"> -->
             <group
-              v-for="group in board.groups"
+              v-for="group in boardToEdit.groups"
               :key="group.id"
               :group="group"
               @loadBoard="loadBoard"
+              @removeTask="removeTask"
             />
             <!-- </transition-group>
             </draggable> -->
@@ -144,6 +165,26 @@ export default {
     };
   },
   methods: {
+    async removeTask(taskId, groupId){
+      console.log('group id:', groupId)
+      console.log('task id:', taskId)
+      
+        const groupIdx = this.boardToEdit.groups.findIndex(group => group.id === groupId);
+            const taskIdx = this.boardToEdit.groups[groupIdx].tasks.findIndex(item => item.id === taskId);
+            this.boardToEdit.groups[groupIdx].tasks.splice(taskIdx, 1);
+            this.saveBoard({...this.boardToEdit});
+      //       try {
+      //   await this.$store.dispatch({
+      //     type: "removeTask",
+      //     taskId,
+      //     groupId,
+      //   });
+      // } catch (err) {
+      //   console.log("Couldn`t remove Task", err);
+      //   throw err;
+      // }
+
+    },
     addView(view) {
       this.boardToEdit.views.push(view);
       this.saveBoard(this.boardToEdit);

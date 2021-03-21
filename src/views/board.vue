@@ -51,12 +51,28 @@
             >
               <button>Main Table</button>
               <div v-for="(view, idx) in currBoard.views" :key="idx">
-                <button>{{ view }}</button>
+                <button class="view-btn">
+                  {{ view }}
+                  <!-- <span class="view-menu-btn">Menu</span> -->
+                  <el-dropdown class="view-menu-btn">
+                    <span class="el-dropdown-link">
+                      <i
+                        class="el-icon-more"
+                      ></i>
+                    </span>
+                    <el-dropdown-menu slot="dropdown">
+                      <el-dropdown-item>Rename</el-dropdown-item>
+                      <el-dropdown-item>Duplicate</el-dropdown-item>
+                      <el-dropdown-item style="'background-color:red'">Remove</el-dropdown-item>
+                      <!-- <el-dropdown-item disabled>Action 4</el-dropdown-item> -->
+                      <!-- <el-dropdown-item divided>Action 5</el-dropdown-item> -->
+                    </el-dropdown-menu>
+                  </el-dropdown>
+                </button>
               </div>
             </div>
-            <!-- class="main-table-wrapper views-drop-down" -->
             <el-dropdown
-              @command="handleCommand"
+              @command="addView"
               class="views-drop-down add-view-wrapper"
               trigger="click"
             >
@@ -119,7 +135,7 @@ export default {
     };
   },
   methods: {
-    handleCommand(command) {
+    addView(command) {
       this.boardToEdit.views.push(command);
       this.saveBoard(this.boardToEdit);
     },
@@ -149,7 +165,7 @@ export default {
           type: "loadBoard",
           boardId,
         });
-        console.log('board:', board)
+        console.log("board:", board);
         // this.groups = { ...board.groups };
         this.board = board;
         this.boardToEdit = { ...board };

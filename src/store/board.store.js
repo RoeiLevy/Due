@@ -46,20 +46,23 @@ export const boardStore = {
             state.currBoard.groups.splice(idx, 1);
         },
         addTask(state, { task, groupId }) {
-            const currGroup = state.currBoard.groups.find(group => group.id === groupId);
-            if (!currGroup || !currGroup.tasks) {
-                currGroup.tasks = [];
-            }
-            currGroup.tasks.push(task);
+            const currGroupIdx = state.currBoard.groups.findIndex(group => group.id === groupId);
+            var newGroup = { ...state.currBoard.groups[currGroupIdx] }
+            newGroup.tasks.push(task)
+            state.currBoard.groups.splice(currGroupIdx, 1, newGroup);
+            // if (!currGroup || !currGroup.tasks) {
+            //     currGroup.tasks = [];
+            // }
+            // currGroup.tasks.push(task);
         },
         updateTask(state, { task, groupId }) {
-            console.log('update task - task', task, ' group id', groupId)
+            // console.log('update task - task', task, ' group id', groupId)
             const groupIdx = state.currBoard.groups.findIndex(group => group.id === groupId);
             const taskIdx = state.currBoard.groups[groupIdx].tasks.findIndex(item => item.id === task.id);
             state.currBoard.groups[groupIdx].tasks.splice(taskIdx, 1, task);
         },
         removeTask(state, { taskId, groupId }) {
-            console.log('removing task - task', taskId, ' group id', groupId)
+            // console.log('removing task - task', taskId, ' group id', groupId)
             const groupIdx = state.currBoard.groups.findIndex(group => group.id === groupId);
             const taskIdx = state.currBoard.groups[groupIdx].tasks.findIndex(item => item.id === taskId);
             state.currBoard.groups[groupIdx].tasks.splice(taskIdx, 1);
@@ -71,10 +74,10 @@ export const boardStore = {
                 const board = await boardService.getBoard(boardId);
                 context.commit({ type: 'setBoard', board })
                 return board
-                    // socketService.off(SOCKET_EVENT_REVIEW_ADDED)
-                    // socketService.on(SOCKET_EVENT_REVIEW_ADDED, review => {
-                    //     context.commit({ type: 'addReview', review })
-                    // })
+                // socketService.off(SOCKET_EVENT_REVIEW_ADDED)
+                // socketService.on(SOCKET_EVENT_REVIEW_ADDED, review => {
+                //     context.commit({ type: 'addReview', review })
+                // })
             } catch (err) {
                 console.log('boardStore: Error in loadBoard', err)
                 throw err
@@ -112,7 +115,7 @@ export const boardStore = {
         },
         async removeGroup({ commit, state }, { groupId }) {
             try {
-                await boardService.removeGroup(groupId, state.currBoard._id, )
+                await boardService.removeGroup(groupId, state.currBoard._id,)
                 commit({ type: 'removeGroup', groupId })
                 return groupId;
             } catch (err) {
@@ -153,7 +156,7 @@ export const boardStore = {
             try {
                 payload.taskToEdit.id = utilService.makeId();
                 const task = await boardService.addTask(payload.taskToEdit, payload.groupId, context.state.currBoard._id)
-                context.commit({ type: 'addTask', task, groupId: payload.groupId })
+                await context.dispatch({ type: 'loadBoard', boardId: context.state.currBoard._id })
                 return task;
             } catch (err) {
                 console.log('boardStore: Error in addTask', err)

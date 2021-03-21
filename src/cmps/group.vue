@@ -11,7 +11,11 @@
           >
           <el-dropdown-item class="dropdown-change-color"
             >Change Group Color
-            <el-color-picker @change="saveGroup" v-model="groupToEdit.style.color" size="mini"></el-color-picker>
+            <el-color-picker
+              @change="saveGroup"
+              v-model="groupToEdit.style.color"
+              size="mini"
+            ></el-color-picker>
           </el-dropdown-item>
           <el-dropdown-item>Action 3</el-dropdown-item>
         </el-dropdown-menu>
@@ -26,10 +30,10 @@
           class="group-title"
         />
         <div v-else>
-              <h1 class="group-title" @click="handleEdit">
-                {{ groupToEdit.title }}
-              </h1>
-            </div>
+          <h1 class="group-title" @click="handleEdit">
+            {{ groupToEdit.title }}
+          </h1>
+        </div>
         <!-- <label v-for="(header, idx) in group.headers" :key="idx">{{
           header
         }}</label> -->
@@ -115,11 +119,13 @@ export default {
     },
     async addTask() {
       this.taskToEdit.createdAt = Date.now();
-      await this.$store.dispatch({
+      const task=await this.$store.dispatch({
         type: "addTask",
         taskToEdit: this.taskToEdit,
         groupId: this.group.id,
       });
+      // this.groupToEdit.tasks.push(task)
+      this.$emit('loadBoard');
       this.taskToEdit = {
         title: "",
         createdAt: null,
@@ -153,7 +159,7 @@ export default {
     },
     async saveGroup() {
       try {
-        console.log('saving group')
+        console.log("saving group");
         this.editMode = false;
         await this.$store.dispatch("saveGroup", this.groupToEdit);
         this.groupToEdit = JSON.parse(JSON.stringify(this.group));
@@ -192,7 +198,7 @@ export default {
     },
   },
   created() {
-    this.groupToEdit =  JSON.parse(JSON.stringify(this.group)) ;
+    this.groupToEdit = JSON.parse(JSON.stringify(this.group));
     // this.$on("updateTask", this.updateTask);
   },
   components: {

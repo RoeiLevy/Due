@@ -19,7 +19,7 @@
             />
             <div v-else>
               <h1 class="board-title" @click="handleEdit">
-                {{ boardToEdit.title }}
+                {{ currBoard.title }}
               </h1>
             </div>
 
@@ -50,11 +50,11 @@
               class="main-table-wrapper"
             >
               <button>Main Table</button>
-              <div v-for="(view, idx) in board.views" :key="idx">
+              <div v-for="(view, idx) in currBoard.views" :key="idx">
                 <button>{{ view }}</button>
               </div>
             </div>
-              <!-- class="main-table-wrapper views-drop-down" -->
+            <!-- class="main-table-wrapper views-drop-down" -->
             <el-dropdown
               @command="handleCommand"
               class="views-drop-down add-view-wrapper"
@@ -82,9 +82,10 @@
             >
               <transition-group type="transition"> -->
             <group
-              v-for="group in boardToEdit.groups"
-              :group="group"
+              v-for="group in board.groups"
               :key="group.id"
+              :group="group"
+              @loadBoard="loadBoard"
             />
             <!-- </transition-group>
             </draggable> -->
@@ -109,6 +110,7 @@ export default {
   name: "board",
   data() {
     return {
+      groups: [],
       board: null,
       boardToEdit: null,
       editMode: false,
@@ -147,6 +149,8 @@ export default {
           type: "loadBoard",
           boardId,
         });
+        console.log('board:', board)
+        // this.groups = { ...board.groups };
         this.board = board;
         this.boardToEdit = { ...board };
       } catch (err) {
@@ -183,6 +187,9 @@ export default {
     // else setTimeout(()=>this.printScr(),1000);
   },
   computed: {
+    currBoard() {
+      return this.$store.getters.boardForDisplay;
+    },
     isActivitiesOpen() {
       return this.$store.getters.isActivitiesOpen;
     },

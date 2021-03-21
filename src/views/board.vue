@@ -54,7 +54,7 @@
                 <button class="view-btn">
                   {{ view }}
                   <!-- <span class="view-menu-btn">Menu</span> -->
-                  <el-dropdown class="view-menu-btn">
+                  <el-dropdown trigger="click" class="view-menu-btn">
                     <span class="el-dropdown-link">
                       <i
                         class="el-icon-more"
@@ -64,8 +64,6 @@
                       <el-dropdown-item>Rename</el-dropdown-item>
                       <el-dropdown-item>Duplicate</el-dropdown-item>
                       <el-dropdown-item style="'background-color:red'">Remove</el-dropdown-item>
-                      <!-- <el-dropdown-item disabled>Action 4</el-dropdown-item> -->
-                      <!-- <el-dropdown-item divided>Action 5</el-dropdown-item> -->
                     </el-dropdown-menu>
                   </el-dropdown>
                 </button>

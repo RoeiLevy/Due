@@ -30,7 +30,7 @@
         input {
             border: 1px dashed gray;
         }
-        .header-icon {
+        .header-icon * {
             color: #d6d9df;
             margin-right: 10px;
             cursor: pointer !important;
@@ -38,6 +38,7 @@
         .header-icon:hover {
             filter: brightness(70%);
             border: none !important;
+            cursor: pointer !important;
         }
         .task-title-label {
             height: 36px;
@@ -95,6 +96,9 @@
         align-items: center;
         justify-content: center;
         background-color: #d6d9df;
+    }
+    .avatar:hover {
+        filter: brightness(96%)
     }
     .status-container {
         @include task-cells;

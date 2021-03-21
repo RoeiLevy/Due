@@ -17,7 +17,7 @@
 }
 
 .switch-container {
-    padding: 10px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -29,6 +29,10 @@
 
 .el-switch__core {
     width: 50px;
+}
+
+.el-switch:hover {
+    filter: saturate(97%);
 }
 
 // .el-switch.is-checked .el-switch__core:active {

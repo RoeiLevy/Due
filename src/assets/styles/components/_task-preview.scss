@@ -30,7 +30,7 @@
         input {
             border: 1px dashed gray;
         }
-        .header-icon {
+        .header-icon * {
             color: #d6d9df;
             margin-right: 10px;
             cursor: pointer !important;
@@ -38,6 +38,7 @@
         .header-icon:hover {
             filter: brightness(70%);
             border: none !important;
+            cursor: pointer !important;
         }
         .task-title-label {
             height: 36px;
@@ -95,6 +96,9 @@
         align-items: center;
         justify-content: center;
         background-color: #d6d9df;
+    }
+    .avatar:hover {
+        filter: brightness(96%)
     }
     .status-container {
         @include task-cells;
@@ -155,6 +159,11 @@
     }
 }
 
+.task-wrapper:focus,
+.task-wrapper:active * {
+    background-color: #e5f4ff;
+}
+
 .task-wrapper:hover .remove-btn-wrapper {
     display: flex;
 }
@@ -198,6 +207,10 @@
     box-shadow: 0 0 20px rgba(51, 51, 51, 0.05);
     transform: rotate(1deg);
     transition: ease;
+}
+
+.task-wrapper:active>.remove-btn-wrapper {
+    background-color: #ffffff !important;
 }
 
 .sortable-chosen i {

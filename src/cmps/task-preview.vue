@@ -46,7 +46,6 @@
       <h3 v-else @click="isSelectingStatus = !isSelectingStatus">Status</h3>
       <status-picker
         @setStatus="setStatus"
-        @addStatus="addStatus"
         v-if="isSelectingStatus"
       ></status-picker>
     </div>
@@ -97,9 +96,6 @@ export default {
       this.isSelectingStatus = false;
       this.taskToEdit.status = status;
       this.$emit("updateTask", this.taskToEdit);
-    },
-    addStatus(status) {
-      this.$emit("addStatus", status);
     },
     updateTask() {
       this.editMode = false;

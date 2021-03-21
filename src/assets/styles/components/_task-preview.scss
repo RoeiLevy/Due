@@ -30,6 +30,9 @@
         input {
             border: 1px dashed gray;
         }
+        .header-icon {
+            margin-inline-end: 10px;
+        }
         .header-icon * {
             color: #d6d9df;
             margin-right: 10px;
@@ -84,6 +87,10 @@
     }
     .add-btn {
         display: none;
+        color: #d6d9df;
+    }
+    .add-btn:hover {
+        filter: brightness(60%);
     }
     .task-members-container:hover .add-btn {
         display: flex;
@@ -161,6 +168,11 @@
 
 .task-wrapper:focus,
 .task-wrapper:active * {
+    background-color: #e5f4ff;
+}
+
+.task-title:active,
+.task-title-input:active {
     background-color: #e5f4ff;
 }
 

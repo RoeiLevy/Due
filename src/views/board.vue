@@ -2,7 +2,7 @@
   <div class="board-surface">
     <!-- <div ref="capture"> -->
     <app-header />
-    <!-- <bar-chart v-if="board" :board="board"></bar-chart> -->
+    <!-- <bar-chart v-if="boardToEdit" :board="boardToEdit"></bar-chart> -->
 
     <div v-if="boardToEdit" class="flex board" ref="screen">
       <social-modal

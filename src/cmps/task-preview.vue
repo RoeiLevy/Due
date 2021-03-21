@@ -1,12 +1,8 @@
 <template>
   <div class="task-wrapper flex">
     <div :style="taskColor" class="task-color-box-start"></div>
-    <div class="remove-btn-wrapper">
-      <font-awesome-icon
-        @click="removeTask"
-        class="header-icon remove-btn"
-        icon="trash"
-      />
+    <div class="remove-btn-wrapper" @click="removeTask">
+      <font-awesome-icon class="header-icon remove-btn" icon="trash" />
     </div>
     <input
       v-if="editMode"
@@ -27,10 +23,7 @@
       />
     </div>
     <div class="task-members-container" @click="addTaskMembers">
-        <font-awesome-icon
-          class="add-btn"
-          icon="plus"
-        />
+      <font-awesome-icon class="add-btn" icon="plus" />
       <div v-if="task.members" class="avatar-container">
         <el-avatar
           v-for="member in task.members"
@@ -71,7 +64,7 @@ import moment from "moment";
 import statusPicker from "./status-picker.vue";
 
 export default {
-  name: 'task-preview',
+  name: "task-preview",
   props: ["task", "groupColor", "groupId"],
   data() {
     return {
@@ -86,9 +79,7 @@ export default {
     };
   },
   methods: {
-    addTaskMembers(){
-
-    },
+    addTaskMembers() {},
     handleEdit() {
       this.editMode = true;
       setTimeout(() => {
@@ -129,9 +120,9 @@ export default {
   created() {
     this.taskToEdit = JSON.parse(JSON.stringify(this.task));
   },
-    watch: {
+  watch: {
     task: function (newVal, oldVal) {
-      this.taskToEdit = JSON.parse(JSON.stringify(newVal))
+      this.taskToEdit = JSON.parse(JSON.stringify(newVal));
     },
   },
   components: {

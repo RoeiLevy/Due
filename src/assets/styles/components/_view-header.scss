@@ -1,6 +1,9 @@
 .header-view-bar {
     margin: 20px 0px 10px 20px;
     border-bottom: 2px solid #e6e9ef;
+
+
+
     >* {
         display: flex;
         justify-content: center;
@@ -53,6 +56,11 @@
     //     // border-bottom-color: rgb(0, 133, 255);
     // }
 }
+
+.top-header {
+    margin-inline-start: 20px;
+}
+
 
 .el-button {
     height: 32px;

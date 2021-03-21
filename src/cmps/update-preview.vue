@@ -1,8 +1,11 @@
 <template>
     <div class="update-preview">
-        <div class="update-txt-wrapper">
-            <h2>{{ comment.txt}}</h2>
+        <div class="update-header">
+            <div class="username">
+                <h5>By {{ comment.byMember.fullname }}</h5>
+            </div>
         </div>
+        <div v-html="comment.txt" class="update-txt-wrapper"></div>
     </div>
 </template>
 
@@ -12,6 +15,3 @@ export default {
 }
 </script>
 
-<style>
-
-</style>

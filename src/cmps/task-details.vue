@@ -17,7 +17,7 @@
         <button>Activity Log</button>
       </div>
     </nav>
-    <updates @addComment="addComment" />
+    <updates v-if="task" :comments="task.comments" @addComment="addComment" />
     <!-- <activity-log /> -->
   </el-drawer>
 </template>
@@ -55,10 +55,11 @@ export default {
     async addComment(newComment) {
       try {
         console.log('newComment:', newComment)
-        const taskId = this.$route.params.taskId;
         const groupId = this.$route.params.groupId;
-        if (!this.task['comments']) this.task.comments = []
-        this.task.comments.unshift(newComment)
+        const editedTask = JSON.parse(JSON.stringify(this.task))
+        if (!editedTask['comments']) editedTask.comments = []
+        editedTask.comments.unshift(newComment)
+        this.task = editedTask
 
         const taskToShow = await this.$store.dispatch({
           type: "saveTask",

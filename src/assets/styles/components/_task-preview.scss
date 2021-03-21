@@ -32,6 +32,7 @@
         .header-icon {
             color: #d6d9df;
             margin-right: 10px;
+            cursor: pointer !important;
         }
         .header-icon:hover {
             filter: brightness(70%);
@@ -183,4 +184,8 @@
     box-shadow: 0 0 20px rgba(51, 51, 51, 0.05);
     transform: rotate(1deg);
     transition: ease;
+}
+
+.sortable-chosen i {
+    transform: none !important;
 }

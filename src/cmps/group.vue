@@ -124,7 +124,7 @@ export default {
         taskToEdit: this.taskToEdit,
         groupId: this.group.id,
       });
-      // this.groupToEdit.tasks.push(task)
+      this.groupToEdit.tasks.push(task)
       this.$emit('loadBoard');
       this.taskToEdit = {
         title: "",

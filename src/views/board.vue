@@ -19,7 +19,7 @@
             />
             <div v-else>
               <h1 class="board-title" @click="handleEdit">
-                {{ currBoard.title }}
+                {{ boardToEdit.title }}
               </h1>
             </div>
 

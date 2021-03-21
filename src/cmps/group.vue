@@ -174,7 +174,7 @@ export default {
   },
   watch: {
     group: function (newVal, oldVal) {
-      this.groupToEdit = JSON.parse(JSON.stringify(newVal))
+      this.groupToEdit = JSON.parse(JSON.stringify(newVal));
     },
   },
   components: {

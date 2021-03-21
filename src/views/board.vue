@@ -12,14 +12,14 @@
             <div class="board-title-container">
             <input
               class="board-title"
-              v-if="editMode"
-              ref="input"
+              v-if="titleEditMode"
+              ref="title"
               v-model="boardToEdit.title"
               @keyup.enter="saveBoard(boardToEdit)"
               @focusout="saveBoard(boardToEdit)"
             />
             <div v-else>
-              <h1 class="board-title" @click="handleEdit">
+              <h1 class="board-title" @click="handleEdit('title')">
                 {{ boardToEdit.title }}
               </h1>
             </div>
@@ -28,14 +28,14 @@
 
             <input
               class="board-description"
-              v-if="editMode"
-              ref="input"
+              v-if="descEditMode"
+              ref="description"
               v-model="boardToEdit.description"
               @keyup.enter="saveBoard(boardToEdit)"
               @focusout="saveBoard(boardToEdit)"
             />
             <div v-else>
-              <p class="board-description" @click="handleEdit">
+              <p class="board-description" @click="handleEdit('description')">
                 {{ boardToEdit.description }}
               </p>
             </div>
@@ -148,7 +148,8 @@ export default {
       groups: [],
       board: null,
       boardToEdit: null,
-      editMode: false,
+      titleEditMode: false,
+      descEditMode: false,
       mainTable: true,
       addView: false,
     };
@@ -178,11 +179,24 @@ export default {
       this.boardToEdit.views.push(command);
       this.saveBoard(this.boardToEdit);
     },
-    handleEdit() {
-      this.editMode = true;
-      setTimeout(() => {
-        this.$refs.input.focus();
-      }, 0);
+    handleEdit(item) {
+      switch (item){
+        case 'description':           
+        this.descEditMode = true;
+          setTimeout(() => {
+            this.$refs.description.focus();
+          }, 0);
+          break;
+
+        case 'title': 
+          this.titleEditMode = true;
+          setTimeout(() => {
+            this.$refs.title.focus();
+          }, 0);
+          break;
+
+        
+      }
     },
     activateMainTable() {
       this.addView = false;
@@ -213,7 +227,8 @@ export default {
       }
     },
     async saveBoard(board) {
-      this.editMode = false;
+      this.titleEditMode = false;
+      this.descEditMode = false;
       console.log("saving");
       const boardWithUrl = await this.printScr(board);
       await this.$store.dispatch("saveBoard", boardWithUrl);

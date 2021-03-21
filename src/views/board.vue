@@ -60,7 +60,7 @@
               class="views-drop-down add-view-wrapper"
               trigger="click"
             >
-              <span class="views-el-dropdown-link add-view-wrapper">
+              <span class="views-el-dropdown-link add-view-wrapper" >
                 <font-awesome-icon class="header-icon" icon="plus" />
                 Add View
               </span>
@@ -82,10 +82,11 @@
             >
               <transition-group type="transition"> -->
             <group
-              v-for="group in board.groups"
+              v-for="group in boardToEdit.groups"
               :key="group.id"
               :group="group"
               @loadBoard="loadBoard"
+              @removeTask="removeTask"
             />
             <!-- </transition-group>
             </draggable> -->
@@ -119,6 +120,26 @@ export default {
     };
   },
   methods: {
+    async removeTask(taskId, groupId){
+      console.log('group id:', groupId)
+      console.log('task id:', taskId)
+      
+        const groupIdx = this.boardToEdit.groups.findIndex(group => group.id === groupId);
+            const taskIdx = this.boardToEdit.groups[groupIdx].tasks.findIndex(item => item.id === taskId);
+            this.boardToEdit.groups[groupIdx].tasks.splice(taskIdx, 1);
+            this.saveBoard({...this.boardToEdit});
+      //       try {
+      //   await this.$store.dispatch({
+      //     type: "removeTask",
+      //     taskId,
+      //     groupId,
+      //   });
+      // } catch (err) {
+      //   console.log("Couldn`t remove Task", err);
+      //   throw err;
+      // }
+
+    },
     handleCommand(command) {
       this.boardToEdit.views.push(command);
       this.saveBoard(this.boardToEdit);

@@ -146,16 +146,17 @@ export default {
     },
     async removeTask(taskId) {
       console.log("task from group emit", taskId);
-      try {
-        await this.$store.dispatch({
-          type: "removeTask",
-          taskId,
-          groupId: this.group.id,
-        });
-      } catch (err) {
-        console.log("Couldn`t remove Task", err);
-        throw err;
-      }
+        this.$emit('removeTask', taskId, this.group.id);
+      // try {
+      //   await this.$store.dispatch({
+      //     type: "removeTask",
+      //     taskId,
+      //     groupId: this.group.id,
+      //   });
+      // } catch (err) {
+      //   console.log("Couldn`t remove Task", err);
+      //   throw err;
+      // }
     },
     async saveGroup() {
       try {

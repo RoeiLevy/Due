@@ -47,6 +47,7 @@
       <status-picker
         @setStatus="setStatus"
         @addStatus="addStatus"
+        @deleteStatus="deleteStatus"
         v-if="isSelectingStatus"
       ></status-picker>
     </div>
@@ -85,6 +86,10 @@ export default {
       setTimeout(() => {
         this.$refs.input.focus();
       }, 0);
+    },
+    deleteStatus(statusId) {
+      if (this.task.status.id === statusId) this.task.status = null;
+      this.$emit("deleteStatus", statusId);
     },
     openActivities() {
       this.isActivitiesOpen = true;

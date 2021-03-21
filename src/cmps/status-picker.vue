@@ -11,13 +11,15 @@
         v-for="status in statuses"
         :key="status.id"
         closable
-        @close="deleteStatus"
+        @close="deleteStatus(status.id)"
         @click="setStatus(status)"
         :style="{ 'background-color': status.color }"
         effect="dark"
       >
-        {{ status.title }}
+        <h4>{{ status.title }}</h4>
       </el-tag>
+    </draggable>
+    <div class="status-footer">
       <div v-if="editMode" class="flex">
         <el-input
           class="input-new-tag"
@@ -30,9 +32,7 @@
           v-model="newStatus.color"
           size="mini"
         ></el-color-picker>
-      <el-button @click="addStatus" type="primary"
-        >Add Status</el-button
-      >
+        <el-button @click="addStatus" type="primary">Add Status</el-button>
       </div>
       <el-button
         v-else
@@ -41,7 +41,8 @@
         @click="editMode = true"
         >+ New Tag</el-button
       >
-      <!-- <div v-if="!editMode">
+    </div>
+    <!-- <div v-if="!editMode">
         <el-tag
           v-for="status in statuses"
           :key="status.id"
@@ -71,17 +72,17 @@
         Add/Edit Statuses
       </button>
       <button v-else @click="editMode = false">Apply</button> -->
-    </draggable>
   </div>
 </template>
 
 <script>
 import draggable from "vuedraggable";
+import { utilService } from "../services/util.service";
 export default {
   data() {
     return {
-      statuses: this.$store.getters.statuses,
       newStatus: {
+        id: utilService.makeId(),
         color: "",
         title: "",
       },
@@ -89,17 +90,24 @@ export default {
     };
   },
   methods: {
-    deleteStatus() {},
+    deleteStatus(statusId) {
+      this.$emit("deleteStatus", statusId);
+    },
     setStatus(status) {
       this.$emit("setStatus", { ...status });
     },
     addStatus() {
-      console.log("adding");
+      this.editMode = false;
       this.$emit("addStatus", this.newStatus);
       this.newStatus = {
         color: "",
         title: "",
       };
+    },
+  },
+  computed: {
+    statuses() {
+      return this.$store.getters.statuses;
     },
   },
   components: {

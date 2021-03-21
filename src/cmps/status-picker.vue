@@ -18,6 +18,29 @@
       >
         {{ status.title }}
       </el-tag>
+      <el-tag
+        v-if="!isAdding"
+        @click="isAdding = !isAdding"
+        effect="dark"
+        style="{ 'background-color':gray }"
+      >
+        New Status
+      </el-tag>
+      <!-- <el-tag
+        v-else
+        @click="isAdding = !isAdding"
+        :style="{ 'background-color': status.color }"
+        effect="dark"
+      >
+        {{ status.title }}
+      </el-tag> -->
+      <div v-else>
+        <el-input placeholder="Please input" v-model="newStatus.title"></el-input>
+        <el-color-picker
+          v-model="newStatus.color"
+          size="mini"
+        ></el-color-picker>
+      </div>
     </draggable>
   </div>
 </template>
@@ -28,6 +51,11 @@ export default {
   data() {
     return {
       statuses: this.$store.getters.statuses,
+      newStatus: {
+        color: "",
+        title: "",
+      },
+      isAdding:false
     };
   },
   methods: {

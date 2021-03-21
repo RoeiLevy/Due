@@ -5,47 +5,50 @@
     <!-- <bar-chart v-if="board" :board="board"></bar-chart> -->
 
     <div v-if="boardToEdit" class="flex board" ref="screen">
-      <social-modal v-if="isAddingMembers" :members="board.members"></social-modal>
+      <social-modal
+        v-if="isAddingMembers"
+        :members="boardToEdit.members"
+      ></social-modal>
       <task-details :drawer="isActivitiesOpen" />
       <div class="flex column board-container">
         <div class="flex column board-header">
           <div class="flex space-between top-header">
             <div class="board-title-container">
-            <input
-              class="board-title"
-              v-if="editMode"
-              ref="input"
-              v-model="boardToEdit.title"
-              @keyup.enter="saveBoard(boardToEdit)"
-              @focusout="saveBoard(boardToEdit)"
-            />
-            <div v-else>
-              <h1 class="board-title" @click="handleEdit">
-                {{ boardToEdit.title }}
-              </h1>
+              <input
+                class="board-title"
+                v-if="editMode"
+                ref="input"
+                v-model="boardToEdit.title"
+                @keyup.enter="saveBoard(boardToEdit)"
+                @focusout="saveBoard(boardToEdit)"
+              />
+              <div v-else>
+                <h1 class="board-title" @click="handleEdit">
+                  {{ boardToEdit.title }}
+                </h1>
+              </div>
+
+              <!-- //////////////////////////////////// -->
+
+              <input
+                class="board-description"
+                v-if="editMode"
+                ref="input"
+                v-model="boardToEdit.description"
+                @keyup.enter="saveBoard(boardToEdit)"
+                @focusout="saveBoard(boardToEdit)"
+              />
+              <div v-else>
+                <p class="board-description" @click="handleEdit">
+                  {{ boardToEdit.description }}
+                </p>
+              </div>
             </div>
 
-<!-- //////////////////////////////////// -->
-
-            <input
-              class="board-description"
-              v-if="editMode"
-              ref="input"
-              v-model="boardToEdit.description"
-              @keyup.enter="saveBoard(boardToEdit)"
-              @focusout="saveBoard(boardToEdit)"
-            />
-            <div v-else>
-              <p class="board-description" @click="handleEdit">
-                {{ boardToEdit.description }}
-              </p>
-            </div>
-          </div>
-
-<!-- //////////////////////////////////// -->
+            <!-- //////////////////////////////////// -->
 
             <div class="board-actions">
-              <button @click="isAddingMembers=!isAddingMembers">
+              <button @click="isAddingMembers = !isAddingMembers">
                 <font-awesome-icon class="header-icon" icon="user-friends" />
                 Members/
                 <font-awesome-icon class="header-icon plus" icon="user-plus" />
@@ -147,7 +150,7 @@
 <script>
 import html2canvas from "html2canvas";
 import group from "../cmps/group";
-import socialModal from '../cmps/social-modal'
+import socialModal from "../cmps/social-modal";
 import appHeader from "../cmps/header";
 import draggable from "vuedraggable";
 import taskDetails from "../cmps/task-details";
@@ -187,7 +190,7 @@ export default {
       }
     },
     async saveGroup(groupToEdit) {
-      console.log('saving');
+      console.log("saving");
       try {
         const groupIdx = this.boardToEdit.groups.findIndex(
           (g) => g.id === groupToEdit.id
@@ -306,7 +309,7 @@ export default {
     },
     async addNewGroup() {
       try {
-        const newGroup =  boardService.getEmptyGroup()
+        const newGroup = boardService.getEmptyGroup();
         this.boardToEdit.groups.unshift(newGroup);
         await this.$store.dispatch({
           type: "saveBoard",
@@ -360,7 +363,7 @@ export default {
     draggable,
     taskDetails,
     barChart,
-    socialModal
+    socialModal,
   },
 };
 </script>

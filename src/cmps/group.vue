@@ -30,7 +30,11 @@
           class="group-title"
         />
         <div v-else>
-          <h1 :style="{color:groupToEdit.style.color}" class="group-title" @click="handleEdit">
+          <h1
+            :style="{ color: groupToEdit.style.color }"
+            class="group-title"
+            @click="handleEdit"
+          >
             {{ groupToEdit.title }}
           </h1>
         </div>
@@ -70,6 +74,7 @@
       <div class="add-task-wrapper">
         <form class="flex add-task-form" @submit.prevent="addTask()">
           <input
+            :style="{'border-left-color':group.style.color}"
             class="add-task-input"
             type="text"
             placeholder="    + Add Task"
@@ -119,13 +124,13 @@ export default {
     },
     async addTask() {
       this.taskToEdit.createdAt = Date.now();
-      const task=await this.$store.dispatch({
+      const task = await this.$store.dispatch({
         type: "addTask",
         taskToEdit: this.taskToEdit,
         groupId: this.group.id,
       });
       // this.groupToEdit.tasks.push(task)
-      this.$emit('loadBoard');
+      this.$emit("loadBoard");
       this.taskToEdit = {
         title: "",
         createdAt: null,

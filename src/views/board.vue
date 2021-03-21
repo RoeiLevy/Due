@@ -5,6 +5,7 @@
     <!-- <bar-chart v-if="board" :board="board"></bar-chart> -->
 
     <div v-if="board" class="flex board" ref="screen">
+      <social-modal v-if="isAddingMembers" :members="board.members"></social-modal>
       <task-details :drawer="isActivitiesOpen" />
       <div class="flex column board-container">
         <div class="flex column board-header">
@@ -24,8 +25,10 @@
             </div>
 
             <div class="board-actions">
-              <button>
-                <font-awesome-icon class="header-icon plus" icon="plus" />
+              <button @click="isAddingMembers=!isAddingMembers">
+                <font-awesome-icon class="header-icon" icon="user-friends" />
+                Members/
+                <font-awesome-icon class="header-icon plus" icon="user-plus" />
                 Invite
               </button>
               <button @click="openActivities">
@@ -56,32 +59,38 @@
                   <!-- <span class="view-menu-btn">Menu</span> -->
                   <el-dropdown trigger="click" class="view-menu-btn">
                     <span class="el-dropdown-link">
-                      <i
-                        class="el-icon-more"
-                      ></i>
+                      <i class="el-icon-more"></i>
                     </span>
                     <el-dropdown-menu slot="dropdown">
                       <el-dropdown-item>Rename</el-dropdown-item>
                       <el-dropdown-item>Duplicate</el-dropdown-item>
-                      <el-dropdown-item style="'background-color:red'">Remove</el-dropdown-item>
+                      <el-dropdown-item style="'background-color:red'"
+                        >Remove</el-dropdown-item
+                      >
                     </el-dropdown-menu>
                   </el-dropdown>
                 </button>
               </div>
             </div>
             <el-dropdown
-              @command="addView"
               class="views-drop-down add-view-wrapper"
               trigger="click"
             >
               <span class="views-el-dropdown-link add-view-wrapper">
-                
-                <button><font-awesome-icon class="header-icon" icon="plus" /> Add View</button>
+                <button>
+                  <font-awesome-icon class="header-icon" icon="plus" /> Add View
+                </button>
               </span>
               <el-dropdown-menu slot="dropdown">
-                <el-dropdown-item command="Calander">Calander</el-dropdown-item>
-                <el-dropdown-item command="Chart">Chart</el-dropdown-item>
-                <el-dropdown-item command="Kanban">Kanban</el-dropdown-item>
+                <el-dropdown-item @click="addView('Calander')"
+                  >Calander</el-dropdown-item
+                >
+                <el-dropdown-item @click="addView('Chart')"
+                  >Chart</el-dropdown-item
+                >
+                <el-dropdown-item @click="addView('Kanban')"
+                  >Kanban</el-dropdown-item
+                >
               </el-dropdown-menu>
             </el-dropdown>
           </nav>
@@ -113,6 +122,7 @@
 <script>
 import html2canvas from "html2canvas";
 import group from "../cmps/group";
+import socialModal from '../cmps/social-modal'
 import appHeader from "../cmps/header";
 import draggable from "vuedraggable";
 import taskDetails from "../cmps/task-details";
@@ -129,12 +139,13 @@ export default {
       boardToEdit: null,
       editMode: false,
       mainTable: true,
-      addView: false,
+      addingView: false,
+      isAddingMembers: false,
     };
   },
   methods: {
-    addView(command) {
-      this.boardToEdit.views.push(command);
+    addView(view) {
+      this.boardToEdit.views.push(view);
       this.saveBoard(this.boardToEdit);
     },
     handleEdit() {
@@ -144,13 +155,13 @@ export default {
       }, 0);
     },
     activateMainTable() {
-      this.addView = false;
+      this.addingView = false;
       this.mainTable = true;
       console.log(this.mainTable);
     },
     activateView() {
       this.mainTable = false;
-      this.addView = true;
+      this.addingView = true;
       console.log(this.mainTable);
     },
     openActivities() {
@@ -208,7 +219,7 @@ export default {
       return this.$store.getters.isActivitiesOpen;
     },
     viewActive() {
-      return { active: this.addView };
+      return { active: this.addingView };
     },
     tableActive() {
       return { active: this.mainTable };
@@ -231,6 +242,7 @@ export default {
     draggable,
     taskDetails,
     barChart,
+    socialModal
   },
 };
 </script>

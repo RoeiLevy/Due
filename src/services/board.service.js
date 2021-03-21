@@ -69,7 +69,6 @@ async function addTask(task, groupId, boardId) {
         const idx = currBoard.groups.findIndex(group => group.id === groupId);
         currBoard.groups[idx].tasks.push(task);
         await storageService.put('board', currBoard);
-
         return task
     } catch (err) {
         console.log(err)

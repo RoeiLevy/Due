@@ -52,9 +52,8 @@
     <draggable
       v-model="groupToEdit.tasks"
       @change="saveGroup"
-      v-bind="dragOptions"
-    >
-      <transition-group type="transition">
+      v-bind="dragOptions">
+   <transition-group type="transition">
         <task-preview
           :groupId="group.id"
           :groupColor="group.style.color"
@@ -64,7 +63,7 @@
           :task="task"
           @updateTask="updateTask"
         />
-      </transition-group>
+      </transition-group> 
     </draggable>
     <div class="group-footer">
       <div class="add-task-wrapper">

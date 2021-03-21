@@ -19,7 +19,7 @@
     padding-inline-start: 30px;
     .board-container {
         width: 100%;
-        height: 100%;
+        height: fit-content;
         background-color: #ffffff;
         border-left: 1px solid #e6e9ef;
         padding-inline-start: 20px;
@@ -38,25 +38,24 @@
         outline: none;
         border: 1px dashed gray;
     }
-    .board-title:hover{
+    .board-title:hover {
         border: 1px dashed gray;
     }
-
-    .header-view-bar{
-        .main-table-wrapper{
-            >*{
+    .header-view-bar {
+        .main-table-wrapper {
+            >* {
                 width: 140px;
             }
         }
-        .view-btn{
-            .view-menu-btn{
+        .view-btn {
+            .view-menu-btn {
                 display: none;
             }
-            .view-menu-btn:hover{
+            .view-menu-btn:hover {
                 background-color: white;
             }
         }
-        .view-btn:hover .view-menu-btn{
+        .view-btn:hover .view-menu-btn {
             display: inline;
         }
     }
@@ -118,3 +117,10 @@
         margin: 12px 0px 14px;
     }
 }
+
+// .el-drawer__container.el-drawer__open {
+//     z-index: 1;
+// }
+// .el-drawer.rtl {
+//     z-index: 1;
+// }

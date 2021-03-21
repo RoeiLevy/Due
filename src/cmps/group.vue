@@ -56,18 +56,19 @@
     <draggable
       v-model="groupToEdit.tasks"
       @change="saveGroup"
-      v-bind="dragOptions">
-   <transition-group type="transition">
+      v-bind="dragOptions"
+    >
+      <transition-group type="transition">
         <task-preview
           :groupId="group.id"
           :groupColor="group.style.color"
-          @removeTask="removeTask"
-          v-for="task in groupToEdit.tasks"
+          v-for="task in group.tasks"
           :key="task.id"
           :task="task"
+          @removeTask="removeTask"
           @updateTask="updateTask"
         />
-      </transition-group> 
+      </transition-group>
     </draggable>
     <div class="group-footer">
       <div class="add-task-wrapper">
@@ -117,73 +118,33 @@ export default {
       switch (command) {
         case "removeGroup":
           this.removeGroup();
+          break;
         case "saveGroup":
           this.saveGroup();
+          break;
       }
     },
-    async addTask() {
-      this.taskToEdit.createdAt = Date.now();
-      const task = await this.$store.dispatch({
-        type: "addTask",
-        taskToEdit: this.taskToEdit,
-        groupId: this.group.id,
-      });
-      this.groupToEdit.tasks.push(task)
-      this.$emit('loadBoard');
+    addTask() {
+      const newTask = JSON.parse(JSON.stringify(this.taskToEdit))
+      this.$emit("addTask", newTask, this.group.id);
       this.taskToEdit = {
         title: "",
         createdAt: null,
         status: null,
       };
     },
-    async updateTask(task) {
-      try {
-        await this.$store.dispatch({
-          type: "updateTask",
-          taskToEdit: task,
-          groupId: this.group.id,
-        });
-      } catch (err) {
-        console.log("Couldn`t update Task", err);
-        throw err;
-      }
+    updateTask(task) {
+      this.$emit("updateTask", task, this.group.id);
     },
-    async removeTask(taskId) {
-      console.log("task from group emit", taskId);
-        this.$emit('removeTask', taskId, this.group.id);
-      // try {
-      //   await this.$store.dispatch({
-      //     type: "removeTask",
-      //     taskId,
-      //     groupId: this.group.id,
-      //   });
-      // } catch (err) {
-      //   console.log("Couldn`t remove Task", err);
-      //   throw err;
-      // }
+    removeTask(taskId) {
+      this.$emit("removeTask", taskId, this.group.id);
     },
-    async saveGroup() {
-      try {
-        console.log("saving group");
-        this.editMode = false;
-        await this.$store.dispatch("saveGroup", this.groupToEdit);
-        this.groupToEdit = JSON.parse(JSON.stringify(this.group));
-        // { ...this.group };
-      } catch (err) {
-        console.log("Couldn`t Save Group", err);
-        throw err;
-      }
+    saveGroup() {
+      this.editMode = false;
+      this.$emit("saveGroup", this.groupToEdit);
     },
-    async removeGroup() {
-      try {
-        await this.$store.dispatch({
-          type: "removeGroup",
-          groupId: this.group.id,
-        });
-        console.log("removed group successfully");
-      } catch (err) {
-        console.log("err:", err);
-      }
+    removeGroup() {
+      this.$emit('removeGroup', this.group.id)
     },
   },
   computed: {
@@ -204,7 +165,6 @@ export default {
   },
   created() {
     this.groupToEdit = JSON.parse(JSON.stringify(this.group));
-    // this.$on("updateTask", this.updateTask);
   },
   components: {
     taskPreview,

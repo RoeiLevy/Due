@@ -4,7 +4,7 @@
     <app-header />
     <!-- <bar-chart v-if="board" :board="board"></bar-chart> -->
 
-    <div v-if="board" class="flex board" ref="screen">
+    <div v-if="boardToEdit" class="flex board" ref="screen">
       <social-modal v-if="isAddingMembers" :members="board.members"></social-modal>
       <task-details :drawer="isActivitiesOpen" />
       <div class="flex column board-container">
@@ -130,6 +130,10 @@
               :group="group"
               @loadBoard="loadBoard"
               @removeTask="removeTask"
+              @updateTask="updateTask"
+              @saveGroup="saveGroup"
+              @addTask="addTask"
+              @removeGroup="removeGroup"
             />
             <!-- </transition-group>
             </draggable> -->
@@ -150,13 +154,13 @@ import taskDetails from "../cmps/task-details";
 import barChart from "../cmps/bar-chart";
 
 import { boardService } from "../services/board.service";
+import { utilService } from "../services/util.service";
 
 export default {
   name: "board",
   data() {
     return {
       groups: [],
-      board: null,
       boardToEdit: null,
       editMode: false,
       mainTable: true,
@@ -165,28 +169,96 @@ export default {
     };
   },
   methods: {
-    async removeTask(taskId, groupId){
-      console.log('group id:', groupId)
-      console.log('task id:', taskId)
-      
-        const groupIdx = this.boardToEdit.groups.findIndex(group => group.id === groupId);
-            const taskIdx = this.boardToEdit.groups[groupIdx].tasks.findIndex(item => item.id === taskId);
-            this.boardToEdit.groups[groupIdx].tasks.splice(taskIdx, 1);
-            this.saveBoard({...this.boardToEdit});
-      //       try {
-      //   await this.$store.dispatch({
-      //     type: "removeTask",
-      //     taskId,
-      //     groupId,
-      //   });
-      // } catch (err) {
-      //   console.log("Couldn`t remove Task", err);
-      //   throw err;
-      // }
+    async removeGroup(groupId) {
+      try {
+        const groupIdx = this.boardToEdit.groups.findIndex(
+          (g) => g.id === groupId
+        );
+        this.boardToEdit.groups.splice(groupIdx, 1);
 
+        await this.$store.dispatch({
+          type: "saveBoard",
+          boardToSave: this.boardToEdit,
+        });
+        // Add user msg
+      } catch (err) {
+        console.log("Couldn`t remove Group", err);
+        throw err;
+      }
     },
-    addView(view) {
-      this.boardToEdit.views.push(view);
+    async saveGroup(groupToEdit) {
+      console.log('saving');
+      try {
+        const groupIdx = this.boardToEdit.groups.findIndex(
+          (g) => g.id === groupToEdit.id
+        );
+        this.boardToEdit.groups.splice(groupIdx, 1, groupToEdit);
+        await this.$store.dispatch({
+          type: "saveBoard",
+          boardToSave: this.boardToEdit,
+        });
+        // Add user msg
+      } catch (err) {
+        console.log("Couldn`t Save Group", err);
+        throw err;
+      }
+    },
+    async addTask(newTask, groupId) {
+      try {
+        newTask.createdAt = Date.now();
+        newTask.id = utilService.makeId();
+        const groupIdx = this.boardToEdit.groups.findIndex(
+          (g) => g.id === groupId
+        );
+        this.boardToEdit.groups[groupIdx].tasks.push(newTask);
+        await this.$store.dispatch({
+          type: "saveBoard",
+          boardToSave: this.boardToEdit,
+        });
+        // Add user msg
+      } catch (err) {
+        console.log("err:", err);
+      }
+    },
+    async updateTask(task, groupId) {
+      try {
+        const groupIdx = this.boardToEdit.groups.findIndex(
+          (g) => g.id === groupId
+        );
+        const taskIdx = this.boardToEdit.groups[groupIdx].tasks.findIndex(
+          (t) => t.id === task.id
+        );
+        this.boardToEdit.groups[groupIdx].tasks.splice(taskIdx, 1, task);
+        await this.$store.dispatch({
+          type: "saveBoard",
+          boardToSave: this.boardToEdit,
+        });
+        // Add user msg
+      } catch (err) {
+        console.log("Couldn`t remove Task", err);
+        throw err;
+      }
+    },
+    async removeTask(taskId, groupId) {
+      try {
+        const groupIdx = this.boardToEdit.groups.findIndex(
+          (group) => group.id === groupId
+        );
+        const taskIdx = this.boardToEdit.groups[groupIdx].tasks.findIndex(
+          (item) => item.id === taskId
+        );
+        this.boardToEdit.groups[groupIdx].tasks.splice(taskIdx, 1);
+        await this.$store.dispatch({
+          type: "saveBoard",
+          boardToSave: this.boardToEdit,
+        });
+        // Add user msg
+      } catch (err) {
+        console.log("err:", err);
+      }
+    },
+    addView(command) {
+      this.boardToEdit.views.push(command);
       this.saveBoard(this.boardToEdit);
     },
     handleEdit() {
@@ -198,7 +270,6 @@ export default {
     activateMainTable() {
       this.addingView = false;
       this.mainTable = true;
-      console.log(this.mainTable);
     },
     activateView() {
       this.mainTable = false;
@@ -215,34 +286,40 @@ export default {
           type: "loadBoard",
           boardId,
         });
-        console.log("board:", board);
-        // this.groups = { ...board.groups };
-        this.board = board;
-        this.boardToEdit = { ...board };
+        this.boardToEdit = JSON.parse(JSON.stringify(board));
       } catch (err) {
         console.log("err:", err);
       }
     },
     async saveBoard(board) {
-      this.editMode = false;
-      console.log("saving");
-      const boardWithUrl = await this.printScr(board);
-      await this.$store.dispatch("saveBoard", boardWithUrl);
-      await this.loadBoard();
+      try {
+        this.editMode = false;
+        const boardWithUrl = await this.printScr(board);
+        await this.$store.dispatch(
+          "saveBoard",
+          JSON.parse(JSON.stringify(boardWithUrl))
+        );
+        this.loadBoard();
+      } catch (err) {
+        console.log("err:", err);
+      }
     },
     async addNewGroup() {
       try {
-        const newBoard = JSON.parse(JSON.stringify(this.board));
-        newBoard.groups.unshift(boardService.getEmptyGroup());
-        const savedBoard = await this.$store.dispatch("saveBoard", newBoard);
-        this.loadBoard();
-      } catch (err) {}
+        const newGroup =  boardService.getEmptyGroup()
+        this.boardToEdit.groups.unshift(newGroup);
+        await this.$store.dispatch({
+          type: "saveBoard",
+          boardToSave: this.boardToEdit,
+        });
+        // Add user msg
+      } catch (err) {
+        console.log("err:", err);
+      }
     },
     async printScr(board) {
       return html2canvas(this.$refs.screen).then((canvas) => {
-        // console.log("canvas:", canvas);
         const pageImg = canvas.toDataURL();
-        // console.log('pageImg:', pageImg);
         board.thumbnail = pageImg;
         return board;
       });

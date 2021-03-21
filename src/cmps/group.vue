@@ -68,6 +68,7 @@
           :task="task"
           @removeTask="removeTask"
           @updateTask="updateTask"
+          @addStatus="addStatus"
         />
       </transition-group>
     </draggable>
@@ -134,6 +135,9 @@ export default {
         createdAt: null,
         status: null,
       };
+    },
+    addStatus(status){
+      this.$emit('addStatus',status);
     },
     updateTask(task) {
       this.$emit("updateTask", task, this.group.id);

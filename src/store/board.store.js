@@ -34,6 +34,15 @@ export const boardStore = {
         setBoards(state, { boards }) {
             state.boards = boards;
         },
+        saveTask(state, { task, groupId }) {
+            const groupIdx = state.currBoard.groups.findIndex(
+                g => g.id === groupId
+            );
+            const taskIdx = state.currBoard.groups[groupIdx].tasks.findIndex(
+                t => t.id === task.id
+            );
+            state.currBoard.groups[groupIdx].tasks.splice(taskIdx, 1, task)
+        }
         // addNewGroup(state) {
         //     state.currBoard.groups.push(boardService.getEmptyGroup());
         // },
@@ -93,10 +102,10 @@ export const boardStore = {
                 throw err;
             }
         },
-        async saveBoard(context, { boardToSave } ) {
+        async saveBoard(context, { boardToSave }) {
             try {
                 const savedBoard = await boardService.update(boardToSave);
-                context.commit({ type: 'setBoard', board:  JSON.parse(JSON.stringify(boardToSave)) });
+                context.commit({ type: 'setBoard', board: JSON.parse(JSON.stringify(boardToSave)) });
                 console.log('board in store:', savedBoard);
                 return savedBoard
             } catch (err) {
@@ -114,6 +123,29 @@ export const boardStore = {
                 throw err
             }
         },
+        async getTask({ state }, { taskId, groupId }) {
+            const groupIdx = state.currBoard.groups.findIndex(
+                g => g.id === groupId
+            );
+            const taskIdx = state.currBoard.groups[groupIdx].tasks.findIndex(
+                t => t.id === taskId
+            );
+            const taskToShow = JSON.parse(JSON.stringify(state.currBoard.groups[groupIdx].tasks[taskIdx]))
+            return taskToShow
+        },
+        async saveTask({ state }, { task, groupId }) {
+            console.log('groupId:', groupId)
+            console.log('task:', task)
+            try {
+                this.commit({ type: 'saveTask', task, groupId }) 
+                const savedTask = await this.dispatch({ type: 'saveBoard', boardToSave: JSON.parse(JSON.stringify(state.currBoard)) })
+                return savedTask
+
+            } catch (err) {
+                console.log('err:', err)          
+            }
+        }
+
         // async saveGroup(context, group) {
         //     try {
         //         const savedGroup = await boardService.saveGroup(group, context.state.currBoard._id);

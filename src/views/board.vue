@@ -137,6 +137,7 @@
               @saveGroup="saveGroup"
               @addTask="addTask"
               @removeGroup="removeGroup"
+              @addStatus="addStatus"
             />
             <!-- </transition-group>
             </draggable> -->
@@ -173,6 +174,10 @@ export default {
     };
   },
   methods: {
+    addStatus(status) {
+      this.boardToEdit.statuses.push(status);
+      this.saveBoard();
+    },
     async removeGroup(groupId) {
       try {
         const groupIdx = this.boardToEdit.groups.findIndex(
@@ -318,7 +323,10 @@ export default {
         const boardWithUrl = await this.printScr(
           JSON.parse(JSON.stringify(this.boardToEdit))
         );
-        await this.$store.dispatch({ type: "saveBoard", boardToSave: boardWithUrl });
+        await this.$store.dispatch({
+          type: "saveBoard",
+          boardToSave: boardWithUrl,
+        });
         // this.loadBoard();
       } catch (err) {
         console.log("err:", err);
@@ -343,7 +351,6 @@ export default {
         const pageImg = canvas.toDataURL();
         board.thumbnail = pageImg;
         return board;
-
       } catch (err) {
         console.log("err:", err);
       }
@@ -360,8 +367,8 @@ export default {
   },
   computed: {
     boardDescription() {
-      if (!this.boardToEdit.description) return 'Add a description'
-      else return this.boardToEdit.description
+      if (!this.boardToEdit.description) return "Add a description";
+      else return this.boardToEdit.description;
     },
     currBoard() {
       return this.$store.getters.boardForDisplay;

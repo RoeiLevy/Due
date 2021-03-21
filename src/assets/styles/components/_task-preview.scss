@@ -159,6 +159,11 @@
     }
 }
 
+.task-wrapper:focus,
+.task-wrapper:active * {
+    background-color: #e5f4ff;
+}
+
 .task-wrapper:hover .remove-btn-wrapper {
     display: flex;
 }
@@ -202,6 +207,10 @@
     box-shadow: 0 0 20px rgba(51, 51, 51, 0.05);
     transform: rotate(1deg);
     transition: ease;
+}
+
+.task-wrapper:active>.remove-btn-wrapper {
+    background-color: #ffffff !important;
 }
 
 .sortable-chosen i {

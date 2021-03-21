@@ -30,7 +30,7 @@
           class="group-title"
         />
         <div v-else>
-          <h1 class="group-title" @click="handleEdit">
+          <h1 :style="{color:groupToEdit.style.color}" class="group-title" @click="handleEdit">
             {{ groupToEdit.title }}
           </h1>
         </div>

@@ -26,7 +26,11 @@
         icon="comment"
       />
     </div>
-    <div class="task-members-container">
+    <div class="task-members-container" @click="addTaskMembers">
+        <font-awesome-icon
+          class="add-btn"
+          icon="plus"
+        />
       <div v-if="task.members" class="avatar-container">
         <el-avatar
           v-for="member in task.members"
@@ -81,6 +85,9 @@ export default {
     };
   },
   methods: {
+    addTaskMembers(){
+
+    },
     handleEdit() {
       this.editMode = true;
       setTimeout(() => {
@@ -117,6 +124,11 @@ export default {
   },
   created() {
     this.taskToEdit = JSON.parse(JSON.stringify(this.task));
+  },
+    watch: {
+    task: function (newVal, oldVal) {
+      this.taskToEdit = JSON.parse(JSON.stringify(newVal))
+    },
   },
   components: {
     statusPicker,

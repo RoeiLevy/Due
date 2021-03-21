@@ -7,7 +7,7 @@
     <div v-if="boardToEdit" class="flex board" ref="screen">
       <social-modal
         v-if="isAddingMembers"
-        :members="board.members"
+        :members="boardToEdit.members"
       ></social-modal>
       <task-details :drawer="isActivitiesOpen" />
       <div class="flex column board-container">

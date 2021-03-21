@@ -6,11 +6,15 @@ import store from './store'
 import './assets/styles/styles.scss'
 import ElementUI from 'element-ui';
 import locale from 'element-ui/lib/locale'
+import VModal from 'vue-js-modal'
+
 
 import 'element-ui/lib/theme-chalk/index.css';
 
 locale.use('EN')
 Vue.use(ElementUI);
+Vue.use(VModal)
+
 
 
 import { library } from '@fortawesome/fontawesome-svg-core'

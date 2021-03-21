@@ -18,6 +18,8 @@
       >
         {{ status.title }}
       </el-tag>
+      <button v-if="editMode=false" @click="editMode=true">Add/Edit Statuses</button>
+      <button v-else @click="editMode=false">Apply</button>
     </draggable>
   </div>
 </template>
@@ -28,6 +30,11 @@ export default {
   data() {
     return {
       statuses: this.$store.getters.statuses,
+      newStatus: {
+        color: "",
+        title: "",
+      },
+      editMode:false
     };
   },
   methods: {

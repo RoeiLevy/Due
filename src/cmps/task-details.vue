@@ -6,18 +6,23 @@
     :before-close="closeActivities"
   >
     <div class="activity-task-title">
-      <h2>task title</h2>
+      <h2 v-if="task">{{ task.title }}</h2>
     </div>
 
-    <nav class="activity-menu flex">
+    <el-tabs v-model="activeName" @tab-click="handleClick">
+      <el-tab-pane label="Updates" name="updates">Updates</el-tab-pane>
+      <el-tab-pane label="Activity Log" name="activity">Activity Log</el-tab-pane>
+    </el-tabs>
+
+    <!-- <nav class="activity-menu flex">
       <div class="updates-btn-wrapper">
-        <button>Updates</button>
-      </div>
+        <button>Updates</button>  
+      </div>  
       <div class="activity-btn-wrapper">
         <button>Activity Log</button>
       </div>
-    </nav>
-    <updates v-if="task" :comments="task.comments" @addComment="addComment" />
+    </nav> -->
+    <updates v-if="isUpdatesClicked" :comments="task.comments" @addComment="addComment" />
     <!-- <activity-log /> -->
   </el-drawer>
 </template>
@@ -31,9 +36,14 @@ export default {
   data() {
     return {
       task: null,
+      activeName: "updates",
     };
   },
   methods: {
+    handleClick(tab, event) {
+      console.log(tab, event);
+      console.log(this.activeName);
+    },
     closeActivities() {
       const taskId = this.$route.params.taskId;
       if (taskId) this.$router.go(-1);
@@ -54,12 +64,12 @@ export default {
     },
     async addComment(newComment) {
       try {
-        console.log('newComment:', newComment)
+        console.log("newComment:", newComment);
         const groupId = this.$route.params.groupId;
-        const editedTask = JSON.parse(JSON.stringify(this.task))
-        if (!editedTask['comments']) editedTask.comments = []
-        editedTask.comments.unshift(newComment)
-        this.task = editedTask
+        const editedTask = JSON.parse(JSON.stringify(this.task));
+        if (!editedTask["comments"]) editedTask.comments = [];
+        editedTask.comments.unshift(newComment);
+        this.task = editedTask;
 
         const taskToShow = await this.$store.dispatch({
           type: "saveTask",
@@ -77,6 +87,9 @@ export default {
     boardId() {
       return this.$route.params.boardId;
     },
+    isUpdatesClicked() {
+      return this.activeName === 'updates' && this.task
+    }
   },
   components: {
     activityLog,

@@ -4,11 +4,21 @@
       <router-link to="/">
         <img class="logo" src="@/assets/imgs/logo.png" />
       </router-link>
+      <div class="switch-container">
+      <p>Switch View</p>
+   <el-switch
+  v-model="viewValue"
+  active-color="#13ce66"
+  inactive-color="#ff4949">
+</el-switch>
+      </div>
+
+
     </header>
 
     <div class="board-list">
       <h2>Select Your Board</h2>
-      <el-carousel class="carousel" :interval="4000" type="card" height="300px">
+      <el-carousel v-if="viewValue" class="carousel" :interval="4000" type="card" height="300px">
         <el-carousel-item v-for="board in boards" :key="board._id">
           <h3 class="medium" @click="showBoard(board._id)">
             {{ board.title }}
@@ -20,7 +30,7 @@
           />
         </el-carousel-item>
       </el-carousel>
-      <el-row>
+      <el-row v-else>
         <el-col :span="5" v-for="board in boards" :key="board._id" :offset="1">
           <el-card :body-style="{ padding: '0px' }" class="card">
             <div @click="showBoard(board._id)">
@@ -61,7 +71,10 @@ import moment from "moment";
 import boardPreview from "../cmps/board-preview.vue";
 export default {
   data() {
-    return {};
+    return {
+        viewValue: true,
+
+    };
   },
   methods: {
     showBoard(boardId) {

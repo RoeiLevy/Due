@@ -7,6 +7,7 @@
       <div class="switch-container">
       <p>Switch View</p>
    <el-switch
+   class="switch"
   v-model="viewValue"
   active-color="#13ce66"
   inactive-color="#ff4949">
@@ -41,7 +42,6 @@
                   <time class="time"
                     >{{ new Date(board.createdAt).toLocaleString() }}
                   </time>
-                  <!-- <el-button type="text" class="button">Operating</el-button> -->
                 </div>
               </div>
             </div>
@@ -54,14 +54,12 @@
               <div style="padding: 14px">
                 <span>Add A New Board</span>
                 <div class="bottom clearfix">
-                  <!-- <el-button type="text" class="button">Operating</el-button> -->
                 </div>
               </div>
             </div>
           </el-card>
         </el-col>
       </el-row>
-      <!-- <button>Add a new board</button> -->
     </div>
   </section>
 </template>

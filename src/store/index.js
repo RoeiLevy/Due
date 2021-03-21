@@ -12,7 +12,7 @@ export default new Vuex.Store({
     modules: {
         userStore,
         socketStore,
-        boardStore
+        boardStore,
     },
     state: {},
     mutations: {},

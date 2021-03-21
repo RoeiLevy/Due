@@ -19,8 +19,8 @@
                 v-if="titleEditMode"
                 ref="title"
                 v-model="boardToEdit.title"
-                @keyup.enter="saveBoard(boardToEdit)"
-                @focusout="saveBoard(boardToEdit)"
+                @keyup.enter="saveBoard"
+                @focusout="saveBoard"
               />
               <div v-else>
                 <h1 class="board-title" @click="handleEdit('title')">
@@ -40,7 +40,7 @@
               />
               <div v-else>
                 <p class="board-description" @click="handleEdit('description')">
-                  {{ boardToEdit.description }}
+                  {{ boardDescription }}
                 </p>
               </div>
             </div>
@@ -197,11 +197,13 @@ export default {
           (g) => g.id === groupToEdit.id
         );
         this.boardToEdit.groups.splice(groupIdx, 1, groupToEdit);
-        await this.$store.dispatch({
+        const savedGroup = await this.$store.dispatch({
           type: "saveBoard",
           boardToSave: this.boardToEdit,
         });
+
         // Add user msg
+        return savedGroup;
       } catch (err) {
         console.log("Couldn`t Save Group", err);
         throw err;
@@ -215,11 +217,14 @@ export default {
           (g) => g.id === groupId
         );
         this.boardToEdit.groups[groupIdx].tasks.push(newTask);
-        await this.$store.dispatch({
-          type: "saveBoard",
-          boardToSave: this.boardToEdit,
-        });
+
+        const groupToSave = JSON.parse(
+          JSON.stringify(this.boardToEdit.groups[groupIdx])
+        );
+        const savedGroup = await this.saveGroup(groupToSave);
+
         // Add user msg
+        return savedGroup;
       } catch (err) {
         console.log("err:", err);
       }
@@ -306,16 +311,15 @@ export default {
         console.log("err:", err);
       }
     },
-    async saveBoard(board) {
+    async saveBoard() {
       try {
         this.titleEditMode = false;
         this.descEditMode = false;
-        const boardWithUrl = await this.printScr(board);
-        await this.$store.dispatch(
-          "saveBoard",
-          JSON.parse(JSON.stringify(boardWithUrl))
+        const boardWithUrl = await this.printScr(
+          JSON.parse(JSON.stringify(this.boardToEdit))
         );
-        this.loadBoard();
+        await this.$store.dispatch({ type: "saveBoard", boardToSave: boardWithUrl });
+        // this.loadBoard();
       } catch (err) {
         console.log("err:", err);
       }
@@ -334,11 +338,20 @@ export default {
       }
     },
     async printScr(board) {
-      return html2canvas(this.$refs.screen).then((canvas) => {
+      try {
+        const canvas = await html2canvas(this.$refs.screen);
         const pageImg = canvas.toDataURL();
         board.thumbnail = pageImg;
         return board;
-      });
+
+      } catch (err) {
+        console.log("err:", err);
+      }
+      // return html2canvas(this.$refs.screen).then((canvas) => {
+      //   const pageImg = canvas.toDataURL();
+      //   board.thumbnail = pageImg;
+      //   return board;
+      // });
     },
   },
   mounted() {
@@ -346,6 +359,10 @@ export default {
     // else setTimeout(()=>this.printScr(),1000);
   },
   computed: {
+    boardDescription() {
+      if (!this.boardToEdit.description) return 'Add a description'
+      else return this.boardToEdit.description
+    },
     currBoard() {
       return this.$store.getters.boardForDisplay;
     },

@@ -66,6 +66,7 @@ import moment from "moment";
 import statusPicker from "./status-picker.vue";
 
 export default {
+  name: 'task-preview',
   props: ["task", "groupColor", "groupId"],
   data() {
     return {

@@ -35,6 +35,7 @@
         }
         .header-icon:hover {
             filter: brightness(70%);
+            border: none !important;
         }
         .task-title-label {
             height: 36px;
@@ -178,6 +179,7 @@
 // .sortable-ghost // .sortable-drag,
 .sortable-chosen {
     // overflow: hidden;
+    opacity: 100%;
     box-shadow: 0 0 20px rgba(51, 51, 51, 0.05);
     transform: rotate(1deg);
     transition: ease;

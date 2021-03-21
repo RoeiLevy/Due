@@ -118,6 +118,25 @@
     }
 }
 
+.board-title-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.board-description {
+    // margin-top: 5px;
+    border: 1px dashed transparent;
+}
+
+input.board-description {
+    outline: none;
+    border: 1px dashed gray;
+}
+
+.board-description:hover {
+    border: 1px dashed gray;
+}
+
 // .el-drawer__container.el-drawer__open {
 //     z-index: 1;
 // }

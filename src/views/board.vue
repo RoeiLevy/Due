@@ -9,6 +9,7 @@
       <div class="flex column board-container">
         <div class="flex column board-header">
           <div class="flex space-between top-header">
+            <div class="board-title-container">
             <input
               class="board-title"
               v-if="editMode"
@@ -22,6 +23,25 @@
                 {{ boardToEdit.title }}
               </h1>
             </div>
+
+<!-- //////////////////////////////////// -->
+
+            <input
+              class="board-description"
+              v-if="editMode"
+              ref="input"
+              v-model="boardToEdit.description"
+              @keyup.enter="saveBoard(boardToEdit)"
+              @focusout="saveBoard(boardToEdit)"
+            />
+            <div v-else>
+              <p class="board-description" @click="handleEdit">
+                {{ boardToEdit.description }}
+              </p>
+            </div>
+          </div>
+
+<!-- //////////////////////////////////// -->
 
             <div class="board-actions">
               <button>

@@ -7,6 +7,25 @@
         border-radius: 3px;
         margin-bottom: 50px;
         filter: brightness(96%);
+        position: relative;
+        transition: all .3s;
+        .close-card-btn {
+            transition: all .3s;
+            position: absolute;
+            right: 0;
+            padding: 5px;
+            background: none;
+            opacity: 0;
+            font-size: 1rem;
+            color: black;
+        }
+        .close-card-btn:hover{
+            background-color: rgba(161, 160, 160, 0.438);
+            border-radius: 100%;
+        }
+    }
+    .card:hover .close-card-btn{
+        opacity: 1;
     }
 }
 

@@ -355,7 +355,8 @@ export default {
       try {
         const canvas = await html2canvas(this.$refs.screen);
         const pageImg = canvas.toDataURL();
-        board.thumbnail = pageImg;
+        const cloudUrl= await utilService.uploadImg(pageImg)
+        board.thumbnail = cloudUrl;
         return board;
       } catch (err) {
         console.log("err:", err);

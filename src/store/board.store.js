@@ -123,6 +123,16 @@ export const boardStore = {
                 throw err
             }
         },
+        async removeBoard(context,boardId) {
+            try {
+                await boardService.remove(boardId);
+                await context.dispatch('loadBoards');
+                console.log('Board deleted');
+            } catch (err) {
+                console.log('Couldn`t delete board', err);
+                throw err;
+            }
+        },
         async getTask({ state }, { taskId, groupId }) {
             try {
                 const groupIdx = state.currBoard.groups.findIndex(

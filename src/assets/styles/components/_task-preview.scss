@@ -161,7 +161,11 @@
     }
 }
 
-.task-wrapper:hover *:not(.remove-btn-wrapper *, .status-container *, .tag-group, .tag-group *) {
+.task-wrapper:hover h3.status-h3 {
+    color: #333333;
+}
+
+.task-wrapper:hover *:not( .remove-btn-wrapper *, .status-container *, .tag-group, .tag-group *) {
     // filter: brightness(98%);
     color: #aaaaaa;
     background-color: #f3f3f3ef;

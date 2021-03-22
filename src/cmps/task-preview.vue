@@ -43,7 +43,7 @@
       >
         {{ task.status.title }}
       </h3>
-      <h3 v-else @click="isSelectingStatus = !isSelectingStatus">Status</h3>
+      <h3 class="status-h3" v-else @click="isSelectingStatus = !isSelectingStatus">Status</h3>
       <status-picker
         @setStatus="setStatus"
         @addStatus="addStatus"

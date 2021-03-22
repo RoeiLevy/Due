@@ -123,6 +123,16 @@ export const boardStore = {
                 throw err
             }
         },
+        async removeBoard(context,boardId) {
+            try {
+                await boardService.remove(boardId);
+                await context.dispatch('loadBoards');
+                console.log('Board deleted');
+            } catch (err) {
+                console.log('Couldn`t delete board', err);
+                throw err;
+            }
+        },
         async getTask({ state }, { taskId, groupId }) {
             const groupIdx = state.currBoard.groups.findIndex(
                 g => g.id === groupId
@@ -137,12 +147,12 @@ export const boardStore = {
             console.log('groupId:', groupId)
             console.log('task:', task)
             try {
-                this.commit({ type: 'saveTask', task, groupId }) 
+                this.commit({ type: 'saveTask', task, groupId })
                 const savedTask = await this.dispatch({ type: 'saveBoard', boardToSave: JSON.parse(JSON.stringify(state.currBoard)) })
                 return savedTask
 
             } catch (err) {
-                console.log('err:', err)          
+                console.log('err:', err)
             }
         }
 

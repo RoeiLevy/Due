@@ -5,22 +5,34 @@
         <img class="logo" src="@/assets/imgs/logo.png" />
       </router-link>
       <div class="switch-container">
-   <el-switch
-   class="switch"
-  v-model="viewValue"
-  active-color="#323338"
-  inactive-color="#323338">
-</el-switch>
-      <p>Switch View</p>
+        <el-switch
+          class="switch"
+          v-model="viewValue"
+          active-color="#323338"
+          inactive-color="#323338"
+        >
+        </el-switch>
+        <p>Switch View</p>
       </div>
-
-
     </header>
 
     <div class="board-list">
       <h2>Select Your Board</h2>
-      <el-carousel v-if="viewValue" class="carousel" :interval="4000" type="card" height="300px">
-        <el-carousel-item v-for="board in boards" :key="board._id">
+      <el-carousel
+        v-if="viewValue"
+        class="carousel"
+        :interval="4000"
+        type="card"
+        height="300px"
+      >
+        <el-carousel-item class="carousel-item" v-for="board in boards" :key="board._id">
+          <el-button
+            class="close-card-btn"
+            type="text"
+            @click="removeBoard(board._id)"
+          >
+            <font-awesome-icon class="header-icon remove-btn" icon="trash" />
+          </el-button>
           <h3 class="medium" @click="showBoard(board._id)">
             {{ board.title }}
           </h3>
@@ -33,7 +45,15 @@
       </el-carousel>
       <el-row v-else>
         <el-col :span="5" v-for="board in boards" :key="board._id" :offset="1">
-          <el-card :body-style="{ padding: '0px' }" class="card">
+          <el-card closeable :body-style="{ padding: '0px' }" class="card">
+            <!-- <button class="close-card-btn" @click="deleteBoard">X</button> -->
+            <el-button
+              class="close-card-btn"
+              type="text"
+              @click="removeBoard(board._id)"
+            >
+              <font-awesome-icon class="header-icon remove-btn" icon="trash" />
+            </el-button>
             <div @click="showBoard(board._id)">
               <img :src="board.thumbnail" class="image" />
               <div style="padding: 14px">
@@ -53,8 +73,7 @@
               <i class="el-icon-plus" style="font-size: 40px"></i>
               <div style="padding: 14px">
                 <span>Add A New Board</span>
-                <div class="bottom clearfix">
-                </div>
+                <div class="bottom clearfix"></div>
               </div>
             </div>
           </el-card>
@@ -70,8 +89,7 @@ import boardPreview from "../cmps/board-preview.vue";
 export default {
   data() {
     return {
-        viewValue: true,
-
+      viewValue: true,
     };
   },
   methods: {
@@ -84,6 +102,33 @@ export default {
         this.$router.push(`/board/${newBoard._id}`);
       } catch (err) {
         console.log("Couldn`t add board", err);
+      }
+    },
+    async removeBoard(boardId) {
+      try {
+        await this.$confirm(
+          "This will permanently delete the Board. Continue?",
+          "Warning",
+          {
+            confirmButtonText: "OK",
+            cancelButtonText: "Cancel",
+            type: "warning",
+          }
+        );
+        try {
+          await this.$store.dispatch("removeBoard", boardId);
+          this.$message({
+            type: "success",
+            message: "Delete completed",
+          });
+        } catch (err) {
+          console.log("Couldn`t delete board", err);
+        }
+      } catch (err) {
+        this.$message({
+          type: "info",
+          message: "Delete canceled",
+        });
       }
     },
   },

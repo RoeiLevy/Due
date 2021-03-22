@@ -6,7 +6,7 @@
     :before-close="closeActivities"
   >
     <div class="activity-task-title">
-      <h2 v-if="board">{{ board.title }}</h2>
+      <h2 v-if="board">{{ board.title }} Log</h2>
     </div>
 
     <el-tabs v-model="activeName" @tab-click="handleClick">
@@ -34,7 +34,7 @@ export default {
     return {
       task: null,
       activities: null,
-      activeName: "updates",
+      activeName: "activity",
     };
   },
   methods: {

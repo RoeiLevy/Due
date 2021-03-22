@@ -263,13 +263,19 @@ export default {
     },
     async removeTask(taskId, groupId) {
       try {
-        const groupIdx = this.boardToEdit.groups.findIndex(
+
+        const boardCopy = JSON.parse(JSON.stringify(this.boardToEdit))
+        
+        const groupIdx = boardCopy.groups.findIndex(
           (group) => group.id === groupId
         );
-        const taskIdx = this.boardToEdit.groups[groupIdx].tasks.findIndex(
+        const taskIdx = boardCopy.groups[groupIdx].tasks.findIndex(
           (item) => item.id === taskId
         );
-        this.boardToEdit.groups[groupIdx].tasks.splice(taskIdx, 1);
+        boardCopy.groups[groupIdx].tasks.splice(taskIdx, 1);
+
+        this.boardToEdit = boardCopy
+
         await this.$store.dispatch({
           type: "saveBoard",
           boardToSave: this.boardToEdit,

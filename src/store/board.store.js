@@ -35,7 +35,6 @@ export const boardStore = {
         },
         toggleIsBoardActivities(state) {
             state.isBoardActivities = !state.isBoardActivities
-            console.log(state.isBoardActivities);
         },
         setBoard(state, { board }) {
             state.currBoard = board
@@ -161,7 +160,7 @@ export const boardStore = {
         async getTaskActivities({ state }, { taskId }) {
             try {
                 var boardActivities = JSON.parse(JSON.stringify(state.currBoard.activities))
-                const taskActivities = boardActivities.filter(a => a.task.id = taskId)
+                const taskActivities = boardActivities.filter(a => a.task.id === taskId)
                 return taskActivities
 
             } catch (err) {

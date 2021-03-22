@@ -16,7 +16,7 @@
         opacity: 1;
     }
     .statuses {
-        h4{
+        h4 {
             margin: 0 auto;
         }
         display: flex;
@@ -24,7 +24,7 @@
         flex-wrap: wrap;
         flex: 1;
         height: 100%;
-        .status-footer{
+        .status-footer {
             display: flex;
             justify-content: center;
         }
@@ -55,3 +55,8 @@
     transform: rotate( 90deg);
     left: 47%;
 }
+
+// .tag-group:focus,
+// .tag-group:active * {
+//     background-color: currentColor !important;
+// }

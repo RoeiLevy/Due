@@ -15,6 +15,7 @@
         @click="setStatus(status)"
         :style="{ 'background-color': status.color }"
         effect="dark"
+        class="status-btn"
       >
         <h4>{{ status.title }}</h4>
       </el-tag>

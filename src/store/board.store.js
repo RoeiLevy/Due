@@ -103,6 +103,7 @@ export const boardStore = {
         async loadBoards(context) {
             try {
                 const boards = await boardService.query();
+                console.log('boards:', boards)
                 context.commit({ type: 'setBoards', boards });
                 return boards
             } catch (err) {

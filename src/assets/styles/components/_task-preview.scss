@@ -39,7 +39,8 @@
             cursor: pointer !important;
         }
         .header-icon:hover {
-            filter: brightness(70%);
+            // filter: brightness(70%);
+            color: #636363;
             border: none !important;
             cursor: pointer !important;
         }
@@ -90,7 +91,8 @@
         color: #d6d9df;
     }
     .add-btn:hover {
-        filter: brightness(60%);
+        // filter: brightness(60%);
+        color: #aaaaaa;
     }
     .task-members-container:hover .add-btn {
         display: flex;
@@ -140,11 +142,12 @@
     }
     .remove-btn {
         display: none;
+        // color: #aaaaaa;
         filter: brightness(250%);
     }
     .remove-btn:hover {
         cursor: pointer;
-        filter: brightness(100%);
+        // filter: brightness(60%);
     }
     .task-color-box-start {
         @include task-cells;
@@ -158,8 +161,14 @@
     }
 }
 
-.task-wrapper:hover {
+.task-wrapper:hover h3.status-h3 {
+    color: #333333;
+}
+
+.task-wrapper:hover *:not( .remove-btn-wrapper *, .status-container *, .tag-group, .tag-group *) {
     // filter: brightness(98%);
+    color: #aaaaaa;
+    background-color: #f3f3f3ef;
     cursor: pointer;
     .task-title-label {
         color: $color-link_color;
@@ -167,7 +176,7 @@
 }
 
 .task-wrapper:focus,
-.task-wrapper:active * {
+.task-wrapper:active *:not(.status-container *, .tag-group, .tag-group *) {
     background-color: #e5f4ff;
 }
 
@@ -176,15 +185,20 @@
     background-color: #e5f4ff;
 }
 
-.svg-inline--fa:active {
-    filter: none !important;
+.header-icon:hover>path,
+.add-btn:hover>path {
+    filter: brightness(60%);
 }
 
-.task-wrapper:hover .remove-btn-wrapper {
-    display: flex;
-}
-
+// .svg-inline--fa:active {
+//     filter: none !important;
+// }
 .task-wrapper:hover .remove-btn {
+    filter: brightness(60%);
+}
+
+.task-wrapper:hover .remove-btn,
+.task-wrapper:hover .remove-btn-wrapper {
     display: flex;
 }
 
@@ -197,16 +211,15 @@
     color: white;
 }
 
-.status-container:hover {
-    opacity: 1;
-    .task-status:hover {
-        opacity: 0.8;
-    }
-    .tag-group:hover {
-        opacity: 1;
-    }
-}
-
+// .status-container:hover {
+//     opacity: 1;
+//     .task-status:hover {
+//         opacity: 0.8;
+//     }
+//     .tag-group:hover {
+//         opacity: 1;
+//     }
+// }
 .el-input--prefix .el-input__inner {
     border: none;
     background-color: inherit;
@@ -226,6 +239,7 @@
     z-index: 70;
 }
 
+.task-wrapper:hover>.remove-btn-wrapper,
 .task-wrapper:active>.remove-btn-wrapper {
     background-color: #ffffff !important;
 }

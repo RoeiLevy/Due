@@ -10,14 +10,24 @@
     width: 266px;
     height: 315px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
     >*:hover {
         opacity: 1;
     }
     .statuses {
+        h4{
+            margin: 0 auto;
+        }
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
+        flex: 1;
         height: 100%;
+        .status-footer{
+            display: flex;
+            justify-content: center;
+        }
     }
     .el-tag {
         margin: 5px 0;

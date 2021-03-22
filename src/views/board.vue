@@ -138,6 +138,7 @@
               @addTask="addTask"
               @removeGroup="removeGroup"
               @addStatus="addStatus"
+              @deleteStatus="deleteStatus"
             />
             <!-- </transition-group>
             </draggable> -->
@@ -176,6 +177,11 @@ export default {
   methods: {
     addStatus(status) {
       this.boardToEdit.statuses.push(status);
+      this.saveBoard();
+    },
+    deleteStatus(statusId) {
+      const idx = this.boardToEdit.statuses.findIndex((s) => s.id === statusId);
+      this.boardToEdit.statuses.splice(idx,1);
       this.saveBoard();
     },
     async removeGroup(groupId) {

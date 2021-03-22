@@ -142,11 +142,12 @@
     }
     .remove-btn {
         display: none;
+        // color: #aaaaaa;
         filter: brightness(250%);
     }
     .remove-btn:hover {
         cursor: pointer;
-        filter: brightness(100%);
+        // filter: brightness(60%);
     }
     .task-color-box-start {
         @include task-cells;
@@ -160,7 +161,7 @@
     }
 }
 
-.task-wrapper:hover *:not(.status-container *, .tag-group, .tag-group *) {
+.task-wrapper:hover *:not(.remove-btn-wrapper *, .status-container *, .tag-group, .tag-group *) {
     // filter: brightness(98%);
     color: #aaaaaa;
     background-color: #f3f3f3ef;
@@ -180,8 +181,16 @@
     background-color: #e5f4ff;
 }
 
-.svg-inline--fa:active {
-    filter: none !important;
+.header-icon:hover>path,
+.add-btn:hover>path {
+    filter: brightness(60%);
+}
+
+// .svg-inline--fa:active {
+//     filter: none !important;
+// }
+.task-wrapper:hover .remove-btn {
+    filter: brightness(60%);
 }
 
 .task-wrapper:hover .remove-btn,

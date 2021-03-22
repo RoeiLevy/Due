@@ -7,15 +7,30 @@
     .nav-links {
         // text-align: center;
         padding: 10px;
+        .logout-btn{
+            padding: 10px;
+            background: none;
+            transition: all.3s;
+        }
+        .logout-btn:hover{
+            opacity: .5;
+        }
+        a{
+            text-decoration: none ;
+        }
     }
     .nav-links>* {
         // text-align: center;
         padding-inline-end: 10px;
+        text-decoration: none;
     }
     .info-container {
         margin: 5% auto;
         padding: 20px;
         max-width: 600px;
+        :first-child{
+            margin: 0 auto;
+        }
     }
     .get-started {
         margin: 20px 0;

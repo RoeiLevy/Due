@@ -41,16 +41,25 @@
           <font-awesome-icon class="header-icon" icon="search" />
         </div>
       </div>
+      <div class="btn-surface">
+        <div class="icon-wrapper">
+          <avatar></avatar>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import avatar from './avatar'
 export default {
   methods: {
     toBoardList() {
       this.$router.push('/board')
     }
+  },
+  components:{
+    avatar
   }
 };
 </script>

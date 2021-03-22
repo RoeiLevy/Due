@@ -17,7 +17,8 @@
     </header>
 
     <div class="board-list">
-      <h2 class="board-select-title">Select Your Board</h2>
+      <h2 v-if="!loggedInUser">Select Your Board</h2>
+      <h2 v-else>Hello {{loggedInUser.fullname}}</h2>
       <el-carousel
         v-if="viewValue"
         class="carousel"
@@ -158,6 +159,9 @@ export default {
     boards() {
       return this.$store.getters.boards;
     },
+    loggedInUser(){
+      return this.$store.getters.loggedInUser;
+    }
   },
   created() {
     this.$store.dispatch("loadBoards");

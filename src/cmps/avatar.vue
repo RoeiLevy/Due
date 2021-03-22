@@ -12,18 +12,18 @@
       v-else-if="loggedInUser"
       >{{ initials }}</span
     >
-    <span @click="goLogin" v-else title="guest">G</span>
+    <span @click="go('login')" v-else title="guest">G</span>
     <div v-if="isMenuOpen" class="menu">
       <header>
         <img src="@/assets/imgs/logo.png" class="logo" />
-        {{loggedInUser.fullname}}
+        {{ loggedInUser.fullname }}
       </header>
-      <button>
+      <button @click="go('profile')">
         Profile
         <font-awesome-icon class="header-icon" icon="user" />
       </button>
       <button>
-        Logout
+        <button @click="logout" class="logout-btn">Logout</button>
         <font-awesome-icon class="header-icon" icon="sign-out-alt" />
       </button>
     </div>
@@ -40,8 +40,14 @@ export default {
     };
   },
   methods: {
-    goLogin() {
-      this.$router.push("login");
+    go(path) {
+      this.$router.push(path);
+    },
+    async logout() {
+      await this.$store.dispatch("logout");
+      this.$router.push("/login");
+      try {
+      } catch (err) {}
     },
   },
   computed: {

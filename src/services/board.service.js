@@ -31,7 +31,7 @@ const KEY = 'board/'
 
 async function query() {
     console.log('in frontend service');
-    return httpService.get(`board`)
+    return httpService.get(`board/`)
 
     // if (!localStorage.getItem(BOARD_KEY)) {
     //     localStorage.setItem(BOARD_KEY, JSON.stringify(boardDB));

@@ -158,10 +158,11 @@ import appHeader from "../cmps/header";
 import draggable from "vuedraggable";
 import taskDetails from "../cmps/task-details";
 import barChart from "../cmps/bar-chart";
+import boardActivities from "../cmps/board-activities.vue";
 
 import { boardService } from "../services/board.service";
 import { utilService } from "../services/util.service";
-import boardActivities from "../cmps/board-activities.vue";
+import { socketService } from "../services/socket.service";
 
 export default {
   name: "board",

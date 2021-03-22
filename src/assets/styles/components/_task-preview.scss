@@ -25,7 +25,7 @@
         width: 40%;
          :hover {
             cursor: text;
-            border: 1px dashed gray;
+            // border: 1px dashed gray;
         }
         input {
             border: 1px dashed gray;
@@ -165,7 +165,7 @@
     color: #333333;
 }
 
-.task-wrapper:hover *:not( .remove-btn-wrapper *, .status-container *, .tag-group, .tag-group *) {
+.task-wrapper:hover *:not(input, .remove-btn-wrapper *, .status-container *, .tag-group, .tag-group *) {
     // filter: brightness(98%);
     color: #aaaaaa;
     background-color: #f3f3f3ef;
@@ -246,4 +246,13 @@
 
 .sortable-chosen.remove-btn {
     transform: none !important;
+}
+
+.vd-picker-header {
+    background-color: #353535 !important;
+    border-color: #363636 !important;
+}
+
+#due-on {
+    font-size: 12px !important;
 }

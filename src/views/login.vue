@@ -1,6 +1,6 @@
 <template>
   <div class="main-container">
-       <header class="home-header">
+    <header class="home-header">
       <router-link to="/">
         <img class="logo" src="@/assets/imgs/logo.png" />
       </router-link>
@@ -10,14 +10,15 @@
       </div>
     </header>
     <section class="login">
-      <form>
+      <form @submit.prevent="login">
         <div class="box-container">
           <h2 class="heading">Sign In</h2>
           <div class="form-fields">
             <input
               id="email"
               name="email"
-              type="text"
+              type="email"
+              v-model="credantials.email"
               placeholder="Email Address"
             />
           </div>
@@ -25,7 +26,8 @@
             <input
               id="password"
               name="password"
-              type="text"
+              type="password"
+              v-model="credantials.password"
               placeholder="Password"
             />
           </div>
@@ -37,8 +39,6 @@
         </div>
       </form>
     </section>
-
-   
   </div>
 </template>
 
@@ -46,6 +46,24 @@
 import SocialSignUp from "@/cmps/social-signup";
 export default {
   name: "login",
+  data() {
+    return {
+      credantials: {
+        email: "",
+        password: "",
+      },
+    };
+  },
+  methods:{
+    async login(){
+      try {
+        await this.$store.dispatch('login',this.credantials)
+        this.$router.push('/board')
+      } catch (err) {
+        console.log('Invalid Email/Password');
+      }
+    }
+  },
   components: {
     SocialSignUp,
   },

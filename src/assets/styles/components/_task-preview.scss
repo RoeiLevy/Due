@@ -176,6 +176,10 @@
     background-color: #e5f4ff;
 }
 
+.svg-inline--fa:active {
+    filter: none !important;
+}
+
 .task-wrapper:hover .remove-btn-wrapper {
     display: flex;
 }

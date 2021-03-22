@@ -39,7 +39,8 @@
             cursor: pointer !important;
         }
         .header-icon:hover {
-            filter: brightness(70%);
+            // filter: brightness(70%);
+            color: #636363;
             border: none !important;
             cursor: pointer !important;
         }
@@ -90,7 +91,8 @@
         color: #d6d9df;
     }
     .add-btn:hover {
-        filter: brightness(60%);
+        // filter: brightness(60%);
+        color: #aaaaaa;
     }
     .task-members-container:hover .add-btn {
         display: flex;
@@ -160,6 +162,7 @@
 
 .task-wrapper:hover *:not(.tag-group, .tag-group *) {
     // filter: brightness(98%);
+    color: #aaaaaa;
     background-color: #f3f3f3ef;
     cursor: pointer;
     .task-title-label {

@@ -17,22 +17,19 @@
     </header>
 
     <div class="board-list">
-      <h2>Select Your Board</h2>
+      <h2 class="board-select-title">Select Your Board</h2>
       <el-carousel
         v-if="viewValue"
         class="carousel"
-        :interval="4000"
+        :interval="40000"
         type="card"
         height="300px"
       >
-        <el-carousel-item class="carousel-item" v-for="board in boards" :key="board._id">
-          <el-button
-            class="close-card-btn"
-            type="text"
-            @click="removeBoard(board._id)"
-          >
-            <font-awesome-icon class="header-icon remove-btn" icon="trash" />
-          </el-button>
+        <el-carousel-item
+          class="carousel-item"
+          v-for="board in boards"
+          :key="board._id"
+        >
           <h3 class="medium" @click="showBoard(board._id)">
             {{ board.title }}
           </h3>
@@ -41,14 +38,36 @@
             :src="board.thumbnail"
             @click="showBoard(board._id)"
           />
+          <el-button
+            class="close-card-btn"
+            type="text"
+            @click="removeBoard(board._id)"
+          >
+            <font-awesome-icon class="header-icon remove-btn" icon="trash" />
+          </el-button>
+        </el-carousel-item>
+
+        <el-carousel-item
+          class="carousel-item add-board-container"
+        >
+        <h3 class="medium">Add Board</h3>
+          <div class="add-board carousel-img" @click="addNewBoard">
+            <i class="el-icon-plus" style="font-size: 40px"></i>
+            <div style="padding: 14px">
+              <span>Add A New Board</span>
+            </div>
+          </div>
         </el-carousel-item>
       </el-carousel>
+
+
+
       <el-row v-else>
         <el-col :span="5" v-for="board in boards" :key="board._id" :offset="1">
           <el-card closeable :body-style="{ padding: '0px' }" class="card">
             <!-- <button class="close-card-btn" @click="deleteBoard">X</button> -->
             <el-button
-              class="close-card-btn"
+              class="close-card-btn card-view-btn"
               type="text"
               @click="removeBoard(board._id)"
             >

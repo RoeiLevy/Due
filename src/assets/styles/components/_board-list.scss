@@ -17,14 +17,14 @@
             background: none;
             opacity: 0;
             font-size: 1rem;
-            color: black;
+            color: #4e4f52;
         }
-        .close-card-btn:hover{
-            background-color: rgba(161, 160, 160, 0.438);
-            border-radius: 100%;
-        }
+        // .close-card-btn:hover {
+        //     background-color: rgba(161, 160, 160, 0.438);
+        //     border-radius: 100%;
+        // }
     }
-    .card:hover .close-card-btn{
+    .card:hover .close-card-btn {
         opacity: 1;
     }
 }
@@ -64,6 +64,7 @@
     object-fit: cover;
     border: 1px solid rgba(95, 95, 95, 0.24);
     filter: grayscale(100%);
+    position: relative;
 }
 
 .image {
@@ -84,6 +85,73 @@
 }
 
 .card:hover {
-    // transform: rotate(-1.5deg);
     transform: translateY(-15px);
+    .close-card-btn.el-button--text {
+        display: block;
+    }
+}
+
+.carousel-item:hover>.close-card-btn.el-button--text {
+    opacity: 1;
+}
+
+// 
+.close-card-btn.el-button--text {
+    color: #4e4f52;
+    position: absolute;
+    opacity: 0;
+}
+
+.el-button.close-card-btn.el-button--text {
+    color: #4e4f52;
+    position: absolute;
+    z-index: 9;
+    opacity: 0;
+    top: -5px;
+    // padding-inline-end: 40px;
+    // right: 130px;
+}
+
+.card-view-btn {
+    margin-top: 0 !important;
+}
+
+.add-board {
+    border: 1px solid rgba(95, 95, 95, 0.24);
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    min-width: 390px;
+    max-width: 400px;
+    height: 90%;
+    left: 17%;
+    justify-content: center;
+    // background-color: rgb(40, 240, 74);    
+    background: linear-gradient(-45deg, rgba(255, 255, 255, 0.459), #f1f1f1ad);
+    background-size: 500% 100%;
+    animation: gradient 10s linear infinite;
+    animation-direction: alternate;
+    filter: brightness(100%);
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0%
+    }
+    100% {
+        background-position: 100%
+    }
+}
+
+.add-board-container {
+    display: flex;
+    width: 100%;
+    height: 70%;
+    align-items: center;
+    align-content: center;
+    justify-items: center;
+}
+
+.board-select-title {
+    margin-bottom: 15px;
 }

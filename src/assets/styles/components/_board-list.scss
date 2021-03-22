@@ -17,12 +17,12 @@
             background: none;
             opacity: 0;
             font-size: 1rem;
-            color: black;
+            color: #4e4f52;
         }
-        .close-card-btn:hover {
-            background-color: rgba(161, 160, 160, 0.438);
-            border-radius: 100%;
-        }
+        // .close-card-btn:hover {
+        //     background-color: rgba(161, 160, 160, 0.438);
+        //     border-radius: 100%;
+        // }
     }
     .card:hover .close-card-btn {
         opacity: 1;
@@ -105,9 +105,17 @@
     top: 40px;
     left: 80%;
     // margin-top: 30px;
-    z-index: 9;
     // display: none;
     opacity: 0;
+}
+
+.el-button.close-card-btn.el-button--text {
+    color: #4e4f52;
+    position: absolute;
+    z-index: 9;
+    opacity: 0;
+    top: 0;
+    right: 0;
 }
 
 // .close-card-btn.el-button--text:hover {

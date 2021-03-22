@@ -2,24 +2,15 @@
     width: 50% !important;
 }
 
-
 .el-drawer__header>:first-child {
     order: 1;
 }
 
-.el-drawer__body {
-    padding: 20px;
-}
-
 .task-details {}
-
-
-
 
 .activity-menu {
     height: 40px;
     border-bottom: 1px solid #efefef;
-
     .activity-btn-wrapper,
     .updates-btn-wrapper {
         display: flex;
@@ -27,35 +18,27 @@
         align-items: center;
         padding: 0px 8px;
     }
-
     .activity-btn-wrapper:hover {
         box-shadow: 2px -22px 0px -20px #0085ff inset;
     }
-
     .updates-btn-wrapper:hover {
         box-shadow: 2px -22px 0px -20px #0085ff inset;
     }
-
     .activity-btn-wrapper button {
         background-color: transparent;
     }
-
     .updates-btn-wrapper button {
         background-color: transparent;
     }
-
 }
 
-
 .updates {
-    height: 93%;
-    padding-top: 30px;
+    flex: 1;
     overflow: scroll;
-
+    padding-bottom: 50px;
     .updates-container,
     .text-editor {
         padding-inline-end: 20px;
-
         .add-comment-btn {
             width: 32px;
             width: 60px;
@@ -66,11 +49,9 @@
             margin: 5px 5px 3px 0px;
         }
     }
-
     .update-txt-wrapper {
         padding: 16px;
     }
-
     .update-preview {
         padding: 15px;
         padding: 15px;
@@ -82,15 +63,15 @@
 }
 
 .el-drawer.rtl {
-    height: 100vh;
+    height: 100vh !important;
 }
 
 .el-drawer__body {
-    height: 95vh;
-}
-
-.el-drawer-title {
-    height: 5vh;
+    display: flex;
+    flex-direction: column;
+    height: 95%;
+    padding: 20px 0 0 20px;
+    // flex: 0 !important;
 }
 
 .el-drawer__close-btn:hover {
@@ -109,10 +90,41 @@
     border-bottom-right-radius: 4px;
 }
 
-
 .el-drawer__header {
+    height: 3%;
     padding: 0 !important;
     text-align: left;
     margin: 20px 20px 6px 24px !important;
+}
 
+.activity-log {
+    flex: 1;
+    // padding-top: 30px;
+    overflow: scroll;
+    .activities-container {
+        & :first-child {
+            border: 0px solid transparent;
+        }
+        .single-activity {
+            .activity-box {
+                border-top: 1px solid #c5c7d0;
+            }
+        }
+    }
+}
+
+.el-tabs--top {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    .el-tabs__content {
+        display: flex;
+        flex: 1;
+        // flex-direction: column;
+        .el-tab-pane {
+            // height: 100%;
+            display: flex;
+            width: 100%;
+        }
+    }
 }

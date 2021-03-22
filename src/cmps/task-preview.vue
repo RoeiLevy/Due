@@ -53,8 +53,18 @@
     </div>
     <div class="date-container">
       <!-- <input type="date" name="due-date" id="due-date" v-model="dueDate" /> -->
-      <el-date-picker v-model="dueDate" type="datetime" default-time="12:00:00">
-      </el-date-picker>
+      <!-- <el-date-picker v-model="dueDate" type="datetime" default-time="12:00:00"> -->
+      <!-- </el-date-picker> -->
+ <div class="date-container">
+    <el-date-picker
+      v-model="dueDate"
+      type="datetime"
+      placeholder="Select date and time">
+    </el-date-picker>
+  </div>
+
+
+
     </div>
     <div class="task-color-box-end"></div>
   </div>

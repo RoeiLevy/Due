@@ -1,14 +1,16 @@
 <template>
   <div class="activity-log">
-    <activity-preview />
+    <div class="activities-container">
+    <activity-preview v-for="activity in activities" :key="activity.id" :activity="activity" />
+    </div>
   </div>
 </template>
 
 <script>
 import activityPreview from "./activity-preview";
-// import ActivityPreview from "./activity-preview.vue";
+
 export default {
-  props: ["board"],
+  props: ["activities"],
   components: {
     activityPreview,
   },

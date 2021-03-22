@@ -134,14 +134,31 @@ export const boardStore = {
             }
         },
         async getTask({ state }, { taskId, groupId }) {
-            const groupIdx = state.currBoard.groups.findIndex(
-                g => g.id === groupId
-            );
-            const taskIdx = state.currBoard.groups[groupIdx].tasks.findIndex(
-                t => t.id === taskId
-            );
-            const taskToShow = JSON.parse(JSON.stringify(state.currBoard.groups[groupIdx].tasks[taskIdx]))
-            return taskToShow
+            try {
+                const groupIdx = state.currBoard.groups.findIndex(
+                    g => g.id === groupId
+                );
+                const taskIdx = state.currBoard.groups[groupIdx].tasks.findIndex(
+                    t => t.id === taskId
+                );
+                const taskToShow = JSON.parse(JSON.stringify(state.currBoard.groups[groupIdx].tasks[taskIdx]))
+                return taskToShow
+
+            } catch (err) {
+                console.log('err:', err)
+                throw err
+            }
+        },
+        async getTaskActivities({ state }, { taskId }) {
+            try {
+                var boardActivities = JSON.parse(JSON.stringify(state.currBoard.activities))
+                const taskActivities = boardActivities.filter(a => a.task.id = taskId)
+                return taskActivities
+
+            } catch (err) {
+                console.log('err:', err)
+                throw err
+            }
         },
         async saveTask({ state }, { task, groupId }) {
             console.log('groupId:', groupId)
@@ -153,6 +170,7 @@ export const boardStore = {
 
             } catch (err) {
                 console.log('err:', err)
+                throw err
             }
         }
 

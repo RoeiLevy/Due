@@ -10,8 +10,16 @@
     </div>
 
     <el-tabs v-model="activeName" @tab-click="handleClick">
-      <el-tab-pane label="Updates" name="updates">Updates</el-tab-pane>
-      <el-tab-pane label="Activity Log" name="activity">Activity Log</el-tab-pane>
+      <el-tab-pane label="Updates" name="updates">
+        <updates
+          v-if="isUpdatesClicked"
+          :comments="task.comments"
+          @addComment="addComment"
+        />
+      </el-tab-pane>
+      <el-tab-pane label="Activity Log" name="activity">
+        <activity-log :activities="activities" />
+      </el-tab-pane>
     </el-tabs>
 
     <!-- <nav class="activity-menu flex">
@@ -22,8 +30,6 @@
         <button>Activity Log</button>
       </div>
     </nav> -->
-    <updates v-if="isUpdatesClicked" :comments="task.comments" @addComment="addComment" />
-    <!-- <activity-log /> -->
   </el-drawer>
 </template>
 
@@ -36,6 +42,7 @@ export default {
   data() {
     return {
       task: null,
+      activities: null,
       activeName: "updates",
     };
   },
@@ -58,6 +65,18 @@ export default {
         });
         this.task = taskToShow;
         console.log("task in details", this.task);
+      } catch (err) {
+        console.log("err:", err);
+      }
+    },
+    async getTaskActivities(taskId) {
+      try {
+        const activitiesToShow = await this.$store.dispatch({
+          type: "getTaskActivities",
+          taskId,
+        });
+        this.activities = activitiesToShow;
+        console.log("task activities", this.activities);
       } catch (err) {
         console.log("err:", err);
       }
@@ -88,8 +107,8 @@ export default {
       return this.$route.params.boardId;
     },
     isUpdatesClicked() {
-      return this.activeName === 'updates' && this.task
-    }
+      return this.activeName === "updates" && this.task;
+    },
   },
   components: {
     activityLog,
@@ -101,7 +120,10 @@ export default {
       console.log(to);
       const taskId = this.$route.params.taskId;
       const groupId = this.$route.params.groupId;
-      if (taskId) this.getTask(taskId, groupId);
+      if (taskId) {
+        this.getTask(taskId, groupId);
+        this.getTaskActivities(taskId);
+      }
     },
   },
 };

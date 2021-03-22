@@ -6,21 +6,18 @@ import { socketService, SOCKET_EMIT_USER_WATCH, SOCKET_EVENT_USER_UPDATED } from
 
 export const userStore = {
     state: {
-        loggedinUser: userService.getLoggedinUser(),
+        loggedInUser: userService.getLoggedinUser(),
         users: [],
         watchedUser: null
     },
     getters: {
         users({ users }) { return users },
-        loggedinUser({ loggedinUser }) { return loggedinUser },
+        loggedInUser({ loggedInUser }) { return loggedInUser },
         watchedUser({ watchedUser }) { return watchedUser }
     },
     mutations: {
-        setLoggedinUser(state, { user }) {
-            state.loggedinUser = user;
-        },
-        setLoggedinUser(state, { user }) {
-            state.loggedinUser = user;
+        setLoggedInUser(state, { user }) {
+            state.loggedInUser = user;
         },
         setWatchedUser(state, { user }) {
             state.watchedUser = user;
@@ -33,31 +30,32 @@ export const userStore = {
         },
     },
     actions: {
-        async login({ commit }, { userCred }) {
+        async login(context, credantials) {
             try {
-                const user = await userService.login(userCred);
-                commit({ type: 'setLoggedinUser', user })
+                const user = await userService.login(credantials);
+                // console.log('context:', context)
+                context.commit({type:'setLoggedInUser',user})
                 return user;
             } catch (err) {
                 console.log('userStore: Error in login', err)
                 throw err
             }
         },
-        async signup({ commit }, { userCred }) {
+        async signup(context, credantials) {
             try {
-                const user = await userService.signup(userCred)
-                commit({ type: 'setLoggedinUser', user })
-                return user;
+                const user = await userService.signup(credantials)
+                // commit({ type: 'setLoggedinUser', user })
+                // return user;
             } catch (err) {
                 console.log('userStore: Error in signup', err)
                 throw err
             }
 
         },
-        async logout({ commit }) {
+        async logout(context) {
             try {
                 await userService.logout()
-                commit({ type: 'setLoggedinUser', user: null })
+                context.commit({ type: 'setLoggedInUser', user: null })
             } catch (err) {
                 console.log('userStore: Error in logout', err)
                 throw err

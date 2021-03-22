@@ -4,19 +4,24 @@
       <router-link to="/">
         <img class="logo" src="@/assets/imgs/logo.png" />
       </router-link>
-      <div class="nav-links">
+      <div v-if="!loggedInUser" class="nav-links">
         <router-link to="/login">Login</router-link>
         <router-link to="/signup">Sign Up</router-link>
       </div>
+      <div v-else class="nav-links">
+        <button @click="logout" class="logout-btn">Logout</button>
+      </div>
     </header>
     <section class="info-container flex column">
+      <h2 v-if="loggedInUser">Hello {{ loggedInUser.fullname }}</h2>
       <el-button
         @click="pushRoute"
         type="primary"
         plain
         round
         class="get-started"
-        >Get Started</el-button>
+        >Get Started</el-button
+      >
       <h1>DUE</h1>
       <h2>
         Planning, tracking and delivering your team’s best work has never been
@@ -37,7 +42,19 @@ export default {
     pushRoute() {
       this.$router.push("/board");
     },
+    async logout(){
+      await this.$store.dispatch('logout');
+      this.$router.push("/login");
+      try {
+      } catch (err) {
+        
+      }
+    }
   },
-  components: {},
+  computed: {
+    loggedInUser() {
+      return this.$store.getters.loggedInUser;
+    },
+  },
 };
 </script>

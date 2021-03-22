@@ -42,14 +42,12 @@ export default {
     pushRoute() {
       this.$router.push("/board");
     },
-    async logout(){
-      await this.$store.dispatch('logout');
+    async logout() {
+      await this.$store.dispatch("logout");
       this.$router.push("/login");
       try {
-      } catch (err) {
-        
-      }
-    }
+      } catch (err) {}
+    },
   },
   computed: {
     loggedInUser() {

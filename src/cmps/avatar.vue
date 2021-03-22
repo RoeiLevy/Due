@@ -1,7 +1,14 @@
 <template>
   <div class="avatar" :style="{ 'background-color': color }">
-    <img v-if="loggedInUser.img" :src="loggedInUser.img" />
-    <span v-else>{{ initials }}</span>
+    <img
+      :title="loggedInUser.fullname"
+      v-if="loggedInUser && loggedInUser.img"
+      :src="loggedInUser.img"
+    />
+    <span :title="loggedInUser.fullname" v-else-if="loggedInUser">{{
+      initials
+    }}</span>
+    <span v-else title="guest">G</span>
   </div>
 </template>
 

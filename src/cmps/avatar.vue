@@ -1,14 +1,32 @@
 <template>
   <div class="avatar" :style="{ 'background-color': color }">
     <img
+      @click="isMenuOpen = !isMenuOpen"
       :title="loggedInUser.fullname"
       v-if="loggedInUser && loggedInUser.img"
       :src="loggedInUser.img"
     />
-    <span :title="loggedInUser.fullname" v-else-if="loggedInUser">{{
-      initials
-    }}</span>
-    <span v-else title="guest">G</span>
+    <span
+      @click="isMenuOpen = !isMenuOpen"
+      :title="loggedInUser.fullname"
+      v-else-if="loggedInUser"
+      >{{ initials }}</span
+    >
+    <span @click="goLogin" v-else title="guest">G</span>
+    <div v-if="isMenuOpen" class="menu">
+      <header>
+        <img src="@/assets/imgs/logo.png" class="logo" />
+        {{loggedInUser.fullname}}
+      </header>
+      <button>
+        Profile
+        <font-awesome-icon class="header-icon" icon="user" />
+      </button>
+      <button>
+        Logout
+        <font-awesome-icon class="header-icon" icon="sign-out-alt" />
+      </button>
+    </div>
   </div>
 </template>
 
@@ -18,7 +36,13 @@ export default {
   data() {
     return {
       user: null,
+      isMenuOpen: false,
     };
+  },
+  methods: {
+    goLogin() {
+      this.$router.push("login");
+    },
   },
   computed: {
     color() {

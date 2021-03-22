@@ -325,6 +325,7 @@ export default {
           type: "loadBoard",
           boardId,
         });
+        console.log('board in cmp', board);
         this.boardToEdit = JSON.parse(JSON.stringify(board));
       } catch (err) {
         console.log("err:", err);

@@ -1,4 +1,4 @@
-// import { httpService } from './http.service'
+import { httpService } from './http.service'
 import { utilService } from './util.service'
 
 import { utilSerivce } from './util.service'
@@ -29,42 +29,44 @@ const BOARD_KEY = 'board'
 const KEY = 'board/'
 
 
-function query() {
-    if (!localStorage.getItem(BOARD_KEY)) {
-        localStorage.setItem(BOARD_KEY, JSON.stringify(boardDB));
-        return Promise.resolve(boardDB);
-    }
-    return storageService.query(BOARD_KEY);
+async function query() {
+    console.log('in frontend service');
+    return httpService.get(`board`)
+
+    // if (!localStorage.getItem(BOARD_KEY)) {
+    //     localStorage.setItem(BOARD_KEY, JSON.stringify(boardDB));
+    //     return Promise.resolve(boardDB);
+    // }
+    // return storageService.query(BOARD_KEY);
+
 }
 
 
 
-function getBoard(boardId) {
+async function getBoard(boardId) {
+    return httpService.get(`board/${boardId}`)
     // var queryStr = (!filterBy) ? '' : `?name=${filterBy.name}&sort=anaAref`
-    // return httpService.get(`board${queryStr}`)
-    return storageService.get(BOARD_KEY, boardId)
+    // return storageService.get(BOARD_KEY, boardId)
 }
 
-function remove(boardId) {
-    // return httpService.delete(`board/${boardId}`)
-    return storageService.remove('board', boardId)
+async function remove(boardId) {
+    return httpService.delete(`board/${boardId}`)
+    // return storageService.remove('board', boardId)
 
 }
 
 async function add(board) {
+    return httpService.post(`board`, board)
     // const addedBoard = await httpService.post(`board`, board)
-
     // board.createdBy = userService.getLoggedinUser()
-    const addedBoard = storageService.post('board', board)
-
-    return addedBoard
+    // const addedBoard = storageService.post('board', board)
+    // return addedBoard
 }
 
 async function update(board) {
-    // const addedBoard = await httpService.post(`board`, board)
-    const addedBoard = storageService.put('board', board)
-
+    const addedBoard = await httpService.put(`board/${board._id}`, board)
     return addedBoard
+    // const addedBoard = storageService.put('board', board)
 }
 
 async function addTask(task, groupId, boardId) {

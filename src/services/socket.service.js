@@ -13,7 +13,7 @@ export const socketService = createSocketService()
 window.socketService = socketService
 
 var socketIsReady = false;
-socketService.setup()
+// socketService.setup()
 
 
 function createSocketService() {
@@ -21,9 +21,7 @@ function createSocketService() {
     const socketService = {
         async setup() {
             if (socket) return
-            await httpService.get('setup-session')
             socket = io(baseUrl, { reconnection: false })
-            socketIsReady = true;
         },
         async on(eventName, cb) {
             if (!socket) await socketService.setup()
@@ -35,6 +33,7 @@ function createSocketService() {
             else socket.off(eventName, cb)
         },
         async emit(eventName, data) {
+            console.log('emitting', eventName, data);
             if (!socket) await socketService.setup()
             socket.emit(eventName, data)
         },

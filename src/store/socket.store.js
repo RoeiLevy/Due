@@ -23,9 +23,11 @@ export const socketStore = {
             const activity = {
                 id: utilService.makeId(),
                 createdAt: Date.now(),
+                txt,
                 byMember: context.getters.loggedInUser 
             }
-            socketService.emit('newActivity', activity)
+            console.log('activity to send: ', activity);
+            socketService.emit('new activity', activity)
         },
         sendActivityWithTask(context, { txt, task }) {
 

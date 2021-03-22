@@ -51,17 +51,21 @@
         v-if="isSelectingStatus"
       ></status-picker>
     </div>
-    <div class="date-container">
+    <!-- <div class="date-container"> -->
       <!-- <input type="date" name="due-date" id="due-date" v-model="dueDate" /> -->
       <!-- <el-date-picker v-model="dueDate" type="datetime" default-time="12:00:00"> -->
       <!-- </el-date-picker> -->
  <div class="date-container">
-    <el-date-picker
+    <!-- <el-date-picker
       v-model="dueDate"
       type="datetime"
-      placeholder="Select date and time">
-    </el-date-picker>
-  </div>
+      placeholder="Due">
+    </el-date-picker> -->
+  <VueDatePicker v-model="dueDate" id="due-on" clearable placeholder="Choose Date"
+ />
+
+
+  <!-- </div> -->
     </div>
     <div class="task-color-box-end"></div>
   </div>
@@ -76,7 +80,7 @@ export default {
   props: ["task", "groupColor", "groupId"],
   data() {
     return {
-      dueDate: "",
+      dueDate: null,
       isSelectingStatus: false,
       editMode: false,
       taskToEdit: null,
@@ -137,6 +141,7 @@ export default {
   },
   components: {
     statusPicker,
+
   },
 };
 </script>

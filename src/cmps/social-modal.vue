@@ -12,6 +12,7 @@
       <el-tab-pane label="Invite" name="invite">
         <el-input placeholder="Email of wanted member" v-model="email">
         </el-input>
+        <el-button type="primary">Primary</el-button>
       </el-tab-pane>
     </el-tabs>
   </div>
@@ -22,7 +23,8 @@ export default {
   props: ["members"],
   data() {
     return {
-      activeTab: "Members",
+      activeTab: "member",
+      email: "",
     };
   },
 };

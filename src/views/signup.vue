@@ -41,7 +41,6 @@
         </div>
         <div class="form-fields">
           <input type="file" @change="onUploadImg" />
-          
         </div>
         <div class="form-fields">
           <button class="createaccount" name="commit" type="submit">

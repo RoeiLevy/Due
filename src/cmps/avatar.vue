@@ -20,7 +20,7 @@ export default {
     initials() {
       var user = this.$store.getters.loggedInUser;
       user = user.fullname.split(" ");
-      if(user.length===1) return user[0].charAt(0).toUpperCase();
+      if (user.length === 1) return user[0].charAt(0).toUpperCase();
       user =
         user[0].charAt(0).toUpperCase() +
         user[user.length - 1].charAt(0).toUpperCase();

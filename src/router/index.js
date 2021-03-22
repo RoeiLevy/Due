@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import home from '../views/home.vue'
-import login from '../views/login.vue'
-import signup from '../views/signup.vue'
-import userProfile from '../views/user-profile.vue'
-import board from '../views/board.vue'
-import boardList from '../views/board-list.vue'
+import home from '../views/home'
+import login from '../views/login'
+import signup from '../views/signup'
+import userProfile from '../views/user-profile'
+import board from '../views/board'
+import boardList from '../views/board-list'
 import taskDetails from '../cmps/task-details'
 
 Vue.use(VueRouter)

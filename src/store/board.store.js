@@ -5,7 +5,9 @@ export const boardStore = {
     state: {
         isActivitiesOpen: false,
         currBoard: null,
-        boards: []
+        boards: [],
+        isTaskDetails: false,
+        isBoardActivities: false,
     },
     getters: {
         currBoardId(state) {
@@ -20,13 +22,19 @@ export const boardStore = {
         statuses(state) {
             return state.currBoard.statuses;
         },
-        isActivitiesOpen(state) {
-            return state.isActivitiesOpen
+        isTaskDetails(state) {
+            return state.isTaskDetails
+        },
+        isBoardActivities(state) {
+            return state.isBoardActivities
         }
     },
     mutations: {
-        toggleActivities(state) {
-            state.isActivitiesOpen = !state.isActivitiesOpen
+        toggleIsDetails(state) {
+            state.isTaskDetails = !state.isTaskDetails
+        },
+        toggleIsBoardActivities(state) {
+            state.isBoardActivities = !state.isBoardActivities
         },
         setBoard(state, { board }) {
             state.currBoard = board
@@ -152,7 +160,7 @@ export const boardStore = {
         async getTaskActivities({ state }, { taskId }) {
             try {
                 var boardActivities = JSON.parse(JSON.stringify(state.currBoard.activities))
-                const taskActivities = boardActivities.filter(a => a.task.id = taskId)
+                const taskActivities = boardActivities.filter(a => a.task.id === taskId)
                 return taskActivities
 
             } catch (err) {

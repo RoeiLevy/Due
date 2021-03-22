@@ -9,7 +9,8 @@
         v-if="isAddingMembers"
         :members="boardToEdit.members"
       ></social-modal>
-      <task-details :drawer="isActivitiesOpen" />
+      <task-details :drawer="isTaskDetails" />
+      <board-activities :board="boardToEdit" :drawer="isBoardActivities" />
       <div class="flex column board-container">
         <div class="flex column board-header">
           <div class="flex space-between top-header">
@@ -54,7 +55,7 @@
                 <font-awesome-icon class="header-icon plus" icon="user-plus" />
                 Invite
               </button>
-              <button @click="openActivities">
+              <button @click="openBoardActivities">
                 <font-awesome-icon class="header-icon" icon="chart-line" />
                 Activity
               </button>
@@ -160,6 +161,7 @@ import barChart from "../cmps/bar-chart";
 
 import { boardService } from "../services/board.service";
 import { utilService } from "../services/util.service";
+import boardActivities from "../cmps/board-activities.vue";
 
 export default {
   name: "board",
@@ -181,7 +183,7 @@ export default {
     },
     deleteStatus(statusId) {
       const idx = this.boardToEdit.statuses.findIndex((s) => s.id === statusId);
-      this.boardToEdit.statuses.splice(idx,1);
+      this.boardToEdit.statuses.splice(idx, 1);
       this.saveBoard();
     },
     async removeGroup(groupId) {
@@ -261,13 +263,19 @@ export default {
     },
     async removeTask(taskId, groupId) {
       try {
-        const groupIdx = this.boardToEdit.groups.findIndex(
+
+        const boardCopy = JSON.parse(JSON.stringify(this.boardToEdit))
+        
+        const groupIdx = boardCopy.groups.findIndex(
           (group) => group.id === groupId
         );
-        const taskIdx = this.boardToEdit.groups[groupIdx].tasks.findIndex(
+        const taskIdx = boardCopy.groups[groupIdx].tasks.findIndex(
           (item) => item.id === taskId
         );
-        this.boardToEdit.groups[groupIdx].tasks.splice(taskIdx, 1);
+        boardCopy.groups[groupIdx].tasks.splice(taskIdx, 1);
+
+        this.boardToEdit = boardCopy
+
         await this.$store.dispatch({
           type: "saveBoard",
           boardToSave: this.boardToEdit,
@@ -307,8 +315,8 @@ export default {
       this.addingView = true;
       console.log(this.mainTable);
     },
-    openActivities() {
-      this.$store.commit({ type: "toggleActivities" });
+    openBoardActivities() {
+      this.$store.commit({ type: "toggleIsBoardActivities" });
     },
     async loadBoard() {
       try {
@@ -380,8 +388,11 @@ export default {
     currBoard() {
       return this.$store.getters.boardForDisplay;
     },
-    isActivitiesOpen() {
-      return this.$store.getters.isActivitiesOpen;
+    isBoardActivities() {
+      return this.$store.getters.isBoardActivities;
+    },
+    isTaskDetails() {
+      return this.$store.getters.isTaskDetails;
     },
     viewActive() {
       return { active: this.addingView };
@@ -408,6 +419,7 @@ export default {
     taskDetails,
     barChart,
     socialModal,
+    boardActivities,
   },
 };
 </script>

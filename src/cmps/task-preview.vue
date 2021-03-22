@@ -17,7 +17,7 @@
         {{ taskToEdit.title }}
       </label>
       <font-awesome-icon
-        @click="openActivities"
+        @click="openTaskDetails"
         class="header-icon"
         icon="comment"
       />
@@ -62,9 +62,6 @@
       placeholder="Select date and time">
     </el-date-picker>
   </div>
-
-
-
     </div>
     <div class="task-color-box-end"></div>
   </div>
@@ -86,7 +83,6 @@ export default {
       styles: {
         "border-color": this.groupColor,
       },
-      isActivitiesOpen: false,
     };
   },
   methods: {
@@ -104,9 +100,8 @@ export default {
       if (this.task.status.id === statusId) this.task.status = null;
       this.$emit("deleteStatus", statusId);
     },
-    openActivities() {
-      this.isActivitiesOpen = true;
-      this.$store.commit({ type: "toggleActivities" });
+    openTaskDetails() {
+      this.$store.commit({ type: "toggleIsDetails" });
       this.$router.push(
         `/board/${this.boardId}/${this.groupId}/task/${this.task.id}`
       );

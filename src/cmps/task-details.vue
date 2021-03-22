@@ -3,7 +3,7 @@
     class="flex justify-start"
     :visible.sync="drawer"
     :direction="'rtl'"
-    :before-close="closeActivities"
+    :before-close="closeDetails"
   >
     <div class="activity-task-title">
       <h2 v-if="task">{{ task.title }}</h2>
@@ -48,13 +48,11 @@ export default {
   },
   methods: {
     handleClick(tab, event) {
-      console.log(tab, event);
-      console.log(this.activeName);
     },
-    closeActivities() {
+    closeDetails() {
       const taskId = this.$route.params.taskId;
       if (taskId) this.$router.go(-1);
-      this.$store.commit({ type: "toggleActivities" });
+      this.$store.commit({ type: "toggleIsDetails" });
     },
     async getTask(taskId, groupId) {
       try {
@@ -64,7 +62,6 @@ export default {
           groupId,
         });
         this.task = taskToShow;
-        console.log("task in details", this.task);
       } catch (err) {
         console.log("err:", err);
       }
@@ -76,14 +73,12 @@ export default {
           taskId,
         });
         this.activities = activitiesToShow;
-        console.log("task activities", this.activities);
       } catch (err) {
         console.log("err:", err);
       }
     },
     async addComment(newComment) {
       try {
-        console.log("newComment:", newComment);
         const groupId = this.$route.params.groupId;
         const editedTask = JSON.parse(JSON.stringify(this.task));
         if (!editedTask["comments"]) editedTask.comments = [];
@@ -117,7 +112,6 @@ export default {
   created() {},
   watch: {
     $route(to, from) {
-      console.log(to);
       const taskId = this.$route.params.taskId;
       const groupId = this.$route.params.groupId;
       if (taskId) {

@@ -23,6 +23,7 @@ import moment from 'moment'
 export default {
   props: ["activity"],
   created() {
+    console.log(this.activity);
   },
   computed: {
       username() {

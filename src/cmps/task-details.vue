@@ -3,7 +3,7 @@
     class="flex justify-start"
     :visible.sync="drawer"
     :direction="'rtl'"
-    :before-close="closeActivities"
+    :before-close="closeDetails"
   >
     <div class="activity-task-title">
       <h2 v-if="task">{{ task.title }}</h2>
@@ -51,10 +51,10 @@ export default {
       console.log(tab, event);
       console.log(this.activeName);
     },
-    closeActivities() {
+    closeDetails() {
       const taskId = this.$route.params.taskId;
       if (taskId) this.$router.go(-1);
-      this.$store.commit({ type: "toggleActivities" });
+      this.$store.commit({ type: "toggleIsDetails" });
     },
     async getTask(taskId, groupId) {
       try {

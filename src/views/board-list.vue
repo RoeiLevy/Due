@@ -26,13 +26,7 @@
         height="300px"
       >
         <el-carousel-item class="carousel-item" v-for="board in boards" :key="board._id">
-          <el-button
-            class="close-card-btn"
-            type="text"
-            @click="removeBoard(board._id)"
-          >
-            <font-awesome-icon class="header-icon remove-btn" icon="trash" />
-          </el-button>
+          
           <h3 class="medium" @click="showBoard(board._id)">
             {{ board.title }}
           </h3>
@@ -41,6 +35,13 @@
             :src="board.thumbnail"
             @click="showBoard(board._id)"
           />
+          <el-button
+            class="close-card-btn"
+            type="text"
+            @click="removeBoard(board._id)"
+          >
+            <font-awesome-icon class="header-icon remove-btn" icon="trash" />
+          </el-button>
         </el-carousel-item>
       </el-carousel>
       <el-row v-else>

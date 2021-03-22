@@ -43,7 +43,6 @@ export default {
     closeActivities() {
       this.$store.commit({ type: "toggleIsBoardActivities" });
     },
-  
   },
   computed: {
     boardId() {

@@ -236,6 +236,7 @@ export default {
           JSON.stringify(this.boardToEdit.groups[groupIdx])
         );
         const savedGroup = await this.saveGroup(groupToSave);
+        this.$store.dispatch( {type: 'sendActivity', txt: 'Added a task'})
 
         // Add user msg
         return savedGroup;
@@ -327,6 +328,8 @@ export default {
         });
         console.log("board in cmp", board);
         this.boardToEdit = JSON.parse(JSON.stringify(board));
+
+        socketService.emit("chat topic", this.boardToEdit._id);
       } catch (err) {
         console.log("err:", err);
       }
@@ -376,6 +379,9 @@ export default {
       //   return board;
       // });
     },
+    addActivity(newActivity) {
+      console.log('newActivity in board:', newActivity)
+    }
   },
   mounted() {
     // if(this.board)this.printScr()
@@ -411,13 +417,12 @@ export default {
     },
   },
   created() {
-    this.loadBoard();
     socketService.setup();
-    socketService.emit("chat topic", this.toyId);
-    socketService.on("chat addMsg", this.addMsg);
+    socketService.on("addActivity", this.addActivity);
+    this.loadBoard();
   },  
   destroyed() {
-    socketService.off("chat addMsg", this.addMsg);
+    socketService.off("addActivity", this.addMsg);
     socketService.terminate();
   },
   components: {

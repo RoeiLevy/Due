@@ -1,4 +1,5 @@
 import {socketService} from '../services/socket.service.js'
+import {utilService} from '../services/util.service'
 
 export const socketStore = {
     state: {
@@ -17,6 +18,17 @@ export const socketStore = {
         },
         getChatHistory(context, {chatId}) {
             socketService.emit('getHistory', chatId)
+        },
+        sendActivity(context, { txt }) {
+            const activity = {
+                id: utilService.makeId(),
+                createdAt: Date.now(),
+                byMember: context.getters.loggedInUser 
+            }
+            socketService.emit('newActivity', activity)
+        },
+        sendActivityWithTask(context, { txt, task }) {
+
         }
     }
 }

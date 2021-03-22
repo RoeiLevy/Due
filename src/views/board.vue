@@ -158,10 +158,11 @@ import appHeader from "../cmps/header";
 import draggable from "vuedraggable";
 import taskDetails from "../cmps/task-details";
 import barChart from "../cmps/bar-chart";
+import boardActivities from "../cmps/board-activities.vue";
 
 import { boardService } from "../services/board.service";
 import { utilService } from "../services/util.service";
-import boardActivities from "../cmps/board-activities.vue";
+import { socketService } from "../services/socket.service";
 
 export default {
   name: "board",
@@ -263,9 +264,8 @@ export default {
     },
     async removeTask(taskId, groupId) {
       try {
+        const boardCopy = JSON.parse(JSON.stringify(this.boardToEdit));
 
-        const boardCopy = JSON.parse(JSON.stringify(this.boardToEdit))
-        
         const groupIdx = boardCopy.groups.findIndex(
           (group) => group.id === groupId
         );
@@ -274,7 +274,7 @@ export default {
         );
         boardCopy.groups[groupIdx].tasks.splice(taskIdx, 1);
 
-        this.boardToEdit = boardCopy
+        this.boardToEdit = boardCopy;
 
         await this.$store.dispatch({
           type: "saveBoard",
@@ -325,7 +325,7 @@ export default {
           type: "loadBoard",
           boardId,
         });
-        console.log('board in cmp', board);
+        console.log("board in cmp", board);
         this.boardToEdit = JSON.parse(JSON.stringify(board));
       } catch (err) {
         console.log("err:", err);
@@ -364,7 +364,7 @@ export default {
       try {
         const canvas = await html2canvas(this.$refs.screen);
         const pageImg = canvas.toDataURL();
-        const cloudUrl= await utilService.uploadImg(pageImg)
+        const cloudUrl = await utilService.uploadImg(pageImg);
         board.thumbnail = cloudUrl;
         return board;
       } catch (err) {
@@ -412,6 +412,13 @@ export default {
   },
   created() {
     this.loadBoard();
+    socketService.setup();
+    socketService.emit("chat topic", this.toyId);
+    socketService.on("chat addMsg", this.addMsg);
+  },  
+  destroyed() {
+    socketService.off("chat addMsg", this.addMsg);
+    socketService.terminate();
   },
   components: {
     appHeader,

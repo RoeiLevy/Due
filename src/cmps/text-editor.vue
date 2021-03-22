@@ -1,7 +1,7 @@
 <template>
-  <div id="app">
+  <div class="text-editor">
     <!-- <button @click="saveContent"></button> -->
-    <vue-editor v-model="content"></vue-editor>
+    <vue-editor placeholder="Add a comment..." v-model="content"></vue-editor>
     <button @click="saveContent">Save Update</button>
   </div>
 </template>
@@ -17,14 +17,15 @@ export default {
 
   data() {
     return {
-      content: "<h3>Initial Content</h3>",
+      content: "",
     };
   },
 
   methods: {
-    handleSavingContent() {
-      // You have the content to save
-      console.log(this.content);
+    saveContent() {
+      const newContent = JSON.parse(JSON.stringify(this.content))
+      this.$emit('sendComment', newContent)
+      this.content = ''
     },
   },
 };

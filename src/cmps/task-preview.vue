@@ -87,6 +87,9 @@ export default {
         this.$refs.input.focus();
       }, 0);
     },
+    addStatus(status) {
+      this.$emit("addStatus", status);
+    },
     deleteStatus(statusId) {
       if (this.task.status.id === statusId) this.task.status = null;
       this.$emit("deleteStatus", statusId);
@@ -102,9 +105,6 @@ export default {
       this.isSelectingStatus = false;
       this.taskToEdit.status = status;
       this.$emit("updateTask", this.taskToEdit);
-    },
-    addStatus(status) {
-      this.$emit("addStatus", status);
     },
     updateTask() {
       this.editMode = false;

@@ -17,7 +17,7 @@
         <button>Activity Log</button>
       </div>
     </nav>
-    <updates />
+    <updates v-if="task" :comments="task.comments" @addComment="addComment" />
     <!-- <activity-log /> -->
   </el-drawer>
 </template>
@@ -39,10 +39,38 @@ export default {
       if (taskId) this.$router.go(-1);
       this.$store.commit({ type: "toggleActivities" });
     },
-    getTask(taskId) {
-      console.log(taskId);
-      const taskToShow = this.$store.dispatch({ type: "getTask", taskId });
-      this.task = taskToShow;
+    async getTask(taskId, groupId) {
+      try {
+        const taskToShow = await this.$store.dispatch({
+          type: "getTask",
+          taskId,
+          groupId,
+        });
+        this.task = taskToShow;
+        console.log("task in details", this.task);
+      } catch (err) {
+        console.log("err:", err);
+      }
+    },
+    async addComment(newComment) {
+      try {
+        console.log('newComment:', newComment)
+        const groupId = this.$route.params.groupId;
+        const editedTask = JSON.parse(JSON.stringify(this.task))
+        if (!editedTask['comments']) editedTask.comments = []
+        editedTask.comments.unshift(newComment)
+        this.task = editedTask
+
+        const taskToShow = await this.$store.dispatch({
+          type: "saveTask",
+          task: JSON.parse(JSON.stringify(this.task)),
+          groupId,
+        });
+
+        console.log("task in details", this.task);
+      } catch (err) {
+        console.log("err:", err);
+      }
     },
   },
   computed: {
@@ -54,13 +82,13 @@ export default {
     activityLog,
     updates,
   },
-  created() {
-    const taskId = this.$route.params.taskId;
-    if (taskId) this.getTask(taskId);
-  },
+  created() {},
   watch: {
     $route(to, from) {
       console.log(to);
+      const taskId = this.$route.params.taskId;
+      const groupId = this.$route.params.groupId;
+      if (taskId) this.getTask(taskId, groupId);
     },
   },
 };

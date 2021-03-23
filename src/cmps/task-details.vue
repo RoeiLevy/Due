@@ -21,15 +21,6 @@
         <activity-log :activities="activities" />
       </el-tab-pane>
     </el-tabs>
-
-    <!-- <nav class="activity-menu flex">
-      <div class="updates-btn-wrapper">
-        <button>Updates</button>  
-      </div>  
-      <div class="activity-btn-wrapper">
-        <button>Activity Log</button>
-      </div>
-    </nav> -->
   </el-drawer>
 </template>
 
@@ -91,6 +82,7 @@ export default {
           groupId,
         });
 
+        this.$store.dispatch({ type: "sendActivity", txt: `Added a comment to "${this.task.title}"` });
         console.log("task in details", this.task);
       } catch (err) {
         console.log("err:", err);

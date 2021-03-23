@@ -6,7 +6,7 @@ import { socketService, SOCKET_EMIT_USER_WATCH, SOCKET_EVENT_USER_UPDATED } from
 
 export const userStore = {
     state: {
-        loggedInUser: userService.getLoggedinUser(),
+        loggedInUser: userService.getLoggedinUser() || { fullname: 'Guest'},
         users: [],
         watchedUser: null
     },

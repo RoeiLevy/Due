@@ -7,7 +7,7 @@ export const socketStore = {
     getters: {
     },
     mutations: {
-        setJob(state, {job}) {
+        setJob(state, { job }) {
             state.job = job;
         }
     },
@@ -19,12 +19,15 @@ export const socketStore = {
         getChatHistory(context, {chatId}) {
             socketService.emit('getHistory', chatId)
         },
-        sendActivity(context, { txt }) {
+        sendActivity(context, { txt, task }) {
+            if (!task) task = null
+
             const activity = {
                 id: utilService.makeId(),
                 createdAt: Date.now(),
                 txt,
-                byMember: context.getters.loggedInUser 
+                byMember: context.getters.loggedInUser,
+                task
             }
             console.log('activity to send: ', activity);
             socketService.emit('new activity', activity)

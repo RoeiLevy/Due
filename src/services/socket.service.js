@@ -33,7 +33,6 @@ function createSocketService() {
             else socket.off(eventName, cb)
         },
         async emit(eventName, data) {
-            console.log('emitting', eventName, data);
             if (!socket) await socketService.setup()
             socket.emit(eventName, data)
         },

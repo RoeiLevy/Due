@@ -16,11 +16,13 @@
       <label class="task-title-label" @click="handleEdit">
         {{ taskToEdit.title }}
       </label>
-      <font-awesome-icon
-        @click="openTaskDetails"
-        class="header-icon"
-        icon="comment"
-      />
+      <el-badge :hidden="isTaskComments" :value="task.comments.length" class="comment-badage" type="primary">
+        <font-awesome-icon
+          @click="openTaskDetails"
+          class="header-icon"
+          icon="comment"
+        />
+      </el-badge>
     </div>
     <div class="task-members-container" @click="addTaskMembers">
       <font-awesome-icon class="add-btn" icon="plus" />
@@ -43,7 +45,13 @@
       >
         {{ task.status.title }}
       </h3>
-      <h3 class="status-h3" v-else @click="isSelectingStatus = !isSelectingStatus">Status</h3>
+      <h3
+        class="status-h3"
+        v-else
+        @click="isSelectingStatus = !isSelectingStatus"
+      >
+        Status
+      </h3>
       <status-picker
         @setStatus="setStatus"
         @addStatus="addStatus"
@@ -52,20 +60,18 @@
       ></status-picker>
     </div>
     <!-- <div class="date-container"> -->
-      <!-- <input type="date" name="due-date" id="due-date" v-model="dueDate" /> -->
-      <!-- <el-date-picker v-model="dueDate" type="datetime" default-time="12:00:00"> -->
-      <!-- </el-date-picker> -->
- <div class="date-container">
-    <!-- <el-date-picker
+    <!-- <input type="date" name="due-date" id="due-date" v-model="dueDate" /> -->
+    <!-- <el-date-picker v-model="dueDate" type="datetime" default-time="12:00:00"> -->
+    <!-- </el-date-picker> -->
+    <div class="date-container">
+      <!-- <el-date-picker
       v-model="dueDate"
       type="datetime"
       placeholder="Due">
     </el-date-picker> -->
-  <VueDatePicker v-model="dueDate" clearable :placeholder="pickDate"
- />
+      <VueDatePicker v-model="dueDate" clearable :placeholder="pickDate" />
 
-
-  <!-- </div> -->
+      <!-- </div> -->
     </div>
     <div class="task-color-box-end"></div>
   </div>
@@ -124,40 +130,42 @@ export default {
     updateTask() {
       this.editMode = false;
       this.$emit("updateTask", this.taskToEdit);
-            // this.dueDate = null;
-
+      // this.dueDate = null;
     },
     removeTask() {
-      this.$emit("removeTask", this.task.id);
+      this.$emit("removeTask", this.task);
     },
   },
   computed: {
+    isTaskComments() {
+      return this.task.comments.length ? false : true;
+    },
     taskColor() {
       return `border-left-color: ${this.groupColor}`;
     },
     boardId() {
       return this.$store.getters.currBoardId;
     },
-    pickDate(){
-      return (this.taskToEdit.dueDate)? this.taskToEdit.dueDate : 'Choose Date'
-    }
-      },
+    pickDate() {
+      return this.taskToEdit.dueDate ? this.taskToEdit.dueDate : "Choose Date";
+    },
+  },
   created() {
     this.taskToEdit = JSON.parse(JSON.stringify(this.task));
+    console.log(this.task);
   },
   watch: {
     task: function (newVal, oldVal) {
       this.taskToEdit = JSON.parse(JSON.stringify(newVal));
     },
     dueDate: function () {
-            this.taskToEdit.dueDate = this.dueDate;
-      console.log('taskToEdit.dueDate',this.taskToEdit.dueDate)
+      this.taskToEdit.dueDate = this.dueDate;
+      console.log("taskToEdit.dueDate", this.taskToEdit.dueDate);
       this.updateTask();
     },
   },
   components: {
     statusPicker,
-
   },
 };
 </script>

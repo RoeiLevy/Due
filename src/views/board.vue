@@ -178,14 +178,29 @@ export default {
     };
   },
   methods: {
-    addStatus(status) {
-      this.boardToEdit.statuses.push(status);
-      this.saveBoard();
+    async addStatus(status) {
+      try {
+        this.boardToEdit.statuses.push(status);
+        await this.saveBoard();
+        this.$store.dispatch({
+          type: "sendActivity",
+          txt: "Created a new status",
+        });
+      } catch (err) {
+        console.log("err:", err);
+      }
     },
-    deleteStatus(statusId) {
-      const idx = this.boardToEdit.statuses.findIndex((s) => s.id === statusId);
-      this.boardToEdit.statuses.splice(idx, 1);
-      this.saveBoard();
+    async deleteStatus(statusId) {
+      try {
+        const idx = this.boardToEdit.statuses.findIndex(
+          (s) => s.id === statusId
+        );
+        this.boardToEdit.statuses.splice(idx, 1);
+        await this.saveBoard();
+        this.$store.dispatch({ type: "sendActivity", txt: "Removed a status" });
+      } catch (err) {
+        console.log("err:", err);
+      }
     },
     async removeGroup(groupId) {
       try {
@@ -198,6 +213,7 @@ export default {
           type: "saveBoard",
           boardToSave: this.boardToEdit,
         });
+        this.$store.dispatch({ type: "sendActivity", txt: "Removed a group" });
         // Add user msg
       } catch (err) {
         console.log("Couldn`t remove Group", err);
@@ -216,6 +232,7 @@ export default {
           boardToSave: this.boardToEdit,
         });
 
+        // this.$store.dispatch({ type: "sendActivity", txt: "Edited a group" });
         // Add user msg
         return savedGroup;
       } catch (err) {
@@ -236,7 +253,11 @@ export default {
           JSON.stringify(this.boardToEdit.groups[groupIdx])
         );
         const savedGroup = await this.saveGroup(groupToSave);
-        this.$store.dispatch({ type: "sendActivity", txt: "Added a task" });
+        this.$store.dispatch({
+          type: "sendActivity",
+          txt: `Created a new task "${newTask.title}"`,
+          task: { id: newTask.id, title: newTask.title },
+        });
 
         // Add user msg
         return savedGroup;
@@ -257,13 +278,19 @@ export default {
           type: "saveBoard",
           boardToSave: this.boardToEdit,
         });
+
+        this.$store.dispatch({
+          type: "sendActivity",
+          txt: "Updated a task",
+          task: { id: task.id, title: task.title },
+        });
         // Add user msg
       } catch (err) {
         console.log("Couldn`t remove Task", err);
         throw err;
       }
     },
-    async removeTask(taskId, groupId) {
+    async removeTask(task, groupId) {
       try {
         const boardCopy = JSON.parse(JSON.stringify(this.boardToEdit));
 
@@ -271,15 +298,20 @@ export default {
           (group) => group.id === groupId
         );
         const taskIdx = boardCopy.groups[groupIdx].tasks.findIndex(
-          (item) => item.id === taskId
+          (item) => item.id === task.id
         );
         boardCopy.groups[groupIdx].tasks.splice(taskIdx, 1);
 
         this.boardToEdit = boardCopy;
 
-        await this.$store.dispatch({
+        const removedTask = await this.$store.dispatch({
           type: "saveBoard",
           boardToSave: this.boardToEdit,
+        });
+
+        this.$store.dispatch({
+          type: "sendActivity",
+          txt: `Removed task "${task.title}"`
         });
         // Add user msg
       } catch (err) {
@@ -339,10 +371,12 @@ export default {
         const boardWithUrl = await this.printScr(
           JSON.parse(JSON.stringify(this.boardToEdit))
         );
-        await this.$store.dispatch({
+        const savedBoard = await this.$store.dispatch({
           type: "saveBoard",
           boardToSave: boardWithUrl,
         });
+
+        return savedBoard;
         // this.loadBoard();
       } catch (err) {
         console.log("err:", err);
@@ -356,6 +390,7 @@ export default {
           type: "saveBoard",
           boardToSave: this.boardToEdit,
         });
+        this.$store.dispatch({ type: "sendActivity", txt: "Added a group" });
         // Add user msg
       } catch (err) {
         console.log("err:", err);
@@ -379,6 +414,9 @@ export default {
     },
     addActivity(newActivity) {
       console.log("newActivity in board:", newActivity);
+      const boardCopy = JSON.parse(JSON.stringify(this.boardToEdit));
+      boardCopy.activities.unshift(newActivity);
+      this.boardToEdit = boardCopy;
     },
   },
   mounted() {

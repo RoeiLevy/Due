@@ -8,11 +8,13 @@
     border-bottom: 1px solid #ffffff;
     font-size: 13px;
     user-select: none;
+
     input {
         flex: 1;
         outline: none;
         height: 100%;
     }
+
     .task-title {
         display: flex;
         justify-content: space-between;
@@ -23,27 +25,33 @@
         text-align: start;
         font-size: 13px;
         width: 40%;
-         :hover {
+
+        :hover {
             cursor: text;
             // border: 1px dashed gray;
         }
+
         input {
             border: 1px dashed gray;
         }
+
         .header-icon {
             margin-inline-end: 10px;
         }
+
         .header-icon * {
             color: #d6d9df;
             margin-right: 10px;
             cursor: pointer !important;
         }
+
         .header-icon:hover {
             // filter: brightness(70%);
             color: #636363;
             border: none !important;
             cursor: pointer !important;
         }
+
         .task-title-label {
             height: 36px;
             flex: 1;
@@ -54,8 +62,11 @@
             justify-content: flex-start;
             align-items: center;
             white-space: nowrap;
+
+
             // border: 1px dashed transparent;
         }
+
         // .task-title-label:hover {
         //     border: 1px dashed gray;
         // }
@@ -64,9 +75,28 @@
         //     border: 1px dashed gray;
         // }
     }
+
+    
+    .el-badge__content {
+        right: 20px !important;
+        top: 25px !important;
+        border-radius: 10px;
+        color: #FFF;
+        display: inline-block;
+        font-size: 10px;
+        height: 11px;
+        line-height: 10px;
+        padding: 0px 4px;
+        text-align: center;
+        white-space: nowrap;
+        border: 1px solid #FFF;
+    }
+
+
     .task-title-input {
         border: 1px dashed gray;
     }
+
     .task-members-container {
         @include task-cells;
         display: flex;
@@ -74,11 +104,13 @@
         justify-content: center;
         width: 140px;
         position: relative;
+
         svg {
             position: absolute;
             left: 20px;
         }
     }
+
     .avatar-container {
         width: 30px;
         height: 30px;
@@ -86,17 +118,21 @@
         align-items: center;
         justify-content: center;
     }
+
     .add-btn {
         display: none;
         color: #d6d9df;
     }
+
     .add-btn:hover {
         // filter: brightness(60%);
         color: #aaaaaa;
     }
+
     .task-members-container:hover .add-btn {
         display: flex;
     }
+
     .avatar,
     .avatar i {
         width: 30px;
@@ -106,9 +142,11 @@
         justify-content: center;
         background-color: #d6d9df;
     }
+
     .avatar:hover {
         filter: brightness(96%)
     }
+
     .status-container {
         @include task-cells;
         display: flex;
@@ -116,10 +154,12 @@
         justify-content: center;
         width: 140px;
         position: relative;
+
         h3 {
             font-size: 13px;
         }
     }
+
     .date-container {
         @include task-cells;
         display: flex;
@@ -127,6 +167,7 @@
         justify-content: center;
         width: 150px;
     }
+
     .remove-btn-wrapper {
         left: -50px;
         width: 50px;
@@ -140,20 +181,24 @@
         display: none;
         border-radius: 100%;
     }
+
     .remove-btn {
         display: none;
         // color: #aaaaaa;
         filter: brightness(250%);
     }
+
     .remove-btn:hover {
         cursor: pointer;
         // filter: brightness(60%);
     }
+
     .task-color-box-start {
         @include task-cells;
         min-width: 8px;
         border-left: 8px solid $application-border-color;
     }
+
     .task-color-box-end {
         @include task-cells;
         min-width: 38px;
@@ -170,6 +215,7 @@
     color: #aaaaaa;
     background-color: #f3f3f3ef;
     cursor: pointer;
+
     .task-title-label {
         color: $color-link_color;
     }

@@ -1,6 +1,7 @@
 <template>
   <div class="activity-log">
     <div class="activities-container">
+      <h3 v-if="!activities || !activities.length"> No Activities</h3>
     <activity-preview v-for="activity in activities" :key="activity.id" :activity="activity" />
     </div>
   </div>
@@ -14,6 +15,9 @@ export default {
   components: {
     activityPreview,
   },
+  created() {
+    console.log('activities in log', this.activities);
+  }
 };
 </script>
 

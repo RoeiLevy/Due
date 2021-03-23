@@ -106,6 +106,7 @@ export default {
         title: "",
         createdAt: null,
         status: null,
+        comments: []
       },
       editMode: false,
     };
@@ -146,8 +147,8 @@ export default {
     updateTask(task) {
       this.$emit("updateTask", task, this.group.id);
     },
-    removeTask(taskId) {
-      this.$emit("removeTask", taskId, this.group.id);
+    removeTask(task) {
+      this.$emit("removeTask", task, this.group.id);
     },
     async saveGroup() {
       try {

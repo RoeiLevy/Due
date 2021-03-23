@@ -161,7 +161,11 @@ export const boardStore = {
         async getTaskActivities({ state }, { taskId }) {
             try {
                 var boardActivities = JSON.parse(JSON.stringify(state.currBoard.activities))
-                const taskActivities = boardActivities.filter(a => a.task.id === taskId)
+                console.log('boardActivities:', boardActivities)
+                const taskActivities = boardActivities.filter(a => {
+                    if (a.task) return a.task.id === taskId  
+                })
+                console.log('taskActivities:', taskActivities)
                 return taskActivities
 
             } catch (err) {

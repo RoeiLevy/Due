@@ -3,8 +3,8 @@
     <!-- <div ref="capture"> -->
     <app-header />
     <!-- <bar-chart v-if="boardToEdit" :board="boardToEdit"></bar-chart> -->
-
     <div v-if="boardToEdit" class="flex board" ref="screen">
+    <workspace />
       <social-modal
         v-if="isAddingMembers"
         :members="boardToEdit.members"
@@ -170,6 +170,8 @@ import draggable from "vuedraggable";
 import taskDetails from "../cmps/task-details";
 import barChart from "../cmps/bar-chart";
 import boardActivities from "../cmps/board-activities.vue";
+import workspace from '../cmps/workspace.vue';
+
 
 import { boardService } from "../services/board.service";
 import { utilService } from "../services/util.service";
@@ -491,6 +493,7 @@ export default {
     barChart,
     socialModal,
     boardActivities,
+    workspace,
   },
 };
 </script>

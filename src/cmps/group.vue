@@ -136,6 +136,7 @@ export default {
         title: "",
         createdAt: null,
         status: null,
+        comments: []
       };
     },
     addStatus(status) {

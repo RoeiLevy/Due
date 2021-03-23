@@ -7,8 +7,9 @@
     padding: 10px;
     box-shadow: 0 0 5px #0000000f;
     z-index: 80 !important;
-    width: 266px;
-    height: 315px;
+    width: fit-content;
+    min-width: 276px;
+    min-height: 315px;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -88,11 +89,11 @@
         .delete-status-btn {
             transition: all 0.3s;
             position: absolute;
-            right: 0;
+            right: -26px;
             padding: 5px;
             background: none;
             opacity: 0;
-            font-size: 1rem;
+            font-size: 0.8rem;
             color: #4e4f52;
         }
     }

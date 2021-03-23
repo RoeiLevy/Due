@@ -2,7 +2,7 @@
   <div class="task-add-member-modal">
     <h3>People</h3>
     <div v-if="members" class="task-members-list">
-      <member-preview v-for="member in members" :member="member" :key="member._id" />
+      <member-preview @addMember="addMember" v-for="member in members" :member="member" :key="member._id" />
     </div>
   </div>
 </template>
@@ -37,6 +37,9 @@ export default {
         title: "",
       };
     },
+    addMember(member) {
+      this.$emit('addMember', member)
+    }
   },
   computed: {
     members() {

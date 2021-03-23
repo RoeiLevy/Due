@@ -4,7 +4,7 @@
       <el-tab-pane label="Members" name="member" class="members">
         <span>Board Members</span>
         <div class="member" v-for="member in members" :key="member.id">
-          <el-avatar :size="30" :src="member.imgUrl"></el-avatar>
+          <avatar :size="30" :src="member.imgUrl"></avatar>
           {{ member.fullname }}
         </div>
       </el-tab-pane>

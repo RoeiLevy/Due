@@ -37,14 +37,16 @@
         icon="plus"
       >
       </font-awesome-icon>
-      <task-add-member v-if="isAddingMember"></task-add-member>
+      <task-add-member @addMember="addMember" v-if="isAddingMember"></task-add-member>
       <div v-if="task.members" class="avatar-container">
-        <el-avatar
+        <avatar
+          class="member-avatar"
           v-for="member in task.members"
           :key="member._id"
           :size="30"
+          :username="member.fullname"
           :src="member.imgUrl"
-        ></el-avatar>
+        ></avatar>
       </div>
       <el-avatar v-else icon="el-icon-user-solid" class="avatar"></el-avatar>
     </div>
@@ -81,6 +83,7 @@
 <script>
 import statusPicker from "./status-picker";
 import taskAddMember from "./task-add-member";
+import Avatar from "vue-avatar";
 
 export default {
   name: "task-preview",
@@ -98,6 +101,12 @@ export default {
     };
   },
   methods: {
+    addMember(member) {
+      if (!this.taskToEdit.members) this.taskToEdit.members = []
+      if (this.taskToEdit.members.some(m => m._id === member._id)) return 
+      this.taskToEdit.members.unshift(member)
+      this.updateTask()
+    },
     toggleAddingMember() {
       this.isAddingMember = !this.isAddingMember;
       console.log(this.isAddingMember);
@@ -165,6 +174,7 @@ export default {
   components: {
     statusPicker,
     taskAddMember,
+    Avatar
   },
 };
 </script>

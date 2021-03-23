@@ -11,7 +11,7 @@
         <el-menu-item index="2">
           <i class="workspace-icon el-icon-menu"></i>
 
-          <span slot="title">Boards List</span>
+          <span slot="title">{{ boardTitle() }}</span>
         </el-menu-item>
       </el-menu>
     </div>
@@ -31,6 +31,10 @@ export default {
     toggleCollapse() {
       this.isCollapse = !this.isCollapse;
     },
+    boardTitle() {
+      return this.isCollapse ? "Board List" : "Close Board List";
+    },
+    
   },
 };
 </script>

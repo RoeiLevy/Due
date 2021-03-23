@@ -119,7 +119,7 @@ export const boardStore = {
                 console.log('board in store:', savedBoard);
                 return savedBoard
             } catch (err) {
-                console.log('boardStore: Error in loadBoards', err);
+                console.log('boardStore: Error in saveBoard', err);
                 throw err;
             }
         },
@@ -133,7 +133,7 @@ export const boardStore = {
                 throw err
             }
         },
-        async removeBoard(context,boardId) {
+        async removeBoard(context, boardId) {
             try {
                 await boardService.remove(boardId);
                 await context.dispatch('loadBoards');
@@ -164,7 +164,7 @@ export const boardStore = {
                 var boardActivities = JSON.parse(JSON.stringify(state.currBoard.activities))
                 console.log('boardActivities:', boardActivities)
                 const taskActivities = boardActivities.filter(a => {
-                    if (a.task) return a.task.id === taskId  
+                    if (a.task) return a.task.id === taskId
                 })
                 console.log('taskActivities:', taskActivities)
                 return taskActivities
@@ -185,6 +185,16 @@ export const boardStore = {
             } catch (err) {
                 console.log('err:', err)
                 throw err
+            }
+        },
+        async saveStatuses(context, statuses) {
+            try {
+                const boardToSave = { ...context.state.currBoard };
+                boardToSave.statuses = { ...statuses };
+                await context.dispatch('saveBoard', {boardToSave} )
+                return statuses;
+            } catch (err) {
+
             }
         }
 

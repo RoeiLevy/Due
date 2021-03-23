@@ -20,7 +20,7 @@ export const socketStore = {
             socketService.emit('getHistory', chatId)
         },
         sendActivity(context, { txt, task }) {
-            if (!task) task = null
+            if (!task) task = null;
 
             const activity = {
                 id: utilService.makeId(),
@@ -32,8 +32,9 @@ export const socketStore = {
             console.log('activity to send: ', activity);
             socketService.emit('new activity', activity)
         },
-        sendActivityWithTask(context, { txt, task }) {
-
+        sendBoard(context, { board }) {
+            console.log('sending board', board);
+           socketService.emit('send board', board) 
         }
     }
 }

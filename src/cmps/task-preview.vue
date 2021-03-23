@@ -152,7 +152,6 @@ export default {
   },
   created() {
     this.taskToEdit = JSON.parse(JSON.stringify(this.task));
-    console.log(this.task);
   },
   watch: {
     task: function (newVal, oldVal) {

@@ -115,6 +115,7 @@ export const boardStore = {
             try {
                 const savedBoard = await boardService.update(boardToSave);
                 context.commit({ type: 'setBoard', board: JSON.parse(JSON.stringify(boardToSave)) });
+                context.dispatch({ type: 'sendBoard', board: savedBoard })
                 console.log('board in store:', savedBoard);
                 return savedBoard
             } catch (err) {

@@ -61,15 +61,15 @@
             }
         }
         .el-color-picker__trigger {
-            width: 25px;
+            width: 23px;
             left: -2.5px;
             border-color: transparent;
             border-bottom-left-radius: 4px;
             border-top-left-radius: 4px;
             padding: 0;
-            padding-bottom: 0.5px;
+            padding-bottom: 2px;
             margin: 0;
-            height: 87%;
+            height: 90%;
         }
         .el-color-picker__color {
             border-color: transparent;
@@ -147,4 +147,17 @@
 .el-input__inner {
     width: 80px !important;
     // margin-inline-start: 15px;
+}
+
+.status-edit-container input {
+    padding: 0 !important;
+}
+
+.new-status-add-btn {
+    // width: 30px !important;
+    padding: 3px !important;
+    position: absolute;
+    border-radius: 100% !important;
+    right: 4px;
+    height: unset !important;
 }

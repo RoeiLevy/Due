@@ -33,7 +33,6 @@ export const userStore = {
         async login(context, credantials) {
             try {
                 const user = await userService.login(credantials);
-                // console.log('context:', context)
                 context.commit({type:'setLoggedInUser',user})
                 return user;
             } catch (err) {
@@ -43,9 +42,7 @@ export const userStore = {
         },
         async signup(context, credantials) {
             try {
-                const user = await userService.signup(credantials)
-                // commit({ type: 'setLoggedinUser', user })
-                // return user;
+                await userService.signup(credantials)
             } catch (err) {
                 console.log('userStore: Error in signup', err)
                 throw err
@@ -103,6 +100,23 @@ export const userStore = {
                 throw err
             }
 
+        },
+        async validateUserByEmail(context, { email }) {
+            try {
+                const users = await userService.getUsers();
+                console.log('users in store', users)
+                const wantedUser = users.find(user => user.email === email)
+                const memberToAdd = {
+                    _id: wantedUser._id,
+                    fullname: wantedUser.fullname,
+                    img: wantedUser.img
+                }
+                return memberToAdd
+
+            } catch (err) {
+                console.log('err:', err)
+                throw new Error('Couldn\'t validate member')
+            }
         }
     }
 }

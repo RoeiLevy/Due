@@ -8,9 +8,9 @@
         margin-bottom: 50px;
         filter: brightness(96%);
         position: relative;
-        transition: all .3s;
+        transition: all 0.3s;
         .close-card-btn {
-            transition: all .3s;
+            transition: all 0.3s;
             position: absolute;
             right: 0;
             padding: 5px;
@@ -19,10 +19,6 @@
             font-size: 1rem;
             color: #4e4f52;
         }
-        // .close-card-btn:hover {
-        //     background-color: rgba(161, 160, 160, 0.438);
-        //     border-radius: 100%;
-        // }
     }
     .card:hover .close-card-btn {
         opacity: 1;
@@ -54,11 +50,7 @@
     filter: saturate(97%);
 }
 
-// .el-switch.is-checked .el-switch__core:active {
-//     background-color: rgb(255, 214, 29) !important;
-// }
 .carousel-img {
-    // width: 70%;
     height: 80%;
     border-radius: 10px;
     object-fit: cover;
@@ -91,11 +83,10 @@
     }
 }
 
-.carousel-item:hover>.close-card-btn.el-button--text {
+.carousel-item:hover > .close-card-btn.el-button--text {
     opacity: 1;
 }
 
-// 
 .close-card-btn.el-button--text {
     color: #4e4f52;
     position: absolute;
@@ -108,8 +99,6 @@
     z-index: 9;
     opacity: 0;
     top: -5px;
-    // padding-inline-end: 40px;
-    // right: 130px;
 }
 
 .card-view-btn {
@@ -126,7 +115,6 @@
     height: 80%;
     left: 17%;
     justify-content: center;
-    // background-color: rgb(40, 240, 74);    
     background: linear-gradient(-45deg, rgba(255, 255, 255, 0.527), #f1f1f1ad);
     background-size: 500% 100%;
     animation: gradient 10s linear infinite;
@@ -136,10 +124,10 @@
 
 @keyframes gradient {
     0% {
-        background-position: 0%
+        background-position: 0%;
     }
     100% {
-        background-position: 100%
+        background-position: 100%;
     }
 }
 

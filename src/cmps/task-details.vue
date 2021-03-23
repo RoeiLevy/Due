@@ -38,8 +38,7 @@ export default {
     };
   },
   methods: {
-    handleClick(tab, event) {
-    },
+    handleClick(tab, event) {},
     closeDetails() {
       const taskId = this.$route.params.taskId;
       if (taskId) this.$router.go(-1);
@@ -82,8 +81,10 @@ export default {
           groupId,
         });
 
-        this.$store.dispatch({ type: "sendActivity", txt: `Added a comment to "${this.task.title}"` });
-        console.log("task in details", this.task);
+        this.$store.dispatch({
+          type: "sendActivity",
+          txt: `Added a comment to "${this.task.title}"`,
+        });
       } catch (err) {
         console.log("err:", err);
       }

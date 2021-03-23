@@ -1,13 +1,12 @@
 <template>
   <div class="board-surface">
-    <!-- <div ref="capture"> -->
     <app-header />
-    <!-- <bar-chart v-if="boardToEdit" :board="boardToEdit"></bar-chart> -->
     <div v-if="boardToEdit" class="flex board" ref="screen">
-    <workspace />
+      <workspace />
       <social-modal
         v-if="isAddingMembers"
         :members="boardToEdit.members"
+        @addMember="addMember"
       ></social-modal>
       <task-details :drawer="isTaskDetails" />
       <board-activities :board="boardToEdit" :drawer="isBoardActivities" />
@@ -76,8 +75,6 @@
               @click="activateMainTable"
               class="main-table-wrapper"
             >
-              <!-- <button>Main Table</button> -->
-              <!-- <div v-for="(view, idx) in currBoard.views" :key="idx"> -->
               <el-tabs v-model="activeTab">
                 <el-tab-pane label="Main Table" name="main"></el-tab-pane>
                 <el-tab-pane
@@ -86,26 +83,9 @@
                   :label="view"
                   :name="view"
                 >
-                  {{view}}
+                  {{ view }}
                 </el-tab-pane>
               </el-tabs>
-              <!-- <button class="view-btn">
-                {{ view }}
-                <span class="view-menu-btn">Menu</span>
-                <el-dropdown trigger="click" class="view-menu-btn">
-                  <span class="el-dropdown-link">
-                    <i class="el-icon-more"></i>
-                  </span>
-                  <el-dropdown-menu slot="dropdown">
-                    <el-dropdown-item>Rename</el-dropdown-item>
-                    <el-dropdown-item>Duplicate</el-dropdown-item>
-                    <el-dropdown-item style="'background-color:red'"
-                      >Remove</el-dropdown-item
-                    >
-                  </el-dropdown-menu>
-                </el-dropdown>
-              </button> -->
-              <!-- </div> -->
             </div>
             <el-dropdown
               class="views-drop-down add-view-wrapper"
@@ -170,8 +150,7 @@ import draggable from "vuedraggable";
 import taskDetails from "../cmps/task-details";
 import barChart from "../cmps/bar-chart";
 import boardActivities from "../cmps/board-activities.vue";
-import workspace from '../cmps/workspace.vue';
-
+import workspace from "../cmps/workspace.vue";
 
 import { boardService } from "../services/board.service";
 import { utilService } from "../services/util.service";
@@ -188,7 +167,7 @@ export default {
       mainTable: true,
       addingView: false,
       isAddingMembers: false,
-      activeTab:'main'
+      activeTab: "main",
     };
   },
   methods: {
@@ -235,7 +214,6 @@ export default {
       }
     },
     async saveGroup(groupToEdit) {
-      console.log("saving");
       try {
         const groupIdx = this.boardToEdit.groups.findIndex(
           (g) => g.id === groupToEdit.id
@@ -325,7 +303,7 @@ export default {
 
         this.$store.dispatch({
           type: "sendActivity",
-          txt: `Removed task "${task.title}"`
+          txt: `Removed task "${task.title}"`,
         });
         // Add user msg
       } catch (err) {
@@ -333,9 +311,7 @@ export default {
       }
     },
     addView(command) {
-      console.log('command:', command)
       this.boardToEdit.views.push(command);
-      console.log(this.boardToEdit);
       this.saveBoard();
     },
     handleEdit(item) {
@@ -362,7 +338,6 @@ export default {
     activateView() {
       this.mainTable = false;
       this.addingView = true;
-      console.log(this.mainTable);
     },
     openBoardActivities() {
       this.$store.commit({ type: "toggleIsBoardActivities" });
@@ -374,7 +349,6 @@ export default {
           type: "loadBoard",
           boardId,
         });
-        console.log("board in cmp", board);
         this.boardToEdit = JSON.parse(JSON.stringify(board));
       } catch (err) {
         console.log("err:", err);
@@ -429,15 +403,28 @@ export default {
       // });
     },
     addActivity(newActivity) {
-      console.log("newActivity in board:", newActivity);
       const boardCopy = JSON.parse(JSON.stringify(this.boardToEdit));
       boardCopy.activities.unshift(newActivity);
       this.boardToEdit = boardCopy;
     },
     setBoard(board) {
       this.boardToEdit = board;
-      console.log('Updated board');
-    }
+    },
+    async addMember(email) {
+      try {
+        const memberToAdd = await this.$store.dispatch({
+          type: "validateUserByEmail",
+          email,
+        });
+        this.boardToEdit.members.unshift(memberToAdd);
+        this.$store.dispatch({
+          type: "saveBoard",
+          boardToSave: this.boardToEdit,
+        });
+      } catch (err) {
+        console.log("err:", err);
+      }
+    },
   },
   mounted() {
     // if(this.board)this.printScr()

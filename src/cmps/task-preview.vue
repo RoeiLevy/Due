@@ -16,7 +16,12 @@
       <label class="task-title-label" @click="handleEdit">
         {{ taskToEdit.title }}
       </label>
-      <el-badge :hidden="isTaskComments" :value="task.comments.length" class="comment-badage" type="primary">
+      <el-badge
+        :hidden="isTaskComments"
+        :value="task.comments.length"
+        class="comment-badage"
+        type="primary"
+      >
         <font-awesome-icon
           @click="openTaskDetails"
           class="header-icon"
@@ -25,7 +30,13 @@
       </el-badge>
     </div>
     <div class="task-members-container" @click="addTaskMembers">
-      <font-awesome-icon class="add-btn" icon="plus" />
+      <font-awesome-icon
+        @click="toggleAddingMember"
+        class="add-btn"
+        icon="plus"
+      >
+      </font-awesome-icon>
+      <task-add-member v-if="isAddingMember"></task-add-member>
       <div v-if="task.members" class="avatar-container">
         <el-avatar
           v-for="member in task.members"
@@ -59,27 +70,16 @@
         v-if="isSelectingStatus"
       ></status-picker>
     </div>
-    <!-- <div class="date-container"> -->
-    <!-- <input type="date" name="due-date" id="due-date" v-model="dueDate" /> -->
-    <!-- <el-date-picker v-model="dueDate" type="datetime" default-time="12:00:00"> -->
-    <!-- </el-date-picker> -->
     <div class="date-container">
-      <!-- <el-date-picker
-      v-model="dueDate"
-      type="datetime"
-      placeholder="Due">
-    </el-date-picker> -->
       <VueDatePicker v-model="dueDate" clearable :placeholder="pickDate" />
-
-      <!-- </div> -->
     </div>
     <div class="task-color-box-end"></div>
   </div>
 </template>
 
 <script>
-import moment from "moment";
-import statusPicker from "./status-picker.vue";
+import statusPicker from "./status-picker";
+import taskAddMember from "./task-add-member";
 
 export default {
   name: "task-preview",
@@ -88,6 +88,7 @@ export default {
     return {
       dueDate: null,
       isSelectingStatus: false,
+      isAddingMember: false,
       editMode: false,
       taskToEdit: null,
       styles: {
@@ -96,13 +97,11 @@ export default {
     };
   },
   methods: {
+    toggleAddingMember() {
+      this.isAddingMember = !this.isAddingMember;
+      console.log(this.isAddingMember);
+    },
     addTaskMembers() {},
-    // changeDate(){
-    //   this.taskToEdit.dueDate = this.dueDate;
-    //   console.log('this.taskToEdit.dueDate',this.taskToEdit.dueDate)
-    //   this. updateTask();
-    //   this.dueDate = null;
-    // },
     handleEdit() {
       this.editMode = true;
       setTimeout(() => {
@@ -159,12 +158,12 @@ export default {
     },
     dueDate: function () {
       this.taskToEdit.dueDate = this.dueDate;
-      console.log("taskToEdit.dueDate", this.taskToEdit.dueDate);
       this.updateTask();
     },
   },
   components: {
     statusPicker,
+    taskAddMember,
   },
 };
 </script>

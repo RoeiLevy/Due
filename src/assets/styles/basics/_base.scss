@@ -14,9 +14,6 @@ html {
 
 body {
     margin: 0;
-    // background-image: url('~@/assets/images/cats-pattern-background_1425-90.jpg');
-    // background-size: 180px;
-    // background-attachment: fixed;
 }
 
 h1,
@@ -33,7 +30,8 @@ h1 {
     font-size: rem(50px);
 }
 
-button, a:hover {
+button,
+a:hover {
     cursor: pointer;
 }
 
@@ -42,14 +40,7 @@ button {
     border: none;
 }
 
-
-
-
 p {
     max-width: 48ch;
     margin: 0 0 1rem;
 }
-
-// img {
-//     width: 100%;
-// }

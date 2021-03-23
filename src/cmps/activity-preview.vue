@@ -5,36 +5,29 @@
         <h4>{{ createdAt }}</h4>
       </div>
       <div class="activity-user-txt-wrapper">
-          <avatar :username="username"></avatar>
-        <!-- <h4>{{ activity.byMemeber.fullname }}</h4> -->
+        <avatar :username="username"></avatar>
         <h3>{{ activity.txt }}</h3>
       </div>
-
-
     </div>
   </div>
 </template>
 
 <script>
-
-import Avatar from 'vue-avatar'
-import moment from 'moment'
+import Avatar from "vue-avatar";
+import moment from "moment";
 
 export default {
   props: ["activity"],
-  created() {
-    console.log(this.activity);
-  },
   computed: {
-      username() {
-          return this.activity.byMember.fullname
-      },
-      createdAt() {
-           return moment(this.activity.createdAt).fromNow()
-      }
+    username() {
+      return this.activity.byMember.fullname;
+    },
+    createdAt() {
+      return moment(this.activity.createdAt).fromNow();
+    },
   },
   components: {
-      Avatar
-  }
+    Avatar,
+  },
 };
 </script>

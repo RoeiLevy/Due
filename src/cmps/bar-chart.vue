@@ -15,12 +15,10 @@ export default {
           if (task.status) map[task.status.title]++;
         });
       });
-      console.log("map", Object.values(map));
       return Object.values(map);
     },
   },
   mounted() {
-    // Overwriting base render method with actual data.
     this.renderChart({
       labels: this.board.statuses.map((s) => s.title),
       datasets: [

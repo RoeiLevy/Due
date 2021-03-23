@@ -15,17 +15,14 @@
 
 <script>
 import Avatar from "vue-avatar";
-import moment from 'moment';
+import moment from "moment";
 
 export default {
   props: ["comment"],
-  created() {
-    console.log("comment", this.comment);
-  },
   computed: {
-           createdAt() {
-           return moment(this.comment.createdAt).fromNow()
-      }
+    createdAt() {
+      return moment(this.comment.createdAt).fromNow();
+    },
   },
   components: {
     Avatar,

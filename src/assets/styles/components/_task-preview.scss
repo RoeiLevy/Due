@@ -23,9 +23,8 @@
         text-align: start;
         font-size: 13px;
         width: 40%;
-         :hover {
+        :hover {
             cursor: text;
-            // border: 1px dashed gray;
         }
         input {
             border: 1px dashed gray;
@@ -39,7 +38,6 @@
             cursor: pointer !important;
         }
         .header-icon:hover {
-            // filter: brightness(70%);
             color: #636363;
             border: none !important;
             cursor: pointer !important;
@@ -54,21 +52,13 @@
             justify-content: flex-start;
             align-items: center;
             white-space: nowrap;
-            // border: 1px dashed transparent;
         }
-        // .task-title-label:hover {
-        //     border: 1px dashed gray;
-        // }
-        // input.task-title-label {
-        //     outline: none;
-        //     border: 1px dashed gray;
-        // }
     }
     .el-badge__content {
         right: 20px !important;
         top: 25px !important;
         border-radius: 10px;
-        color: #FFF;
+        color: #fff;
         display: inline-block;
         font-size: 10px;
         height: 11px;
@@ -76,7 +66,7 @@
         padding: 0px 4px;
         text-align: center;
         white-space: nowrap;
-        border: 1px solid #FFF;
+        border: 1px solid #fff;
     }
     .task-title-input {
         border: 1px dashed gray;
@@ -105,7 +95,6 @@
         color: #d6d9df;
     }
     .add-btn:hover {
-        // filter: brightness(60%);
         color: #aaaaaa;
     }
     .task-members-container:hover .add-btn {
@@ -121,7 +110,7 @@
         background-color: #d6d9df;
     }
     .avatar:hover {
-        filter: brightness(96%)
+        filter: brightness(96%);
     }
     .status-container {
         @include task-cells;
@@ -156,12 +145,10 @@
     }
     .remove-btn {
         display: none;
-        // color: #aaaaaa;
         filter: brightness(250%);
     }
     .remove-btn:hover {
         cursor: pointer;
-        // filter: brightness(60%);
     }
     .task-color-box-start {
         @include task-cells;
@@ -180,7 +167,6 @@
 }
 
 .task-wrapper:hover *:not(input, .remove-btn-wrapper *, .status-container *, .tag-group, .tag-group *) {
-    // filter: brightness(98%);
     color: #aaaaaa;
     background-color: #f3f3f3ef;
     cursor: pointer;
@@ -199,16 +185,12 @@
     background-color: #e5f4ff;
 }
 
-.header-icon:hover>path,
-.add-btn:hover>path {
+.header-icon:hover > path,
+.add-btn:hover > path {
     filter: brightness(60%);
 }
 
-// .svg-inline--fa:active {
-//     filter: none !important;
-// }
 .task-wrapper:hover .remove-btn path {
-    // filter: brightness(60%);
     color: #363636;
 }
 
@@ -226,15 +208,6 @@
     color: white;
 }
 
-// .status-container:hover {
-//     opacity: 1;
-//     .task-status:hover {
-//         opacity: 0.8;
-//     }
-//     .tag-group:hover {
-//         opacity: 1;
-//     }
-// }
 .el-input--prefix .el-input__inner {
     border: none;
     background-color: inherit;
@@ -244,9 +217,7 @@
     cursor: pointer;
 }
 
-// .sortable-ghost // .sortable-drag,
 .sortable-chosen {
-    // overflow: hidden;
     opacity: 100%;
     box-shadow: 0 0 20px rgba(51, 51, 51, 0.17);
     transform: rotate(0.7deg);
@@ -254,8 +225,8 @@
     z-index: 70;
 }
 
-.task-wrapper:hover>.remove-btn-wrapper,
-.task-wrapper:active>.remove-btn-wrapper {
+.task-wrapper:hover > .remove-btn-wrapper,
+.task-wrapper:active > .remove-btn-wrapper {
     background-color: #ffffff !important;
 }
 
@@ -264,6 +235,10 @@
 }
 
 .sortable-chosen .tag-group {
+    transform: translateY(174px) rotate(-0.7deg) translateX(1.7px) !important;
+}
+
+.sortable-chosen .task-add-member-modal {
     transform: translateY(174px) rotate(-0.7deg) translateX(1.7px) !important;
 }
 

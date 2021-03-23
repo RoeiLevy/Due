@@ -1,5 +1,4 @@
 import { boardService } from '../services/board.service'
-// import { utilService } from '../services/util.service';
 
 export const boardStore = {
     state: {
@@ -10,6 +9,9 @@ export const boardStore = {
         isBoardActivities: false,
     },
     getters: {
+        boardMembers(state) {
+            return state.currBoard.members
+        },
         currBoardId(state) {
             return state.currBoard._id
         },
@@ -91,10 +93,6 @@ export const boardStore = {
                 const board = await boardService.getBoard(boardId);
                 context.commit({ type: 'setBoard', board })
                 return board
-                // socketService.off(SOCKET_EVENT_REVIEW_ADDED)
-                // socketService.on(SOCKET_EVENT_REVIEW_ADDED, review => {
-                //     context.commit({ type: 'addReview', review })
-                // })
             } catch (err) {
                 console.log('boardStore: Error in loadBoard', err)
                 throw err
@@ -103,7 +101,6 @@ export const boardStore = {
         async loadBoards(context) {
             try {
                 const boards = await boardService.query();
-                console.log('boards:', boards)
                 context.commit({ type: 'setBoards', boards });
                 return boards
             } catch (err) {
@@ -116,7 +113,6 @@ export const boardStore = {
                 const savedBoard = await boardService.update(boardToSave);
                 context.commit({ type: 'setBoard', board: JSON.parse(JSON.stringify(boardToSave)) });
                 context.dispatch({ type: 'sendBoard', board: savedBoard })
-                console.log('board in store:', savedBoard);
                 return savedBoard
             } catch (err) {
                 console.log('boardStore: Error in saveBoard', err);
@@ -137,7 +133,6 @@ export const boardStore = {
             try {
                 await boardService.remove(boardId);
                 await context.dispatch('loadBoards');
-                console.log('Board deleted');
             } catch (err) {
                 console.log('Couldn`t delete board', err);
                 throw err;
@@ -162,11 +157,9 @@ export const boardStore = {
         async getTaskActivities({ state }, { taskId }) {
             try {
                 var boardActivities = JSON.parse(JSON.stringify(state.currBoard.activities))
-                console.log('boardActivities:', boardActivities)
                 const taskActivities = boardActivities.filter(a => {
                     if (a.task) return a.task.id === taskId
                 })
-                console.log('taskActivities:', taskActivities)
                 return taskActivities
 
             } catch (err) {
@@ -175,8 +168,6 @@ export const boardStore = {
             }
         },
         async saveTask({ state }, { task, groupId }) {
-            console.log('groupId:', groupId)
-            console.log('task:', task)
             try {
                 this.commit({ type: 'saveTask', task, groupId })
                 const savedTask = await this.dispatch({ type: 'saveBoard', boardToSave: JSON.parse(JSON.stringify(state.currBoard)) })
@@ -190,8 +181,8 @@ export const boardStore = {
         async saveStatuses(context, statuses) {
             try {
                 const boardToSave = { ...context.state.currBoard };
-                boardToSave.statuses = { ...statuses };
-                await context.dispatch('saveBoard', {boardToSave} )
+                boardToSave.statuses = [...statuses];
+                await context.dispatch('saveBoard', { boardToSave })
                 return statuses;
             } catch (err) {
 

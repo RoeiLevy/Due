@@ -12,7 +12,7 @@
     text-align: center;
     display: flex;
     flex-direction: column;
-    > *:hover {
+    >*:hover {
         opacity: 1;
     }
     .statuses {
@@ -40,7 +40,7 @@
         flex-wrap: wrap;
         flex: 1;
         height: 250px;
-        > * {
+        >* {
             margin: 3px;
         }
         input {
@@ -56,14 +56,30 @@
             border: 1px solid lightgray;
             border-radius: 5px;
             * {
-                height: 100%;
+                text-overflow: ellipsis;
             }
         }
         .el-color-picker__trigger {
-            width: 20px;
-            left: 0;
-            border: none;
+            width: 25px;
+            left: -2.5px;
+            border-color: transparent;
+            border-bottom-left-radius: 4px;
+            border-top-left-radius: 4px;
+            padding: 0;
+            padding-bottom: 0.5px;
             margin: 0;
+            height: 87%;
+        }
+        .el-color-picker__color {
+            border-color: transparent;
+            height: 100%;
+            border-bottom-left-radius: 5px;
+            border-top-left-radius: 5px;
+        }
+        .el-color-picker__color-inner {
+            border-color: transparent;
+            border-bottom-left-radius: 4px;
+            border-top-left-radius: 4px;
         }
         .new-status-btn {
             border: 1px dashed gray;
@@ -118,4 +134,16 @@
 
 .new-status-container {
     justify-content: center;
+}
+
+.status-edit-container {
+    // display: flex;
+    // flex-direction: column;
+    justify-content: space-between !important;
+    align-items: center;
+}
+
+.el-input__inner {
+    width: 80px !important;
+    // margin-inline-start: 15px;
 }

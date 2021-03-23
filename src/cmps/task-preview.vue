@@ -17,6 +17,7 @@
         {{ taskToEdit.title }}
       </label>
       <el-badge
+      v-if="task.comments"
         :hidden="isTaskComments"
         :value="task.comments.length"
         class="comment-badage"

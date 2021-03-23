@@ -12,15 +12,19 @@
         cursor: pointer;
     }
     .new-group-wrapper {
+        // position: fixed;
         padding: 7px 20px 7px 0px;
+        button.el-button.new-group-btn.el-button--primary {
+            background-color: #409eff;
+            border-color: #409eff;
+        }
     }
     .main-table-wrapper,
     .add-view-wrapper {
-        padding: 7px 20px;
         border-bottom: 2px inset transparent;
     }
     .main-table-wrapper.active {
-        box-shadow: 2px -22px 0px -20px #0085ff inset;
+        // box-shadow: 2px -22px 0px -20px #0085ff inset;
     }
     .add-view-wrapper.active {
         box-shadow: 2px -22px 0px -20px #0085ff inset;

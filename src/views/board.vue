@@ -62,79 +62,56 @@
           </div>
 
           <nav class="flex header-view-bar">
-            <div class="new-group-wrapper">
-              <el-button
-                class="new-group-btn"
-                @click="addNewGroup"
-                type="primary"
-                >New Group</el-button
-              >
-            </div>
             <div
               :class="tableActive"
               @click="activateMainTable"
               class="main-table-wrapper"
             >
               <el-tabs v-model="activeTab">
-                <el-tab-pane label="Main Table" name="main"></el-tab-pane>
+                <el-dropdown
+                  class="views-drop-down add-view-wrapper"
+                  trigger="click"
+                  @command="addView"
+                >
+                  <span class="views-el-dropdown-link add-view-wrapper">
+                    <button>
+                      <font-awesome-icon class="header-icon" icon="plus" /> Add
+                      View
+                    </button>
+                  </span>
+                  <el-dropdown-menu class="view-dropdown">
+                    <el-dropdown-item command="Calander"
+                      >Calander</el-dropdown-item
+                    >
+                    <el-dropdown-item command="Chart">Chart</el-dropdown-item>
+                    <el-dropdown-item command="Kanban">Kanban</el-dropdown-item>
+                  </el-dropdown-menu>
+                </el-dropdown>
+                <el-tab-pane label="Main Table" name="main"
+                  ><main-table
+                    :board="boardToEdit"
+                    @addNewGroup="addNewGroup"
+                    @removeTask="removeTask"
+                    @updateTask="updateTask"
+                    @saveGroup="saveGroup"
+                    @addTask="addTask"
+                    @removeGroup="removeGroup"
+                    @addStatus="addStatus"
+                    @deleteStatus="deleteStatus"
+                  ></main-table
+                ></el-tab-pane>
                 <el-tab-pane
                   v-for="(view, idx) in currBoard.views"
                   :key="idx"
                   :label="view"
                   :name="view"
                 >
+                  <component :board="boardToEdit" :is="view"></component>
                   {{ view }}
                 </el-tab-pane>
               </el-tabs>
             </div>
-            <el-dropdown
-              class="views-drop-down add-view-wrapper"
-              trigger="click"
-            >
-              <span class="views-el-dropdown-link add-view-wrapper">
-                <button>
-                  <font-awesome-icon class="header-icon" icon="plus" /> Add View
-                </button>
-              </span>
-              <el-dropdown-menu class="view-dropdown">
-                <el-dropdown-item @click="addView('Calander')"
-                  >Calander</el-dropdown-item
-                >
-                <el-dropdown-item @click="addView('Chart')"
-                  >Chart</el-dropdown-item
-                >
-                <el-dropdown-item @click="addView('Kanban')"
-                  >Kanban</el-dropdown-item
-                >
-              </el-dropdown-menu>
-            </el-dropdown>
           </nav>
-        </div>
-
-        <div class="board-content-wrapper">
-          <div class="groups-list">
-            <!-- <draggable
-              v-model="boardToEdit.groups"
-              @change="saveBoard(boardToEdit)"
-              v-bind="dragOptions"
-            >
-              <transition-group type="transition"> -->
-            <group
-              v-for="group in boardToEdit.groups"
-              :key="group.id"
-              :group="group"
-              @loadBoard="loadBoard"
-              @removeTask="removeTask"
-              @updateTask="updateTask"
-              @saveGroup="saveGroup"
-              @addTask="addTask"
-              @removeGroup="removeGroup"
-              @addStatus="addStatus"
-              @deleteStatus="deleteStatus"
-            />
-            <!-- </transition-group>
-            </draggable> -->
-          </div>
         </div>
       </div>
     </div>
@@ -143,14 +120,14 @@
 
 <script>
 import html2canvas from "html2canvas";
-import group from "../cmps/group";
 import socialModal from "../cmps/social-modal";
 import appHeader from "../cmps/header";
 import draggable from "vuedraggable";
 import taskDetails from "../cmps/task-details";
-import barChart from "../cmps/bar-chart";
 import boardActivities from "../cmps/board-activities.vue";
 import workspace from "../cmps/workspace.vue";
+import mainTable from "../cmps/main-table.vue";
+import chart from "../cmps/chart";
 
 import { boardService } from "../services/board.service";
 import { utilService } from "../services/util.service";
@@ -223,8 +200,6 @@ export default {
           type: "saveBoard",
           boardToSave: this.boardToEdit,
         });
-
-        // this.$store.dispatch({ type: "sendActivity", txt: "Edited a group" });
         // Add user msg
         return savedGroup;
       } catch (err) {
@@ -311,7 +286,7 @@ export default {
       }
     },
     addView(command) {
-      this.boardToEdit.views.push(command);
+      this.boardToEdit.views.push(command.toLowerCase());
       this.saveBoard();
     },
     handleEdit(item) {
@@ -367,7 +342,6 @@ export default {
         });
 
         return savedBoard;
-        // this.loadBoard();
       } catch (err) {
         console.log("err:", err);
       }
@@ -396,11 +370,6 @@ export default {
       } catch (err) {
         console.log("err:", err);
       }
-      // return html2canvas(this.$refs.screen).then((canvas) => {
-      //   const pageImg = canvas.toDataURL();
-      //   board.thumbnail = pageImg;
-      //   return board;
-      // });
     },
     addActivity(newActivity) {
       const boardCopy = JSON.parse(JSON.stringify(this.boardToEdit));
@@ -425,10 +394,6 @@ export default {
         console.log("err:", err);
       }
     },
-  },
-  mounted() {
-    // if(this.board)this.printScr()
-    // else setTimeout(()=>this.printScr(),1000);
   },
   computed: {
     boardDescription() {
@@ -474,13 +439,13 @@ export default {
   },
   components: {
     appHeader,
-    group,
     draggable,
     taskDetails,
-    barChart,
+    chart,
     socialModal,
     boardActivities,
     workspace,
+    mainTable,
   },
 };
 </script>

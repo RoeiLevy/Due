@@ -4,6 +4,11 @@ import { Bar } from "vue-chartjs";
 export default {
   extends: Bar,
   props: ["board"],
+  data() {
+    return {
+      // board: this.$store.getters.boardForDisplay,
+    };
+  },
   methods: {
     getData() {
       var map = this.board.statuses.reduce((map, status) => {
@@ -19,27 +24,17 @@ export default {
     },
   },
   mounted() {
-    this.renderChart({
-      labels: this.board.statuses.map((s) => s.title),
-      datasets: [
-        {
-          label: "Status Column",
-          backgroundColor: this.board.statuses.map((s) => s.color),
-          data: this.getData(),
-        },
-      ],
-      options: {
-        scales: {
-          yAxes: [
-            {
-              ticks: {
-                beginAtZero: true,
-              },
-            },
-          ],
-        },
-      },
-    });
+    console.log('hi');
+      this.renderChart({
+        labels: this.board.statuses.map((s) => s.title),
+        datasets: [
+          {
+            label: "Status Column",
+            backgroundColor: this.board.statuses.map((s) => s.color),
+            data: this.getData(),
+          },
+        ],
+      });
   },
 };
 </script>

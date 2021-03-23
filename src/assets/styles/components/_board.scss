@@ -42,8 +42,22 @@
     }
     .header-view-bar {
         .main-table-wrapper {
-            > * {
-                width: 140px;
+            width: 100%;
+            .el-tabs{
+                width: 100%;
+            }
+            .el-tabs__header {
+                width: fit-content;
+                left: 115px;
+            }
+            .el-tabs__content{
+                .board-content-wrapper{
+                    width: 100%;
+                }
+                .add-view-wrapper{
+                    position: fixed;
+                    top: 127px;
+                }
             }
         }
         .view-btn {
@@ -58,13 +72,6 @@
             display: inline;
         }
     }
-}
-
-.board-content-wrapper {
-    padding-bottom: 40px;
-    padding-top: 18px;
-    padding-left: 50px;
-    padding-right: 50px;
 }
 
 .header {

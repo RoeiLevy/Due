@@ -157,6 +157,7 @@ function getEmptyBoard() {
         }
         ],
         "activities": [],
+        "views": [],
         "description": "Enter Board Description"
     }
 

@@ -1,0 +1,42 @@
+.el-tooltip,
+.el-icon-menu {
+    position: unset !important;
+    display: unset;
+}
+
+.workspace-icon.el-icon-menu {
+    padding-bottom: 3px;
+}
+
+.el-menu-vertical-demo.el-menu--collapse {
+    width: 30px;
+    border-radius: 100%;
+    height: 30px;
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    margin-top: 30px;
+    left: 25px;
+    border: 1px solid rgba(165, 165, 165, 0.144);
+}
+
+.el-menu-item:focus,
+.el-menu-item:hover {
+    background-color: unset !important;
+}
+
+.el-menu-vertical-demo:not(.el-menu--collapse) {
+    padding: 20px;
+    width: fit-content;
+    // min-height: 400px;
+}
+
+.workspace-menu-container {
+    height: 100%;
+    // min-width: 200px;
+    display: flex;
+    position: static;
+    left: 65px;
+}

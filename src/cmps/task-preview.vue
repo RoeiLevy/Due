@@ -61,7 +61,7 @@
       type="datetime"
       placeholder="Due">
     </el-date-picker> -->
-  <VueDatePicker v-model="dueDate" id="due-on" clearable placeholder="Choose Date"
+  <VueDatePicker v-model="dueDate" clearable :placeholder="pickDate"
  />
 
 
@@ -91,6 +91,12 @@ export default {
   },
   methods: {
     addTaskMembers() {},
+    // changeDate(){
+    //   this.taskToEdit.dueDate = this.dueDate;
+    //   console.log('this.taskToEdit.dueDate',this.taskToEdit.dueDate)
+    //   this. updateTask();
+    //   this.dueDate = null;
+    // },
     handleEdit() {
       this.editMode = true;
       setTimeout(() => {
@@ -118,6 +124,8 @@ export default {
     updateTask() {
       this.editMode = false;
       this.$emit("updateTask", this.taskToEdit);
+            // this.dueDate = null;
+
     },
     removeTask() {
       this.$emit("removeTask", this.task.id);
@@ -130,13 +138,21 @@ export default {
     boardId() {
       return this.$store.getters.currBoardId;
     },
-  },
+    pickDate(){
+      return (this.taskToEdit.dueDate)? this.taskToEdit.dueDate : 'Choose Date'
+    }
+      },
   created() {
     this.taskToEdit = JSON.parse(JSON.stringify(this.task));
   },
   watch: {
     task: function (newVal, oldVal) {
       this.taskToEdit = JSON.parse(JSON.stringify(newVal));
+    },
+    dueDate: function () {
+            this.taskToEdit.dueDate = this.dueDate;
+      console.log('taskToEdit.dueDate',this.taskToEdit.dueDate)
+      this.updateTask();
     },
   },
   components: {

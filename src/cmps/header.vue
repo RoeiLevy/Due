@@ -51,15 +51,15 @@
 </template>
 
 <script>
-import avatar from './avatar'
+import avatar from "./avatar";
 export default {
   methods: {
     toBoardList() {
-      this.$router.push('/board')
-    }
+      this.$router.push("/board");
+    },
   },
-  components:{
-    avatar
-  }
+  components: {
+    avatar,
+  },
 };
 </script>

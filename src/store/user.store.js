@@ -33,7 +33,6 @@ export const userStore = {
         async login(context, credantials) {
             try {
                 const user = await userService.login(credantials);
-                // console.log('context:', context)
                 context.commit({type:'setLoggedInUser',user})
                 return user;
             } catch (err) {
@@ -43,9 +42,7 @@ export const userStore = {
         },
         async signup(context, credantials) {
             try {
-                const user = await userService.signup(credantials)
-                // commit({ type: 'setLoggedinUser', user })
-                // return user;
+                await userService.signup(credantials)
             } catch (err) {
                 console.log('userStore: Error in signup', err)
                 throw err

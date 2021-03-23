@@ -1,5 +1,5 @@
-import {socketService} from '../services/socket.service.js'
-import {utilService} from '../services/util.service'
+import { socketService } from '../services/socket.service.js'
+import { utilService } from '../services/util.service'
 
 export const socketStore = {
     state: {
@@ -13,10 +13,10 @@ export const socketStore = {
     },
     actions: {
         // TODO: show on
-        sendMsg(context, {msg}) {
+        sendMsg(context, { msg }) {
             socketService.emit('sendMsg', msg)
         },
-        getChatHistory(context, {chatId}) {
+        getChatHistory(context, { chatId }) {
             socketService.emit('getHistory', chatId)
         },
         sendActivity(context, { txt, task }) {
@@ -29,12 +29,10 @@ export const socketStore = {
                 byMember: context.getters.loggedInUser,
                 task
             }
-            console.log('activity to send: ', activity);
             socketService.emit('new activity', activity)
         },
         sendBoard(context, { board }) {
-            console.log('sending board', board);
-           socketService.emit('send board', board) 
+            socketService.emit('send board', board)
         }
     }
 }

@@ -24,12 +24,7 @@ export default {
       newComment: {
         txt: "",
         createdAt: null,
-        byMember: {
-          _id: "u101",
-          fullname: "Tal Tarablus",
-          imgUrl:
-            "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg",
-        },
+        byMember: this.$store.getters.loggedInUser,
       },
     };
   },
@@ -46,10 +41,8 @@ export default {
         txt: "",
         createdAt: null,
         byMember: {
-          _id: "u101",
-          fullname: "Tal Tarablus",
-          imgUrl:
-            "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg",
+          fullname: "",
+          imgUrl: "",
         },
       };
     },

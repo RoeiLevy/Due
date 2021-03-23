@@ -18,7 +18,7 @@
 
     <div class="board-list">
       <h2 v-if="!loggedInUser">Select Your Board</h2>
-      <h2 v-else>Hello {{loggedInUser.fullname}}</h2>
+      <h2 v-else>Hello {{ loggedInUser.fullname }}</h2>
       <el-carousel
         v-if="viewValue"
         class="carousel"
@@ -48,10 +48,8 @@
           </el-button>
         </el-carousel-item>
 
-        <el-carousel-item
-          class="carousel-item add-board-container"
-        >
-        <h3 class="medium">Add Board</h3>
+        <el-carousel-item class="carousel-item add-board-container">
+          <h3 class="medium">Add Board</h3>
           <div class="add-board carousel-img" @click="addNewBoard">
             <i class="el-icon-plus" style="font-size: 40px"></i>
             <div style="padding: 14px">
@@ -61,12 +59,9 @@
         </el-carousel-item>
       </el-carousel>
 
-
-
       <el-row v-else>
         <el-col :span="5" v-for="board in boards" :key="board._id" :offset="1">
           <el-card closeable :body-style="{ padding: '0px' }" class="card">
-            <!-- <button class="close-card-btn" @click="deleteBoard">X</button> -->
             <el-button
               class="close-card-btn card-view-btn"
               type="text"
@@ -159,9 +154,9 @@ export default {
     boards() {
       return this.$store.getters.boards;
     },
-    loggedInUser(){
+    loggedInUser() {
       return this.$store.getters.loggedInUser;
-    }
+    },
   },
   created() {
     this.$store.dispatch("loadBoards");

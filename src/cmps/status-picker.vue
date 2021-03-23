@@ -118,7 +118,6 @@ export default {
       this.isAddingStatus = false;
       if (!this.newStatus.color) this.newStatus.color = "#808080";
       this.statusesToEdit.push(this.newStatus);
-      // this.$emit("addStatus", this.newStatus);
       this.newStatus = {
         color: "",
         title: "",
@@ -143,7 +142,6 @@ export default {
         "saveStatuses",
         this.statusesToEdit
       );
-      console.log("savedStatuses:", savedStatuses);
       this.statusesToEdit = savedStatuses;
     },
   },

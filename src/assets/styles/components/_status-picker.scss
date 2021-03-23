@@ -46,12 +46,9 @@
         input {
             width: 100px;
             border: none;
-            // border-left: 14px solid;
-            // margin: 4px;
         }
         .status-edit-container {
             display: flex;
-            // border: 1px solid gray;
             height: fit-content;
             position: relative;
             height: 32px;
@@ -82,10 +79,6 @@
             font-size: 1rem;
             color: #4e4f52;
         }
-        // .close-card-btn:hover {
-        //     background-color: rgba(161, 160, 160, 0.438);
-        //     border-radius: 100%;
-        // }
     }
     .status-edit-container:hover .delete-status-btn {
         opacity: 1;
@@ -99,7 +92,6 @@
         justify-content: space-between;
         align-items: center;
         border: none;
-        // border-color: #DCDFE6;
     }
     .el-tag:hover {
         opacity: 0.5;
@@ -119,10 +111,6 @@
     left: 47%;
 }
 
-// .tag-group:focus,
-// .tag-group:active * {
-//     background-color: currentColor !important;
-// }
 #add-status-btn {
     margin-inline-start: 10px;
     padding: 6px 15px;

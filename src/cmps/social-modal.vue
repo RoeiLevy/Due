@@ -3,7 +3,6 @@
     <el-tabs v-model="activeTab">
       <el-tab-pane label="Members" name="member" class="members">
         <span>Board Members</span>
-        <!-- <el-input placeholder="Enter name or email"></el-input> -->
         <div class="member" v-for="member in members" :key="member.id">
           <el-avatar :size="30" :src="member.imgUrl"></el-avatar>
           {{ member.fullname }}

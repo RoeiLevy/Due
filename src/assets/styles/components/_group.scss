@@ -53,13 +53,10 @@
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        // .group-title {
-        //     padding: 10px 10px 10px 0px;
-        // }
     }
     .el-dropdown-link {
         cursor: pointer;
-        color: #409EFF;
+        color: #409eff;
         font-size: 20px;
     }
     .el-dropdown-link:hover {
@@ -82,7 +79,6 @@
     .add-task-wrapper:hover {
         filter: brightness(98%);
         cursor: pointer;
-        // border: 1px solid rgb(50, 51, 56);
     }
 }
 
@@ -105,14 +101,13 @@
     border: 1px solid gainsboro;
     padding: 10px;
     border-left: 8.5px solid;
-    opacity: .6;
-    transition: all .4s;
+    opacity: 0.6;
+    transition: all 0.4s;
 }
-.add-task-input:focus{
+.add-task-input:focus {
     opacity: 1;
-
 }
-.add-task-input:hover{
+.add-task-input:hover {
     opacity: 1;
 }
 
@@ -167,7 +162,6 @@
     position: relative;
 }
 
-// .el-color-picker--mini,
 .el-color-picker__trigger {
     margin-inline-start: 10px;
     align-self: center;

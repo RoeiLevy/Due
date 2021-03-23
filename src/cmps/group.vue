@@ -39,9 +39,6 @@
             {{ group.title }}
           </h1>
         </div>
-        <!-- <label v-for="(header, idx) in group.headers" :key="idx">{{
-          header
-        }}</label> -->
       </div>
       <div class="members-wrapper">
         <label>Members</label>
@@ -106,7 +103,7 @@ export default {
         title: "",
         createdAt: null,
         status: null,
-        comments: []
+        comments: [],
       },
       editMode: false,
     };
@@ -119,7 +116,6 @@ export default {
       }, 0);
     },
     handleCommand(command) {
-      // this.$message("click on item " + command);
       switch (command) {
         case "removeGroup":
           this.removeGroup();
@@ -136,7 +132,7 @@ export default {
         title: "",
         createdAt: null,
         status: null,
-        comments: []
+        comments: [],
       };
     },
     addStatus(status) {

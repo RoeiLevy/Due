@@ -8,18 +8,11 @@
     <div class="activity-task-title">
       <h2 v-if="board">{{ board.title }} Log</h2>
     </div>
-
     <el-tabs v-model="activeName" @tab-click="handleClick">
       <el-tab-pane label="Activity" name="activity">
         <activity-log :activities="board.activities" />
       </el-tab-pane>
-      <el-tab-pane label="Updates" name="updates">
-        <!-- <updates
-        v-if="board"
-          :comments="task.comments"
-          @addComment="addComment"
-        /> -->
-      </el-tab-pane>
+      <el-tab-pane label="Updates" name="updates"> </el-tab-pane>
     </el-tabs>
   </el-drawer>
 </template>
@@ -29,7 +22,7 @@ import activityLog from "./activity-log";
 import updates from "./updates";
 
 export default {
-  props: ["drawer", 'board'],
+  props: ["drawer", "board"],
   data() {
     return {
       task: null,
@@ -38,8 +31,7 @@ export default {
     };
   },
   methods: {
-    handleClick(tab, event) {
-    },
+    handleClick(tab, event) {},
     closeActivities() {
       this.$store.commit({ type: "toggleIsBoardActivities" });
     },
@@ -55,11 +47,7 @@ export default {
   },
   created() {},
   watch: {
-    $route(to, from) {
-    },
+    $route(to, from) {},
   },
 };
 </script>
-
-<style>
-</style>

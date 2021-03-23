@@ -1,11 +1,7 @@
 .header-view-bar {
-    // margin: 20px 0px 10px 20px;
     margin-left: 20px;
     border-bottom: 2px solid #e6e9ef;
-
-
-
-    >* {
+    > * {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -24,11 +20,9 @@
         border-bottom: 2px inset transparent;
     }
     .main-table-wrapper.active {
-        // border-bottom-color: rgb(0, 133, 255);
         box-shadow: 2px -22px 0px -20px #0085ff inset;
     }
     .add-view-wrapper.active {
-        // border-bottom-color: rgb(0, 133, 255);
         box-shadow: 2px -22px 0px -20px #0085ff inset;
     }
     .main-table-wrapper button,
@@ -50,18 +44,11 @@
         cursor: pointer;
         border-radius: 4px;
     }
-    // .main-table-wrapper:hover {
-    //     // border-bottom-color: rgb(0, 133, 255);
-    // }
-    // .add-view-wrapper:hover {
-    //     // border-bottom-color: rgb(0, 133, 255);
-    // }
 }
 
 .top-header {
     margin-inline-start: 20px;
 }
-
 
 .el-button {
     height: 32px;
@@ -70,7 +57,7 @@
 
 .board-actions {
     display: flex;
-    >* {
+    > * {
         border: none;
         outline: none;
         background-color: transparent;
@@ -88,7 +75,7 @@
     .plus {
         font-size: 16px;
     }
-    >*:hover {
+    > *:hover {
         background-color: #e6e9ef;
         cursor: pointer;
     }

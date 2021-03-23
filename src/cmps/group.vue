@@ -119,7 +119,7 @@ export default {
       }, 0);
     },
     handleCommand(command) {
-      this.$message("click on item " + command);
+      // this.$message("click on item " + command);
       switch (command) {
         case "removeGroup":
           this.removeGroup();

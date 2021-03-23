@@ -432,6 +432,10 @@ export default {
       boardCopy.activities.unshift(newActivity);
       this.boardToEdit = boardCopy;
     },
+    setBoard(board) {
+      this.boardToEdit = board;
+      console.log('Updated board');
+    }
   },
   mounted() {
     // if(this.board)this.printScr()
@@ -472,8 +476,10 @@ export default {
     // socketService.setup();
     socketService.emit("chat topic", boardId);
     socketService.on("add activity", this.addActivity);
+    socketService.on("get board", this.setBoard);
   },
   destroyed() {
+    socketService.off("get board", this.setBoard);
     socketService.off("add activity", this.addMsg);
     socketService.terminate();
   },

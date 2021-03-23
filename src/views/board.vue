@@ -8,6 +8,7 @@
       <social-modal
         v-if="isAddingMembers"
         :members="boardToEdit.members"
+        @addMember="addMember"
       ></social-modal>
       <task-details :drawer="isTaskDetails" />
       <board-activities :board="boardToEdit" :drawer="isBoardActivities" />
@@ -435,6 +436,15 @@ export default {
     setBoard(board) {
       this.boardToEdit = board;
       console.log('Updated board');
+    },
+    async addMember(email) {
+      try {
+          const memberToAdd = await this.$store.dispatch({ type: 'validateUserByEmail', email})
+          this.boardToEdit.members.unshift(memberToAdd)
+          this.$store.dispatch({ type: 'saveBoard', boardToSave: this.boardToEdit})
+      } catch (err) {
+        console.log('err:', err)
+      }
     }
   },
   mounted() {

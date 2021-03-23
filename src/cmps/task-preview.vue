@@ -25,7 +25,9 @@
       </el-badge>
     </div>
     <div class="task-members-container" @click="addTaskMembers">
-      <font-awesome-icon class="add-btn" icon="plus" />
+      <font-awesome-icon @click="toggleAddingMember" class="add-btn" icon="plus">
+      </font-awesome-icon>
+         <task-add-member v-if="isAddingMember"></task-add-member>
       <div v-if="task.members" class="avatar-container">
         <el-avatar
           v-for="member in task.members"
@@ -79,7 +81,8 @@
 
 <script>
 import moment from "moment";
-import statusPicker from "./status-picker.vue";
+import statusPicker from "./status-picker";
+import taskAddMember from "./task-add-member";
 
 export default {
   name: "task-preview",
@@ -88,6 +91,7 @@ export default {
     return {
       dueDate: null,
       isSelectingStatus: false,
+      isAddingMember: false,
       editMode: false,
       taskToEdit: null,
       styles: {
@@ -96,6 +100,10 @@ export default {
     };
   },
   methods: {
+    toggleAddingMember() {
+      this.isAddingMember = !this.isAddingMember
+      console.log(this.isAddingMember);
+    },
     addTaskMembers() {},
     // changeDate(){
     //   this.taskToEdit.dueDate = this.dueDate;
@@ -165,6 +173,7 @@ export default {
   },
   components: {
     statusPicker,
+    taskAddMember
   },
 };
 </script>

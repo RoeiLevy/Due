@@ -21,8 +21,8 @@ window.userService = userService
 // userService.signup({fullname: 'Muki G', username: 'muki', password:'123', score: 100})
 
 function getUsers() {
-    return storageService.query('user')
-    // return httpService.get(`user`)
+    // return storageService.query('user')
+    return httpService.get(`user`)
 }
 
 function getById(userId) {

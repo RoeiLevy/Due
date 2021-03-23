@@ -179,7 +179,7 @@
     color: #333333;
 }
 
-.task-wrapper:hover *:not(input, .remove-btn-wrapper *, .status-container *, .tag-group, .tag-group *) {
+.task-wrapper:hover *:not( .task-add-member-modal, .task-add-member-modal h3, .task-members-list, .add-member-preview, .vue-avatar--wrapper, .vue-avatar--wrapper span , .remove-btn-wrapper *, .status-container *, .tag-group, .tag-group *) {
     // filter: brightness(98%);
     color: #aaaaaa;
     background-color: #f3f3f3ef;
@@ -264,6 +264,10 @@
 }
 
 .sortable-chosen .tag-group {
+    transform: translateY(174px) rotate(-0.7deg) translateX(1.7px) !important;
+}
+
+.sortable-chosen .task-add-member-modal {
     transform: translateY(174px) rotate(-0.7deg) translateX(1.7px) !important;
 }
 

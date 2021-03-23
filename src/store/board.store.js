@@ -190,7 +190,7 @@ export const boardStore = {
         async saveStatuses(context, statuses) {
             try {
                 const boardToSave = { ...context.state.currBoard };
-                boardToSave.statuses = { ...statuses };
+                boardToSave.statuses = [ ...statuses ];
                 await context.dispatch('saveBoard', {boardToSave} )
                 return statuses;
             } catch (err) {

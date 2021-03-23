@@ -21,7 +21,7 @@
       </el-tag>
     </draggable>
     <div class="status-footer">
-      <div v-if="editMode" class="flex">
+      <div v-if="editMode" class="new-status-container flex">
         <el-input
           class="input-new-tag"
           v-model="newStatus.title"
@@ -33,7 +33,7 @@
           v-model="newStatus.color"
           size="mini"
         ></el-color-picker>
-        <el-button @click="addStatus" type="primary">Add Status</el-button>
+        <el-button id="add-status-btn" @click="addStatus" type="primary">Add Status</el-button>
       </div>
       <el-button
         v-else

@@ -39,9 +39,11 @@
       <task-add-member @addMember="addMember" v-if="isAddingMember"></task-add-member>
       <div v-if="task.members" class="avatar-container">
         <avatar
+          class="member-avatar"
           v-for="member in task.members"
           :key="member._id"
           :size="30"
+          :username="member.fullname"
           :src="member.imgUrl"
         ></avatar>
       </div>
@@ -80,7 +82,7 @@
 <script>
 import statusPicker from "./status-picker";
 import taskAddMember from "./task-add-member";
-import avatar from "vue-avatar";
+import Avatar from "vue-avatar";
 
 export default {
   name: "task-preview",
@@ -171,7 +173,7 @@ export default {
   components: {
     statusPicker,
     taskAddMember,
-    avatar
+    Avatar
   },
 };
 </script>

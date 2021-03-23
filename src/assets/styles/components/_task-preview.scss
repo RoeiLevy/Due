@@ -164,11 +164,12 @@
     }
 }
 
-.task-wrapper:hover h3.status-h3 {
+.task-wrapper:hover h3.status-h3,
+.task-add-member-modal h3 {
     color: #333333;
 }
 
-.task-wrapper:hover *:not(input, .remove-btn-wrapper *, .status-container *, .tag-group, .tag-group *) {
+.task-wrapper:hover *:not(input, .task-add-member-modal, .task-add-member-modal h3, .task-members-list, .remove-btn-wrapper *, .status-container *, .tag-group, .tag-group *) {
     color: #aaaaaa;
     background-color: #f3f3f3ef;
     cursor: pointer;

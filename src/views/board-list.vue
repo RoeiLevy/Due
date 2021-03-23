@@ -19,8 +19,44 @@
     <div class="board-list">
       <h2 v-if="!loggedInUser">Select Your Board</h2>
       <h2 v-else>Hello {{ loggedInUser.fullname }}</h2>
+      <el-row v-if="viewValue">
+        <el-col :span="5" v-for="board in boards" :key="board._id" :offset="1">
+          <el-card closeable :body-style="{ padding: '0px' }" class="card">
+            <el-button
+              class="close-card-btn card-view-btn"
+              type="text"
+              @click="removeBoard(board._id)"
+            >
+              <font-awesome-icon class="header-icon remove-btn" icon="trash" />
+            </el-button>
+            <div @click="showBoard(board._id)">
+              <img :src="board.thumbnail" class="image" />
+              <div style="padding: 14px">
+                <span>{{ board.title }}</span>
+                <div class="bottom clearfix">
+                  <time class="time"
+                    >{{ new Date(board.createdAt).toLocaleString() }}
+                  </time>
+                </div>
+              </div>
+            </div>
+          </el-card>
+        </el-col>
+        <el-col :span="5" :offset="1" @click="addNewBoard">
+          <el-card class="card" :body-style="{ height: '100%' }">
+            <div @click="addNewBoard">
+              <i class="el-icon-plus" style="font-size: 40px"></i>
+              <div style="padding: 14px">
+                <span>Add A New Board</span>
+                <div class="bottom clearfix"></div>
+              </div>
+            </div>
+          </el-card>
+        </el-col>
+      </el-row>
+     
       <el-carousel
-        v-if="viewValue"
+        v-else
         class="carousel"
         :interval="40000"
         type="card"
@@ -59,41 +95,7 @@
         </el-carousel-item>
       </el-carousel>
 
-      <el-row v-else>
-        <el-col :span="5" v-for="board in boards" :key="board._id" :offset="1">
-          <el-card closeable :body-style="{ padding: '0px' }" class="card">
-            <el-button
-              class="close-card-btn card-view-btn"
-              type="text"
-              @click="removeBoard(board._id)"
-            >
-              <font-awesome-icon class="header-icon remove-btn" icon="trash" />
-            </el-button>
-            <div @click="showBoard(board._id)">
-              <img :src="board.thumbnail" class="image" />
-              <div style="padding: 14px">
-                <span>{{ board.title }}</span>
-                <div class="bottom clearfix">
-                  <time class="time"
-                    >{{ new Date(board.createdAt).toLocaleString() }}
-                  </time>
-                </div>
-              </div>
-            </div>
-          </el-card>
-        </el-col>
-        <el-col :span="5" :offset="1" @click="addNewBoard">
-          <el-card class="card" :body-style="{ height: '100%' }">
-            <div @click="addNewBoard">
-              <i class="el-icon-plus" style="font-size: 40px"></i>
-              <div style="padding: 14px">
-                <span>Add A New Board</span>
-                <div class="bottom clearfix"></div>
-              </div>
-            </div>
-          </el-card>
-        </el-col>
-      </el-row>
+     
     </div>
   </section>
 </template>

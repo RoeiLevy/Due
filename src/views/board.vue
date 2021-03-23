@@ -2,10 +2,11 @@
   <div class="board-surface">
     <app-header />
     <div v-if="boardToEdit" class="flex board" ref="screen">
-    <workspace />
+      <workspace />
       <social-modal
         v-if="isAddingMembers"
         :members="boardToEdit.members"
+        @addMember="addMember"
       ></social-modal>
       <task-details :drawer="isTaskDetails" />
       <board-activities :board="boardToEdit" :drawer="isBoardActivities" />
@@ -82,7 +83,7 @@
                   :label="view"
                   :name="view"
                 >
-                  {{view}}
+                  {{ view }}
                 </el-tab-pane>
               </el-tabs>
             </div>
@@ -149,8 +150,7 @@ import draggable from "vuedraggable";
 import taskDetails from "../cmps/task-details";
 import barChart from "../cmps/bar-chart";
 import boardActivities from "../cmps/board-activities.vue";
-import workspace from '../cmps/workspace.vue';
-
+import workspace from "../cmps/workspace.vue";
 
 import { boardService } from "../services/board.service";
 import { utilService } from "../services/util.service";
@@ -167,7 +167,7 @@ export default {
       mainTable: true,
       addingView: false,
       isAddingMembers: false,
-      activeTab:'main'
+      activeTab: "main",
     };
   },
   methods: {
@@ -303,7 +303,7 @@ export default {
 
         this.$store.dispatch({
           type: "sendActivity",
-          txt: `Removed task "${task.title}"`
+          txt: `Removed task "${task.title}"`,
         });
         // Add user msg
       } catch (err) {
@@ -409,7 +409,22 @@ export default {
     },
     setBoard(board) {
       this.boardToEdit = board;
-    }
+    },
+    async addMember(email) {
+      try {
+        const memberToAdd = await this.$store.dispatch({
+          type: "validateUserByEmail",
+          email,
+        });
+        this.boardToEdit.members.unshift(memberToAdd);
+        this.$store.dispatch({
+          type: "saveBoard",
+          boardToSave: this.boardToEdit,
+        });
+      } catch (err) {
+        console.log("err:", err);
+      }
+    },
   },
   mounted() {
     // if(this.board)this.printScr()

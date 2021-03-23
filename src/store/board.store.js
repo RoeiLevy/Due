@@ -9,6 +9,9 @@ export const boardStore = {
         isBoardActivities: false,
     },
     getters: {
+        boardMembers(state) {
+            return state.currBoard.members
+        },
         currBoardId(state) {
             return state.currBoard._id
         },

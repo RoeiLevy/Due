@@ -1,0 +1,37 @@
+.task-add-member-modal {
+    background-color: white;
+    border: 1px solid rgba(117, 117, 117, 0.411);
+    position: absolute;
+    transform: translateY(175px);
+    border-radius: 3px;
+    padding: 15px;
+    box-shadow: 0 0 5px #0000000f;
+    z-index: 80 !important;
+    width: 266px;
+    height: 315px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.task-members-list {
+    display: flex;
+    flex: 1;
+    overflow: scroll;
+    flex-direction: column;
+    width: 100%;
+}
+
+.add-member-preview {
+    padding: 10px;
+    display: flex;
+    width: 100%;
+    .vue-avatar--wrapper {
+      margin-inline-end: 10px;  
+    }
+
+}
+
+.task-wrapper:hover.task-add-member-modal {
+    background-color: #f3f3f3ef;
+}

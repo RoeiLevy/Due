@@ -66,7 +66,7 @@
             native-type="submit"
             type="success"
             icon="el-icon-check"
-            circle
+            class="new-status-add-btn"
           ></el-button>
         </form>
       </div>

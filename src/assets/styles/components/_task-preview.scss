@@ -23,7 +23,7 @@
         text-align: start;
         font-size: 13px;
         width: 40%;
-        :hover {
+         :hover {
             cursor: text;
         }
         input {
@@ -31,6 +31,7 @@
         }
         .header-icon {
             margin-inline-end: 10px;
+            font-size: 0.9rem;
         }
         .header-icon * {
             color: #d6d9df;
@@ -129,6 +130,7 @@
         align-items: center;
         justify-content: center;
         width: 150px;
+        padding-inline-start: 5px;
     }
     .remove-btn-wrapper {
         left: -50px;
@@ -185,8 +187,8 @@
     background-color: #e5f4ff;
 }
 
-.header-icon:hover > path,
-.add-btn:hover > path {
+.header-icon:hover>path,
+.add-btn:hover>path {
     filter: brightness(60%);
 }
 
@@ -225,8 +227,8 @@
     z-index: 70;
 }
 
-.task-wrapper:hover > .remove-btn-wrapper,
-.task-wrapper:active > .remove-btn-wrapper {
+.task-wrapper:hover>.remove-btn-wrapper,
+.task-wrapper:active>.remove-btn-wrapper {
     background-color: #ffffff !important;
 }
 

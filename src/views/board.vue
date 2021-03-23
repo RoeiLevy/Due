@@ -76,25 +76,36 @@
               @click="activateMainTable"
               class="main-table-wrapper"
             >
-              <button>Main Table</button>
-              <div v-for="(view, idx) in currBoard.views" :key="idx">
-                <button class="view-btn">
-                  {{ view }}
-                  <!-- <span class="view-menu-btn">Menu</span> -->
-                  <el-dropdown trigger="click" class="view-menu-btn">
-                    <span class="el-dropdown-link">
-                      <i class="el-icon-more"></i>
-                    </span>
-                    <el-dropdown-menu slot="dropdown">
-                      <el-dropdown-item>Rename</el-dropdown-item>
-                      <el-dropdown-item>Duplicate</el-dropdown-item>
-                      <el-dropdown-item style="'background-color:red'"
-                        >Remove</el-dropdown-item
-                      >
-                    </el-dropdown-menu>
-                  </el-dropdown>
-                </button>
-              </div>
+              <!-- <button>Main Table</button> -->
+              <!-- <div v-for="(view, idx) in currBoard.views" :key="idx"> -->
+              <el-tabs v-model="activeTab">
+                <el-tab-pane label="Main Table" name="main"></el-tab-pane>
+                <el-tab-pane
+                  v-for="(view, idx) in currBoard.views"
+                  :key="idx"
+                  :label="view"
+                  :name="view"
+                >
+                  {{view}}
+                </el-tab-pane>
+              </el-tabs>
+              <!-- <button class="view-btn">
+                {{ view }}
+                <span class="view-menu-btn">Menu</span>
+                <el-dropdown trigger="click" class="view-menu-btn">
+                  <span class="el-dropdown-link">
+                    <i class="el-icon-more"></i>
+                  </span>
+                  <el-dropdown-menu slot="dropdown">
+                    <el-dropdown-item>Rename</el-dropdown-item>
+                    <el-dropdown-item>Duplicate</el-dropdown-item>
+                    <el-dropdown-item style="'background-color:red'"
+                      >Remove</el-dropdown-item
+                    >
+                  </el-dropdown-menu>
+                </el-dropdown>
+              </button> -->
+              <!-- </div> -->
             </div>
             <el-dropdown
               class="views-drop-down add-view-wrapper"
@@ -105,7 +116,7 @@
                   <font-awesome-icon class="header-icon" icon="plus" /> Add View
                 </button>
               </span>
-              <el-dropdown-menu slot="dropdown">
+              <el-dropdown-menu class="view-dropdown">
                 <el-dropdown-item @click="addView('Calander')"
                   >Calander</el-dropdown-item
                 >
@@ -175,6 +186,7 @@ export default {
       mainTable: true,
       addingView: false,
       isAddingMembers: false,
+      activeTab:'main'
     };
   },
   methods: {
@@ -236,7 +248,7 @@ export default {
           JSON.stringify(this.boardToEdit.groups[groupIdx])
         );
         const savedGroup = await this.saveGroup(groupToSave);
-        this.$store.dispatch( {type: 'sendActivity', txt: 'Added a task'})
+        this.$store.dispatch({ type: "sendActivity", txt: "Added a task" });
 
         // Add user msg
         return savedGroup;
@@ -287,8 +299,10 @@ export default {
       }
     },
     addView(command) {
+      console.log('command:', command)
       this.boardToEdit.views.push(command);
-      this.saveBoard(this.boardToEdit);
+      console.log(this.boardToEdit);
+      this.saveBoard();
     },
     handleEdit(item) {
       switch (item) {
@@ -380,8 +394,8 @@ export default {
       // });
     },
     addActivity(newActivity) {
-      console.log('newActivity in board:', newActivity)
-    }
+      console.log("newActivity in board:", newActivity);
+    },
   },
   mounted() {
     // if(this.board)this.printScr()
@@ -420,7 +434,7 @@ export default {
     socketService.setup();
     socketService.on("addActivity", this.addActivity);
     this.loadBoard();
-  },  
+  },
   destroyed() {
     socketService.off("addActivity", this.addMsg);
     socketService.terminate();

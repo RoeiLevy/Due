@@ -342,8 +342,6 @@ export default {
         });
         console.log("board in cmp", board);
         this.boardToEdit = JSON.parse(JSON.stringify(board));
-
-        socketService.emit("chat topic", this.boardToEdit._id);
       } catch (err) {
         console.log("err:", err);
       }
@@ -431,12 +429,14 @@ export default {
     },
   },
   created() {
-    socketService.setup();
-    socketService.on("addActivity", this.addActivity);
     this.loadBoard();
+    const boardId = this.$route.params.boardId;
+    // socketService.setup();
+    socketService.emit("chat topic", boardId);
+    socketService.on("add activity", this.addActivity);
   },
   destroyed() {
-    socketService.off("addActivity", this.addMsg);
+    socketService.off("add activity", this.addMsg);
     socketService.terminate();
   },
   components: {

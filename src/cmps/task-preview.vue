@@ -51,17 +51,21 @@
         v-if="isSelectingStatus"
       ></status-picker>
     </div>
-    <div class="date-container">
+    <!-- <div class="date-container"> -->
       <!-- <input type="date" name="due-date" id="due-date" v-model="dueDate" /> -->
       <!-- <el-date-picker v-model="dueDate" type="datetime" default-time="12:00:00"> -->
       <!-- </el-date-picker> -->
  <div class="date-container">
-    <el-date-picker
+    <!-- <el-date-picker
       v-model="dueDate"
       type="datetime"
-      placeholder="Select date and time">
-    </el-date-picker>
-  </div>
+      placeholder="Due">
+    </el-date-picker> -->
+  <VueDatePicker v-model="dueDate" clearable :placeholder="pickDate"
+ />
+
+
+  <!-- </div> -->
     </div>
     <div class="task-color-box-end"></div>
   </div>
@@ -76,7 +80,7 @@ export default {
   props: ["task", "groupColor", "groupId"],
   data() {
     return {
-      dueDate: "",
+      dueDate: null,
       isSelectingStatus: false,
       editMode: false,
       taskToEdit: null,
@@ -87,6 +91,12 @@ export default {
   },
   methods: {
     addTaskMembers() {},
+    // changeDate(){
+    //   this.taskToEdit.dueDate = this.dueDate;
+    //   console.log('this.taskToEdit.dueDate',this.taskToEdit.dueDate)
+    //   this. updateTask();
+    //   this.dueDate = null;
+    // },
     handleEdit() {
       this.editMode = true;
       setTimeout(() => {
@@ -114,6 +124,8 @@ export default {
     updateTask() {
       this.editMode = false;
       this.$emit("updateTask", this.taskToEdit);
+            // this.dueDate = null;
+
     },
     removeTask() {
       this.$emit("removeTask", this.task.id);
@@ -126,7 +138,10 @@ export default {
     boardId() {
       return this.$store.getters.currBoardId;
     },
-  },
+    pickDate(){
+      return (this.taskToEdit.dueDate)? this.taskToEdit.dueDate : 'Choose Date'
+    }
+      },
   created() {
     this.taskToEdit = JSON.parse(JSON.stringify(this.task));
   },
@@ -134,9 +149,15 @@ export default {
     task: function (newVal, oldVal) {
       this.taskToEdit = JSON.parse(JSON.stringify(newVal));
     },
+    dueDate: function () {
+            this.taskToEdit.dueDate = this.dueDate;
+      console.log('taskToEdit.dueDate',this.taskToEdit.dueDate)
+      this.updateTask();
+    },
   },
   components: {
     statusPicker,
+
   },
 };
 </script>

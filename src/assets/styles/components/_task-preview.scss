@@ -125,7 +125,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 140px;
+        width: 150px;
     }
     .remove-btn-wrapper {
         left: -50px;
@@ -246,4 +246,17 @@
 
 .sortable-chosen.remove-btn {
     transform: none !important;
+}
+
+.sortable-chosen .tag-group {
+    transform: translateY(174px) rotate(-0.7deg) translateX(1.7px) !important;
+}
+
+.vd-picker-header {
+    background-color: #353535 !important;
+    border-color: #363636 !important;
+}
+
+#due-on {
+    font-size: 12px !important;
 }

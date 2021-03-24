@@ -111,7 +111,7 @@ export default {
   },
   methods: {
     showBoard(boardId) {
-      this.$router.push(`/board/${boardId}`);
+      this.$router.push(`/board/${boardId}/maintable`);
     },
     async addNewBoard() {
       try {

@@ -13,7 +13,7 @@
       >
         <transition-group type="transition"> -->
           <group
-            v-for="group in boardToEdit.groups"
+            v-for="group in board.groups"
             :key="group.id"
             :group="group"
             @removeTask="removeTask"
@@ -37,7 +37,6 @@ export default {
   props: ["board"],
   data() {
     return {
-      boardToEdit: { ...this.board },
     };
   },
   methods: {

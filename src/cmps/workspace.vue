@@ -53,7 +53,7 @@ export default {
         if (newBoardId === currBoardId) return;
       }
 
-      this.$router.push(`/board/${newBoardId}`);
+      this.$router.push(`/board/${newBoardId}/maintable`);
     },
     async addNewBoard() {
       try {

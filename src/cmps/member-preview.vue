@@ -1,5 +1,5 @@
 <template>
-  <div @click.stop="toggleMember" class="add-member-preview">
+  <div @click="toggleMember" class="add-member-preview">
     <div class="member-view">
       <avatar :size="40" :username="member.fullname"></avatar>
       <h3>{{ member.fullname }}</h3>
@@ -42,5 +42,10 @@ export default {
   components: {
     Avatar,
   },
+  watch: {
+    taskMembers: function (newVal, oldVal) {
+      // console.log('new task members', newVal);
+    },
+  }
 };
 </script>

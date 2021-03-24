@@ -68,7 +68,7 @@
 
           <nav class="flex header-view-bar">
             <ul class="view-nav">
-              <router-link class="view" :to="`/board/${boardToEdit._id}`">
+              <router-link class="view" :to="`/board/${boardToEdit._id}/maintable`">
                 Main Table
               </router-link>
               <router-link

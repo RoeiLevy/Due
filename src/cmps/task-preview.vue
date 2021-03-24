@@ -58,10 +58,10 @@
       <h3
         class="task-status"
         @click="toggleAddingStatus"
-        v-if="task.status"
-        :style="{ 'background-color': task.status.color }"
+        v-if="taskToEdit.status"
+        :style="{ 'background-color': taskToEdit.status.color }"
       >
-        {{ task.status.title }}
+        {{ taskToEdit.status.title }}
       </h3>
       <h3
         class="status-h3"
@@ -147,8 +147,10 @@ export default {
       );
     },
     setStatus(status) {
+      console.log('status:', status)
+      console.log('task',this.taskToEdit);
       this.isSelectingStatus = false;
-      this.taskToEdit.status = status;
+      this.taskToEdit.status = {...status};
       this.$emit("updateTask", this.taskToEdit);
       this.$store.commit("toggleCloseScreen");
     },

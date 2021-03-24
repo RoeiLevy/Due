@@ -24,48 +24,50 @@ const routes = [{
         component: boardList
     },
 
-    {
-        path: '/board/:boardId',
-        name: 'board',
-        component: board,
-        children: [{
-                path: 'maintable',
-                name: 'Main Table',
-                component: mainTable,
-                children: [{
+{
+    path: '/board/:boardId',
+    name: 'board',
+    component: board,
+    children: [
+        {
+            path: 'maintable',
+            name: 'Main Table',
+            component: mainTable,
+            children: [
+                {
                     path: ':groupId/task/:taskId',
                     name: 'task details',
                     component: taskDetails,
-                }],
-            },
-
-            {
-                path: 'chart',
-                name: 'Chart',
-                component: chart,
-            },
-            {
-                path: 'calendar',
-                name: 'Calendar',
-                component: calendar,
-            },
-        ]
-    },
-    {
-        path: '/login',
-        name: 'login',
-        component: login
-    },
-    {
-        path: '/signup',
-        name: 'signup',
-        component: signup
-    },
-    {
-        path: '/user/:userId',
-        name: 'user profile',
-        component: userProfile
-    },
+                }
+            ]
+        },
+        {
+            path: 'chart',
+            name: 'Chart',
+            component: chart,
+        },
+        {
+            path: 'calendar',
+            name: 'Calendar',
+            component: calendar,
+        },
+    ]
+},
+{
+    path: '/login',
+    name: 'login',
+    component: login
+},
+{
+    path: '/signup',
+    name: 'signup',
+    component: signup
+},
+{
+    path: '/user/:userId',
+    name: 'user profile',
+    component: userProfile
+},
 ]
 
 const router = new VueRouter({

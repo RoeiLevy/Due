@@ -147,8 +147,6 @@ export default {
       );
     },
     setStatus(status) {
-      console.log('status:', status)
-      console.log('task',this.taskToEdit);
       this.isSelectingStatus = false;
       this.taskToEdit.status = {...status};
       this.$emit("updateTask", this.taskToEdit);
@@ -192,7 +190,6 @@ export default {
       this.updateTask();
     },
     isCloseScreen(newValue) {
-      // console.log(`close screen is now opened: ${newValue}`);
       if (!newValue) {
         this.isAddingMember = false;
         this.isSelectingStatus = false;

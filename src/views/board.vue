@@ -281,6 +281,8 @@ export default {
         const taskIdx = this.boardToEdit.groups[groupIdx].tasks.findIndex(
           (t) => t.id === task.id
         );
+
+
         this.boardToEdit.groups[groupIdx].tasks.splice(taskIdx, 1, task);
         await this.$store.dispatch({
           type: "saveBoard",

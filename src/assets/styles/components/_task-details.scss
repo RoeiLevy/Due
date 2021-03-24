@@ -1,5 +1,6 @@
 .el-drawer__open .el-drawer.rtl {
     width: 50% !important;
+    outline: none !important;
 }
 
 .el-drawer__header > :first-child {
@@ -206,3 +207,5 @@
         }
     }
 }
+
+

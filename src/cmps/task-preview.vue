@@ -121,7 +121,6 @@ export default {
     toggleAddingMember() {
       this.isAddingMember = !this.isAddingMember;
       this.$store.commit("toggleCloseScreen");
-      console.log(this.isAddingMember);
     },
     toggleAddingStatus() {
       this.isSelectingStatus = !this.isSelectingStatus;

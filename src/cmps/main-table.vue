@@ -7,33 +7,39 @@
     </div>
     <div class="groups-list">
       <!-- <draggable
-              v-model="boardToEdit.groups"
-              @change="saveBoard(boardToEdit)"
-              v-bind="dragOptions"
-            >
-              <transition-group type="transition"> -->
-      <group
-        v-for="group in board.groups"
-        :key="group.id"
-        :group="group"
-        @removeTask="removeTask"
-        @updateTask="updateTask"
-        @saveGroup="saveGroup"
-        @addTask="addTask"
-        @removeGroup="removeGroup"
-        @addStatus="addStatus"
-        @deleteStatus="deleteStatus"
-      />
-      <!-- </transition-group>
-            </draggable> -->
+        v-model="boardToEdit.groups"
+        @change="saveBoard"
+        v-bind="dragOptions"
+      >
+        <transition-group type="transition"> -->
+          <group
+            v-for="group in boardToEdit.groups"
+            :key="group.id"
+            :group="group"
+            @removeTask="removeTask"
+            @updateTask="updateTask"
+            @saveGroup="saveGroup"
+            @addTask="addTask"
+            @removeGroup="removeGroup"
+            @addStatus="addStatus"
+            @deleteStatus="deleteStatus"
+          />
+        <!-- </transition-group>
+      </draggable> -->
     </div>
   </div>
 </template>
 
 <script>
+import draggable from "vuedraggable";
 import group from "./group";
 export default {
   props: ["board"],
+  data() {
+    return {
+      boardToEdit: { ...this.board },
+    };
+  },
   methods: {
     addTask(newTask, groupId) {
       this.$emit("addTask", newTask, groupId);
@@ -59,9 +65,23 @@ export default {
     addNewGroup() {
       this.$emit("addNewGroup");
     },
+    saveBoard() {
+      this.$emit("saveBoard", this.boardToEdit);
+    },
+  },
+  computed:{
+    dragOptions() {
+      return {
+        animation: 200,
+        group: "description",
+        disabled: false,
+        ghostClass: "ghost",
+      };
+    }
   },
   components: {
     group,
+    draggable
   },
 };
 </script>

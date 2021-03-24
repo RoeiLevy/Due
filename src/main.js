@@ -11,6 +11,7 @@ import VueDatePicker from '@mathieustan/vue-datepicker';
 import '@mathieustan/vue-datepicker/dist/vue-datepicker.min.css';
 import 'element-ui/lib/theme-chalk/index.css';
 
+
 locale.use('EN')
 Vue.use(ElementUI, { locale });
 Vue.use(VModal)

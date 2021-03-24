@@ -24,17 +24,49 @@ export default {
     },
   },
   mounted() {
-    console.log('hi');
-      this.renderChart({
-        labels: this.board.statuses.map((s) => s.title),
-        datasets: [
+    console.log('hi2');
+    // const type = this.Bar;
+    const data = {
+      labels: this.board.statuses.map((s) => s.title),
+      datasets: [
+        {
+          label: "Count",
+          backgroundColor: this.board.statuses.map((s) => s.color),
+          data: this.getData(),
+          barThickness: 100,
+        },
+      ],
+    };
+    const options = {
+      tooltips:{
+        titleFontSize:30,
+        bodyFontSize:25,
+      },
+      scales: {
+        xAxes: [
           {
-            label: "Status Column",
-            backgroundColor: this.board.statuses.map((s) => s.color),
-            data: this.getData(),
+            ticks: {
+              fontSize: 25,
+            },
           },
         ],
-      });
+        yAxes: [
+          {
+
+            ticks: {
+              stepSize:1,
+              beginAtZero:true,
+              fontSize: 25,
+            },
+          },
+        ],
+      },
+    };
+    this.renderChart(data, options);
   },
+  created(){
+        console.log('hi');
+
+  }
 };
 </script>

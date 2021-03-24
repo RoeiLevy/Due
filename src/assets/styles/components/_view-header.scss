@@ -1,7 +1,7 @@
 .header-view-bar {
     margin-left: 20px;
     border-bottom: 2px solid #e6e9ef;
-    > * {
+    >* {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -12,8 +12,6 @@
         cursor: pointer;
     }
     .new-group-wrapper {
-        // position: fixed;
-        padding: 7px 20px 7px 0px;
         button.el-button.new-group-btn.el-button--primary {
             background-color: #409eff;
             border-color: #409eff;
@@ -23,9 +21,9 @@
     .add-view-wrapper {
         border-bottom: 2px inset transparent;
     }
-    .main-table-wrapper.active {
-        // box-shadow: 2px -22px 0px -20px #0085ff inset;
-    }
+    // .main-table-wrapper.active {
+    //     // box-shadow: 2px -22px 0px -20px #0085ff inset;
+    // }
     .add-view-wrapper.active {
         box-shadow: 2px -22px 0px -20px #0085ff inset;
     }
@@ -44,10 +42,14 @@
         border-radius: 4px;
     }
     .add-view-wrapper button:hover {
-        background-color: #e6e9ef;
+        // background-color: #e6e9ef;
         cursor: pointer;
-        border-radius: 4px;
+        // border-radius: 4px;
     }
+}
+
+.new-group-wrapper {
+    padding: 10px 0;
 }
 
 .top-header {
@@ -61,7 +63,7 @@
 
 .board-actions {
     display: flex;
-    > * {
+    >* {
         border: none;
         outline: none;
         background-color: transparent;
@@ -79,7 +81,7 @@
     .plus {
         font-size: 16px;
     }
-    > *:hover {
+    >*:hover {
         background-color: #e6e9ef;
         cursor: pointer;
     }

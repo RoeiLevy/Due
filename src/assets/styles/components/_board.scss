@@ -45,11 +45,11 @@
             list-style: none;
             margin: 0;
             padding: 0;
-            > * {
+            >* {
                 padding: 10px;
                 cursor: pointer;
-                transition: all 0.2s;
-                border-radius: 5px;
+                transition: all 0.1s;
+                // border-radius: 5px;
                 display: flex;
                 align-items: center;
                 svg {
@@ -61,19 +61,22 @@
                     padding: 0;
                 }
             }
-            > *:hover {
-                // opacity: 0.7;
-                background-color: lightgray;
-            }
-            > *:hover .view-menu-icon {
+            // >*:hover {
+            //     // opacity: 0.7;
+            //     background-color: lightgray;
+            // }
+            >*:hover .view-menu-icon {
                 display: flex;
             }
-            .active {
-                border-bottom: 3px solid #0085ff;
-            }
+            // .active {
+            //     border-bottom: 3px solid #0085ff;
+            // }
             .view-menu-icon {
                 display: none;
             }
+        }
+        .header-view-bar.add-view-wrapper.add-view-btn button:hover {
+            background-color: transparent !important;
         }
         .main-table-wrapper {
             width: 100%;
@@ -89,7 +92,6 @@
                     width: 100%;
                 }
                 .add-view-wrapper {
-                    height: fit-content;
                     position: absolute;
                     top: -53px;
                     // top: 120px;
@@ -97,51 +99,72 @@
             }
         }
         .view {
-            color: gray;
+            // border-bottom: 3px solid transparent;
             text-decoration: none;
+            height: 100%;
+            padding: 0;
+            margin-inline-end: 10px;
+            color: #333333 !important;
+            transition: 0.1s ease;
             .view-dropdown-container {
                 position: relative;
                 .view-dropdown {
                     display: none;
                     position: absolute;
                     list-style: none;
-                    // background-color: white;
+                    background-color: white;
                     width: 220px;
                     padding: 8px;
-                    box-shadow: 0 4px 17px 6px rgb(0, 0, 0 / 10%);
-                    border-radius: 8px;
+                    box-shadow: 0 0 6px #33333313;
+                    // border-radius: 8px;
                     transition: all .3s;
                     z-index: 1;
-                    >*{
-                        padding: 5px;
-                        color: gray;
-                        border-radius: 5px;
+                    >* {
+                        padding: 2.5px 5px;
+                        // border-bottom: 1px lightgray solid;
+                        // color: gray;
+                        // border-radius: 5px;
                     }
-                    >*:hover{
-                        background-color: lightgray;
+                    >*:hover {
+                        background-color: rgba(211, 211, 211, 0.219);
                     }
                 }
             }
-            :hover .view-dropdown {
+             :hover .view-dropdown {
                 display: block;
             }
             .view-btn {
                 .view-menu-btn {
                     display: none;
-                    border-radius: 10px;
+                    background-color: none !important;
                 }
             }
             .view-btn:hover .view-menu-btn {
-                display: inline;
+                display: flex;
+                border-radius: 10px;
+                padding: 0 5px !important;
+                align-items: center;
+                justify-content: center;
+                background-color: none !important;
             }
         }
-        .view:hover{
-            border-bottom: 3px solid rgb(0, 153, 255);
-        }
-        .view:focus{
-            border-bottom: 3px solid rgb(0, 153, 255);
-            color: rgb(0, 153, 255);
-        }
+        // .view:hover {
+        //     border-bottom: 3px solid rgb(0, 153, 255);
+        // }
+        // .view:focus {
+        //     border-bottom: 3px solid rgb(0, 153, 255);
+        //     color: rgb(0, 153, 255);
+        // }
+    }
+    .views-drop-down.add-view-wrapper.el-dropdown {
+        padding: 0;
+        height: 100%;
+        margin: 0;
+    }
+    .view:active,
+    .views-drop-down.add-view-wrapper.el-dropdown:active,
+    .router-link-exact-active {
+        border-bottom: 3px solid rgb(0, 153, 255);
     }
     canvas#bar-chart {
         height: 510px !important;

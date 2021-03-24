@@ -74,10 +74,10 @@
                   @command="addView"
                 >
                   <!-- <span class="views-el-dropdown-link add-view-wrapper"> -->
-                    <button>
-                      <font-awesome-icon class="header-icon" icon="plus" /> Add
-                      View
-                    </button>
+                  <button>
+                    <font-awesome-icon class="header-icon" icon="plus" /> Add
+                    View
+                  </button>
                   <!-- </span> -->
                   <el-dropdown-menu class="view-dropdown">
                     <el-dropdown-item command="Calander"
@@ -425,13 +425,14 @@ export default {
     },
   },
   watch: {
-    $route(to,from){
-          const boardId = this.$route.params.boardId;
-          console.log('board ID:', boardId);
-    this.loadBoard();
-
-    }
-
+    $route(to, from) {
+      if (to === from) return;
+      else {
+        const boardId = this.$route.params.boardId;
+        console.log("board ID:", boardId);
+        this.loadBoard();
+      }
+    },
   },
   created() {
     this.loadBoard();

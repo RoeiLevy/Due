@@ -2,10 +2,13 @@
   <div class="social-modal">
     <el-tabs v-model="activeTab">
       <el-tab-pane label="Members" name="member" class="members">
-        <span>Board Members</span>
-        <div class="member" v-for="member in members" :key="member.id">
-          <avatar :size="30" :src="member.imgUrl"></avatar>
-          {{ member.fullname }}
+        <h2 v-if="!members.length">No Members</h2>
+        <div v-if="members" class="members-list">
+          <h2>Board Members</h2>
+          <div class="member" v-for="member in members" :key="member._id">
+            <avatar :size="30" :src="member.imgUrl"></avatar>
+            {{ member.fullname }}
+          </div>
         </div>
       </el-tab-pane>
       <el-tab-pane label="Invite" name="invite">
@@ -35,7 +38,7 @@ export default {
     },
   },
   components: {
-    Avatar
-  }
+    Avatar,
+  },
 };
 </script>

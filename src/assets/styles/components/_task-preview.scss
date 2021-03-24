@@ -79,7 +79,7 @@
         justify-content: center;
         width: 140px;
         position: relative;
-        svg {
+        .add-btn {
             position: absolute;
             left: 20px;
         }
@@ -177,7 +177,7 @@
     color: #333333;
 }
 
-.task-wrapper:hover *:not(input, .task-add-member-modal, .task-add-member-modal h3, .task-members-list, .remove-btn-wrapper *, .status-container *, .tag-group, .tag-group *) {
+.task-wrapper:hover *:not(.member-avatar, .member-avatar *  , .task-add-member-modal,  .task-add-member-modal *, .task-add-member-modal h3, .task-members-list, .remove-btn-wrapper *, .status-container *, .tag-group, .tag-group *) {
     color: #aaaaaa;
     background-color: #f3f3f3ef;
     cursor: pointer;
@@ -187,9 +187,10 @@
 }
 
 .task-wrapper:focus,
-.task-wrapper:active *:not(.status-container *, .tag-group, .tag-group *) {
+.task-wrapper:active *:not(.status-container *, .tag-group, .tag-group *, .member-avatar, .member-avatar *  , .task-add-member-modal,  .task-add-member-modal *.member-avatar, .member-avatar *  , .task-add-member-modal,  .task-add-member-modal *) {
     background-color: #e5f4ff;
 }
+
 
 .task-title:active,
 .task-title-input:active {
@@ -262,5 +263,17 @@ body .vd-picker__input input {
     font-size: 12px !important;
 }
 
-#due-on {
+.close-screen {
+    background-color: #363636;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    opacity: 0.2;
+    z-index: 70;
+}
+
+.close-screen:hover {
+    cursor: pointer;
 }

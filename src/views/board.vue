@@ -2,6 +2,11 @@
   <div class="board-surface">
     <app-header />
     <div v-if="boardToEdit" class="flex board" ref="screen">
+      <div
+        @click="toggleCloseScreen"
+        v-if="isCloseScreen"
+        class="close-screen"
+      ></div>
       <workspace />
       <social-modal
         v-if="isAddingMembers"
@@ -48,9 +53,9 @@
             <!-- //////////////////////////////////// -->
 
             <div class="board-actions">
-              <button @click="isAddingMembers = !isAddingMembers">
-                <font-awesome-icon class="header-icon" icon="user-friends" />
-                Members/
+              <button @click="toggleAddingMembers">
+                <!-- <font-awesome-icon class="header-icon" icon="user-friends" />
+                Members/ -->
                 <font-awesome-icon class="header-icon plus" icon="user-plus" />
                 Invite
               </button>
@@ -176,6 +181,13 @@ export default {
     };
   },
   methods: {
+    toggleAddingMembers() {
+      this.isAddingMembers = !this.isAddingMembers;
+      this.toggleCloseScreen();
+    },
+    toggleCloseScreen() {
+      this.$store.commit("toggleCloseScreen");
+    },
     async addStatus(status) {
       try {
         this.boardToEdit.statuses.push(status);
@@ -209,7 +221,7 @@ export default {
 
         await this.$store.dispatch({
           type: "saveBoard",
-          boardToSave: this.boardToEdit,
+          boardToSave: this.boardToEdit, // add activity to send
         });
         this.$store.dispatch({ type: "sendActivity", txt: "Removed a group" });
         // Add user msg
@@ -426,6 +438,9 @@ export default {
     },
   },
   computed: {
+    isCloseScreen() {
+      return this.$store.getters.isCloseScreen;
+    },
     boardDescription() {
       if (!this.boardToEdit.description) return "Add a description";
       else return this.boardToEdit.description;
@@ -459,6 +474,12 @@ export default {
       const boardId = this.$route.params.boardId;
       console.log("board ID:", boardId);
       this.loadBoard();
+    },
+    isCloseScreen(newValue) {
+      // console.log(`close screen is now opened: ${newValue}`);
+      if (!newValue) {
+        this.isAddingMembers = false;
+      }
     },
   },
   created() {

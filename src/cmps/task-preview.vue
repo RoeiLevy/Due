@@ -17,7 +17,7 @@
         {{ taskToEdit.title }}
       </label>
       <el-badge
-      v-if="task.comments"
+        v-if="task.comments"
         :hidden="isTaskComments"
         :value="task.comments.length"
         class="comment-badage"
@@ -30,14 +30,18 @@
         />
       </el-badge>
     </div>
-    <div class="task-members-container" @click="addTaskMembers">
+    <div class="task-members-container">
       <font-awesome-icon
         @click="toggleAddingMember"
         class="add-btn"
         icon="plus"
       >
       </font-awesome-icon>
-      <task-add-member @addMember="addMember" v-if="isAddingMember"></task-add-member>
+      <task-add-member
+        :taskMembers="task.members"
+        @toggleMember="toggleMember"
+        v-if="isAddingMember"
+      ></task-add-member>
       <div v-if="task.members" class="avatar-container">
         <avatar
           class="member-avatar"
@@ -53,7 +57,7 @@
     <div class="status-container">
       <h3
         class="task-status"
-        @click="isSelectingStatus = !isSelectingStatus"
+        @click="toggleAddingStatus"
         v-if="task.status"
         :style="{ 'background-color': task.status.color }"
       >
@@ -101,17 +105,28 @@ export default {
     };
   },
   methods: {
-    addMember(member) {
-      if (!this.taskToEdit.members) this.taskToEdit.members = []
-      if (this.taskToEdit.members.some(m => m._id === member._id)) return 
-      this.taskToEdit.members.unshift(member)
-      this.updateTask()
+    toggleMember(member) {
+      if (!this.taskToEdit.members) this.taskToEdit.members = [];
+      if (this.taskToEdit.members.some((m) => m._id === member._id)) {
+        const memberIdx = this.taskToEdit.members.findIndex(
+          (m) => m._id === member._id
+        );
+        this.taskToEdit.members.splice(memberIdx, 1);
+      } else {
+        this.taskToEdit.members.unshift(member);
+      }
+      console.log("task members", this.taskToEdit.members);
+      this.updateTask();
     },
     toggleAddingMember() {
       this.isAddingMember = !this.isAddingMember;
+      this.$store.commit("toggleCloseScreen");
       console.log(this.isAddingMember);
     },
-    addTaskMembers() {},
+    toggleAddingStatus() {
+      this.isSelectingStatus = !this.isSelectingStatus;
+      this.$store.commit("toggleCloseScreen");
+    },
     handleEdit() {
       this.editMode = true;
       setTimeout(() => {
@@ -135,6 +150,7 @@ export default {
       this.isSelectingStatus = false;
       this.taskToEdit.status = status;
       this.$emit("updateTask", this.taskToEdit);
+      this.$store.commit("toggleCloseScreen");
     },
     updateTask() {
       this.editMode = false;
@@ -146,6 +162,9 @@ export default {
     },
   },
   computed: {
+    isCloseScreen() {
+      return this.$store.getters.isCloseScreen;
+    },
     isTaskComments() {
       return this.task.comments.length ? false : true;
     },
@@ -170,11 +189,18 @@ export default {
       this.taskToEdit.dueDate = this.dueDate;
       this.updateTask();
     },
+    isCloseScreen(newValue) {
+      // console.log(`close screen is now opened: ${newValue}`);
+      if (!newValue) {
+        this.isAddingMember = false;
+        this.isSelectingStatus = false;
+      }
+    },
   },
   components: {
     statusPicker,
     taskAddMember,
-    Avatar
+    Avatar,
   },
 };
 </script>

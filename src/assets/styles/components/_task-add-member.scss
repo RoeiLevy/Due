@@ -6,13 +6,15 @@
     border-radius: 3px;
     padding: 15px;
     box-shadow: 0 0 5px #0000000f;
-    z-index: 80 !important;
     width: 266px;
     height: 315px;
     text-align: center;
     display: flex;
     flex-direction: column;
+    z-index: 100;
 }
+
+
 
 .task-members-list {
     display: flex;
@@ -21,15 +23,42 @@
     overflow-x: hidden;
     flex-direction: column;
     width: 100%;
+    padding-inline-end: 10px;
+
+    .add-member-preview:not(:first-child) {
+        border-top: 1px solid $application-border-color;
+    }
 }
 
+
 .add-member-preview {
+    position: relative;
     padding: 10px;
     display: flex;
     width: 100%;
-    .vue-avatar--wrapper {
-        margin-inline-end: 10px;
+    align-items: center;
+    justify-content: space-between;
+
+    .member-view {
+        display: flex;
+        .vue-avatar--wrapper {
+            margin-inline-end: 10px;
+        }
     }
+
+    .check-wrapper {
+        .header-icon {
+            font-size: 20px;
+            color: rgb(177, 177, 177);
+            align-self: flex-end;
+            position: sticky;
+            justify-self: flex-end;
+        }
+    }
+}
+
+.add-member-preview:hover {
+    background-color: $application-border-color;
 }
 
 .task-wrapper:hover.task-add-member-modal {

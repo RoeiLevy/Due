@@ -14,7 +14,7 @@
           <span slot="title">{{ boardTitle() }}</span>
         </el-menu-item>
 
-        <ul class="workspace-board-list" v-if="!isCollapse">
+        <ul class="workspace-board-list" v-show="!isCollapse">
           <li 
           class="board-li-workspace"
             v-for="board in boards"
@@ -47,8 +47,13 @@ export default {
     boardTitle() {
       return this.isCollapse ? "Board List" : "Close Board List";
     },
-    showBoard(boardId) {
-      this.$router.push(`/board/${boardId}`);
+    showBoard(newBoardId) {
+      const currBoardId = this.$route.params.boardId;
+      if (currBoardId){
+        if (newBoardId === currBoardId) return;
+      }
+
+      this.$router.push(`/board/${newBoardId}`);
     },
     async addNewBoard() {
       try {

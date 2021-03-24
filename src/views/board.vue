@@ -73,12 +73,12 @@
                   trigger="click"
                   @command="addView"
                 >
-                  <span class="views-el-dropdown-link add-view-wrapper">
+                  <!-- <span class="views-el-dropdown-link add-view-wrapper"> -->
                     <button>
                       <font-awesome-icon class="header-icon" icon="plus" /> Add
                       View
                     </button>
-                  </span>
+                  <!-- </span> -->
                   <el-dropdown-menu class="view-dropdown">
                     <el-dropdown-item command="Calander"
                       >Calander</el-dropdown-item
@@ -423,6 +423,15 @@ export default {
         ghostClass: "ghost",
       };
     },
+  },
+  watch: {
+    $route(to,from){
+          const boardId = this.$route.params.boardId;
+          console.log('board ID:', boardId);
+    this.loadBoard();
+
+    }
+
   },
   created() {
     this.loadBoard();

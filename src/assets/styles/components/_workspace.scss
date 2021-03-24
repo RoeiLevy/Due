@@ -28,7 +28,7 @@
 }
 
 .el-menu-vertical-demo:not(.el-menu--collapse) {
-    padding: 20px;
+    padding: 15px;
     width: fit-content;
 }
 
@@ -37,4 +37,19 @@
     display: flex;
     position: static;
     left: 65px;
+}
+
+.workspace-board-list {
+    list-style: none;
+    padding: 0;
+}
+
+.board-li-workspace {
+    border-bottom: 1px solid rgba(165, 165, 165, 0.459);
+    cursor: pointer;
+    padding-top: 7px;
+}
+
+.board-li-workspace:hover {
+    background-color: rgba(209, 209, 209, 0.199);
 }

@@ -201,7 +201,7 @@ export default {
 
         await this.$store.dispatch({
           type: "saveBoard",
-          boardToSave: this.boardToEdit,
+          boardToSave: this.boardToEdit, // add activity to send 
         });
         this.$store.dispatch({ type: "sendActivity", txt: "Removed a group" });
         // Add user msg

@@ -2,7 +2,7 @@
   <div class="task-add-member-modal">
     <h3>People</h3>
     <div v-if="members" class="task-members-list">
-      <member-preview @addMember="addMember" v-for="member in members" :member="member" :key="member._id" />
+      <member-preview :taskMembers="taskMembers" @toggleMember="toggleMember" v-for="member in members" :member="member" :key="member._id" />
     </div>
   </div>
 </template>
@@ -12,6 +12,7 @@ import { utilService } from "../services/util.service";
 import MemberPreview from "./member-preview.vue";
 
 export default {
+  props: ['taskMembers'],
   data() {
     return {
       newStatus: {
@@ -37,8 +38,8 @@ export default {
         title: "",
       };
     },
-    addMember(member) {
-      this.$emit('addMember', member)
+    toggleMember(member) {
+      this.$emit('toggleMember', member)
     }
   },
   computed: {

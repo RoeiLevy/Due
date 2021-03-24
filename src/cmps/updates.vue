@@ -32,6 +32,7 @@ export default {
     addComment(content) {
       this.newComment.createdAt = Date.now();
       this.newComment.txt = content;
+      this.newComment.byMember = this.$store.getters.loggedInUser
       const commentToAdd = JSON.parse(JSON.stringify(this.newComment));
       this.$emit("addComment", commentToAdd);
       this.setEmptyComment();
@@ -40,10 +41,7 @@ export default {
       this.newComment = {
         txt: "",
         createdAt: null,
-        byMember: {
-          fullname: "",
-          imgUrl: "",
-        },
+        byMember: null
       };
     },
   },

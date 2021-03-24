@@ -76,10 +76,7 @@
               </router-link>
               <router-link
                 class="view"
-<<<<<<< HEAD
-=======
                 style="text-transform: capitalize"
->>>>>>> 5d00a1d2420171a8c674ad7452cdda62e43be0bc
                 v-for="(view, idx) in boardToEdit.views"
                 :key="idx"
                 :to="`/board/${boardToEdit._id}/${view}`"

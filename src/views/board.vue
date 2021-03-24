@@ -123,6 +123,7 @@
           </nav>
           <router-view
             :board="boardToEdit"
+            @saveBoard="saveBoard"
             @addNewGroup="addNewGroup"
             @removeTask="removeTask"
             @updateTask="updateTask"
@@ -371,7 +372,9 @@ export default {
         console.log("err:", err);
       }
     },
-    async saveBoard() {
+    async saveBoard(board) {
+      console.log('board:', board)
+      if(board)this.boardToEdit={...board}
       try {
         this.titleEditMode = false;
         this.descEditMode = false;
@@ -459,14 +462,6 @@ export default {
     },
     tableActive() {
       return { active: this.mainTable };
-    },
-    dragOptions() {
-      return {
-        animation: 200,
-        group: "description",
-        disabled: false,
-        ghostClass: "ghost",
-      };
     },
   },
   watch: {

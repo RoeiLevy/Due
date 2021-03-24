@@ -58,7 +58,7 @@
       <el-carousel
         v-else
         class="carousel"
-        :interval="40000"
+        :interval="4000"
         type="card"
         height="300px"
       >

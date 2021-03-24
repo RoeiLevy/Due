@@ -68,11 +68,15 @@
 
           <nav class="flex header-view-bar">
             <ul class="view-nav">
-              <router-link class="view" :to="`/board/${boardToEdit._id}/maintable`">
+              <router-link
+                class="view"
+                :to="`/board/${boardToEdit._id}/maintable`"
+              >
                 Main Table
               </router-link>
               <router-link
-              class="view"
+                class="view"
+                style="text-transform: capitalize"
                 v-for="(view, idx) in boardToEdit.views"
                 :key="idx"
                 :to="`/board/${boardToEdit._id}/${view}`"
@@ -81,22 +85,16 @@
                 :class="{ active: isViewActive }" -->
                 {{ view }}
                 <div class="view-dropdown-container">
-                    <button class="view-menu-btn">
-                      <font-awesome-icon
-                        class="view-menu-icon"
-                        icon="ellipsis-h"
-                      />
-                    </button>
+                  <button class="view-menu-btn">
+                    <font-awesome-icon
+                      class="view-menu-icon"
+                      icon="ellipsis-h"
+                    />
+                  </button>
                   <ul class="view-dropdown">
-                    <li @click="renameView(view)"
-                      >Rename</li
-                    >
-                    <li @click="KanbanView(view)"
-                      >Duplicate</li
-                    >
-                    <li @click="removeView(view)"
-                      >Remove</li
-                    >
+                    <li @click="renameView(view)">Rename</li>
+                    <li @click="KanbanView(view)">Duplicate</li>
+                    <li @click="removeView(view)">Remove</li>
                   </ul>
                 </div>
               </router-link>
@@ -106,7 +104,7 @@
                 @command="addView"
               >
                 <span class="views-el-dropdown-link add-view-wrapper">
-                  <button>
+                  <button class="add-view-btn">
                     <font-awesome-icon class="header-icon" icon="plus" /> Add
                     View
                   </button>
@@ -281,7 +279,6 @@ export default {
         const taskIdx = this.boardToEdit.groups[groupIdx].tasks.findIndex(
           (t) => t.id === task.id
         );
-
 
         this.boardToEdit.groups[groupIdx].tasks.splice(taskIdx, 1, task);
         await this.$store.dispatch({

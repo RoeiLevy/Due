@@ -1,5 +1,5 @@
 <template>
-  <div @click="toggleMember" class="add-member-preview">
+  <div class="add-member-preview">
     <div class="member-view">
       <avatar :size="40" :username="member.fullname"></avatar>
       <h3>{{ member.fullname }}</h3>
@@ -12,7 +12,7 @@
         icon="circle"
       />
       <font-awesome-icon
-        v-if="isMemberChosen"
+        v-else
         class="header-icon"
         icon="check-circle"
       />
@@ -35,6 +35,7 @@ export default {
   },
   computed: {
     isMemberChosen() {
+      if (!this.taskMembers) return
       return this.taskMembers.some((m) => m._id === this.member._id);
     },
   },

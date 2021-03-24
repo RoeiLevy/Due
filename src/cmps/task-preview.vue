@@ -17,7 +17,7 @@
         {{ taskToEdit.title }}
       </label>
       <el-badge
-      v-if="task.comments"
+        v-if="task.comments"
         :hidden="isTaskComments"
         :value="task.comments.length"
         class="comment-badage"
@@ -30,14 +30,18 @@
         />
       </el-badge>
     </div>
-    <div class="task-members-container" @click="addTaskMembers">
+    <div class="task-members-container">
       <font-awesome-icon
         @click="toggleAddingMember"
         class="add-btn"
         icon="plus"
       >
       </font-awesome-icon>
-      <task-add-member :taskMembers="task.members" @toggleMember="toggleMember" v-if="isAddingMember"></task-add-member>
+      <task-add-member
+        :taskMembers="task.members"
+        @toggleMember="toggleMember"
+        v-if="isAddingMember"
+      ></task-add-member>
       <div v-if="task.members" class="avatar-container">
         <avatar
           class="member-avatar"
@@ -102,18 +106,21 @@ export default {
   },
   methods: {
     toggleMember(member) {
-      if (!this.taskToEdit.members) this.taskToEdit.members = []
-      if (this.taskToEdit.members.some(m => m._id === member._id)) {
-        const memberIdx = this.taskToEdit.members.findIndex(m => m._id === member._id)
-        this.taskToEdit.members.splice(memberIdx, 1)
+      if (!this.taskToEdit.members) this.taskToEdit.members = [];
+      if (this.taskToEdit.members.some((m) => m._id === member._id)) {
+        const memberIdx = this.taskToEdit.members.findIndex(
+          (m) => m._id === member._id
+        );
+        this.taskToEdit.members.splice(memberIdx, 1);
       } else {
-        this.taskToEdit.members.unshift(member)
+        this.taskToEdit.members.unshift(member);
       }
-      console.log('task members', this.taskToEdit.members);
-      this.updateTask()
+      console.log("task members", this.taskToEdit.members);
+      this.updateTask();
     },
     toggleAddingMember() {
       this.isAddingMember = !this.isAddingMember;
+      this.$store.commit('toggleCloseScreen')
       console.log(this.isAddingMember);
     },
     handleEdit() {
@@ -150,6 +157,9 @@ export default {
     },
   },
   computed: {
+    isCloseScreen() {
+      return this.$store.getters.isCloseScreen
+    },
     isTaskComments() {
       return this.task.comments.length ? false : true;
     },
@@ -174,11 +184,15 @@ export default {
       this.taskToEdit.dueDate = this.dueDate;
       this.updateTask();
     },
+    isCloseScreen(newValue) {
+      console.log(`close screen is now opened: ${newValue}`);
+      if (!newValue) this.isAddingMember = false
+    },
   },
   components: {
     statusPicker,
     taskAddMember,
-    Avatar
+    Avatar,
   },
 };
 </script>

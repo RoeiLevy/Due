@@ -2,6 +2,7 @@
   <div class="board-surface">
     <app-header />
     <div v-if="boardToEdit" class="flex board" ref="screen">
+      <div @click="toggleCloseScreen" v-if="isCloseScreen" class="close-screen"></div>
       <workspace />
       <social-modal
         v-if="isAddingMembers"
@@ -168,6 +169,9 @@ export default {
     };
   },
   methods: {
+    toggleCloseScreen() {
+      this.$store.commit('toggleCloseScreen')
+    },
     async addStatus(status) {
       try {
         this.boardToEdit.statuses.push(status);
@@ -418,6 +422,9 @@ export default {
     },
   },
   computed: {
+    isCloseScreen() {
+      return this.$store.getters.isCloseScreen
+    },
     boardDescription() {
       if (!this.boardToEdit.description) return "Add a description";
       else return this.boardToEdit.description;

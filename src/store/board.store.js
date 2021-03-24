@@ -7,8 +7,12 @@ export const boardStore = {
         boards: [],
         isTaskDetails: false,
         isBoardActivities: false,
+        isCloseScreen: false
     },
     getters: {
+        isCloseScreen(state) {
+            return state.isCloseScreen
+        },
         boardMembers(state) {
             return state.currBoard.members
         },
@@ -32,6 +36,9 @@ export const boardStore = {
         }
     },
     mutations: {
+        toggleCloseScreen(state) {
+            state.isCloseScreen = !state.isCloseScreen
+        },
         toggleIsDetails(state) {
             state.isTaskDetails = !state.isTaskDetails
         },

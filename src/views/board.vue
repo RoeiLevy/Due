@@ -76,9 +76,7 @@
                 :class="{ active: isViewActive }"
               >
                 {{ view }}
-                <el-dropdown
-                  trigger="click"
-                >
+                <el-dropdown trigger="click">
                   <span class="views-el-dropdown-link add-view-wrapper">
                     <button>
                       <font-awesome-icon
@@ -134,57 +132,6 @@
             @deleteStatus="deleteStatus"
           ></main-table>
           <chart v-if="activeTab === 'chart'" :board="boardToEdit"></chart>
-          <!-- <nav class="flex header-view-bar">
-            <div
-              :class="tableActive"
-              @click="activateMainTable"
-              class="main-table-wrapper"
-            >
-              <el-tabs v-model="activeTab">
-                <el-dropdown
-                  class="views-drop-down add-view-wrapper"
-                  trigger="click"
-                  @command="addView"
-                >
-                  <span class="views-el-dropdown-link add-view-wrapper">
-                    <button>
-                      <font-awesome-icon class="header-icon" icon="plus" /> Add
-                      View
-                    </button>
-                  </span>
-                  <el-dropdown-menu class="view-dropdown">
-                    <el-dropdown-item command="Calander"
-                      >Calander</el-dropdown-item
-                    >
-                    <el-dropdown-item command="Chart">Chart</el-dropdown-item>
-                    <el-dropdown-item command="Kanban">Kanban</el-dropdown-item>
-                  </el-dropdown-menu>
-                </el-dropdown>
-                <el-tab-pane label="Main Table" name="main"
-                  ><main-table
-                    :board="boardToEdit"
-                    @addNewGroup="addNewGroup"
-                    @removeTask="removeTask"
-                    @updateTask="updateTask"
-                    @saveGroup="saveGroup"
-                    @addTask="addTask"
-                    @removeGroup="removeGroup"
-                    @addStatus="addStatus"
-                    @deleteStatus="deleteStatus"
-                  ></main-table
-                ></el-tab-pane>
-                <el-tab-pane
-                  v-for="(view, idx) in currBoard.views"
-                  :key="idx"
-                  :label="view"
-                  :name="view"
-                >
-                  <component :board="boardToEdit" :is="view"></component>
-                  {{ view }}
-                </el-tab-pane>
-              </el-tabs>
-            </div>
-          </nav> -->
         </div>
       </div>
     </div>
@@ -362,10 +309,10 @@ export default {
       this.boardToEdit.views.push(command.toLowerCase());
       this.saveBoard();
     },
-    removeView(view){
-      console.log('view:', view)
-      const idx=this.boardToEdit.views.findIndex(v=>v===view);
-      this.boardToEdit.views.splice(idx,1);
+    removeView(view) {
+      console.log("view:", view);
+      const idx = this.boardToEdit.views.findIndex((v) => v === view);
+      this.boardToEdit.views.splice(idx, 1);
       this.saveBoard();
     },
     handleEdit(item) {

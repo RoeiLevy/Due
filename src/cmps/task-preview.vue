@@ -143,7 +143,7 @@ export default {
     openTaskDetails() {
       this.$store.commit({ type: "toggleIsDetails" });
       this.$router.push(
-        `/board/${this.boardId}/${this.groupId}/task/${this.task.id}`
+        `/board/${this.boardId}/maintable/${this.groupId}/task/${this.task.id}`
       );
     },
     setStatus(status) {

@@ -81,20 +81,22 @@
         }
         .main-table-wrapper {
             width: 100%;
-            .el-tabs{
+            .el-tabs {
                 width: 100%;
             }
             .el-tabs__header {
                 width: fit-content;
                 left: 115px;
             }
-            .el-tabs__content{
-                .board-content-wrapper{
+            .el-tabs__content {
+                .board-content-wrapper {
                     width: 100%;
                 }
-                .add-view-wrapper{
-                    position: fixed;
-                    top: 127px;
+                .add-view-wrapper {
+                    height: fit-content;
+                    position: absolute;
+                    top: -53px;
+                    // top: 120px;
                 }
             }
         }

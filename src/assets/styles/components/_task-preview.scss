@@ -191,6 +191,7 @@
     background-color: #e5f4ff;
 }
 
+
 .task-title:active,
 .task-title-input:active {
     background-color: #e5f4ff;
@@ -269,6 +270,10 @@
     right: 0;
     top: 0;
     bottom: 0;
-    opacity: 0.3;
-    z-index: 100;
+    opacity: 0.2;
+    z-index: 70;
+}
+
+.close-screen:hover {
+    cursor: pointer;
 }

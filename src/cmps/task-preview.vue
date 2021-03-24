@@ -57,7 +57,7 @@
     <div class="status-container">
       <h3
         class="task-status"
-        @click="isSelectingStatus = !isSelectingStatus"
+        @click="toggleAddingStatus"
         v-if="task.status"
         :style="{ 'background-color': task.status.color }"
       >
@@ -120,8 +120,12 @@ export default {
     },
     toggleAddingMember() {
       this.isAddingMember = !this.isAddingMember;
-      this.$store.commit('toggleCloseScreen')
+      this.$store.commit("toggleCloseScreen");
       console.log(this.isAddingMember);
+    },
+    toggleAddingStatus() {
+      this.isSelectingStatus = !this.isSelectingStatus;
+      this.$store.commit("toggleCloseScreen");
     },
     handleEdit() {
       this.editMode = true;
@@ -146,6 +150,7 @@ export default {
       this.isSelectingStatus = false;
       this.taskToEdit.status = status;
       this.$emit("updateTask", this.taskToEdit);
+      this.$store.commit("toggleCloseScreen");
     },
     updateTask() {
       this.editMode = false;
@@ -158,7 +163,7 @@ export default {
   },
   computed: {
     isCloseScreen() {
-      return this.$store.getters.isCloseScreen
+      return this.$store.getters.isCloseScreen;
     },
     isTaskComments() {
       return this.task.comments.length ? false : true;
@@ -185,8 +190,11 @@ export default {
       this.updateTask();
     },
     isCloseScreen(newValue) {
-      console.log(`close screen is now opened: ${newValue}`);
-      if (!newValue) this.isAddingMember = false
+      // console.log(`close screen is now opened: ${newValue}`);
+      if (!newValue) {
+        this.isAddingMember = false;
+        this.isSelectingStatus = false;
+      }
     },
   },
   components: {

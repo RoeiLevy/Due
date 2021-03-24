@@ -62,79 +62,76 @@
           </div>
 
           <nav class="flex header-view-bar">
-            <div class="new-group-wrapper">
-              <el-button
-                class="new-group-btn"
-                @click="addNewGroup"
-                type="primary"
-                >New Group</el-button
+            <ul class="view-nav">
+              <li
+                @click="activateView('mainTable')"
+                :class="{ active: isViewActive }"
               >
-            </div>
-            <div
-              :class="tableActive"
-              @click="activateMainTable"
-              class="main-table-wrapper"
-            >
-              <el-tabs v-model="activeTab">
-                <el-tab-pane label="Main Table" name="main"></el-tab-pane>
-                <el-tab-pane
-                  v-for="(view, idx) in currBoard.views"
-                  :key="idx"
-                  :label="view"
-                  :name="view"
-                >
-                  {{ view }}
-                </el-tab-pane>
-              </el-tabs>
-            </div>
-            <el-dropdown
-              class="views-drop-down add-view-wrapper"
-              trigger="click"
-            >
-              <span class="views-el-dropdown-link add-view-wrapper">
-                <button>
-                  <font-awesome-icon class="header-icon" icon="plus" /> Add View
-                </button>
-              </span>
-              <el-dropdown-menu class="view-dropdown">
-                <el-dropdown-item @click="addView('Calander')"
-                  >Calander</el-dropdown-item
-                >
-                <el-dropdown-item @click="addView('Chart')"
-                  >Chart</el-dropdown-item
-                >
-                <el-dropdown-item @click="addView('Kanban')"
-                  >Kanban</el-dropdown-item
-                >
-              </el-dropdown-menu>
-            </el-dropdown>
+                Main Table
+              </li>
+              <li
+                v-for="(view, idx) in boardToEdit.views"
+                :key="idx"
+                @click.self="activateView(view)"
+                :class="{ active: isViewActive }"
+              >
+                {{ view }}
+                <el-dropdown trigger="click">
+                  <span class="views-el-dropdown-link add-view-wrapper">
+                    <button>
+                      <font-awesome-icon
+                        class="view-menu-icon"
+                        icon="ellipsis-h"
+                      />
+                    </button>
+                  </span>
+                  <el-dropdown-menu class="view-dropdown">
+                    <el-dropdown-item @click="removeView(view)"
+                      >Remove</el-dropdown-item
+                    >
+                    <el-dropdown-item @click="renameView(view)"
+                      >Rename</el-dropdown-item
+                    >
+                    <el-dropdown-item @click="KanbanView(view)"
+                      >Duplicate</el-dropdown-item
+                    >
+                  </el-dropdown-menu>
+                </el-dropdown>
+              </li>
+              <el-dropdown
+                class="views-drop-down add-view-wrapper"
+                trigger="click"
+                @command="addView"
+              >
+                <span class="views-el-dropdown-link add-view-wrapper">
+                  <button>
+                    <font-awesome-icon class="header-icon" icon="plus" /> Add
+                    View
+                  </button>
+                </span>
+                <el-dropdown-menu class="view-dropdown">
+                  <el-dropdown-item command="Calander"
+                    >Calander</el-dropdown-item
+                  >
+                  <el-dropdown-item command="Chart">Chart</el-dropdown-item>
+                  <el-dropdown-item command="Kanban">Kanban</el-dropdown-item>
+                </el-dropdown-menu>
+              </el-dropdown>
+            </ul>
           </nav>
-        </div>
-
-        <div class="board-content-wrapper">
-          <div class="groups-list">
-            <!-- <draggable
-              v-model="boardToEdit.groups"
-              @change="saveBoard(boardToEdit)"
-              v-bind="dragOptions"
-            >
-              <transition-group type="transition"> -->
-            <group
-              v-for="group in boardToEdit.groups"
-              :key="group.id"
-              :group="group"
-              @loadBoard="loadBoard"
-              @removeTask="removeTask"
-              @updateTask="updateTask"
-              @saveGroup="saveGroup"
-              @addTask="addTask"
-              @removeGroup="removeGroup"
-              @addStatus="addStatus"
-              @deleteStatus="deleteStatus"
-            />
-            <!-- </transition-group>
-            </draggable> -->
-          </div>
+          <main-table
+            v-if="activeTab === 'mainTable'"
+            :board="boardToEdit"
+            @addNewGroup="addNewGroup"
+            @removeTask="removeTask"
+            @updateTask="updateTask"
+            @saveGroup="saveGroup"
+            @addTask="addTask"
+            @removeGroup="removeGroup"
+            @addStatus="addStatus"
+            @deleteStatus="deleteStatus"
+          ></main-table>
+          <chart v-if="activeTab === 'chart'" :board="boardToEdit"></chart>
         </div>
       </div>
     </div>
@@ -143,14 +140,14 @@
 
 <script>
 import html2canvas from "html2canvas";
-import group from "../cmps/group";
 import socialModal from "../cmps/social-modal";
 import appHeader from "../cmps/header";
 import draggable from "vuedraggable";
 import taskDetails from "../cmps/task-details";
-import barChart from "../cmps/bar-chart";
 import boardActivities from "../cmps/board-activities.vue";
 import workspace from "../cmps/workspace.vue";
+import mainTable from "../cmps/main-table.vue";
+import chart from "../cmps/chart";
 
 import { boardService } from "../services/board.service";
 import { utilService } from "../services/util.service";
@@ -167,7 +164,7 @@ export default {
       mainTable: true,
       addingView: false,
       isAddingMembers: false,
-      activeTab: "main",
+      activeTab: "mainTable",
     };
   },
   methods: {
@@ -223,8 +220,6 @@ export default {
           type: "saveBoard",
           boardToSave: this.boardToEdit,
         });
-
-        // this.$store.dispatch({ type: "sendActivity", txt: "Edited a group" });
         // Add user msg
         return savedGroup;
       } catch (err) {
@@ -311,7 +306,13 @@ export default {
       }
     },
     addView(command) {
-      this.boardToEdit.views.push(command);
+      this.boardToEdit.views.push(command.toLowerCase());
+      this.saveBoard();
+    },
+    removeView(view) {
+      console.log("view:", view);
+      const idx = this.boardToEdit.views.findIndex((v) => v === view);
+      this.boardToEdit.views.splice(idx, 1);
       this.saveBoard();
     },
     handleEdit(item) {
@@ -331,13 +332,9 @@ export default {
           break;
       }
     },
-    activateMainTable() {
-      this.addingView = false;
-      this.mainTable = true;
-    },
-    activateView() {
-      this.mainTable = false;
-      this.addingView = true;
+    activateView(view) {
+      console.log("view:", view);
+      this.activeTab = view;
     },
     openBoardActivities() {
       this.$store.commit({ type: "toggleIsBoardActivities" });
@@ -367,7 +364,6 @@ export default {
         });
 
         return savedBoard;
-        // this.loadBoard();
       } catch (err) {
         console.log("err:", err);
       }
@@ -396,11 +392,6 @@ export default {
       } catch (err) {
         console.log("err:", err);
       }
-      // return html2canvas(this.$refs.screen).then((canvas) => {
-      //   const pageImg = canvas.toDataURL();
-      //   board.thumbnail = pageImg;
-      //   return board;
-      // });
     },
     addActivity(newActivity) {
       const boardCopy = JSON.parse(JSON.stringify(this.boardToEdit));
@@ -426,10 +417,6 @@ export default {
       }
     },
   },
-  mounted() {
-    // if(this.board)this.printScr()
-    // else setTimeout(()=>this.printScr(),1000);
-  },
   computed: {
     boardDescription() {
       if (!this.boardToEdit.description) return "Add a description";
@@ -444,8 +431,8 @@ export default {
     isTaskDetails() {
       return this.$store.getters.isTaskDetails;
     },
-    viewActive() {
-      return { active: this.addingView };
+    isViewActive() {
+      // return { active: this.activeTab===view };
     },
     tableActive() {
       return { active: this.mainTable };
@@ -457,6 +444,13 @@ export default {
         disabled: false,
         ghostClass: "ghost",
       };
+    },
+  },
+  watch: {
+    $route(to, from) {
+      const boardId = this.$route.params.boardId;
+      console.log("board ID:", boardId);
+      this.loadBoard();
     },
   },
   created() {
@@ -474,13 +468,13 @@ export default {
   },
   components: {
     appHeader,
-    group,
     draggable,
     taskDetails,
-    barChart,
+    chart,
     socialModal,
     boardActivities,
     workspace,
+    mainTable,
   },
 };
 </script>

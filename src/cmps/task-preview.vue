@@ -37,7 +37,7 @@
         icon="plus"
       >
       </font-awesome-icon>
-      <task-add-member @addMember="addMember" v-if="isAddingMember"></task-add-member>
+      <task-add-member :taskMembers="task.members" @toggleMember="toggleMember" v-if="isAddingMember"></task-add-member>
       <div v-if="task.members" class="avatar-container">
         <avatar
           class="member-avatar"
@@ -101,17 +101,21 @@ export default {
     };
   },
   methods: {
-    addMember(member) {
+    toggleMember(member) {
       if (!this.taskToEdit.members) this.taskToEdit.members = []
-      if (this.taskToEdit.members.some(m => m._id === member._id)) return 
-      this.taskToEdit.members.unshift(member)
+      if (this.taskToEdit.members.some(m => m._id === member._id)) {
+        const memberIdx = this.taskToEdit.members.findIndex(m => m._id === member._id)
+        this.taskToEdit.members.splice(memberIdx, 1)
+      } else {
+        this.taskToEdit.members.unshift(member)
+      }
+      console.log('task members', this.taskToEdit.members);
       this.updateTask()
     },
     toggleAddingMember() {
       this.isAddingMember = !this.isAddingMember;
       console.log(this.isAddingMember);
     },
-    addTaskMembers() {},
     handleEdit() {
       this.editMode = true;
       setTimeout(() => {

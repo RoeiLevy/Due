@@ -26,19 +26,22 @@
                         "title": "CSS - Solve Left border issue",
                         "createdAt": 1616256989417,
                         "status": null,
-                        "id": "9WGlP"
+                        "id": "9WGlP",
+                        "comments": []
                     },
                     {
                         "title": "Service - SAVE functionality needs refining",
                         "createdAt": 1616256992452,
                         "status": null,
-                        "id": "VyfWY"
+                        "id": "VyfWY",
+                        "comments": []
                     },
                     {
                         "title": "⭐ \"Sticky\" Header",
                         "createdAt": 1616259114942,
                         "status": null,
-                        "id": "CLvWf"
+                        "id": "CLvWf",
+                        "comments": []
                     }
                 ],
                 "style": {
@@ -58,19 +61,22 @@
                         "title": "Drragable Changes",
                         "createdAt": 1616257014267,
                         "status": null,
-                        "id": "S2U8P"
+                        "id": "S2U8P",
+                        "comments": []
                     },
                     {
                         "title": "Chart.js start from zero",
                         "createdAt": 1616257017117,
                         "status": null,
-                        "id": "xN2qG"
+                        "id": "xN2qG",
+                        "comments": []
                     },
                     {
                         "title": "Server planning",
                         "createdAt": 1616257019180,
                         "status": null,
-                        "id": "IlAgm"
+                        "id": "IlAgm",
+                        "comments": []
                     }
                 ],
                 "style": {
@@ -90,19 +96,22 @@
                         "title": "Demo data needs detune",
                         "createdAt": 1616256995300,
                         "status": null,
-                        "id": "tBEKX"
+                        "id": "tBEKX",
+                        "comments": []
                     },
                     {
                         "title": "Board List prep",
                         "createdAt": 1616257021956,
                         "status": null,
-                        "id": "dXe3r"
+                        "id": "dXe3r",
+                        "comments": []
                     },
                     {
                         "title": "Group pitch for Sunday",
                         "createdAt": 1616257025146,
                         "status": null,
-                        "id": "Hm8Tn"
+                        "id": "Hm8Tn",
+                        "comments": []
                     }
                 ],
                 "style": {
@@ -113,131 +122,6 @@
                     "status",
                     "dueDate"
                 ]
-            },
-            {
-                "id": "g101",
-                "title": "Dean",
-                "headers": [
-                    "members",
-                    "status",
-                    "dueDate"
-                ],
-                "tasks": [
-                    {
-                        "id": "g102",
-                        "title": "Find who Dean is",
-                        "tasks": [
-                            {
-                                "id": "c103",
-                                "title": "Do that"
-                            },
-                            {
-                                "id": "c104",
-                                "title": "Help me with Atlas",
-                                "status": {
-                                    "id": "udg2t6",
-                                    "title": "Done",
-                                    "color": "#00c875"
-                                },
-                                "comments": [
-                                    {
-                                        "id": "ZdPnm",
-                                        "txt": "also @yaronb please CR this",
-                                        "createdAt": 1590999817436,
-                                        "byMember": {
-                                            "_id": "u101",
-                                            "fullname": "Tal Tarablus",
-                                            "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
-                                        }
-                                    }
-                                ],
-                                "members": [
-                                    {
-                                        "_id": "u101",
-                                        "fullname": "Tal Tarablus",
-                                        "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
-                                    }
-                                ],
-                                "createdAt": 1590999730348,
-                                "dueDate": 16156215211,
-                                "byMember": {
-                                    "_id": "u101",
-                                    "username": "Tal",
-                                    "fullname": "Tal Tarablus",
-                                    "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
-                                },
-                                "style": {
-                                    "bgColor": "#26de81"
-                                }
-                            }
-                        ],
-                        "style": {}
-                    },
-                    {
-                        "title": "Might be a spy",
-                        "createdAt": 1616256998124,
-                        "status": null,
-                        "id": "oMaLe"
-                    },
-                    {
-                        "id": "c101",
-                        "title": "Replace logo"
-                    }
-                ],
-                "statuses": [
-                    {
-                        "id": "udg2t6",
-                        "title": "Done",
-                        "color": "#00c875"
-                    },
-                    {
-                        "id": "c104",
-                        "title": "Help me with Atlas",
-                        "headers": [
-                            "members",
-                            "status",
-                            "dueDate"
-                        ],
-                        "status": {
-                            "id": "udg2t6",
-                            "title": "Done",
-                            "color": "#00c875"
-                        },
-                        "comments": [
-                            {
-                                "id": "ZdPnm",
-                                "txt": "also @yaronb please CR this",
-                                "createdAt": 1590999817436,
-                                "byMember": {
-                                    "_id": "u101",
-                                    "fullname": "Tal Tarablus",
-                                    "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
-                                }
-                            }
-                        ],
-                        "members": [
-                            {
-                                "_id": "u101",
-                                "fullname": "Tal Tarablus",
-                                "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
-                            }
-                        ],
-                        "createdAt": 1590999730348,
-                        "dueDate": 16156215211,
-                        "byMember": {
-                            "_id": "u101",
-                            "username": "Tal",
-                            "fullname": "Tal Tarablus",
-                            "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
-                        },
-                        "style": {
-                            "bgColor": "#26de81"
-                        }
-                    }
-                ],
-                "style": {
-                    "color": "#6289FF"
-                }
             }
         ],
         "statuses": [

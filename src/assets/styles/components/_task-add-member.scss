@@ -21,15 +21,41 @@
     overflow-x: hidden;
     flex-direction: column;
     width: 100%;
+    padding-inline-end: 10px;
+
+    .add-member-preview:not(:first-child) {
+        border-top: 1px solid $application-border-color;
+    }
 }
+
 
 .add-member-preview {
     padding: 10px;
     display: flex;
     width: 100%;
-    .vue-avatar--wrapper {
-        margin-inline-end: 10px;
+    align-items: center;
+    justify-content: space-between;
+
+    .member-view {
+        display: flex;
+        .vue-avatar--wrapper {
+            margin-inline-end: 10px;
+        }
     }
+
+    .check-wrapper {
+        .header-icon {
+            font-size: 20px;
+            color: gray;
+            align-self: flex-end;
+            position: sticky;
+            justify-self: flex-end;
+        }
+    }
+}
+
+.add-member-preview:hover {
+    background-color: $application-border-color;
 }
 
 .task-wrapper:hover.task-add-member-modal {

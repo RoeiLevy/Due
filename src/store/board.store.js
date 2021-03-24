@@ -118,9 +118,10 @@ export const boardStore = {
         async saveBoard(context, { boardToSave }) {
             try {
                 const savedBoard = await boardService.update(boardToSave);
-                context.commit({ type: 'setBoard', board: JSON.parse(JSON.stringify(boardToSave)) });
-                context.dispatch({ type: 'sendBoard', board: savedBoard })
-                return savedBoard
+                console.log('savedBoard:', savedBoard)
+                context.commit({ type: 'setBoard', board: JSON.parse(JSON.stringify(savedBoard)) });
+                context.dispatch({ type: 'sendBoard', board: JSON.parse(JSON.stringify(savedBoard)) })
+                return JSON.parse(JSON.stringify(savedBoard))
             } catch (err) {
                 console.log('boardStore: Error in saveBoard', err);
                 throw err;

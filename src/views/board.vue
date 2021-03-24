@@ -68,7 +68,7 @@
 
           <nav class="flex header-view-bar">
             <ul class="view-nav">
-              <router-link class="view" :to="`/board/${boardToEdit._id}`">
+              <router-link class="view" :to="`/board/${boardToEdit._id}/maintable`">
                 Main Table
               </router-link>
               <router-link
@@ -379,7 +379,7 @@ export default {
         const boardWithUrl = await this.printScr(
           JSON.parse(JSON.stringify(this.boardToEdit))
         );
-        this.boardToEdit = await this.$store.dispatch({
+        await this.$store.dispatch({
           type: "saveBoard",
           boardToSave: boardWithUrl,
         });

@@ -63,41 +63,38 @@
 
           <nav class="flex header-view-bar">
             <ul class="view-nav">
-              <li
-                @click="activateView('mainTable')"
-                :class="{ active: isViewActive }"
-              >
+              <router-link class="view" :to="`/board/${boardToEdit._id}`">
                 Main Table
-              </li>
-              <li
+              </router-link>
+              <router-link
+              class="view"
                 v-for="(view, idx) in boardToEdit.views"
                 :key="idx"
-                @click.self="activateView(view)"
-                :class="{ active: isViewActive }"
+                :to="`/board/${boardToEdit._id}/${view}`"
               >
+                <!-- @click.self="activateView(view)"
+                :class="{ active: isViewActive }" -->
                 {{ view }}
-                <el-dropdown trigger="click">
-                  <span class="views-el-dropdown-link add-view-wrapper">
-                    <button>
+                <div class="view-dropdown-container">
+                    <button class="view-menu-btn">
                       <font-awesome-icon
                         class="view-menu-icon"
                         icon="ellipsis-h"
                       />
                     </button>
-                  </span>
-                  <el-dropdown-menu class="view-dropdown">
-                    <el-dropdown-item @click="removeView(view)"
-                      >Remove</el-dropdown-item
+                  <ul class="view-dropdown">
+                    <li @click="renameView(view)"
+                      >Rename</li
                     >
-                    <el-dropdown-item @click="renameView(view)"
-                      >Rename</el-dropdown-item
+                    <li @click="KanbanView(view)"
+                      >Duplicate</li
                     >
-                    <el-dropdown-item @click="KanbanView(view)"
-                      >Duplicate</el-dropdown-item
+                    <li @click="removeView(view)"
+                      >Remove</li
                     >
-                  </el-dropdown-menu>
-                </el-dropdown>
-              </li>
+                  </ul>
+                </div>
+              </router-link>
               <el-dropdown
                 class="views-drop-down add-view-wrapper"
                 trigger="click"
@@ -110,8 +107,8 @@
                   </button>
                 </span>
                 <el-dropdown-menu class="view-dropdown">
-                  <el-dropdown-item command="Calander"
-                    >Calander</el-dropdown-item
+                  <el-dropdown-item command="Calendar"
+                    >Calendar</el-dropdown-item
                   >
                   <el-dropdown-item command="Chart">Chart</el-dropdown-item>
                   <el-dropdown-item command="Kanban">Kanban</el-dropdown-item>
@@ -119,7 +116,18 @@
               </el-dropdown>
             </ul>
           </nav>
-          <main-table
+          <router-view
+            :board="boardToEdit"
+            @addNewGroup="addNewGroup"
+            @removeTask="removeTask"
+            @updateTask="updateTask"
+            @saveGroup="saveGroup"
+            @addTask="addTask"
+            @removeGroup="removeGroup"
+            @addStatus="addStatus"
+            @deleteStatus="deleteStatus"
+          />
+          <!-- <main-table
             v-if="activeTab === 'mainTable'"
             :board="boardToEdit"
             @addNewGroup="addNewGroup"
@@ -131,7 +139,7 @@
             @addStatus="addStatus"
             @deleteStatus="deleteStatus"
           ></main-table>
-          <chart v-if="activeTab === 'chart'" :board="boardToEdit"></chart>
+          <chart v-if="activeTab === 'chart'" :board="boardToEdit"></chart> -->
         </div>
       </div>
     </div>

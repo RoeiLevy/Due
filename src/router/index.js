@@ -7,6 +7,9 @@ import userProfile from '../views/user-profile'
 import board from '../views/board'
 import boardList from '../views/board-list'
 import taskDetails from '../cmps/task-details'
+import chart from '../cmps/chart'
+import calendar from '../cmps/calendar'
+import mainTable from '../cmps/main-table'
 
 Vue.use(VueRouter)
 
@@ -27,10 +30,25 @@ const routes = [{
     component: board,
     children: [
         {
+            path: '',
+            name: 'Main Table',
+            component: mainTable,
+        },
+        {
             path: ':groupId/task/:taskId',
             name: 'task details',
             component: taskDetails,
-        }
+        },
+        {
+            path: 'chart',
+            name: 'Chart',
+            component: chart,
+        },
+        {
+            path: 'calendar',
+            name: 'Calendar',
+            component: calendar,
+        },
     ]
 },
 {

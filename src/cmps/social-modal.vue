@@ -2,17 +2,17 @@
   <div class="social-modal">
     <el-tabs v-model="activeTab">
       <el-tab-pane label="Members" name="member" class="members">
-        <h2 v-if="!members.length">No Members</h2>
-        <div v-if="members" class="members-list">
-          <h2>Board Members</h2>
+        <h3 v-if="!members || !members.length">No Members</h3>
+        <div v-else class="members-list">
           <div class="member" v-for="member in members" :key="member._id">
-            <avatar :size="30" :src="member.imgUrl"></avatar>
+            <avatar :username="member.fullname" :size="30" :src="member.img"></avatar>
             {{ member.fullname }}
           </div>
         </div>
       </el-tab-pane>
+      
       <el-tab-pane label="Invite" name="invite">
-        <el-input placeholder="Email of wanted member" v-model="email">
+        <el-input maxlength=200 size=small class="email-input" placeholder="Member Email" v-model="email">
         </el-input>
         <el-button @click="addMember" type="primary">Add Member</el-button>
       </el-tab-pane>
@@ -40,5 +40,8 @@ export default {
   components: {
     Avatar,
   },
+  created() {
+    console.log(this.members);
+  }
 };
 </script>

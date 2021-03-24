@@ -1,7 +1,7 @@
 .social-modal {
     width: 430px;
     height: 400px;
-    background-color: wheat;
+    background-color: rgb(255, 255, 255);
     position: fixed;
     transform: translateY(25%);
     z-index: 1;
@@ -9,23 +9,37 @@
     margin: auto auto;
     padding: 24px 32px 8px 32px;
     z-index: 80;
-    
-    span {
-        font-size: 24px;
-        color: #323338;
+
+    .email-input {
+        .el-input__inner {
+            width: 200px !important;
+        }
     }
-    .members {
+
+    .members-list {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+        width: 100%;
     }
+
     .member {
         display: flex;
         gap: 5px;
         align-items: center;
         padding: 10px;
-    }
+        width: 100%;
+
+        .vue-avatar--wrapper {
+            font-size: 12px !important;
+        }
+    } 
+
     .el-tabs__header {
-        width: fit-content;
+        width: 100%;
     }
+}
+
+.member:not(:first-child) {
+    border-top: 1px solid $application-border-color;
 }

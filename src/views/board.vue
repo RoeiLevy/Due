@@ -54,8 +54,8 @@
 
             <div class="board-actions">
               <button @click="toggleAddingMembers">
-                <font-awesome-icon class="header-icon" icon="user-friends" />
-                Members/
+                <!-- <font-awesome-icon class="header-icon" icon="user-friends" />
+                Members/ -->
                 <font-awesome-icon class="header-icon plus" icon="user-plus" />
                 Invite
               </button>

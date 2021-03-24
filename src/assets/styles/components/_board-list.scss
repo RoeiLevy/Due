@@ -74,6 +74,20 @@
 
 .el-row {
     margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat( auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.el-row::after,
+.el-row::before {
+    display: none !important;
+}
+
+.el-col-5 {
+    width: 100% !important;
+    height: 100%;
+    margin: 0 !important;
 }
 
 .card:hover {

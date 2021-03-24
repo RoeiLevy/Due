@@ -14,7 +14,7 @@
           <span slot="title">{{ boardTitle() }}</span>
         </el-menu-item>
 
-        <ul class="workspace-board-list" v-if="!isCollapse">
+        <ul class="workspace-board-list" v-show="!isCollapse">
           <li 
           class="board-li-workspace"
             v-for="board in boards"

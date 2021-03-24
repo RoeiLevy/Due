@@ -1,3 +1,34 @@
+.workspace {
+    min-width: 50px;
+    width: fit-content;
+    margin-inline-end: 15px;
+    .workspace-menu-container * {
+        // white-space: nowrap;
+        // text-overflow: clip;
+        // transition: 60s;
+    }
+    .el-menu-vertical-demo * {
+        white-space: nowrap;
+        text-overflow: clip;
+    }
+    .el-menu.v-leave-active.horizontal-collapse-transition.v-leave-to {
+        border-right: none;
+        li {
+            color: transparent;
+        }
+    }
+}
+
+// .el-menu-vertical-demo.el-menu.el-menu--collapse.horizontal-collapse-transition {
+//     .workspace-icon .el-icon-menu {
+//         border: none;
+//         transition: none;
+//     }
+//     .el-menu-vertical-demo.el-menu--collaps {
+//         border: none;
+//         transition: none;
+//     }
+// }
 .el-tooltip,
 .el-icon-menu {
     position: unset !important;
@@ -18,7 +49,7 @@
     justify-content: center;
     margin: 10px;
     margin-top: 30px;
-    left: 25px;
+    left: 40px;
     border: 1px solid rgba(165, 165, 165, 0.144);
 }
 

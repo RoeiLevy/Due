@@ -62,6 +62,79 @@
           </div>
 
           <nav class="flex header-view-bar">
+            <ul class="view-nav">
+              <li
+                @click="activateView('mainTable')"
+                :class="{ active: isViewActive }"
+              >
+                Main Table
+              </li>
+              <li
+                v-for="(view, idx) in boardToEdit.views"
+                :key="idx"
+                @click.self="activateView(view)"
+                :class="{ active: isViewActive }"
+              >
+                {{ view }}
+                <el-dropdown
+                  trigger="click"
+                >
+                  <span class="views-el-dropdown-link add-view-wrapper">
+                    <button>
+                      <font-awesome-icon
+                        class="view-menu-icon"
+                        icon="ellipsis-h"
+                      />
+                    </button>
+                  </span>
+                  <el-dropdown-menu class="view-dropdown">
+                    <el-dropdown-item @click="removeView(view)"
+                      >Remove</el-dropdown-item
+                    >
+                    <el-dropdown-item @click="renameView(view)"
+                      >Rename</el-dropdown-item
+                    >
+                    <el-dropdown-item @click="KanbanView(view)"
+                      >Duplicate</el-dropdown-item
+                    >
+                  </el-dropdown-menu>
+                </el-dropdown>
+              </li>
+              <el-dropdown
+                class="views-drop-down add-view-wrapper"
+                trigger="click"
+                @command="addView"
+              >
+                <span class="views-el-dropdown-link add-view-wrapper">
+                  <button>
+                    <font-awesome-icon class="header-icon" icon="plus" /> Add
+                    View
+                  </button>
+                </span>
+                <el-dropdown-menu class="view-dropdown">
+                  <el-dropdown-item command="Calander"
+                    >Calander</el-dropdown-item
+                  >
+                  <el-dropdown-item command="Chart">Chart</el-dropdown-item>
+                  <el-dropdown-item command="Kanban">Kanban</el-dropdown-item>
+                </el-dropdown-menu>
+              </el-dropdown>
+            </ul>
+          </nav>
+          <main-table
+            v-if="activeTab === 'mainTable'"
+            :board="boardToEdit"
+            @addNewGroup="addNewGroup"
+            @removeTask="removeTask"
+            @updateTask="updateTask"
+            @saveGroup="saveGroup"
+            @addTask="addTask"
+            @removeGroup="removeGroup"
+            @addStatus="addStatus"
+            @deleteStatus="deleteStatus"
+          ></main-table>
+          <chart v-if="activeTab === 'chart'" :board="boardToEdit"></chart>
+          <!-- <nav class="flex header-view-bar">
             <div
               :class="tableActive"
               @click="activateMainTable"
@@ -111,7 +184,7 @@
                 </el-tab-pane>
               </el-tabs>
             </div>
-          </nav>
+          </nav> -->
         </div>
       </div>
     </div>
@@ -144,7 +217,7 @@ export default {
       mainTable: true,
       addingView: false,
       isAddingMembers: false,
-      activeTab: "main",
+      activeTab: "mainTable",
     };
   },
   methods: {
@@ -289,6 +362,12 @@ export default {
       this.boardToEdit.views.push(command.toLowerCase());
       this.saveBoard();
     },
+    removeView(view){
+      console.log('view:', view)
+      const idx=this.boardToEdit.views.findIndex(v=>v===view);
+      this.boardToEdit.views.splice(idx,1);
+      this.saveBoard();
+    },
     handleEdit(item) {
       switch (item) {
         case "description":
@@ -306,13 +385,9 @@ export default {
           break;
       }
     },
-    activateMainTable() {
-      this.addingView = false;
-      this.mainTable = true;
-    },
-    activateView() {
-      this.mainTable = false;
-      this.addingView = true;
+    activateView(view) {
+      console.log("view:", view);
+      this.activeTab = view;
     },
     openBoardActivities() {
       this.$store.commit({ type: "toggleIsBoardActivities" });
@@ -409,8 +484,8 @@ export default {
     isTaskDetails() {
       return this.$store.getters.isTaskDetails;
     },
-    viewActive() {
-      return { active: this.addingView };
+    isViewActive() {
+      // return { active: this.activeTab===view };
     },
     tableActive() {
       return { active: this.mainTable };

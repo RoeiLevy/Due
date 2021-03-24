@@ -35,11 +35,6 @@ import draggable from "vuedraggable";
 import group from "./group";
 export default {
   props: ["board"],
-  data() {
-    return {
-      // boardToEdit: { ...this.board },
-    };
-  },
   methods: {
     addTask(newTask, groupId) {
       this.$emit("addTask", newTask, groupId);

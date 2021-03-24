@@ -30,7 +30,7 @@ const routes = [{
     component: board,
     children: [
         {
-            path: '',
+            path: 'maintable',
             name: 'Main Table',
             component: mainTable,
         },

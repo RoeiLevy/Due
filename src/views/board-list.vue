@@ -58,7 +58,7 @@
       <el-carousel
         v-else
         class="carousel"
-        :interval="40000"
+        :interval="4000"
         type="card"
         height="300px"
       >
@@ -111,7 +111,7 @@ export default {
   },
   methods: {
     showBoard(boardId) {
-      this.$router.push(`/board/${boardId}`);
+      this.$router.push(`/board/${boardId}/maintable`);
     },
     async addNewBoard() {
       try {

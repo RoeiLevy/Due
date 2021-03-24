@@ -33,11 +33,13 @@ const routes = [{
             path: 'maintable',
             name: 'Main Table',
             component: mainTable,
-        },
-        {
-            path: ':groupId/task/:taskId',
-            name: 'task details',
-            component: taskDetails,
+            children: [
+                {
+                    path: ':groupId/task/:taskId',
+                    name: 'task details',
+                    component: taskDetails,
+                }
+            ]
         },
         {
             path: 'chart',

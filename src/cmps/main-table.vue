@@ -33,6 +33,8 @@
 <script>
 import draggable from "vuedraggable";
 import group from "./group";
+
+
 export default {
   props: ["board"],
   methods: {

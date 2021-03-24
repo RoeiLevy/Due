@@ -68,7 +68,7 @@
 
           <nav class="flex header-view-bar">
             <ul class="view-nav">
-              <router-link class="view" :to="`/board/${boardToEdit._id}`">
+              <router-link class="view" :to="`/board/${boardToEdit._id}/maintable`">
                 Main Table
               </router-link>
               <router-link
@@ -281,6 +281,8 @@ export default {
         const taskIdx = this.boardToEdit.groups[groupIdx].tasks.findIndex(
           (t) => t.id === task.id
         );
+
+
         this.boardToEdit.groups[groupIdx].tasks.splice(taskIdx, 1, task);
         await this.$store.dispatch({
           type: "saveBoard",
@@ -372,9 +374,7 @@ export default {
         console.log("err:", err);
       }
     },
-    async saveBoard(board) {
-      console.log('board:', board)
-      if(board)this.boardToEdit={...board}
+    async saveBoard() {
       try {
         this.titleEditMode = false;
         this.descEditMode = false;

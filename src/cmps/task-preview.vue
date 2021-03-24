@@ -66,7 +66,7 @@
       <h3
         class="status-h3"
         v-else
-        @click="isSelectingStatus = !isSelectingStatus"
+        @click="toggleAddingStatus"
       >
         Status
       </h3>

@@ -187,7 +187,7 @@
 }
 
 .task-wrapper:focus,
-.task-wrapper:active *:not(.status-container *, .tag-group, .tag-group *, .member-avatar, .member-avatar *  , .task-add-member-modal,  .task-add-member-modal *.member-avatar, .member-avatar *  , .task-add-member-modal,  .task-add-member-modal *) {
+.task-wrapper:active *:not(.status-container *, .tag-group, .tag-group *, .member-avatar, .member-avatar *  , .task-add-member-modal,  .task-add-member-modal *) {
     background-color: #e5f4ff;
 }
 
@@ -265,7 +265,7 @@
 
 .close-screen {
     background-color: #363636;
-    position: fixed;
+    position: absolute;
     left: 0;
     right: 0;
     top: 0;

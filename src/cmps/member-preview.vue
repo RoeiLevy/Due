@@ -1,5 +1,5 @@
 <template>
-  <div @click.prevent="toggleMember" class="add-member-preview">
+  <div @click.stop="toggleMember" class="add-member-preview">
     <div class="member-view">
       <avatar :size="40" :username="member.fullname"></avatar>
       <h3>{{ member.fullname }}</h3>

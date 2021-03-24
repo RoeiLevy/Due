@@ -381,12 +381,10 @@ export default {
         const boardWithUrl = await this.printScr(
           JSON.parse(JSON.stringify(this.boardToEdit))
         );
-        const savedBoard = await this.$store.dispatch({
+        this.boardToEdit = await this.$store.dispatch({
           type: "saveBoard",
           boardToSave: boardWithUrl,
         });
-
-        return savedBoard;
       } catch (err) {
         console.log("err:", err);
       }

@@ -14,15 +14,15 @@ import mainTable from '../cmps/main-table'
 Vue.use(VueRouter)
 
 const routes = [{
-    path: '/',
-    name: 'home',
-    component: home
-},
-{
-    path: '/board',
-    name: 'board list',
-    component: boardList
-},
+        path: '/',
+        name: 'home',
+        component: home
+    },
+    {
+        path: '/board',
+        name: 'board list',
+        component: boardList
+    },
 
 {
     path: '/board/:boardId',

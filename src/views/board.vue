@@ -372,21 +372,17 @@ export default {
         console.log("err:", err);
       }
     },
-    async saveBoard(board) {
-      console.log('board:', board)
-      if(board)this.boardToEdit={...board}
+    async saveBoard() {
       try {
         this.titleEditMode = false;
         this.descEditMode = false;
         const boardWithUrl = await this.printScr(
           JSON.parse(JSON.stringify(this.boardToEdit))
         );
-        const savedBoard = await this.$store.dispatch({
+        this.boardToEdit = await this.$store.dispatch({
           type: "saveBoard",
           boardToSave: boardWithUrl,
         });
-
-        return savedBoard;
       } catch (err) {
         console.log("err:", err);
       }

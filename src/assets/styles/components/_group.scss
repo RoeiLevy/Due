@@ -74,16 +74,8 @@
 }
 
 .group-footer {
-    height: 80px;
+    height: 40px;
     width: 100%;
-    .progress{
-        width: 140px;
-        height: 30px;
-        display: flex;
-        .box{
-            height: 100%;
-        }
-    }
     .add-task-wrapper {
         .add-task-form {
             height: 100%;

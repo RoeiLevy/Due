@@ -18,6 +18,7 @@
     overflow-y: auto;
     .board-container {
         width: 100%;
+        height: fit-content;
         background-color: #ffffff;
         border-left: 1px solid #e6e9ef;
         padding-inline-start: 20px;
@@ -84,26 +85,26 @@
     //     .header-view-bar.add-view-wrapper.add-view-btn button:hover {
     //         background-color: transparent !important;
     //     }
-        // .main-table-wrapper {
-        //     width: 100%;
-        //     .el-tabs {
-        //         width: 100%;
-        //     }
-        //     .el-tabs__header {
-        //         width: fit-content;
-        //         left: 115px;
-        //     }
-        //     .el-tabs__content {
-        //         .board-content-wrapper {
-        //             width: 100%;
-        //         }
-        //         .add-view-wrapper {
-        //             position: absolute;
-        //             top: -53px;
-        //             // top: 120px;
-        //         }
-        //     }
-        // }
+    // .main-table-wrapper {
+    //     width: 100%;
+    //     .el-tabs {
+    //         width: 100%;
+    //     }
+    //     .el-tabs__header {
+    //         width: fit-content;
+    //         left: 115px;
+    //     }
+    //     .el-tabs__content {
+    //         .board-content-wrapper {
+    //             width: 100%;
+    //         }
+    //         .add-view-wrapper {
+    //             position: absolute;
+    //             top: -53px;
+    //             // top: 120px;
+    //         }
+    //     }
+    // }
     //     .view {
     //         // border-bottom: 3px solid transparent;
     //         text-decoration: none;

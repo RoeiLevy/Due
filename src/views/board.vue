@@ -23,12 +23,17 @@
                 class="board-title"
                 v-if="titleEditMode"
                 ref="title"
+                style="text-transform: capitalize"
                 v-model="boardToEdit.title"
                 
                 @focusout.enter="saveBoard"
               />
               <div v-else>
-                <h1 class="board-title" @click="handleEdit('title')">
+                <h1
+                  class="board-title"
+                  style="text-transform: capitalize"
+                  @click="handleEdit('title')"
+                >
                   {{ boardToEdit.title }}
                 </h1>
               </div>
@@ -39,12 +44,17 @@
                 class="board-description"
                 v-if="descEditMode"
                 ref="description"
+                style="text-transform: capitalize"
                 v-model="boardToEdit.description"
                 @keyup.enter="saveBoard(boardToEdit)"
                 @focusout="saveBoard(boardToEdit)"
               />
               <div v-else>
-                <p class="board-description" @click="handleEdit('description')">
+                <p
+                  class="board-description"
+                  style="text-transform: capitalize"
+                  @click="handleEdit('description')"
+                >
                   {{ boardDescription }}
                 </p>
               </div>
@@ -77,14 +87,30 @@
               <router-link
                 class="view"
                 style="text-transform: capitalize"
-                v-for="(view, idx) in boardToEdit.views"
-                :key="idx"
-                :to="`/board/${boardToEdit._id}/${view}`"
+                :to="`/board/${boardToEdit._id}/chart`"
               >
-                <!-- @click.self="activateView(view)"
+                Chart
+              </router-link>
+              <router-link
+                class="view"
+                style="text-transform: capitalize"
+                :to="`/board/${boardToEdit._id}/calendar`"
+              >
+                Calendar
+              </router-link>
+              <router-link
+                class="view"
+                style="text-transform: capitalize"
+                :to="`/board/${boardToEdit._id}/kanban`"
+              >
+                Kanban
+              </router-link>
+              <!-- v-for="(view, idx) in boardToEdit.views"
+                :key="idx" -->
+              <!-- @click.self="activateView(view)"
                 :class="{ active: isViewActive }" -->
-                {{ view }}
-                <div class="view-dropdown-container">
+              <!-- {{ view }} -->
+              <!-- <div class="view-dropdown-container">
                   <button class="view-menu-btn">
                     <font-awesome-icon
                       class="view-menu-icon"
@@ -96,8 +122,7 @@
                     <li @click="KanbanView(view)">Duplicate</li>
                     <li @click="removeView(view)">Remove</li>
                   </ul>
-                </div>
-              </router-link>
+                </div> -->
               <el-dropdown
                 class="views-drop-down add-view-wrapper"
                 trigger="click"
@@ -356,11 +381,12 @@ export default {
       this.boardToEdit.views.push(command.toLowerCase());
       this.saveBoard();
     },
-    removeView(view) {
+    async removeView(view) {
       console.log("view:", view);
       const idx = this.boardToEdit.views.findIndex((v) => v === view);
       this.boardToEdit.views.splice(idx, 1);
-      this.saveBoard();
+      await this.saveBoard();
+      this.$router.push(`/board/${this.boardToEdit._id}/maintable`);
     },
     handleEdit(item) {
       switch (item) {
@@ -405,7 +431,7 @@ export default {
         const boardWithUrl = await this.printScr(
           JSON.parse(JSON.stringify(this.boardToEdit))
         );
-        this.boardToEdit = await this.$store.dispatch({
+        await this.$store.dispatch({
           type: "saveBoard",
           boardToSave: boardWithUrl,
         });

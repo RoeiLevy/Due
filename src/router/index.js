@@ -10,6 +10,7 @@ import taskDetails from '../cmps/task-details'
 import chart from '../cmps/chart'
 import calendar from '../cmps/calendar'
 import mainTable from '../cmps/main-table'
+import kanban from '../cmps/kanban'
 
 Vue.use(VueRouter)
 
@@ -51,6 +52,11 @@ const routes = [{
             name: 'Calendar',
             component: calendar,
         },
+        {
+            path: 'kanban',
+            name: 'Kanban',
+            component: kanban,
+        }
     ]
 },
 {

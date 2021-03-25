@@ -15,10 +15,11 @@
         </el-menu-item>
 
         <ul class="workspace-board-list" v-show="!isCollapse">
-          <li 
-          class="board-li-workspace"
+          <li
+            class="board-li-workspace"
             v-for="board in boards"
             :key="board._id"
+            style="text-transform: capitalize"
             @click="showBoard(board._id)"
           >
             {{ board.title }}
@@ -49,7 +50,7 @@ export default {
     },
     showBoard(newBoardId) {
       const currBoardId = this.$route.params.boardId;
-      if (currBoardId){
+      if (currBoardId) {
         if (newBoardId === currBoardId) return;
       }
 

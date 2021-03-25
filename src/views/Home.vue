@@ -2,26 +2,24 @@
   <div class="home">
     <header class="home-header">
       <router-link to="/">
-        <img class="logo" src="@/assets/imgs/logo.png" />
+        <h2 class="due">Due<span class="com">.com</span></h2>
+        <!-- <img class="logo" src="@/assets/imgs/logo.png" /> -->
       </router-link>
-      <div v-if="!loggedInUser" class="nav-links">
+      <div v-if="!loggedInUser || loggedInUser.fullname === 'Guest'" class="nav-links">
         <router-link to="/login">Login</router-link>
+        <span>|</span>
         <router-link to="/signup">Sign Up</router-link>
       </div>
       <div v-else class="nav-links">
+      <h2 class="username" v-if="loggedInUser">Hello {{ loggedInUser.fullname }}</h2>
+        <span>|</span>
         <button @click="logout" class="logout-btn">Logout</button>
       </div>
     </header>
+    <main class="main-content">
+
     <section class="info-container flex column">
-      <h2 v-if="loggedInUser">Hello {{ loggedInUser.fullname }}</h2>
-      <el-button
-        @click="pushRoute"
-        type="primary"
-        plain
-        round
-        class="get-started"
-        >Get Started</el-button
-      >
+     
       <h1>DUE</h1>
       <h2>
         Planning, tracking and delivering your team’s best work has never been
@@ -32,6 +30,7 @@
         including tracking projects, deadlines, and team collaboration.
       </h4>
     </section>
+    </main>
   </div>
 </template>
 

@@ -25,8 +25,8 @@
                 ref="title"
                 style="text-transform: capitalize"
                 v-model="boardToEdit.title"
-                @keyup.enter="saveBoard"
-                @focusout="saveBoard"
+                
+                @focusout.enter="saveBoard"
               />
               <div v-else>
                 <h1
@@ -109,9 +109,9 @@
                 :key="idx" -->
               <!-- @click.self="activateView(view)"
                 :class="{ active: isViewActive }" -->
-              <!-- {{ view }} -->
-              <!-- <div class="view-dropdown-container">
-                  <button class="view-menu-btn">
+                <!-- {{ view }} -->
+                <!-- <div class="view-dropdown-container">
+                  <button class="view-menu-btn" style="background: none;">
                     <font-awesome-icon
                       class="view-menu-icon"
                       icon="ellipsis-h"
@@ -123,7 +123,7 @@
                     <li @click="removeView(view)">Remove</li>
                   </ul>
                 </div> -->
-              <el-dropdown
+              <!-- <el-dropdown
                 class="views-drop-down add-view-wrapper"
                 trigger="click"
                 @command="addView"
@@ -141,7 +141,7 @@
                   <el-dropdown-item command="Chart">Chart</el-dropdown-item>
                   <el-dropdown-item command="Kanban">Kanban</el-dropdown-item>
                 </el-dropdown-menu>
-              </el-dropdown>
+              </el-dropdown> -->
             </ul>
           </nav>
           <router-view

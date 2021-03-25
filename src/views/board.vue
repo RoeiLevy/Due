@@ -24,8 +24,8 @@
                 v-if="titleEditMode"
                 ref="title"
                 v-model="boardToEdit.title"
-                @keyup.enter="saveBoard"
-                @focusout="saveBoard"
+                
+                @focusout.enter="saveBoard"
               />
               <div v-else>
                 <h1 class="board-title" @click="handleEdit('title')">

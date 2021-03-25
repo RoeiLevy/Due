@@ -1,6 +1,6 @@
 <template>
-  <section class="workspace">
-    <div class="workspace-menu-container">
+  <section :class="workspaceClass" class="workspace">
+    <!-- <div class="workspace-menu-container">
       <el-menu
         @select="toggleCollapse"
         class="el-menu-vertical-demo"
@@ -26,6 +26,43 @@
           </li>
         </ul>
       </el-menu>
+    </div> -->
+    <div class="workspace-menu-container">
+      <div @click="toggleWorkspace" class="menu-toggle-btn">
+        <font-awesome-icon
+          @click="toggleWorkspace"
+          v-if="!isOpen"
+          class="header-icon plus arrow-btn"
+          icon="chevron-right"
+        />
+        <font-awesome-icon
+          @click="toggleWorkspace"
+          v-else
+          class="header-icon plus arrow-btn"
+          icon="chevron-left"
+        />
+      </div>
+      <div class="menu-list">
+        <!-- <span slot="title">{{ boardTitle() }}</span> -->
+        <div v-show="isOpen" class="board-menu-actions">
+          <h2 class="title">Board Menu</h2>
+          <div class="action"><h3>Add</h3></div>
+          <div class="action"><h3>Filters</h3></div>
+          <div class="action"><h3>Search</h3></div>
+        </div>
+
+        <ul class="workspace-board-list" v-show="isOpen">
+          <li
+            class="board-li-workspace"
+            v-for="board in boards"
+            :key="board._id"
+            style="text-transform: capitalize"
+            @click="showBoard(board._id)"
+          >
+            {{ board.title }}
+          </li>
+        </ul>
+      </div>
     </div>
   </section>
 </template>
@@ -36,10 +73,13 @@ import boardPreview from "../cmps/board-preview.vue";
 export default {
   data() {
     return {
-      isCollapse: true,
+      isOpen: false,
     };
   },
   methods: {
+    toggleWorkspace() {
+      this.isOpen = !this.isOpen;
+    },
     handleOpen(key, keyPath) {},
     handleClose(key, keyPath) {},
     toggleCollapse() {
@@ -93,6 +133,11 @@ export default {
     },
   },
   computed: {
+    workspaceClass() {
+      return {
+        open: this.isOpen,
+      };
+    },
     getTime(time) {
       return moment(time).fromNow();
     },

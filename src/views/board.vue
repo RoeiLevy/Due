@@ -56,7 +56,9 @@
                 >
                   {{ boardDescription }}
                 </p>
+
               </div>
+                <p class="board-created-by">By: {{boardToEdit.createdBy.fullname}}</p>
             </div>
 
             <!-- //////////////////////////////////// -->

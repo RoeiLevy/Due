@@ -130,9 +130,10 @@ export const boardStore = {
                 throw err;
             }
         },
-        async addNewBoard() {
+        async addNewBoard(context) {
             try {
                 var newBoard = boardService.getEmptyBoard();
+                newBoard.createdBy = context.getters.loggedInUser;
                 const addedBoard = await boardService.add(newBoard);
                 return addedBoard
             } catch (err) {
@@ -191,7 +192,7 @@ export const boardStore = {
         },
         async saveStatuses(context, statuses) {
             try {
-                const boardToSave = { ...context.state.currBoard };
+                const boardToSave = {...context.state.currBoard };
                 boardToSave.statuses = [...statuses];
                 await context.dispatch('saveBoard', { boardToSave })
                 return statuses;

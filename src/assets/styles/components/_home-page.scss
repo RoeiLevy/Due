@@ -1,35 +1,94 @@
 .home {
+
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+
+    .main-content {
+        display: flex;
+        flex: 1;
+        background-color: #fefefe;
+        background-color: #f9f8f8;
+    }
     .home-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        height: 72px;
+        padding-left: 32px;
+        padding-right: 32px;
+        box-shadow: -1px 1px 14px -2px #000000;
+
+        .due {
+            color: rgb(50, 51, 56);
+            font-size: 28px;
+            font-weight: bold;
+            font-family: roboto-bold, sans-serif;
+        }
+
+        .com {
+            font-size: 14px;
+            font-weight: bold;
+            font-family: roboto-regular, sans-serif;
+        }
+
+        .logo {
+            width: 42px;
+        }
     }
+
     .nav-links {
         padding: 10px;
+        font-size: 1rem;
+        font-family: roboto-regular, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
         .logout-btn {
             padding: 10px;
             background: none;
             transition: all.3s;
+            font-family: inherit;
+            font-size: 16px;
+
         }
+
         .logout-btn:hover {
             opacity: 0.5;
         }
+
         a {
             text-decoration: none;
         }
     }
-    .nav-links > * {
+
+    .nav-links>* {
         padding-inline-end: 10px;
         text-decoration: none;
+        color: rgb(50, 51, 56);
+
+
     }
+
+    .username {
+        font-family: inherit;
+        font-size: 16px;
+    }
+
     .info-container {
         margin: 5% auto;
         padding: 20px;
         max-width: 600px;
+        display: flex;
+        flex: 1;
+
         :first-child {
             margin: 0 auto;
         }
     }
+
     .get-started {
         margin: 20px 0;
         font-size: large;
@@ -37,9 +96,11 @@
         min-width: fit-content;
         align-self: center;
     }
+
     a {
         text-decoration: none;
     }
+
     h1 {
         font-weight: bold;
     }

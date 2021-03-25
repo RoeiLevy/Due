@@ -25,8 +25,8 @@
                 ref="title"
                 style="text-transform: capitalize"
                 v-model="boardToEdit.title"
-                @keyup.enter="saveBoard"
-                @focusout="saveBoard"
+                
+                @focusout.enter="saveBoard"
               />
               <div v-else>
                 <h1

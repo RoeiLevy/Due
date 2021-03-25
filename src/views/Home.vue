@@ -1,9 +1,7 @@
 <template>
   <div class="home">
     <header class="home-header">
-      <router-link to="/">
-        <h2 class="due">Due<span class="com">.com</span></h2>
-      </router-link>
+      <h2 class="due">Due<span class="com">.com</span></h2>
       <div
         v-if="!loggedInUser || loggedInUser.fullname === 'Guest'"
         class="nav-links"
@@ -23,10 +21,9 @@
     <main class="main-content flex column">
       <section class="info-container flex column">
         <!-- <h1>DUE</h1> -->
-      <div class="logo-container">
-
-        <img class="logo" src="@/assets/imgs/logo.png" />
-      </div>
+        <div class="logo-container">
+          <img class="logo" src="@/assets/imgs/logo.png" />
+        </div>
         <div class="desc">
           <h2>
             Planning, tracking and delivering your team’s best work has never

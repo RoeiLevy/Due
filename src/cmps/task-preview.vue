@@ -224,6 +224,7 @@ export default {
       if (!newValue) {
         this.isAddingMember = false;
         this.isSelectingStatus = false;
+        this.isSelectingPriority = false;
       }
     },
   },

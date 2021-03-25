@@ -19,18 +19,18 @@ export const socketStore = {
         getChatHistory(context, { chatId }) {
             socketService.emit('getHistory', chatId)
         },
-        sendActivity(context, { txt, task }) {
-            if (!task) task = null;
+        // sendActivity(context, { txt, task }) {
+        //     if (!task) task = null;
 
-            const activity = {
-                id: utilService.makeId(),
-                createdAt: Date.now(),
-                txt,
-                byMember: context.getters.loggedInUser,
-                task
-            }
-            socketService.emit('new activity', activity)
-        },
+        //     const activity = {
+        //         id: utilService.makeId(),
+        //         createdAt: Date.now(),
+        //         txt,
+        //         byMember: context.getters.loggedInUser,
+        //         task
+        //     }
+        //     socketService.emit('new activity', activity)
+        // },
         sendBoard(context, { board }) {
             socketService.emit('send board', board)
         }

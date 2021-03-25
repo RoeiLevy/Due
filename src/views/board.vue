@@ -13,7 +13,7 @@
         :members="boardToEdit.members"
         @addMember="addMember"
       ></social-modal>
-      <task-details :drawer="isTaskDetails" />
+      <task-details :board="boardToEdit" :drawer="isTaskDetails" />
       <board-activities :board="boardToEdit" :drawer="isBoardActivities" />
       <div class="flex column board-container">
         <div class="flex column board-header">
@@ -187,19 +187,22 @@ export default {
     toggleCloseScreen() {
       this.$store.commit("toggleCloseScreen");
     },
+    // NOT USED FUNCTION v
     async addStatus(status) {
       try {
         this.boardToEdit.statuses.push(status);
-        await this.saveBoard();
-        this.$store.dispatch({
-          type: "sendActivity",
-          txt: "Created a new status",
-        });
+        console.log("added status");
+        this.saveBoard();
+        // this.$store.dispatch({
+        //   type: "sendActivity",
+        //   txt: "Created a new status",
+        // });
       } catch (err) {
         console.log("err:", err);
       }
     },
     async deleteStatus(statusId) {
+      console.log("deleting");
       try {
         const idx = this.boardToEdit.statuses.findIndex(
           (s) => s.id === statusId
@@ -218,11 +221,15 @@ export default {
         );
         this.boardToEdit.groups.splice(groupIdx, 1);
 
+        this.boardToEdit.activities.unshift(
+          this.createActivity("Removed a group")
+        );
+
         await this.$store.dispatch({
           type: "saveBoard",
           boardToSave: this.boardToEdit, // add activity to send
         });
-        this.$store.dispatch({ type: "sendActivity", txt: "Removed a group" });
+        // this.$store.dispatch({ type: "sendActivity", txt: "Removed a group" });
         // Add user msg
       } catch (err) {
         console.log("Couldn`t remove Group", err);
@@ -255,15 +262,21 @@ export default {
         );
         this.boardToEdit.groups[groupIdx].tasks.push(newTask);
 
+        this.boardToEdit.activities.unshift(
+          this.createActivity(`Created a new task "${newTask.title}"`, {
+            id: newTask.id,
+            title: newTask.title,
+          })
+        );
         const groupToSave = JSON.parse(
           JSON.stringify(this.boardToEdit.groups[groupIdx])
         );
         const savedGroup = await this.saveGroup(groupToSave);
-        this.$store.dispatch({
-          type: "sendActivity",
-          txt: `Created a new task "${newTask.title}"`,
-          task: { id: newTask.id, title: newTask.title },
-        });
+        // this.$store.dispatch({
+        //   type: "sendActivity",
+        //   txt: `Created a new task "${newTask.title}"`,
+        //   task: { id: newTask.id, title: newTask.title },
+        // });
 
         // Add user msg
         return savedGroup;
@@ -280,17 +293,24 @@ export default {
           (t) => t.id === task.id
         );
 
+        this.boardToEdit.activities.unshift(
+          this.createActivity(`Updated task "${task.title}"`, {
+            id: task.id,
+            title: task.title,
+          })
+        );
+
         this.boardToEdit.groups[groupIdx].tasks.splice(taskIdx, 1, task);
         await this.$store.dispatch({
           type: "saveBoard",
           boardToSave: this.boardToEdit,
         });
 
-        this.$store.dispatch({
-          type: "sendActivity",
-          txt: "Updated a task",
-          task: { id: task.id, title: task.title },
-        });
+        // this.$store.dispatch({
+        //   type: "sendActivity",
+        //   txt: "Updated a task",
+        //   task: { id: task.id, title: task.title },
+        // });
         // Add user msg
       } catch (err) {
         console.log("Couldn`t remove Task", err);
@@ -311,15 +331,22 @@ export default {
 
         this.boardToEdit = boardCopy;
 
+        this.boardToEdit.activities.unshift(
+          this.createActivity(`Removed task "${task.title}"`, {
+            id: task.id,
+            title: task.title,
+          })
+        );
+
         const removedTask = await this.$store.dispatch({
           type: "saveBoard",
           boardToSave: this.boardToEdit,
         });
 
-        this.$store.dispatch({
-          type: "sendActivity",
-          txt: `Removed task "${task.title}"`,
-        });
+        // this.$store.dispatch({
+        //   type: "sendActivity",
+        //   txt: `Removed task "${task.title}"`,
+        // });
         // Add user msg
       } catch (err) {
         console.log("err:", err);
@@ -390,11 +417,16 @@ export default {
       try {
         const newGroup = boardService.getEmptyGroup();
         this.boardToEdit.groups.unshift(newGroup);
+
+        this.boardToEdit.activities.unshift(
+          this.createActivity("Created a new group")
+        );
+
         await this.$store.dispatch({
           type: "saveBoard",
           boardToSave: this.boardToEdit,
         });
-        this.$store.dispatch({ type: "sendActivity", txt: "Added a group" });
+        // this.$store.dispatch({ type: "sendActivity", txt: "Added a group" });
         // Add user msg
       } catch (err) {
         console.log("err:", err);
@@ -433,6 +465,17 @@ export default {
       } catch (err) {
         console.log("err:", err);
       }
+    },
+    createActivity(txt, task = null) {
+      const activity = {
+        id: utilService.makeId(),
+        createdAt: Date.now(),
+        txt,
+        byMember: this.$store.getters.loggedInUser,
+        task,
+      };
+      // console.log("created activity", activity);
+      return activity;
     },
   },
   computed: {
@@ -475,15 +518,15 @@ export default {
   created() {
     this.loadBoard();
     const boardId = this.$route.params.boardId;
-    // socketService.setup();
     socketService.emit("chat topic", boardId);
-    socketService.on("add activity", this.addActivity);
     socketService.on("get board", this.setBoard);
+    // socketService.setup();
+    // socketService.on("add activity", this.addActivity);
   },
   destroyed() {
     socketService.off("get board", this.setBoard);
-    socketService.off("add activity", this.addMsg);
     socketService.terminate();
+    // socketService.off("add activity", this.addMsg);
   },
   components: {
     appHeader,

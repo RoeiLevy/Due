@@ -10,7 +10,6 @@
           </div>
         </div>
       </el-tab-pane>
-      
       <el-tab-pane label="Invite" name="invite">
         <el-input maxlength=200 size=small class="email-input" placeholder="Member Email" v-model="email">
         </el-input>
@@ -41,7 +40,6 @@ export default {
     Avatar,
   },
   created() {
-    console.log(this.members);
   }
 };
 </script>

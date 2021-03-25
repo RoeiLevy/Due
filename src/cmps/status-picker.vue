@@ -115,6 +115,7 @@ export default {
       this.$emit("setStatus", { ...status });
     },
     addStatus() {
+      console.log('added status');
       this.isAddingStatus = false;
       if (!this.newStatus.color) this.newStatus.color = "#808080";
       this.statusesToEdit.push(this.newStatus);

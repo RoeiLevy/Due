@@ -9,7 +9,7 @@
       <h2 v-if="task">{{ task.title }}</h2>
     </div>
 
-    <el-tabs v-model="activeName" @tab-click="handleClick">
+    <el-tabs v-if="task" v-model="activeName" @tab-click="handleClick">
       <el-tab-pane label="Updates" name="updates">
         <updates
           v-if="isUpdatesClicked"
@@ -18,7 +18,7 @@
         />
       </el-tab-pane>
       <el-tab-pane label="Activity Log" name="activity">
-        <activity-log :activities="activities" />
+        <activity-log :activities="board.activities" />
       </el-tab-pane>
     </el-tabs>
   </el-drawer>
@@ -29,11 +29,11 @@ import activityLog from "./activity-log";
 import updates from "./updates";
 
 export default {
-  props: ["drawer"],
+  props: ["drawer", "board"],
   data() {
     return {
-      task: null,
-      activities: null,
+      // task: null,
+      // activities: null,
       activeName: "updates",
     };
   },
@@ -44,18 +44,18 @@ export default {
       if (taskId) this.$router.go(-1);
       this.$store.commit({ type: "toggleIsDetails" });
     },
-    async getTask(taskId, groupId) {
-      try {
-        const taskToShow = await this.$store.dispatch({
-          type: "getTask",
-          taskId,
-          groupId,
-        });
-        this.task = taskToShow;
-      } catch (err) {
-        console.log("err:", err);
-      }
-    },
+    // async getTask(taskId, groupId) {
+    //   try {
+    //     const taskToShow = await this.$store.dispatch({
+    //       type: "getTask",
+    //       taskId,
+    //       groupId,
+    //     });
+    //     this.task = taskToShow;
+    //   } catch (err) {
+    //     console.log("err:", err);
+    //   }
+    // },
     async getTaskActivities(taskId) {
       try {
         const activitiesToShow = await this.$store.dispatch({
@@ -73,11 +73,11 @@ export default {
         const editedTask = JSON.parse(JSON.stringify(this.task));
         if (!editedTask["comments"]) editedTask.comments = [];
         editedTask.comments.unshift(newComment);
-        this.task = editedTask;
+        // this.task = editedTask;
 
         const taskToShow = await this.$store.dispatch({
           type: "saveTask",
-          task: JSON.parse(JSON.stringify(this.task)),
+          task: editedTask,
           groupId,
         });
 
@@ -97,20 +97,34 @@ export default {
     isUpdatesClicked() {
       return this.activeName === "updates" && this.task;
     },
+    task() {
+      if (!this.drawer) return
+      const taskId = this.$route.params.taskId;
+      const groupId = this.$route.params.groupId;
+
+      const groupIdx = this.board.groups.findIndex((g) => g.id === groupId);
+      const taskIdx = this.board.groups[groupIdx].tasks.findIndex(
+        (t) => t.id === taskId
+      );
+      const taskToShow = this.board.groups[groupIdx].tasks[taskIdx]
+      return taskToShow;
+    },
   },
   components: {
     activityLog,
     updates,
   },
-  created() {},
+  created() {
+  },
   watch: {
     $route(to, from) {
-      const taskId = this.$route.params.taskId;
-      const groupId = this.$route.params.groupId;
-      if (taskId) {
-        this.getTask(taskId, groupId);
-        this.getTaskActivities(taskId);
-      }
+      //   const taskId = this.$route.params.taskId;
+      //   const groupId = this.$route.params.groupId;
+      //   if (taskId) {
+      //     this.getTask(taskId, groupId);
+      //     this.getTaskActivities(taskId);
+      //   }
+      // },
     },
   },
 };

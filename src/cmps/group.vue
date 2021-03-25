@@ -87,8 +87,18 @@
           <button v-if="taskToEdit" class="add-task-btn">Add</button>
         </form>
       </div>
+
+      <div class="progress-bar-container">
+        <div class="div-1"></div>
+        <div class="div-2"></div>
+        <div class="div-3"></div>
+        <progress-bar :group="group"></progress-bar>
+        <div class="div-4"></div>
+        <progress-bar-priorities :group="group"></progress-bar-priorities>
+        <div class="div-5"></div>
+      </div>
     </div>
-    <div class="task-wrapper flex transparent">
+    <!-- <div class="task-wrapper flex transparent">
       <div class="task-color-box-start"></div>
       <div class="task-title"></div>
       <div class="task-members-container"></div>
@@ -100,8 +110,8 @@
         <progress-bar-priorities :group="group"></progress-bar-priorities>
 
       </div>
-      <div class="task-color-box-end"></div>
-    </div>
+      <div class="task-color-box-end"></div> -->
+    <!-- </div> -->
   </section>
 </template>
 
@@ -111,7 +121,7 @@ import taskPreview from "./task-preview";
 import draggable from "vuedraggable";
 import progressBar from "../cmps/progress-bar";
 import { Dropdown } from "element-ui";
-import progressBarPriorities from './progress-bar-priorities';
+import progressBarPriorities from "./progress-bar-priorities";
 
 export default {
   name: "group",
@@ -215,7 +225,7 @@ export default {
     draggable,
     Dropdown,
     progressBar,
-    progressBarPriorities
+    progressBarPriorities,
   },
 };
 </script>

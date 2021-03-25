@@ -25,13 +25,16 @@
                 ref="title"
                 style="text-transform: capitalize"
                 v-model="boardToEdit.title"
-                @focusout.enter="saveBoard"
+                @keyup.enter="saveBoard(boardToEdit)"
+                @focusout="saveBoard(boardToEdit)"
+
               />
               <div v-else>
                 <h1
                   class="board-title"
                   style="text-transform: capitalize"
                   @click="handleEdit('title')"
+                  
                 >
                   {{ boardToEdit.title }}
                 </h1>

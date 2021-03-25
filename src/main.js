@@ -10,6 +10,7 @@ import VModal from 'vue-js-modal'
 import VueDatePicker from '@mathieustan/vue-datepicker';
 import '@mathieustan/vue-datepicker/dist/vue-datepicker.min.css';
 import 'element-ui/lib/theme-chalk/index.css';
+import VCalendar from 'v-calendar';
 
 
 locale.use('EN')
@@ -17,6 +18,9 @@ Vue.use(ElementUI, { locale });
 Vue.use(VModal)
 Vue.use(VueDatePicker, {
     lang: 'en'
+});
+Vue.use(VCalendar, {
+    componentPrefix: 'vc'
 });
 
 

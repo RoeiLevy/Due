@@ -143,9 +143,9 @@
                 background-color: none !important;
             }
         }
-        // .view:hover {
-        //     border-bottom: 3px solid rgb(0, 153, 255);
-        // }
+        .view:hover {
+            opacity: .7;
+        }
         // .view:focus {
         //     border-bottom: 3px solid rgb(0, 153, 255);
         //     color: rgb(0, 153, 255);
@@ -228,10 +228,17 @@
 }
 
 input.board-description {
+    margin-bottom: 1rem;
     outline: none;
     border: 1px dashed gray;
 }
 
 .board-description:hover {
     border: 1px dashed gray;
+}
+
+.custom-calendar {
+    display: flex;
+    align-self: center;
+    margin-top: 20px;
 }

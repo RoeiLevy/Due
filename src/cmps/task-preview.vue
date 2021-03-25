@@ -11,9 +11,14 @@
       @keyup.enter="updateTask"
       @focusout="updateTask"
       class="task-title-input"
+      style="text-transform: capitalize"
     />
     <div v-else class="task-title">
-      <label class="task-title-label" @click="handleEdit">
+      <label
+        class="task-title-label"
+        style="text-transform: capitalize"
+        @click="handleEdit"
+      >
         {{ taskToEdit.title }}
       </label>
       <el-badge
@@ -59,17 +64,12 @@
         class="task-status"
         @click="toggleAddingStatus"
         v-if="taskToEdit.status"
+        style="text-transform: capitalize"
         :style="{ 'background-color': taskToEdit.status.color }"
       >
         {{ taskToEdit.status.title }}
       </h3>
-      <h3
-        class="status-h3"
-        v-else
-        @click="toggleAddingStatus"
-      >
-        Status
-      </h3>
+      <h3 class="status-h3" v-else @click="toggleAddingStatus">Status</h3>
       <status-picker
         @setStatus="setStatus"
         @addStatus="addStatus"
@@ -121,7 +121,6 @@ export default {
     toggleAddingMember() {
       this.isAddingMember = !this.isAddingMember;
       this.$store.commit("toggleCloseScreen");
-      console.log(this.isAddingMember);
     },
     toggleAddingStatus() {
       this.isSelectingStatus = !this.isSelectingStatus;
@@ -148,7 +147,7 @@ export default {
     },
     setStatus(status) {
       this.isSelectingStatus = false;
-      this.taskToEdit.status = {...status};
+      this.taskToEdit.status = { ...status };
       this.$emit("updateTask", this.taskToEdit);
       this.$store.commit("toggleCloseScreen");
     },

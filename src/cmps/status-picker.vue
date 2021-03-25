@@ -14,6 +14,7 @@
         @click="setStatus(status)"
         :style="{ 'background-color': status.color }"
         effect="dark"
+        style="text-transform: capitalize"
         class="status-btn"
       >
         <h4>{{ status.title }}</h4>
@@ -36,6 +37,7 @@
           v-model="statusesToEdit[idx].title"
           closable
           @close="deleteStatus(status.id)"
+          style="text-transform: capitalize"
           :style="{ 'border-left-color': status.color }"
           effect="light"
           class="status-edit"
@@ -115,6 +117,7 @@ export default {
       this.$emit("setStatus", { ...status });
     },
     addStatus() {
+      console.log("added status");
       this.isAddingStatus = false;
       if (!this.newStatus.color) this.newStatus.color = "#808080";
       this.statusesToEdit.push(this.newStatus);

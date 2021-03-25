@@ -1,0 +1,19 @@
+.kanban {
+    margin-top: 10px;
+    span {
+        gap: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        .kanban-item {
+            width: 250px;
+            height: 200px;
+            overflow: auto;
+            border-radius: 5px;
+            h3 {
+                text-align: center;
+                padding: 5px;
+                text-transform: capitalize;
+            }
+        }
+    }
+}

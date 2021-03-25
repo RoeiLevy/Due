@@ -13,7 +13,7 @@
     text-align: center;
     display: flex;
     flex-direction: column;
-    >*:hover {
+    > *:hover {
         opacity: 1;
     }
     .statuses {
@@ -22,7 +22,7 @@
         }
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: self-start;
         flex-wrap: wrap;
         flex: 1;
         height: 225px;
@@ -44,7 +44,7 @@
         flex: 1;
         height: 225px;
         width: 250px;
-        >* {
+        > * {
             margin: 3px;
         }
         input {
@@ -88,6 +88,7 @@
         .new-status-btn {
             border: 1px dashed gray;
             border-radius: 5px;
+            width: 122px;
         }
         .delete-status-btn {
             transition: all 0.3s;

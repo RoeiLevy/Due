@@ -114,8 +114,6 @@ export default {
     async addNewBoard() {
       try {
         const newBoard = await this.$store.dispatch("addNewBoard");
-        newBoard.createdBy = this.loggedInUser;
-        console.log('loggedin user:', this.loggedInUser)
         this.$router.push(`/board/${newBoard._id}/maintable`);
       } catch (err) {
         console.log("Couldn`t add board", err);

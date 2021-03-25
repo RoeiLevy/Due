@@ -531,7 +531,6 @@ export default {
   watch: {
     $route(to, from) {
       const boardId = this.$route.params.boardId;
-      console.log("board ID:", boardId);
       this.loadBoard();
     },
     isCloseScreen(newValue) {

@@ -4,11 +4,6 @@ import { Bar } from "vue-chartjs";
 export default {
   extends: Bar,
   props: ["board"],
-  data() {
-    return {
-      // board: this.$store.getters.boardForDisplay,
-    };
-  },
   methods: {
     getData() {
       var map = this.board.statuses.reduce((map, status) => {
@@ -24,8 +19,6 @@ export default {
     },
   },
   mounted() {
-    console.log('hi2');
-    // const type = this.Bar;
     const data = {
       labels: this.board.statuses.map((s) => s.title),
       datasets: [

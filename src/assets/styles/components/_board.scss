@@ -136,15 +136,10 @@
             .view-btn {
                 .view-menu-btn {
                     display: none;
-                    background-color: none !important;
+                    background: none !important;
                 }
             }
             .view-btn:hover .view-menu-btn {
-                display: flex;
-                border-radius: 10px;
-                padding: 0 5px !important;
-                align-items: center;
-                justify-content: center;
                 background-color: none !important;
             }
         }
@@ -169,7 +164,7 @@
     canvas#bar-chart {
         height: 510px !important;
         width: 510px !important;
-        margin: 0 auto;
+        margin: 10px auto;
     }
 }
 
@@ -240,4 +235,10 @@ input.board-description {
 
 .board-description:hover {
     border: 1px dashed gray;
+}
+
+.custom-calendar {
+    display: flex;
+    align-self: center;
+    margin-top: 10px;
 }

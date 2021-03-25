@@ -49,6 +49,9 @@
       <div class="dueDate-wrapper">
         <label>dueDate</label>
       </div>
+      <div class="priority-wrapper">
+        <label>Priority</label>
+      </div>
       <div class="space-box"></div>
     </div>
     <draggable
@@ -67,6 +70,8 @@
           @updateTask="updateTask"
           @addStatus="addStatus"
           @deleteStatus="deleteStatus"
+          @addPriority="addPriority"
+          @deletePriority="deletePriority"
         />
       </transition-group>
     </draggable>
@@ -83,6 +88,7 @@
           <button v-if="taskToEdit" class="add-task-btn">Add</button>
         </form>
       </div>
+      <progress-bar :group="group"></progress-bar>
     </div>
   </section>
 </template>
@@ -91,6 +97,7 @@
 <script>
 import taskPreview from "./task-preview";
 import draggable from "vuedraggable";
+import progressBar from "../cmps/progress-bar";
 import { Dropdown } from "element-ui";
 
 export default {
@@ -103,6 +110,7 @@ export default {
         title: "",
         createdAt: null,
         status: null,
+        priority: null,
         comments: [],
       },
       editMode: false,
@@ -140,6 +148,12 @@ export default {
     },
     deleteStatus(statusId) {
       this.$emit("deleteStatus", statusId);
+    },
+    addPriority(priority) {
+      this.$emit("addPriority", priority);
+    },
+    deletePriority(priorityId) {
+      this.$emit("deletePriority", priorityId);
     },
     updateTask(task) {
       this.$emit("updateTask", task, this.group.id);
@@ -187,6 +201,7 @@ export default {
     taskPreview,
     draggable,
     Dropdown,
+    progressBar,
   },
 };
 </script>

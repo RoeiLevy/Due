@@ -22,6 +22,12 @@
         justify-content: center;
         width: 140px;
     }
+    .priority-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 140px;
+    }
     .space-box {
         width: 38px;
     }
@@ -70,6 +76,14 @@
 .group-footer {
     height: 80px;
     width: 100%;
+    .progress{
+        width: 140px;
+        height: 30px;
+        display: flex;
+        .box{
+            height: 100%;
+        }
+    }
     .add-task-wrapper {
         .add-task-form {
             height: 100%;

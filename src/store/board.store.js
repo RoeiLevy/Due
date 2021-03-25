@@ -28,6 +28,9 @@ export const boardStore = {
         statuses(state) {
             return state.currBoard.statuses;
         },
+        priorities(state) {
+            return state.currBoard.priorities;
+        },
         isTaskDetails(state) {
             return state.isTaskDetails
         },
@@ -193,6 +196,16 @@ export const boardStore = {
                 boardToSave.statuses = [...statuses];
                 await context.dispatch('saveBoard', { boardToSave })
                 return statuses;
+            } catch (err) {
+
+            }
+        },
+        async savePriorities(context, priorities) {
+            try {
+                const boardToSave = { ...context.state.currBoard };
+                boardToSave.priorities = [...priorities];
+                await context.dispatch('saveBoard', { boardToSave })
+                return priorities;
             } catch (err) {
 
             }

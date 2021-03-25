@@ -132,6 +132,20 @@
             font-size: 13px;
         }
     }
+    .priority-container {
+        @include task-cells;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 140px;
+        position: relative;
+        h3 {
+            font-size: 13px;
+            width: 100%;
+            text-align: center;
+            color: white;
+        }
+    }
     .date-container {
         @include task-cells;
         display: flex;

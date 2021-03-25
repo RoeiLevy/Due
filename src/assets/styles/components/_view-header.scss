@@ -1,11 +1,25 @@
 .header-view-bar {
     // margin-left: 20px;
     border-bottom: 2px solid #e6e9ef;
+    padding-bottom: 4px;
     >* {
         display: flex;
         justify-content: center;
         align-items: center;
     }
+
+    .view-nav {
+        .view {
+            padding: 7px 16px;
+            height: 40px;
+        }
+
+        .view:hover {
+            background-color: #c5c7d0;
+            border-radius: 4px;
+        }
+    }
+
     .views-drop-down {
         color: unset;
         margin-top: 7px;

@@ -152,7 +152,7 @@
             font-size: 13px;
             width: 100%;
             text-align: center;
-            color: white;
+            // color: white;
         }
         .progress {
             width: 100%;
@@ -161,6 +161,9 @@
             .box {
                 height: 100%;
             }
+        }
+        .task-priority {
+            color: white;
         }
     }
     .date-container {
@@ -215,7 +218,8 @@
 .task-wrapper:hover h3.status-h3,
 .task-add-member-modal h3,
 .tag-group,
-.tag-group-priorities {
+.tag-group-priorities,
+.priority-h3 {
     color: #333333;
 }
 
@@ -303,6 +307,7 @@
 
 body .vd-picker__input input {
     font-size: 12px !important;
+    color: #333333 !important;
 }
 
 .close-screen {
@@ -337,9 +342,10 @@ body .vd-picker__input input {
         max-width: 140px;
         margin-top: 5px;
         width: 100%;
-        height: 75%;
-        outline: 4px solid rgb(248, 248, 248);
+        height: 90%;
+        border: 4px solid rgb(248, 248, 248);
         display: flex;
+        background-color: #eeeef0;
         .box {
             height: 100%;
         }
@@ -348,7 +354,7 @@ body .vd-picker__input input {
         }
     }
     .div-1 {
-        min-width: 8px;
+        min-width: 9.5px;
     }
     .div-2 {
         flex: 1;
@@ -357,7 +363,7 @@ body .vd-picker__input input {
         width: 140px;
     }
     .div-4 {
-        width: 150px;
+        width: 140px;
     }
     .div-5 {
         min-width: 38px;

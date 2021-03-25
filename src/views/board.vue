@@ -25,7 +25,6 @@
                 ref="title"
                 style="text-transform: capitalize"
                 v-model="boardToEdit.title"
-                
                 @focusout.enter="saveBoard"
               />
               <div v-else>
@@ -109,8 +108,8 @@
                 :key="idx" -->
               <!-- @click.self="activateView(view)"
                 :class="{ active: isViewActive }" -->
-                <!-- {{ view }} -->
-                <!-- <div class="view-dropdown-container">
+              <!-- {{ view }} -->
+              <!-- <div class="view-dropdown-container">
                   <button class="view-menu-btn" style="background: none;">
                     <font-awesome-icon
                       class="view-menu-icon"
@@ -153,8 +152,10 @@
             @saveGroup="saveGroup"
             @addTask="addTask"
             @removeGroup="removeGroup"
-            @addStatus="addStatus"
+            @addPrioroty="addStatus"
             @deleteStatus="deleteStatus"
+            @addPriority="addPriority"
+            @deletePriority="deletePriority"
           />
           <!-- <main-table
             v-if="activeTab === 'mainTable'"
@@ -235,6 +236,32 @@ export default {
         this.boardToEdit.statuses.splice(idx, 1);
         await this.saveBoard();
         this.$store.dispatch({ type: "sendActivity", txt: "Removed a status" });
+      } catch (err) {
+        console.log("err:", err);
+      }
+    },
+    async addPriority(priority) {
+      try {
+        this.boardToEdit.priorities.push(priority);
+        console.log("added priority");
+        this.saveBoard();
+        // this.$store.dispatch({
+        //   type: "sendActivity",
+        //   txt: "Created a new priority",
+        // });
+      } catch (err) {
+        console.log("err:", err);
+      }
+    },
+    async deletePriority(priorityId) {
+      console.log("deleting");
+      try {
+        const idx = this.boardToEdit.priorities.findIndex(
+          (p) => p.id === priorityId
+        );
+        this.boardToEdit.priorities.splice(idx, 1);
+        await this.saveBoard();
+        this.$store.dispatch({ type: "sendActivity", txt: "Removed a priority" });
       } catch (err) {
         console.log("err:", err);
       }

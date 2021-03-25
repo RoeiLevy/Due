@@ -13,10 +13,7 @@
       class="task-title-input"
     />
     <div v-else class="task-title">
-      <label
-        class="task-title-label"
-        @click="handleEdit"
-      >
+      <label class="task-title-label" @click="handleEdit">
         {{ taskToEdit.title }}
       </label>
       <el-badge
@@ -78,12 +75,31 @@
     <div class="date-container">
       <VueDatePicker v-model="dueDate" clearable :placeholder="pickDate" />
     </div>
+    <div class="priority-container">
+      <h3
+        class="task-priority"
+        @click="toggleAddingPriority"
+        v-if="taskToEdit.priority"
+        style="text-transform: capitalize"
+        :style="{ 'background-color': taskToEdit.priority.color }"
+      >
+        {{ taskToEdit.priority.title }}
+      </h3>
+      <h3 class="priority-h3" v-else @click="toggleAddingPriority">Priority</h3>
+      <priority-picker
+        @setPriority="setPriority"
+        @addPriority="addPriority"
+        @deletePriority="deletePriority"
+        v-if="isSelectingPriority"
+      ></priority-picker>
+    </div>
     <div class="task-color-box-end"></div>
   </div>
 </template>
 
 <script>
 import statusPicker from "./status-picker";
+import priorityPicker from "./priority-picker";
 import taskAddMember from "./task-add-member";
 import Avatar from "vue-avatar";
 
@@ -94,6 +110,7 @@ export default {
     return {
       dueDate: null,
       isSelectingStatus: false,
+      isSelectingPriority: false,
       isAddingMember: false,
       editMode: false,
       taskToEdit: null,
@@ -124,6 +141,10 @@ export default {
       this.isSelectingStatus = !this.isSelectingStatus;
       this.$store.commit("toggleCloseScreen");
     },
+    toggleAddingPriority() {
+      this.isSelectingPriority = !this.isSelectingPriority;
+      this.$store.commit("toggleCloseScreen");
+    },
     handleEdit() {
       this.editMode = true;
       setTimeout(() => {
@@ -146,6 +167,19 @@ export default {
     setStatus(status) {
       this.isSelectingStatus = false;
       this.taskToEdit.status = { ...status };
+      this.$emit("updateTask", this.taskToEdit);
+      this.$store.commit("toggleCloseScreen");
+    },
+    addPriority(priority) {
+      this.$emit("addPriority", priority);
+    },
+    deletePriority(priorityId) {
+      if (this.task.priority.id === priorityId) this.task.priority = null;
+      this.$emit("deletePriority", priorityId);
+    },
+    setPriority(priority) {
+      this.isSelectingPriority = false;
+      this.taskToEdit.priority = { ...priority };
       this.$emit("updateTask", this.taskToEdit);
       this.$store.commit("toggleCloseScreen");
     },
@@ -197,6 +231,7 @@ export default {
     statusPicker,
     taskAddMember,
     Avatar,
+    priorityPicker,
   },
 };
 </script>

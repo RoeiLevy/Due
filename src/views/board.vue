@@ -76,7 +76,7 @@
               </router-link>
               <router-link
                 class="view"
-                style="text-transform: capitalize"
+                style="text-transform: capitalize;"
                 v-for="(view, idx) in boardToEdit.views"
                 :key="idx"
                 :to="`/board/${boardToEdit._id}/${view}`"
@@ -85,7 +85,7 @@
                 :class="{ active: isViewActive }" -->
                 {{ view }}
                 <div class="view-dropdown-container">
-                  <button class="view-menu-btn">
+                  <button class="view-menu-btn" style="background: none;">
                     <font-awesome-icon
                       class="view-menu-icon"
                       icon="ellipsis-h"

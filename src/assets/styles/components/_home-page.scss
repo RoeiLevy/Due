@@ -6,10 +6,18 @@
 
 
     .main-content {
-        display: flex;
         flex: 1;
-        background-color: #fefefe;
+        // justify-content: center;
+        // background-color: #fefefe;
         background-color: #f9f8f8;
+
+        .get-started {
+            width: 300px;
+            height: 75px;
+            border-radius: 50px;
+            background-color: #ffcb00;
+            border-color: #ffcb00;
+        }
     }
     .home-header {
         display: flex;
@@ -78,11 +86,12 @@
     }
 
     .info-container {
-        margin: 5% auto;
+        margin: 100px auto;
         padding: 20px;
         max-width: 600px;
         display: flex;
-        flex: 1;
+        // flex: 1;
+        justify-content: center;
 
         :first-child {
             margin: 0 auto;

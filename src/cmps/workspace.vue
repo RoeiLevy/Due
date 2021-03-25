@@ -9,7 +9,7 @@
         :collapse="isCollapse"
       >
         <el-menu-item index="1">
-          <i class="workspace-icon el-icon-menu"></i>
+          <font-awesome-icon class="workspace-icon el-icon-menu" icon="chevron-right"/>
 
           <span slot="title">{{ boardTitle() }}</span>
         </el-menu-item>

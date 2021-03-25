@@ -1,5 +1,5 @@
 .header-view-bar {
-    margin-left: 20px;
+    // margin-left: 20px;
     border-bottom: 2px solid #e6e9ef;
     >* {
         display: flex;
@@ -53,7 +53,8 @@
 }
 
 .top-header {
-    margin-inline-start: 20px;
+    // margin-inline-start: 20px;
+    height: 125px;
 }
 
 .el-button {

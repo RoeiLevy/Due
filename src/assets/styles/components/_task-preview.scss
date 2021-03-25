@@ -202,17 +202,15 @@
     }
 }
 
-.task-wrapper:hover .flex.transparent:not(.progress) {
-    background-color: transparent !important;
-}
-
-.task-wrapper.transparent {
-    >*:not(.status-container, .status-container) {
-        background-color: transparent;
-        border: none;
-    }
-}
-
+// .task-wrapper:hover .flex.transparent:not(.progress) {
+//     background-color: transparent !important;
+// }
+// .task-wrapper.transparent {
+//     >*:not(.status-container, .status-container) {
+//         background-color: transparent;
+//         border: none;
+//     }
+// }
 .task-wrapper:hover h3.status-h3,
 .task-add-member-modal h3,
 .tag-group,
@@ -320,4 +318,47 @@ body .vd-picker__input input {
 
 .close-screen:hover {
     cursor: pointer;
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 36px;
+    @include task-cells;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background-color: #fff;
+    h3 {
+        font-size: 13px;
+    }
+    .progress {
+        max-width: 140px;
+        margin-top: 5px;
+        width: 100%;
+        height: 75%;
+        outline: 4px solid rgb(248, 248, 248);
+        display: flex;
+        .box {
+            height: 100%;
+        }
+        .box:hover {
+            filter: brightness(120%) saturate(70%);
+        }
+    }
+    .div-1 {
+        min-width: 8px;
+    }
+    .div-2 {
+        flex: 1;
+    }
+    .div-3 {
+        width: 140px;
+    }
+    .div-4 {
+        width: 150px;
+    }
+    .div-5 {
+        min-width: 38px;
+    }
 }

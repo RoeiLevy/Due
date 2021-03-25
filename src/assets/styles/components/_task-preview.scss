@@ -191,7 +191,7 @@
     color: #333333;
 }
 
-.task-wrapper:hover *:not(.tag-group-priorities, .tag-group-priorities *, .member-avatar, .member-avatar *, .task-add-member-modal, .task-add-member-modal *, .task-add-member-modal h3, .task-members-list, .remove-btn-wrapper *, .status-container *, .tag-group, .tag-group *) {
+.task-wrapper:hover *:not(.task-priority, .tag-group-priorities, .tag-group-priorities *, .member-avatar, .member-avatar *, .task-add-member-modal, .task-add-member-modal *, .task-add-member-modal h3, .task-members-list, .remove-btn-wrapper *, .status-container *, .tag-group, .tag-group *) {
     color: #aaaaaa;
     background-color: #f3f3f3ef;
     cursor: pointer;
@@ -259,14 +259,15 @@
     transform: none !important;
 }
 
+.sortable-chosen .task-add-member-modal,
+.sortable-chosen .tag-group-priorities,
 .sortable-chosen .tag-group {
     transform: translateY(168px) rotate(-0.7deg) translateX(1.7px) !important;
 }
 
-.sortable-chosen .task-add-member-modal {
-    transform: translateY(174px) rotate(-0.7deg) translateX(1.7px) !important;
-}
-
+// .sortable-chosen .task-add-member-modal {
+//     transform: translateY(174px) rotate(-0.7deg) translateX(1.7px) !important;
+// }
 .vd-picker-header {
     background-color: #353535 !important;
     border-color: #363636 !important;

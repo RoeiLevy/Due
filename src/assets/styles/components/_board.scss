@@ -43,7 +43,8 @@
     .board-header .board-created-by {
         font-size: 13px;
         color: $clr2;
-        margin: 14px 0 0 0;
+        margin: 16px 0 0 0;
+        border: 1px solid transparent;
     }
     .header-view-bar {
         .view-nav {

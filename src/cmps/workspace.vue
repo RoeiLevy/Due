@@ -46,9 +46,18 @@
         <!-- <span slot="title">{{ boardTitle() }}</span> -->
         <div v-show="isOpen" class="board-menu-actions">
           <h2 class="title">Board Menu</h2>
-          <div class="action"><h3>Add</h3></div>
-          <div class="action"><h3>Filters</h3></div>
-          <div class="action"><h3>Search</h3></div>
+          <div class="action">
+            <font-awesome-icon class="header-icon plus" icon="plus-circle" />
+            <h3>Add</h3>
+          </div>
+          <div class="action">
+            <font-awesome-icon class="header-icon plus" icon="filter" />
+            <h3>Filters</h3>
+          </div>
+          <div class="action">
+            <font-awesome-icon class="header-icon plus" icon="search" />
+            <h3>Search</h3>
+          </div>
         </div>
 
         <ul class="workspace-board-list" v-show="isOpen">
@@ -59,7 +68,10 @@
             style="text-transform: capitalize"
             @click="showBoard(board._id)"
           >
-            {{ board.title }}
+            <font-awesome-icon class="header-icon plus" icon="clipboard" />
+            <h3>
+              {{ board.title }}
+            </h3>
           </li>
         </ul>
       </div>

@@ -26,10 +26,10 @@ Vue.use(VCalendar, {
 
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faTh, faComment, faChartLine, faPlus, faThLarge, faBell, faInbox, faCalendarCheck, faUserPlus, faSearch, faCaretSquareDown, faTrash, faClosedCaptioning, faUserFriends, faSignOutAlt, faUser, faEllipsisH, faCircle, faCheckCircle, faArrowCircleRight, faArrowCircleLeft, faChevronRight, faChevronLeft, faHome, faChartBar, faCalendarAlt, faStickyNote } from '@fortawesome/free-solid-svg-icons'
+import { faTh, faComment, faChartLine, faPlus, faThLarge, faBell, faInbox, faCalendarCheck, faUserPlus, faSearch, faCaretSquareDown, faTrash, faClosedCaptioning, faUserFriends, faSignOutAlt, faUser, faEllipsisH, faCircle, faCheckCircle, faArrowCircleRight, faArrowCircleLeft, faChevronRight, faChevronLeft, faHome, faChartBar, faCalendarAlt, faStickyNote, faFilter, faPlusCircle, faClipboard } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faTh, faComment, faChartLine, faPlus, faThLarge, faBell, faInbox, faCalendarCheck, faUserPlus, faSearch, faCaretSquareDown, faTrash, faClosedCaptioning, faUserFriends, faSignOutAlt, faUser, faEllipsisH, faCircle, faCheckCircle, faArrowCircleLeft, faArrowCircleRight, faChevronRight, faChevronLeft, faHome, faChartBar, faCalendarAlt, faStickyNote )
+library.add(faTh, faComment, faChartLine, faPlus, faThLarge, faBell, faInbox, faCalendarCheck, faUserPlus, faSearch, faCaretSquareDown, faTrash, faClosedCaptioning, faUserFriends, faSignOutAlt, faUser, faEllipsisH, faCircle, faCheckCircle, faArrowCircleLeft, faArrowCircleRight, faChevronRight, faChevronLeft, faHome, faChartBar, faCalendarAlt, faStickyNote, faFilter, faPlusCircle, faClipboard )
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 

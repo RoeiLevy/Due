@@ -12,19 +12,21 @@
         v-bind="dragOptions"
       >
         <transition-group type="transition"> -->
-          <group
-            v-for="group in board.groups"
-            :key="group.id"
-            :group="group"
-            @removeTask="removeTask"
-            @updateTask="updateTask"
-            @saveGroup="saveGroup"
-            @addTask="addTask"
-            @removeGroup="removeGroup"
-            @addStatus="addStatus"
-            @deleteStatus="deleteStatus"
-          />
-        <!-- </transition-group>
+      <group
+        v-for="group in board.groups"
+        :key="group.id"
+        :group="group"
+        @removeTask="removeTask"
+        @updateTask="updateTask"
+        @saveGroup="saveGroup"
+        @addTask="addTask"
+        @removeGroup="removeGroup"
+        @addStatus="addStatus"
+        @deleteStatus="deleteStatus"
+        @addPriority="addPriority"
+        @deletePriority="deletePriority"
+      />
+      <!-- </transition-group>
       </draggable> -->
     </div>
   </div>
@@ -33,7 +35,6 @@
 <script>
 import draggable from "vuedraggable";
 import group from "./group";
-
 
 export default {
   props: ["board"],
@@ -46,6 +47,12 @@ export default {
     },
     deleteStatus(statusId) {
       this.$emit("deleteStatus", statusId);
+    },
+    addPriority(priority) {
+      this.$emit("addPriority", priority);
+    },
+    deletePriority(priorityId) {
+      this.$emit("deletePriority", priorityId);
     },
     updateTask(task, groupId) {
       this.$emit("updateTask", task, groupId);
@@ -66,7 +73,7 @@ export default {
       this.$emit("saveBoard", this.boardToEdit);
     },
   },
-  computed:{
+  computed: {
     dragOptions() {
       return {
         animation: 200,
@@ -74,11 +81,11 @@ export default {
         disabled: false,
         ghostClass: "ghost",
       };
-    }
+    },
   },
   components: {
     group,
-    draggable
+    draggable,
   },
 };
 </script>

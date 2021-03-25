@@ -31,7 +31,7 @@
         padding-inline-start: 20px;
         border: 1px dashed transparent;
         padding: 0;
-        height: 50px;
+        height: 45px;
     }
     input.board-title {
         outline: none;
@@ -39,6 +39,10 @@
     }
     .board-title:hover {
         border: 1px dashed gray;
+    }
+    .board-header .board-created-by {
+        font-size: 13px;
+        margin: 0;
     }
     .header-view-bar {
         .view-nav {
@@ -228,6 +232,7 @@
 }
 
 input.board-description {
+    height: 24px;
     margin-bottom: 1rem;
     outline: none;
     border: 1px dashed gray;

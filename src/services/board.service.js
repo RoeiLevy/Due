@@ -152,6 +152,22 @@ function getEmptyBoard() {
             "color": "#e2445c"
         }
         ],
+        "priorities": [{
+            "id": "udr2t6",
+            "title": "Important",
+            "color": "#00c875"
+        },
+        {
+            "id": "udm074",
+            "title": "Urgent",
+            "color": "#fdab3d"
+        },
+        {
+            "id": "ud1k6a",
+            "title": "Low",
+            "color": "#e2445c"
+        }
+        ],
         "activities": [],
         "views": [],
         "description": "Enter Board Description"
@@ -175,7 +191,8 @@ function getEmptyTask() {
         // id: utilService.makeId,
         title: '',
         createdAt: new Date(),
-        status: null
+        status: null,
+        priority: null
     }
 
 }

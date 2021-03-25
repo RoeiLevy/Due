@@ -1,4 +1,4 @@
-.tag-group {
+.tag-group-priorities {
     background-color: white;
     border: 1px solid rgba(117, 117, 117, 0.411);
     position: absolute;
@@ -7,59 +7,51 @@
     padding: 10px;
     box-shadow: 0 0 5px #0000000f;
     z-index: 80 !important;
-    // width: fit-content;
-    min-width: 220px;
+    width: fit-content;
+    min-width: 170px;
     height: 300px;
     text-align: center;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    // overflow-y: auto;
-    >*:hover {
+    > *:hover {
         opacity: 1;
     }
-    .statuses {
+    .priorities {
         h4 {
             margin: 0 auto;
         }
         display: flex;
         flex-direction: column;
-        align-items: center;
-        // flex-wrap: wrap;
+        align-items: self-start;
+        flex-wrap: wrap;
         flex: 1;
         height: 225px;
-        overflow-y: auto;
-        padding-bottom: 10px;
-        width: 100%;
-        // width: 250px;
+        width: 250px;
     }
-    .status-footer {
+    .priority-footer {
         display: flex;
         justify-content: center;
         border-top: 1px solid lightgray;
-        width: 100%;
         button {
             width: 100%;
             border: none;
         }
     }
-    .edit-statuses {
+    .edit-priorities {
         display: flex;
         flex-direction: column;
-        // flex-wrap: wrap;
-        align-items: center;
+        flex-wrap: wrap;
         flex: 1;
         height: 225px;
-        overflow-y: auto;
-        width: 100%;
-        >* {
+        width: 250px;
+        > * {
             margin: 3px;
         }
         input {
             width: 100px;
             border: none;
         }
-        .status-edit-container {
+        .priority-edit-container {
             display: flex;
             height: fit-content;
             position: relative;
@@ -93,12 +85,12 @@
             border-bottom-left-radius: 4px;
             border-top-left-radius: 4px;
         }
-        .new-status-btn {
+        .new-priority-btn {
             border: 1px dashed gray;
             border-radius: 5px;
             width: 122px;
         }
-        .delete-status-btn {
+        .delete-priority-btn {
             transition: all 0.3s;
             position: absolute;
             right: -26px;
@@ -109,11 +101,11 @@
             color: #4e4f52;
         }
     }
-    .status-edit-container:hover .delete-status-btn {
+    .priority-edit-container:hover .delete-priority-btn {
         opacity: 1;
     }
     .el-tag {
-        margin: 5px 5px 0 5px;
+        margin: 5px 0;
         width: 112px;
         height: 32px;
         transition: all.5s;
@@ -134,23 +126,23 @@
     width: 0;
     height: 0;
     border-top: 6px solid transparent;
-    border-right: 10px solid #ffffff;
+    border-right: 10px solid #f7f7f7;
     border-bottom: 6px solid transparent;
     transform: rotate(90deg);
     left: 47%;
     z-index: 1000;
 }
 
-#add-status-btn {
+#add-priority-btn {
     margin-inline-start: 10px;
     padding: 6px 15px;
 }
 
-.new-status-container {
+.new-priority-container {
     justify-content: center;
 }
 
-.status-edit-container {
+.priority-edit-container {
     // display: flex;
     // flex-direction: column;
     justify-content: space-between !important;
@@ -162,11 +154,11 @@
     // margin-inline-start: 15px;
 }
 
-.status-edit-container input {
+.priority-edit-container input {
     padding: 0 !important;
 }
 
-.new-status-add-btn {
+.new-priority-add-btn {
     // width: 30px !important;
     padding: 3px !important;
     position: absolute;

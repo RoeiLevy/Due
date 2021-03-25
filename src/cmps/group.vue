@@ -17,7 +17,6 @@
               size="mini"
             ></el-color-picker>
           </el-dropdown-item>
-          <el-dropdown-item>Action 3</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
       <div class="group-title-wrapper">

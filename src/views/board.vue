@@ -56,9 +56,10 @@
                 >
                   {{ boardDescription }}
                 </p>
-
               </div>
-                <p class="board-created-by">By: {{boardToEdit.createdBy.fullname}}</p>
+              <p class="board-created-by">
+                By: {{ boardToEdit.createdBy.fullname }}
+              </p>
             </div>
 
             <!-- //////////////////////////////////// -->
@@ -83,29 +84,54 @@
                 class="view"
                 :to="`/board/${boardToEdit._id}/maintable`"
               >
-                Main Table
+                <div class="view-title">
+                  <font-awesome-icon class="header-icon plus" icon="home" />
+                  <p>Main Table</p>
+                </div>
               </router-link>
+
               <router-link
                 class="view"
                 style="text-transform: capitalize"
                 :to="`/board/${boardToEdit._id}/chart`"
               >
-                Chart
+                <div class="view-title">
+                  <font-awesome-icon
+                    class="header-icon plus"
+                    icon="chart-bar"
+                  />
+                  <p>Chart</p>
+                </div>
               </router-link>
+
               <router-link
                 class="view"
                 style="text-transform: capitalize"
                 :to="`/board/${boardToEdit._id}/calendar`"
               >
-                Calendar
+                <div class="view-title">
+                  <font-awesome-icon
+                    class="header-icon plus"
+                    icon="calendar-alt"
+                  />
+                  <p>Calendar</p>
+                </div>
               </router-link>
+
               <router-link
                 class="view"
                 style="text-transform: capitalize"
                 :to="`/board/${boardToEdit._id}/kanban`"
               >
-                Kanban
+                <div class="view-title">
+                  <font-awesome-icon
+                    class="header-icon plus"
+                    icon="sticky-note"
+                  />
+                  <p>Kanban</p>
+                </div>
               </router-link>
+              <!-- </div> -->
               <!-- v-for="(view, idx) in boardToEdit.views"
                 :key="idx" -->
               <!-- @click.self="activateView(view)"
@@ -263,7 +289,10 @@ export default {
         );
         this.boardToEdit.priorities.splice(idx, 1);
         await this.saveBoard();
-        this.$store.dispatch({ type: "sendActivity", txt: "Removed a priority" });
+        this.$store.dispatch({
+          type: "sendActivity",
+          txt: "Removed a priority",
+        });
       } catch (err) {
         console.log("err:", err);
       }

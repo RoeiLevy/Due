@@ -11,12 +11,10 @@
       @keyup.enter="updateTask"
       @focusout="updateTask"
       class="task-title-input"
-      style="text-transform: capitalize"
     />
     <div v-else class="task-title">
       <label
         class="task-title-label"
-        style="text-transform: capitalize"
         @click="handleEdit"
       >
         {{ taskToEdit.title }}

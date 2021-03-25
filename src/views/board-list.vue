@@ -93,9 +93,7 @@
             </div>
           </div>
         </el-carousel-item>
-      </el-carousel>
-
-     
+      </el-carousel>     
     </div>
   </section>
 </template>
@@ -116,7 +114,7 @@ export default {
     async addNewBoard() {
       try {
         const newBoard = await this.$store.dispatch("addNewBoard");
-        this.$router.push(`/board/${newBoard._id}`);
+        this.$router.push(`/board/${newBoard._id}/maintable`);
       } catch (err) {
         console.log("Couldn`t add board", err);
       }

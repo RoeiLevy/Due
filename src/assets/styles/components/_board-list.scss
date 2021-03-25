@@ -43,9 +43,24 @@
 }
 
 .el-switch__core {
-    width: 50px;
+    width: 40px;
+    height: 15px !important;
 }
 
+.el-switch__core::after {
+    width: 11px !important;
+    height: 11px !important;
+    right: 100%;
+}
+
+.el-switch.is-checked {
+    .el-switch__core::after {
+        margin-left: -13px !important;
+    }
+}
+
+// .el-switch__core:after {
+// }
 .el-switch:hover {
     filter: saturate(97%);
 }

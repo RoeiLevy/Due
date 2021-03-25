@@ -1,7 +1,5 @@
 import { httpService } from './http.service'
 import { utilService } from './util.service'
-
-import { utilSerivce } from './util.service'
 import { storageService } from './async-storage.service'
 
 export const boardService = {
@@ -25,7 +23,6 @@ const API_KEY = 'board/'
 
 
 async function query() {
-    console.log('in frontend service');
     return httpService.get(`board/`)
 
     // if (!localStorage.getItem(BOARD_KEY)) {
@@ -35,7 +32,6 @@ async function query() {
     // return storageService.query(BOARD_KEY);
 
 }
-
 
 
 async function getBoard(boardId) {

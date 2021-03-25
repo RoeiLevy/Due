@@ -14,15 +14,15 @@ import mainTable from '../cmps/main-table'
 Vue.use(VueRouter)
 
 const routes = [{
-    path: '/',
-    name: 'home',
-    component: home
-},
-{
-    path: '/board',
-    name: 'board list',
-    component: boardList
-},
+        path: '/',
+        name: 'home',
+        component: home
+    },
+    {
+        path: '/board',
+        name: 'board list',
+        component: boardList
+    },
 
 {
     path: '/board/:boardId',
@@ -33,11 +33,13 @@ const routes = [{
             path: 'maintable',
             name: 'Main Table',
             component: mainTable,
-        },
-        {
-            path: ':groupId/task/:taskId',
-            name: 'task details',
-            component: taskDetails,
+            children: [
+                {
+                    path: ':groupId/task/:taskId',
+                    name: 'task details',
+                    component: taskDetails,
+                }
+            ]
         },
         {
             path: 'chart',

@@ -9,7 +9,7 @@
         :collapse="isCollapse"
       >
         <el-menu-item index="1">
-          <i class="workspace-icon el-icon-menu"></i>
+          <font-awesome-icon class="workspace-icon el-icon-menu" icon="chevron-right"/>
 
           <span slot="title">{{ boardTitle() }}</span>
         </el-menu-item>
@@ -28,18 +28,20 @@
       </el-menu>
     </div> -->
     <div class="workspace-menu-container">
-      <font-awesome-icon
-        @click="toggleWorkspace"
-        v-if="!isOpen"
-        class="header-icon plus workspace-arrow-right"
-        icon="arrow-circle-right"
-      />
-      <font-awesome-icon
-        @click="toggleWorkspace"
-        v-else
-        class="header-icon plus workspace-arrow-left"
-        icon="arrow-circle-left"
-      />
+      <div @click="toggleWorkspace" class="menu-toggle-btn">
+        <font-awesome-icon
+          @click="toggleWorkspace"
+          v-if="!isOpen"
+          class="header-icon plus arrow-btn"
+          icon="chevron-right"
+        />
+        <font-awesome-icon
+          @click="toggleWorkspace"
+          v-else
+          class="header-icon plus arrow-btn"
+          icon="chevron-left"
+        />
+      </div>
       <div class="menu-list">
         <!-- <span slot="title">{{ boardTitle() }}</span> -->
         <div v-show="isOpen" class="board-menu-actions">

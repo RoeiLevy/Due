@@ -26,10 +26,10 @@ Vue.use(VCalendar, {
 
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faTh, faComment, faChartLine, faPlus, faThLarge, faBell, faInbox, faCalendarCheck, faUserPlus, faSearch, faCaretSquareDown, faTrash, faClosedCaptioning, faUserFriends, faSignOutAlt, faUser, faEllipsisH, faCircle, faCheckCircle, faArrowCircleRight, faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons'
+import { faTh, faComment, faChartLine, faPlus, faThLarge, faBell, faInbox, faCalendarCheck, faUserPlus, faSearch, faCaretSquareDown, faTrash, faClosedCaptioning, faUserFriends, faSignOutAlt, faUser, faEllipsisH, faCircle, faCheckCircle, faArrowCircleRight, faArrowCircleLeft, faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faTh, faComment, faChartLine, faPlus, faThLarge, faBell, faInbox, faCalendarCheck, faUserPlus, faSearch, faCaretSquareDown, faTrash, faClosedCaptioning, faUserFriends, faSignOutAlt, faUser, faEllipsisH, faCircle, faCheckCircle, faArrowCircleLeft, faArrowCircleRight)
+library.add(faTh, faComment, faChartLine, faPlus, faThLarge, faBell, faInbox, faCalendarCheck, faUserPlus, faSearch, faCaretSquareDown, faTrash, faClosedCaptioning, faUserFriends, faSignOutAlt, faUser, faEllipsisH, faCircle, faCheckCircle, faArrowCircleLeft, faArrowCircleRight, faChevronRight, faChevronLeft)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 

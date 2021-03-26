@@ -67,6 +67,38 @@
         padding: 0px 4px;
         text-align: center;
         white-space: nowrap;
+        // right: 14px !important;
+        // top: -1px !important;
+        // border-radius: 10px;
+        // color: #fff;
+        // display: inline-block;
+        // font-size: 10px;
+        // height: 11px;
+        // line-height: 10px;
+        // padding: 0px 4px;
+        // text-align: center;
+        // white-space: nowrap;
+        svg {
+            position: absolute;
+            right: -9px;
+            top: -3px;
+        }
+        .el-badge__content.el-badge__content--primary.is-fixed {
+            position: absolute;
+            top: -1px;
+            right: 0;
+            transform: translateY(-50%) translateX(100%);
+            border-radius: 10px;
+            color: #FFF;
+            display: inline-block;
+            font-size: 11px;
+            height: 16px;
+            line-height: 15px;
+            padding: 0px 4px;
+            text-align: center;
+            white-space: nowrap;
+            border: 1px solid #FFF;
+        }
     }
     .task-title-input {
         border: 1px dashed gray;

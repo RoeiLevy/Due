@@ -1,9 +1,16 @@
 <template>
   <div class="task-wrapper flex">
     <div :style="taskColor" class="task-color-box-start"></div>
+      <el-tooltip
+        class="item"
+        effect="dark"
+        content="Delete Task"
+        placement="top"
+      >
     <div class="remove-btn-wrapper" @click="removeTask">
       <font-awesome-icon class="header-icon remove-btn" icon="trash" />
     </div>
+      </el-tooltip>
     <input
       v-if="editMode"
       ref="input"

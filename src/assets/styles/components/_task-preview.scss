@@ -93,7 +93,6 @@
         justify-content: center;
         flex-direction: row-reverse;
         position: relative;
-
         .members-badage {
             position: absolute;
             top: 2px;
@@ -363,7 +362,7 @@ body .vd-picker__input input {
             height: 100%;
         }
         .box:hover {
-            filter: brightness(120%) saturate(70%);
+            filter: brightness(110%) saturate(70%);
             height: 120%;
         }
     }

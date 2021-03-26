@@ -85,6 +85,9 @@
         justify-content: center;
         flex-direction: row-reverse;
         margin-inline-end: 35px;
+        .el-badge__content {
+            border: none;
+        }
         .members-badage {
             position: absolute;
             top: 6px;

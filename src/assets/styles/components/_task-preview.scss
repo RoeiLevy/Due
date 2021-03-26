@@ -92,14 +92,16 @@
         justify-content: center;
         flex-direction: row-reverse;
         position: relative;
-
+        .el-badge__content {
+            border: none;
+        }
         .members-badage {
             position: absolute;
             top: 2px;
             right: 13px;
             z-index: 2;
             height: 30px;
-            border: none;
+            border: 0px solid transparent;
         }
         .member-avatar {
             display: inline-block;

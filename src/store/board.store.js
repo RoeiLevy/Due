@@ -7,7 +7,8 @@ export const boardStore = {
         boards: [],
         isTaskDetails: false,
         isBoardActivities: false,
-        isCloseScreen: false
+        isCloseScreen: false,
+        isNotificatiosOpen: false
     },
     getters: {
         isCloseScreen(state) {
@@ -39,6 +40,10 @@ export const boardStore = {
         }
     },
     mutations: {
+        toggleNotifications(state) {
+            state.isNotificatiosOpen = !state.isNotificatiosOpen
+            console.log('notification', state.isNotificatiosOpen);
+        },
         toggleCloseScreen(state) {
             state.isCloseScreen = !state.isCloseScreen
         },

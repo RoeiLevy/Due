@@ -11,8 +11,8 @@
       :title="groupPriorities[idx].title + ': ' + getData[idx]"
     >
       <div class="popover">
-        <h5>{{groupPriorities[idx].title}}</h5>
-        {{getData[idx]}}
+        <h5>{{ groupPriorities[idx].title }}</h5>
+        {{ getData[idx] }}
       </div>
     </div>
   </div>
@@ -30,8 +30,8 @@ export default {
       this.group.tasks.forEach((task) => {
         if (map.includes(task.priority)) return;
         else if (!task.priority) {
-          if (map.includes({ title: "Empty", color: "gray" }));
-          else map.push({ title: "Empty", color: "gray" });
+          if (map.includes({ title: "Empty", color: "#f7f8fa" }));
+          else map.push({ title: "Empty", color: "#f7f8fa" });
         } else map.push(task.priority);
       });
       return map;

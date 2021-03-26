@@ -12,10 +12,10 @@
         </div>
       </div>
 
-      <div @click="toggleNotification" class="btn-surface">
-        <board-notifications v-if="isNotificatiosOpen" />
-        <div class="icon-wrapper">
-          <font-awesome-icon class="header-icon" icon="bell" />
+      <div  class="btn-surface">
+        <div @click.self="toggleNotification" class="icon-wrapper">
+        <board-notifications v-if="isNotificationsOpen"> </board-notifications>
+          <font-awesome-icon @click="toggleNotification" class="header-icon" icon="bell" />
         </div>
       </div>
 
@@ -53,7 +53,7 @@
 
 <script>
 import avatar from "./avatar";
-import boardNotifications from "../cmps/board-members";
+import boardNotifications from "../cmps/board-notifications";
 
 export default {
   data() {
@@ -64,12 +64,12 @@ export default {
       this.$router.push("/board");
     },
     toggleNotification() {
-      this.$store.commit("toggleNotifications");
+      this.$store.commit("openNotifications");
       this.$store.commit("toggleCloseScreen");
     },
   },
   computed: {
-    isNotificatiosOpen() {
+    isNotificationsOpen() {
       return this.$store.getters.isNotificatiosOpen;
     },
     isCloseScreen() {
@@ -78,9 +78,9 @@ export default {
   },
   watch: {
     isCloseScreen(newValue) {
-      // console.log(`close screen is now opened: ${newValue}`);
+      console.log(`close screen is now opened: ${newValue}`);
       if (!newValue) {
-        this.$store.commit("toggleNotifications");
+        this.$store.commit("closeNotifications");
       }
     },
   },

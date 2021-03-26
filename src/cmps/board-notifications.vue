@@ -1,47 +1,48 @@
 <template>
 <div class="board-notifications">
     <div class="activity-task-title">
-        <h3>Notifications</h3>
+        <h3 class="title">Notifications</h3>
     </div>
     <el-tabs v-model="activeName" @tab-click="handleClick">
-      <el-tab-pane label="Activity" name="activity">
-        <activity-log :activities="board.activities" />
+      <el-tab-pane class="notification-tab" label="All" name="all">
+        <notifications :notifications="board.activities" />
       </el-tab-pane>
-      <el-tab-pane label="Updates" name="updates">
+      <el-tab-pane class="notification-tab" label="Unread" name="unread">
            </el-tab-pane>
-    </el-tabs>
+      <el-tab-pane class="notification-tab" label="I was mentioned" name="i was mentioned">
+           </el-tab-pane>
+      <el-tab-pane class="notification-tab" label="Assigned to me" name="assigned to me">
+           </el-tab-pane>
+    </el-tabs>  
 </div>
 </template>
 
 <script>
-import activityLog from "./activity-log";
-import updates from "./updates";
+import notifications from "./notifications";
 
 export default {
-  props: ["board"],
   data() {
     return {
-      task: null,
-      activities: null,
-      activeName: "activity",
+      activeName: "all",
     };
   },
   methods: {
     handleClick(tab, event) {},
-    closeActivities() {
-      this.$store.commit({ type: "toggleIsBoardActivities" });
-    },
   },
   computed: {
-    boardId() {
-      return this.$route.params.boardId;
+    board() {
+      return this.$store.getters.boardForDisplay
     },
+    notifications() {
+        this.$store.getters.boardActivities
+    }
   },
   components: {
-    activityLog,
-    updates,
+    notifications,
   },
-  created() {},
+  created() {
+      console.log(this.board);
+  },
   watch: {
     $route(to, from) {},
   },

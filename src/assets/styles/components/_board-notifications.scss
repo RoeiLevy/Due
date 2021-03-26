@@ -1,19 +1,87 @@
 .board-notifications {
+    height: calc(90vh - 117px);
+    background-color: white;
+    overflow: hidden;
     position: absolute;
     border: 1px solid $application-border-color;
     width: 570px;
-    height: 755px;
-    border-radius: 2px;
+    border-radius: 5px;
+    z-index: 6000;
+    top: 0px;
+    right: 50px;
+    left: 70px;
 
+    .title {
+        height: 75px;
+        font-weight: bold;
+        font-size: 24px;
+        color: #323338;
+        display: flex;
+        align-items: center;
+        padding-inline-start: 20px;
+    }
 
+    .el-tabs__nav-scroll {
+        display: flex;
+        justify-content: space-around;
+    }
 
+    .el-tabs__item {
+        font-weight: 300;
+        font-size: 16px;
+    }
+}
 
+.notifications {
+    width: 100%;
+    height: 100%;
+    overflow-x: scroll;
+    padding-inline-end: 15px;
+    padding-block-end: 60px;
 
+    .notifications-container {
+        width: 100%;
+    }
+}
 
+.notification-preview {
+    width: 100%;
+    padding: 16px 8px;
+    color: #333;
+    background-color: #e5f4ff;
+    min-height: 112px;
+    display: flex;
+    font-size: 14px;
+    margin: 2px 8px;
+    border-radius: 8px;
 
+    .avatar-wrapper {
+        .vue-avatar--wrapper {
+            width: 60px !important;
+            height: 60px !important;
+            border: 1px solid white;
+            color: white !important;
+        }
+    }
 
+    .notification-details {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        margin-inline-start: 16px;
+        .notification-username {
+            display: flex;
+            align-items: center;
+            :first-child {
+                font-weight: bold;
+                margin-inline-end: 5px;
+            }
+        }
+    }
 
+   
 
-
-
+}
+.notification-preview:hover {
+        background-color: #d2eaff;
 }

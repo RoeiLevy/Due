@@ -1,5 +1,5 @@
 <template>
-  <div class="avatar-container">
+  <div v-if="members" class="avatar-container">
     <el-badge type=info v-if="extraMembers" :value="extraMembers" class="members-badage"> </el-badge>
     <avatar
       class="member-avatar"
@@ -23,6 +23,7 @@ export default {
       } else return this.members
     },
     extraMembers() {
+      
         if  (this.members.length > 3) {
             return `+ ${this.members.length - 3}` 
         } else return false

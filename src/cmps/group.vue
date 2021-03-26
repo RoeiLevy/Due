@@ -2,6 +2,7 @@
   <section class="group-container">
     <div class="flex group-header">
       <el-dropdown @command="handleCommand" class="drop-down" trigger="click">
+        <el-tooltip class="item" effect="dark" content="Group Menu" placement="top-start">
         <span :style="groupColor" class="el-dropdown-link">
           <font-awesome-icon class="header-icon" icon="caret-square-down" />
         </span>
@@ -18,7 +19,9 @@
             ></el-color-picker>
           </el-dropdown-item>
         </el-dropdown-menu>
+      </el-tooltip>
       </el-dropdown>
+
       <div class="group-title-wrapper">
         <input
           required

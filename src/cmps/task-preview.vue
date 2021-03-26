@@ -23,11 +23,14 @@
         class="comment-badage"
         type="primary"
       >
+                                    <el-tooltip class="item" effect="dark" content="Task Details" placement="top">
+
         <font-awesome-icon
           @click="openTaskDetails"
           class="header-icon"
           icon="comment"
         />
+                                    </el-tooltip>
       </el-badge>
     </div>
     <div class="task-members-container">

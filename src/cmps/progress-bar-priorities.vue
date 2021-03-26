@@ -6,9 +6,15 @@
       :key="idx"
       :style="{
         'background-color': groupPriorities[idx].color,
-        width: getData[idx]
+        width: getData[idx],
       }"
-    ></div>
+      :title="groupPriorities[idx].title + ': ' + getData[idx]"
+    >
+      <div class="popover">
+        <h5>{{groupPriorities[idx].title}}</h5>
+        {{getData[idx]}}
+      </div>
+    </div>
   </div>
 </template>
 
@@ -26,12 +32,8 @@ export default {
         else if (!task.priority) {
           if (map.includes({ title: "Empty", color: "gray" }));
           else map.push({ title: "Empty", color: "gray" });
-          // if (map.includes({ color: "gray" }) return;
-          // else return map.push({ color: "gray" });
         } else map.push(task.priority);
       });
-      map.pop();
-      // console.log("map:", map);
       return map;
     },
     getData() {
@@ -40,36 +42,14 @@ export default {
         map[priority.title] = map[priority.title] ? map[priority.title] : 0;
         return map;
       }, {});
-      console.log("map:", map);
       this.group.tasks.forEach((task) => {
         if (!task.priority) map.Empty++;
         else map[task.priority.title]++;
       });
       map = Object.values(map);
-      map=map.map(count=>count=(count/all)*100+'%');
-      console.log('map:', map)
+      map = map.map((count) => (count = (count / all) * 100 + "%"));
       return map;
-      //   const count = this.group.tasks.reduce((acc, task) => {
-      //     if (task.priority && task.priority.color === priority.color) return acc++;
-      //   }, 0);
-      //   console.log("count:", count);
-      //   return count;
     },
-    // map() {
-    //   const map = [];
-    //   this.group.tasks.forEach((task) => {
-    //     if (map.includes(task.priority)) return;
-    //     if (!task.priority) return map.push({ color: "gray" });
-    //     map.push(task.priority);
-    //   });
-    //   map.forEach((s) => {
-    //     s.count = this.group.tasks.reduce((acc, task) => {
-    //       return acc++;
-    //     }, 0);
-    //   });
-    //   console.log("map:", map);
-    //   return map;
-    // },
   },
 };
 </script>

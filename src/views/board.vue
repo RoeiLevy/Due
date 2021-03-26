@@ -2,6 +2,7 @@
   <div class="board-surface">
     <app-header />
     <div v-if="boardToEdit" class="flex board" ref="screen">
+      
       <div
         @click="toggleCloseScreen"
         v-if="isCloseScreen"
@@ -568,6 +569,9 @@ export default {
     },
   },
   computed: {
+    isNotificatiosOpen() {
+      return this.$store.getters.isNotificatiosOpen
+    },
     isCloseScreen() {
       return this.$store.getters.isCloseScreen;
     },
@@ -625,7 +629,7 @@ export default {
     boardActivities,
     workspace,
     mainTable,
-    boardMembers
+    boardMembers,
   },
 };
 </script>

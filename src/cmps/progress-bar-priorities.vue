@@ -24,8 +24,8 @@ export default {
       this.group.tasks.forEach((task) => {
         if (map.includes(task.priority)) return;
         else if (!task.priority) {
-          if (map.includes({ title: "Empty", color: "gray" }));
-          else map.push({ title: "Empty", color: "gray" });
+          if (map.includes({ title: "Empty", color: "#f7f8fa" }));
+          else map.push({ title: "Empty", color: "#f7f8fa" });
           // if (map.includes({ color: "gray" }) return;
           // else return map.push({ color: "gray" });
         } else map.push(task.priority);

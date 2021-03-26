@@ -6,42 +6,79 @@
           <img class="logo" src="@/assets/imgs/logo.png" />
         </router-link>
       </div>
-      <div class="btn-surface">
-        <div @click="toBoardList" class="icon-wrapper">
-          <font-awesome-icon class="header-icon" icon="th-large" />
+      <el-tooltip
+        class="item"
+        effect="dark"
+        content="Board List"
+        placement="right"
+      >
+        <div class="btn-surface">
+          <div @click="toBoardList" class="icon-wrapper">
+            <font-awesome-icon class="header-icon" icon="th-large" />
+          </div>
         </div>
-      </div>
+      </el-tooltip>
 
-      <div  class="btn-surface">
-        <div @click.self="toggleNotification" class="icon-wrapper">
-        <board-notifications v-if="isNotificationsOpen"> </board-notifications>
-          <font-awesome-icon @click="toggleNotification" class="header-icon" icon="bell" />
+      <el-tooltip
+        class="item"
+        effect="dark"
+        content="Notifications"
+        placement="right"
+      >
+        <div class="btn-surface">
+          <div @click.self="toggleNotification" class="icon-wrapper">
+            <board-notifications v-if="isNotificationsOpen">
+            </board-notifications>
+            <font-awesome-icon
+              @click="toggleNotification"
+              class="header-icon"
+              icon="bell"
+            />
+          </div>
         </div>
-      </div>
+      </el-tooltip>
 
-      <div class="btn-surface">
-        <div class="icon-wrapper">
-          <font-awesome-icon class="header-icon" icon="inbox" />
+      <el-tooltip class="item" effect="dark" content="Inbox" placement="right">
+        <div class="btn-surface">
+          <div class="icon-wrapper">
+            <font-awesome-icon class="header-icon" icon="inbox" />
+          </div>
         </div>
-      </div>
+      </el-tooltip>
     </div>
 
     <div class="flex column bottom-navigation">
-      <div class="btn-surface">
-        <div class="icon-wrapper">
-          <font-awesome-icon class="header-icon" icon="calendar-check" />
+      <el-tooltip
+        class="item"
+        effect="dark"
+        content="Calendar"
+        placement="right"
+      >
+        <div class="btn-surface">
+          <div class="icon-wrapper">
+            <font-awesome-icon class="header-icon" icon="calendar-check" />
+          </div>
         </div>
-      </div>
-      <div class="btn-surface">
-        <div class="icon-wrapper">
-          <font-awesome-icon class="header-icon" icon="user-plus" />
+      </el-tooltip>
+      <el-tooltip
+        class="item"
+        effect="dark"
+        content="Invite Member"
+        placement="right"
+      >
+        <div class="btn-surface">
+          <div class="icon-wrapper">
+            <font-awesome-icon class="header-icon" icon="user-plus" />
+          </div>
         </div>
-      </div>
-      <div class="btn-surface">
-        <div class="icon-wrapper">
-          <font-awesome-icon class="header-icon" icon="search" />
+      </el-tooltip>
+      <el-tooltip class="item" effect="dark" content="Search" placement="right">
+        <div class="btn-surface">
+          <div class="icon-wrapper">
+            <font-awesome-icon class="header-icon" icon="search" />
+          </div>
         </div>
-      </div>
+      </el-tooltip>
       <div class="btn-surface">
         <div class="icon-wrapper">
           <avatar></avatar>

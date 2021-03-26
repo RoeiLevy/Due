@@ -363,10 +363,22 @@ body .vd-picker__input input {
         justify-content: center;
         .box {
             height: 100%;
+            .popover{
+                display: none;
+                background-color: red;
+                width: 200px;
+                height: 50px;
+            }
         }
         .box:hover {
-            filter: brightness(120%) saturate(70%);
+            filter: brightness(110%) saturate(70%);
             height: 120%;
+            .progress{
+                display: flex;
+            }
+        }
+        .box:hover .progress{
+            display: flex;
         }
     }
     .div-1 {

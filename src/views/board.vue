@@ -68,6 +68,7 @@
             <!-- //////////////////////////////////// -->
 
             <div class="board-actions">
+              <board-members :members="boardToEdit.members" />
               <button @click="toggleAddingMembers">
                 <!-- <font-awesome-icon class="header-icon" icon="user-friends" />
                 Members/ -->
@@ -217,6 +218,7 @@ import boardActivities from "../cmps/board-activities.vue";
 import workspace from "../cmps/workspace.vue";
 import mainTable from "../cmps/main-table.vue";
 import chart from "../cmps/chart";
+import boardMembers from "../cmps/board-members";
 
 import { boardService } from "../services/board.service";
 import { utilService } from "../services/util.service";
@@ -623,6 +625,7 @@ export default {
     boardActivities,
     workspace,
     mainTable,
+    boardMembers
   },
 };
 </script>

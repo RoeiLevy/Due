@@ -288,7 +288,7 @@
 
 .sortable-chosen {
     opacity: 100%;
-    box-shadow: 0 0 20px rgba(51, 51, 51, 0.17);
+    box-shadow: 0 0 15px rgba(70, 70, 70, 0.082);
     transform: rotate(0.7deg);
     transition: ease;
     z-index: 70;
@@ -363,7 +363,7 @@ body .vd-picker__input input {
         justify-content: center;
         .box {
             height: 100%;
-            .popover{
+            .popover {
                 display: none;
                 background-color: red;
                 width: 200px;
@@ -373,11 +373,11 @@ body .vd-picker__input input {
         .box:hover {
             filter: brightness(110%) saturate(70%);
             height: 120%;
-            .progress{
+            .progress {
                 display: flex;
             }
         }
-        .box:hover .progress{
+        .box:hover .progress {
             display: flex;
         }
     }

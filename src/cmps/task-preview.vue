@@ -43,9 +43,10 @@
         v-if="isAddingMember"
       ></task-add-member>
       <div v-if="task.members" class="avatar-container">
+        <el-badge type=info v-if="extraMembers" :value="extraMembers" class="members-badage"></el-badge>
         <avatar
           class="member-avatar"
-          v-for="member in task.members"
+          v-for="member in membersToShow"
           :key="member._id"
           :size="30"
           :username="member.fullname"
@@ -193,6 +194,16 @@ export default {
     },
   },
   computed: {
+     membersToShow() {
+      if (this.task.members.length > 3) {
+        return this.task.members.slice(0, 3);
+      } else return this.task.members
+    },
+    extraMembers() {
+        if  (this.task.members.length > 3) {
+            return `+ ${this.task.members.length - 3}` 
+        } else return false
+    },
     isCloseScreen() {
       return this.$store.getters.isCloseScreen;
     },

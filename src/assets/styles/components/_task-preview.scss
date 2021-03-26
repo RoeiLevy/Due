@@ -356,11 +356,15 @@ body .vd-picker__input input {
         border: 4px solid rgb(248, 248, 248);
         display: flex;
         background-color: #eeeef0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         .box {
             height: 100%;
         }
         .box:hover {
             filter: brightness(120%) saturate(70%);
+            height: 120%;
         }
     }
     .div-1 {

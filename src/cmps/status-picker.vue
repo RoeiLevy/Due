@@ -8,7 +8,7 @@
       @start="drag = true"
       @end="drag = false"
     >
-      <el-tag
+      <div
         v-for="status in statusesToEdit"
         :key="status.id"
         @click="setStatus(status)"
@@ -18,7 +18,7 @@
         class="status-btn"
       >
         <h4>{{ status.title }}</h4>
-      </el-tag>
+      </div>
     </draggable>
     <draggable
       v-else

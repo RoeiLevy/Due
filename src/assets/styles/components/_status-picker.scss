@@ -113,7 +113,8 @@
     .status-edit-container:hover .delete-status-btn {
         opacity: 1;
     }
-    .el-tag {
+    .status-btn {
+        color: white;
         margin: 5px 5px 0 5px;
         width: 112px;
         height: 32px;
@@ -122,8 +123,11 @@
         justify-content: space-between;
         align-items: center;
         border: none;
+        // .status-btn {
+        // }
+        border-radius: none !important;
     }
-    .el-tag:hover {
+    .status-btn:hover {
         opacity: 0.5;
     }
 }

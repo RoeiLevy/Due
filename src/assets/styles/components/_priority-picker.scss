@@ -113,7 +113,8 @@
     .priority-edit-container:hover .delete-priority-btn {
         opacity: 1;
     }
-    .el-tag {
+    .priority-btn {
+        color: white;
         margin: 5px 0;
         width: 112px;
         height: 32px;
@@ -123,7 +124,7 @@
         align-items: center;
         border: none;
     }
-    .el-tag:hover {
+    .priority-btn:hover {
         opacity: 0.5;
     }
 }

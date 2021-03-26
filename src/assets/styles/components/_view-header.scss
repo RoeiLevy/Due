@@ -1,29 +1,24 @@
 .header-view-bar {
     border-bottom: 2px solid #e6e9ef;
-
     >* {
         display: flex;
         justify-content: center;
         align-items: center;
     }
-
-
     .view-nav {
         margin: 0;
         padding-left: 0;
-
         p {
             margin: 0;
         }
-
         .view {
-            color: #333;
+            color: #676879;
             text-decoration: none;
             padding-bottom: 4px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-
+            font-size: 14px;
             .view-title {
                 padding: 7px 16px;
                 height: 40px;
@@ -31,31 +26,22 @@
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-
                 p {
                     padding-left: 5px;
                 }
-
             }
         }
-
         .view-title:hover {
             background-color: #e6e9ef;
             border-radius: 4px;
         }
     }
-
-
-
-
     .new-group-wrapper {
         button.el-button.new-group-btn.el-button--primary {
             background-color: #409eff;
             border-color: #409eff;
         }
     }
-
-
     .main-table-wrapper button,
     .add-view-wrapper button {
         border: none;
@@ -65,13 +51,11 @@
         height: 32px;
         padding: 7px 20px;
     }
-
     .main-table-wrapper button:hover {
         background-color: #e6e9ef;
         cursor: pointer;
         border-radius: 4px;
     }
-
     .add-view-wrapper button:hover {
         cursor: pointer;
     }
@@ -92,8 +76,6 @@
 
 .board-actions {
     display: flex;
-
-
     .avatar-container {
         position: relative;
         width: 100%;
@@ -103,25 +85,20 @@
         justify-content: center;
         flex-direction: row-reverse;
         margin-inline-end: 35px;
-
         .members-badage {
             position: absolute;
             top: 6px;
             right: -23px;
             z-index: 2;
         }
-
         .member-avatar {
             display: inline-block;
             position: relative;
         }
-
         .member-avatar:not(:last-child) {
             margin-left: -10px !important;
         }
     }
-
-
     >*:not(:first-child) {
         border: none;
         outline: none;
@@ -134,15 +111,12 @@
         justify-content: center;
         align-items: center;
     }
-
     .header-icon {
         padding-right: 5px;
     }
-
     .plus {
         font-size: 16px;
     }
-
     >*:hover:not(:first-child) {
         background-color: #e6e9ef;
         cursor: pointer;

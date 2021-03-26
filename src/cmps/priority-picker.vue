@@ -8,7 +8,7 @@
       @start="drag = true"
       @end="drag = false"
     >
-      <el-tag
+      <div
         v-for="priority in prioritiesToEdit"
         :key="priority.id"
         @click="setPriority(priority)"
@@ -18,7 +18,7 @@
         class="priority-btn"
       >
         <h4>{{ priority.title }}</h4>
-      </el-tag>
+      </div>
     </draggable>
     <draggable
       v-else

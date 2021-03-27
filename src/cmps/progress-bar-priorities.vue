@@ -47,7 +47,7 @@ export default {
         else map[task.priority.title]++;
       });
       map = Object.values(map);
-      map = map.map((count) => (count = (count / all) * 100 + "%"));
+      map = map.map((count) => (count = (Math.floor((count / all) * 100)) + "%"));
       return map;
     },
   },

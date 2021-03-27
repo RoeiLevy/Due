@@ -180,6 +180,34 @@ export default {
     };
   },
   methods: {
+    async removeTask() {
+      try {
+        await this.$confirm(
+          "This will permanently delete the Task. Continue?",
+          "Warning",
+          {
+            confirmButtonText: "OK",
+            cancelButtonText: "Cancel",
+            type: "warning",
+          }
+        );
+        try {
+          // await this.$store.dispatch("removeBoard", boardId);
+          this.$emit("removeTask", this.task);
+          this.$message({
+            type: "success",
+            message: "Delete completed",
+          });
+        } catch (err) {
+          console.log("Couldn`t delete board", err);
+        }
+      } catch (err) {
+        this.$message({
+          type: "info",
+          message: "Delete canceled",
+        });
+      }
+    },
     toggleMember(member) {
       if (!this.taskToEdit.members) this.taskToEdit.members = [];
       if (this.taskToEdit.members.some((m) => m._id === member._id)) {
@@ -248,9 +276,9 @@ export default {
       this.$emit("updateTask", this.taskToEdit);
       // this.dueDate = null;
     },
-    removeTask() {
-      this.$emit("removeTask", this.task);
-    },
+    // removeTask() {
+    //   this.$emit("removeTask", this.task);
+    // },
   },
   computed: {
     membersToShow() {

@@ -3,7 +3,7 @@
     <div class="flex column top-navigation">
       <div class="logo-wrapper">
         <router-link to="/">
-          <img class="logo" src="@/assets/imgs/logo.png" />
+          <img class="logo" src="@/assets/final.png" />
         </router-link>
       </div>
       <el-tooltip

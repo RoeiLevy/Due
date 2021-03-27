@@ -46,7 +46,7 @@
         <!-- <span slot="title">{{ boardTitle() }}</span> -->
         <div v-show="isOpen" class="board-menu-actions">
           <h2 class="title">Board Menu</h2>
-          <div class="action">
+          <div @click="addNewBoard" class="action">
             <font-awesome-icon class="header-icon plus" icon="plus-circle" />
             <h3>Add</h3>
           </div>

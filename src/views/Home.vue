@@ -18,27 +18,40 @@
         <button @click="logout" class="logout-btn">Logout</button>
       </div>
     </header>
+
     <main class="main-content flex column">
-      <section class="info-container flex column">
-        <!-- <h1>DUE</h1> -->
-        <div class="logo-container">
-          <img class="logo" src="@/assets/imgs/logo.png" />
+
+      <div class="top-container">
+        <div class="desc-container1">
+        <h4 class="desc">
+          Manage and control your team projects. A platform for work management,
+          including tracking projects, deadlines, and team collaboration.
+        </h4>
         </div>
-        <div class="desc">
-          <h2>
-            Planning, tracking and delivering your team’s best work has never
-            been easier.
-          </h2>
-          <h4>
-            Manage and control your team projects. A platform for work
-            management, including tracking projects, deadlines, and team
-            collaboration.
-          </h4>
+        <div class="svg-container">
+        <img src="@/assets/homepage-svg/1.svg" /> 
         </div>
-      </section>
-      <el-button @click="pushRoute" class="get-started" type="success" round
-        >Get Started</el-button
-      >
+      </div>
+
+      <div class="middle-container">
+        <el-button @click="pushRoute" class="get-started" type="success" round
+          >Get Started</el-button
+        >
+      </div>
+
+      <div class="bottom-container">
+        <div class="svg-container">
+
+        <img src="@/assets/homepage-svg/2.svg" /> 
+        </div>
+        <div class="desc-container2"   >
+        <h4 class="desc">
+          Planning, tracking and delivering your team’s best work has never been
+          easier.
+        </h4>
+        </div>
+      </div>
+
     </main>
   </div>
 </template>

@@ -4,113 +4,163 @@
     display: flex;
     flex-direction: column;
 
-
     .main-content {
         flex: 1;
-        // justify-content: center;
-        // background-color: #fefefe;
         background-color: #f9f8f8;
-
-        .get-started {
-            width: 300px;
-            height: 75px;
-            border-radius: 50px;
-            background-color: #ffcb00;
-            border-color: #ffcb00;
-        }
-    }
-    .home-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        height: 72px;
         padding-left: 32px;
         padding-right: 32px;
-        box-shadow: -1px 1px 14px -2px #000000;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        // display: grid;
+        // grid-template: 200px 50px 200px/ 1fr;
+        // grid-gap: 5px;
 
-        .due {
-            color: rgb(50, 51, 56);
-            font-size: 28px;
-            font-weight: bold;
-            font-family: roboto-bold, sans-serif;
+
+        //     .top-container {
+        //         display: flex;
+
+        //         .desc-container1 {
+        //             justify-content: center;
+        //             align-items: center;
+        //             display: flex;
+        //             flex-basis: 50%;
+        //             font-weight: 700;
+        //             font-size: 24px;
+        //             width: 70%;
+        //             // height: 100%;
+        //         }
+
+        //         .svg-container {
+        //             justify-content: center;
+        //             align-items: center;
+        //             display: flex;
+        //             width: 30%;
+        //             flex-basis: 50%;
+        //             img {
+        //                 height: 80%;
+        //                 width: unset;
+        //             }
+        //         }
+        //     }
+
+        //     .middle-container {
+        //         display: flex;
+        //         align-items: center;
+        //         justify-content: center;
+
+        //         .get-started {
+        //             width: 300px;
+        //             height: 50px;
+        //             border-radius: 50px;
+        //             background-color: #ffcb00;
+        //             border-color: #ffcb00;
+        //             align-content: center;
+        //         }
+        //     }
+
+        //     .bottom-container {
+        //         display: flex;
+
+        //         .desc-container2 {
+        //             font-weight: 700;
+        //             font-size: 24px;
+        //             height: 100%;
+        //             flex-basis: 50%;
+        //             justify-content: center;
+        //             align-items: center;
+        //             display: flex;
+        //             width: 50%;
+        //         }
+
+        //         .svg-container {
+        //             justify-content: center;
+        //             align-items: center;
+        //             display: flex;
+        //             width: 50%;
+        //             flex-basis: 50%;
+        //             img {
+        //                 height: 100%;
+        //                 width: unset;
+        //             }
+        //         }
+        //     }
+        // }
+
+        .home-header {
+            background-color: #f9f8f8;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+            padding-left: 32px;
+            padding-right: 32px;
+            // box-shadow: -1px 1px 14px -2px #000000;
+
+            .due {
+                color: rgb(50, 51, 56);
+                font-size: 28px;
+                font-weight: bold;
+                font-family: roboto-bold, sans-serif;
+            }
+
+            .com {
+                font-size: 14px;
+                font-weight: bold;
+                font-family: roboto-regular, sans-serif;
+            }
+
+            .logo {
+                width: 42px;
+            }
         }
 
-        .com {
-            font-size: 14px;
-            font-weight: bold;
-            font-family: roboto-regular, sans-serif;
-        }
-
-        .logo {
-            width: 42px;
-        }
-    }
-
-    .nav-links {
-        padding: 10px;
-        font-size: 1rem;
-        font-family: roboto-regular, sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        .logout-btn {
+        .nav-links {
             padding: 10px;
-            background: none;
-            transition: all.3s;
+            font-size: 1rem;
+            font-family: roboto-regular, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .logout-btn {
+                padding: 10px;
+                background: none;
+                transition: all.3s;
+                font-family: inherit;
+                font-size: 16px;
+
+            }
+
+            .logout-btn:hover {
+                opacity: 0.5;
+            }
+
+            a {
+                text-decoration: none;
+            }
+        }
+
+        .nav-links>* {
+            padding-inline-end: 10px;
+            text-decoration: none;
+            color: rgb(50, 51, 56);
+
+
+        }
+
+        .username {
             font-family: inherit;
             font-size: 16px;
-
         }
 
-        .logout-btn:hover {
-            opacity: 0.5;
-        }
 
         a {
             text-decoration: none;
         }
-    }
 
-    .nav-links>* {
-        padding-inline-end: 10px;
-        text-decoration: none;
-        color: rgb(50, 51, 56);
-
-
-    }
-
-    .username {
-        font-family: inherit;
-        font-size: 16px;
-    }
-
-    .info-container {
-        margin: 100px auto;
-        padding: 20px;
-        max-width: 600px;
-        display: flex;
-        // flex: 1;
-        justify-content: center;
-
-        :first-child {
-            margin: 0 auto;
+        h1 {
+            font-weight: bold;
         }
-    }
-
-    .get-started {
-        margin: 20px 0;
-        font-size: large;
-        width: 50%;
-        min-width: fit-content;
-        align-self: center;
-    }
-
-    a {
-        text-decoration: none;
-    }
-
-    h1 {
-        font-weight: bold;
     }
 }

@@ -1,8 +1,19 @@
 <template>
   <div class="task-wrapper flex">
     <div :style="taskColor" class="task-color-box-start"></div>
-    <div class="remove-btn-wrapper" @click="removeTask">
-      <font-awesome-icon class="header-icon remove-btn" icon="trash" />
+    <div class="remove-btn-wrapper">
+      <!-- <el-popconfirm lang="en" @confirm="removeTask" title="Are you sure to delete this?"> -->
+      <!-- <el-button slot="reference">Delete</el-button> -->
+      <!-- <el-button  @click="removeTask"> -->
+        <font-awesome-icon
+        @click="removeTask"
+          slot="reference"
+          class="header-icon remove-btn"
+          icon="trash"
+      />
+      <!-- </el-button> -->
+
+      <!-- </el-popconfirm> -->
     </div>
     <input
       v-if="editMode"
@@ -43,7 +54,12 @@
         v-if="isAddingMember"
       ></task-add-member>
       <div v-if="task.members" class="avatar-container">
-        <el-badge type=info v-if="extraMembers" :value="extraMembers" class="members-badage"></el-badge>
+        <el-badge
+          type="info"
+          v-if="extraMembers"
+          :value="extraMembers"
+          class="members-badage"
+        ></el-badge>
         <avatar
           class="member-avatar"
           v-for="member in membersToShow"
@@ -121,6 +137,34 @@ export default {
     };
   },
   methods: {
+    async removeTask() {
+      try {
+        await this.$confirm(
+          "This will permanently delete the Task. Continue?",
+          "Warning",
+          {
+            confirmButtonText: "OK",
+            cancelButtonText: "Cancel",
+            type: "warning",
+          }
+        );
+        try {
+          // await this.$store.dispatch("removeBoard", boardId);
+          this.$emit("removeTask", this.task);
+          this.$message({
+            type: "success",
+            message: "Delete completed",
+          });
+        } catch (err) {
+          console.log("Couldn`t delete board", err);
+        }
+      } catch (err) {
+        this.$message({
+          type: "info",
+          message: "Delete canceled",
+        });
+      }
+    },
     toggleMember(member) {
       if (!this.taskToEdit.members) this.taskToEdit.members = [];
       if (this.taskToEdit.members.some((m) => m._id === member._id)) {
@@ -189,20 +233,20 @@ export default {
       this.$emit("updateTask", this.taskToEdit);
       // this.dueDate = null;
     },
-    removeTask() {
-      this.$emit("removeTask", this.task);
-    },
+    // removeTask() {
+    //   this.$emit("removeTask", this.task);
+    // },
   },
   computed: {
-     membersToShow() {
+    membersToShow() {
       if (this.task.members.length > 3) {
         return this.task.members.slice(0, 3);
-      } else return this.task.members
+      } else return this.task.members;
     },
     extraMembers() {
-        if  (this.task.members.length > 3) {
-            return `+ ${this.task.members.length - 3}` 
-        } else return false
+      if (this.task.members.length > 3) {
+        return `+ ${this.task.members.length - 3}`;
+      } else return false;
     },
     isCloseScreen() {
       return this.$store.getters.isCloseScreen;

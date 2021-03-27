@@ -155,17 +155,17 @@ function getEmptyBoard() {
         "priorities": [{
             "id": "udr2t6",
             "title": "Important",
-            "color": "#00c875"
+            "color": "#C85A00"
         },
         {
             "id": "udm074",
             "title": "Urgent",
-            "color": "#fdab3d"
+            "color": "red"
         },
         {
             "id": "ud1k6a",
             "title": "Low",
-            "color": "#e2445c"
+            "color": "#A8E244"
         }
         ],
         "activities": [],

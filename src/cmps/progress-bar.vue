@@ -6,8 +6,9 @@
       :key="idx"
       :style="{
         'background-color': groupStatuses[idx].color,
-        width: getData[idx]
+        width: getData[idx],
       }"
+      :title="groupStatuses[idx].title + ': ' + getData[idx]"
     ></div>
   </div>
 </template>
@@ -41,7 +42,7 @@ export default {
         else map[task.status.title]++;
       });
       map = Object.values(map);
-      map=map.map(count=>count=(count/all)*100+'%');
+      map = map.map((count) => (count = (count / all) * 100 + "%"));
       return map;
     },
   },

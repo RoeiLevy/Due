@@ -6,28 +6,28 @@
       >
     </div>
     <div class="groups-list">
-      <!-- <draggable
+      <draggable
         v-model="boardToEdit.groups"
         @change="saveBoard"
         v-bind="dragOptions"
       >
-        <transition-group type="transition"> -->
-      <group
-        v-for="group in board.groups"
-        :key="group.id"
-        :group="group"
-        @removeTask="removeTask"
-        @updateTask="updateTask"
-        @saveGroup="saveGroup"
-        @addTask="addTask"
-        @removeGroup="removeGroup"
-        @addStatus="addStatus"
-        @deleteStatus="deleteStatus"
-        @addPriority="addPriority"
-        @deletePriority="deletePriority"
-      />
-      <!-- </transition-group>
-      </draggable> -->
+        <transition-group type="transition">
+          <group
+            v-for="group in board.groups"
+            :key="group.id"
+            :group="group"
+            @removeTask="removeTask"
+            @updateTask="updateTask"
+            @saveGroup="saveGroup"
+            @addTask="addTask"
+            @removeGroup="removeGroup"
+            @addStatus="addStatus"
+            @deleteStatus="deleteStatus"
+            @addPriority="addPriority"
+            @deletePriority="deletePriority"
+          />
+        </transition-group>
+      </draggable>
     </div>
   </div>
 </template>
@@ -38,6 +38,12 @@ import group from "./group";
 
 export default {
   props: ["board"],
+  data(){
+    return{
+      boardToEdit: null
+    }
+
+  },
   methods: {
     addTask(newTask, groupId) {
       this.$emit("addTask", newTask, groupId);
@@ -77,12 +83,24 @@ export default {
     dragOptions() {
       return {
         animation: 200,
-        group: "description",
-        disabled: false,
+        group: "groups",
+        // disabled: false,
         ghostClass: "ghost",
       };
     },
   },
+    watch: {
+      board: function (newVal, oldVal) {
+        // console.log('oldVal', oldVal.groups)
+        // console.log('newVal', newVal.groups)
+      this.boardToEdit = JSON.parse(JSON.stringify(newVal));
+    },
+
+    },
+    created(){
+      this.boardToEdit = JSON.parse(JSON.stringify(this.board));
+
+    },
   components: {
     group,
     draggable,

@@ -1,9 +1,16 @@
 <template>
   <div class="task-wrapper flex">
     <div :style="taskColor" class="task-color-box-start"></div>
+      <el-tooltip
+        class="item"
+        effect="dark"
+        content="Delete Task"
+        placement="top"
+      >
     <div class="remove-btn-wrapper" @click="removeTask">
       <font-awesome-icon class="header-icon remove-btn" icon="trash" />
     </div>
+      </el-tooltip>
     <input
       v-if="editMode"
       ref="input"
@@ -16,37 +23,53 @@
       <label class="task-title-label" @click="handleEdit">
         {{ taskToEdit.title }}
       </label>
-      <el-badge
-        v-if="task.comments"
-        :hidden="isTaskComments"
-        :value="task.comments.length"
-        class="comment-badage"
-        type="primary"
+      <el-tooltip
+        class="item"
+        effect="dark"
+        content="Task Details"
+        placement="top"
       >
-                                    <el-tooltip class="item" effect="dark" content="Task Details" placement="top">
-
-        <font-awesome-icon
-          @click="openTaskDetails"
-          class="header-icon"
-          icon="comment"
-        />
-                                    </el-tooltip>
-      </el-badge>
+        <el-badge
+          v-if="task.comments"
+          :hidden="isTaskComments"
+          :value="task.comments.length"
+          class="comment-badage"
+          type="primary"
+        >
+          <font-awesome-icon
+            @click="openTaskDetails"
+            class="header-icon"
+            icon="comment"
+          />
+        </el-badge>
+      </el-tooltip>
     </div>
     <div class="task-members-container">
-      <font-awesome-icon
-        @click="toggleAddingMember"
-        class="add-btn"
-        icon="plus"
+      <el-tooltip
+        class="item"
+        effect="dark"
+        content="Add Members"
+        placement="top"
       >
-      </font-awesome-icon>
-      <task-add-member
-        :taskMembers="task.members"
-        @toggleMember="toggleMember"
-        v-if="isAddingMember"
-      ></task-add-member>
+        <font-awesome-icon
+          @click="toggleAddingMember"
+          class="add-btn"
+          icon="plus"
+        >
+        </font-awesome-icon>
+        <task-add-member
+          :taskMembers="task.members"
+          @toggleMember="toggleMember"
+          v-if="isAddingMember"
+        ></task-add-member>
+      </el-tooltip>
       <div v-if="task.members" class="avatar-container">
-        <el-badge type=info v-if="extraMembers" :value="extraMembers" class="members-badage"></el-badge>
+        <el-badge
+          type="info"
+          v-if="extraMembers"
+          :value="extraMembers"
+          class="members-badage"
+        ></el-badge>
         <avatar
           class="member-avatar"
           v-for="member in membersToShow"
@@ -197,15 +220,15 @@ export default {
     },
   },
   computed: {
-     membersToShow() {
+    membersToShow() {
       if (this.task.members.length > 3) {
         return this.task.members.slice(0, 3);
-      } else return this.task.members
+      } else return this.task.members;
     },
     extraMembers() {
-        if  (this.task.members.length > 3) {
-            return `+ ${this.task.members.length - 3}` 
-        } else return false
+      if (this.task.members.length > 3) {
+        return `+ ${this.task.members.length - 3}`;
+      } else return false;
     },
     isCloseScreen() {
       return this.$store.getters.isCloseScreen;

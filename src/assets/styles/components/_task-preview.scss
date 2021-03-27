@@ -67,6 +67,38 @@
         padding: 0px 4px;
         text-align: center;
         white-space: nowrap;
+        // right: 14px !important;
+        // top: -1px !important;
+        // border-radius: 10px;
+        // color: #fff;
+        // display: inline-block;
+        // font-size: 10px;
+        // height: 11px;
+        // line-height: 10px;
+        // padding: 0px 4px;
+        // text-align: center;
+        // white-space: nowrap;
+        svg {
+            position: absolute;
+            right: -9px;
+            top: -3px;
+        }
+        .el-badge__content.el-badge__content--primary.is-fixed {
+            position: absolute;
+            top: -1px;
+            right: 0;
+            transform: translateY(-50%) translateX(100%);
+            border-radius: 10px;
+            color: #FFF;
+            display: inline-block;
+            font-size: 11px;
+            height: 16px;
+            line-height: 15px;
+            padding: 0px 4px;
+            text-align: center;
+            white-space: nowrap;
+            border: 1px solid #FFF;
+        }
     }
     .task-title-input {
         border: 1px dashed gray;
@@ -288,7 +320,7 @@
 
 .sortable-chosen {
     opacity: 100%;
-    box-shadow: 0 0 20px rgba(51, 51, 51, 0.17);
+    box-shadow: 0 0 15px rgba(70, 70, 70, 0.082);
     transform: rotate(0.7deg);
     transition: ease;
     z-index: 70;
@@ -334,10 +366,9 @@ body .vd-picker__input input {
     z-index: 70;
 }
 
-.close-screen:hover {
-    cursor: pointer;
-}
-
+// .close-screen:hover {
+//     cursor: pointer;
+// }
 .progress-bar-container {
     width: 100%;
     height: 36px;
@@ -363,7 +394,7 @@ body .vd-picker__input input {
         justify-content: center;
         .box {
             height: 100%;
-            .popover{
+            .popover {
                 display: none;
                 background-color: red;
                 width: 200px;
@@ -373,11 +404,11 @@ body .vd-picker__input input {
         .box:hover {
             filter: brightness(110%) saturate(70%);
             height: 120%;
-            .progress{
+            .progress {
                 display: flex;
             }
         }
-        .box:hover .progress{
+        .box:hover .progress {
             display: flex;
         }
     }
@@ -395,5 +426,89 @@ body .vd-picker__input input {
     }
     .div-5 {
         min-width: 38px;
+    }
+}
+
+/////////////////Succsess Animation/////////////////
+#successAnimation {
+    position: absolute;
+    right: 4px;
+}
+
+$circle-length: 151px;
+$check-length: 36px;
+@keyframes scaleAnimation {
+    0% {
+        opacity: 0;
+        transform: scale(1.5);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes drawCircle {
+    0% {
+        stroke-dashoffset: $circle-length;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes drawCheck {
+    0% {
+        stroke-dashoffset: $check-length;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+#successAnimationCircle {
+    stroke-dasharray: $circle-length $circle-length;
+    stroke: #FFF;
+}
+
+#successAnimationCheck {
+    stroke-dasharray: $check-length $check-length;
+    stroke: #FFF;
+}
+
+#successAnimationResult {
+    fill: #FFF;
+    opacity: 0;
+}
+
+#successAnimation.animated {
+    animation: 1s ease-out 0s 1 both scaleAnimation;
+    #successAnimationCircle {
+        animation: 1s cubic-bezier(0.77, 0, 0.175, 1) 0s 1 both drawCircle, 0.3s linear 0.9s 1 both fadeOut;
+    }
+    #successAnimationCheck {
+        animation: 1s cubic-bezier(0.77, 0, 0.175, 1) 0s 1 both drawCheck, 0.3s linear 0.9s 1 both fadeOut;
+    }
+    #successAnimationResult {
+        animation: 0.3s linear 0.9s both fadeIn;
+        animation: 1.5s linear 0.9s both fadeOut;
     }
 }

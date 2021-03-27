@@ -1,9 +1,18 @@
 <template>
   <section class="group-container">
+          <!-- <draggable
+        v-model="board.groups"
+        @change="saveGroup"
+        v-bind="dragOptions"
+      > -->
+        <!-- <transition-group type="transition"> -->
+
     <div class="flex group-header">
       <el-dropdown @command="handleCommand" class="drop-down" trigger="click">
         <span :style="groupColor" class="el-dropdown-link">
+        <el-tooltip class="item" effect="dark" content="Group Menu" placement="top-start">
           <font-awesome-icon class="header-icon" icon="caret-square-down" />
+      </el-tooltip>
         </span>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item command="removeGroup"
@@ -19,6 +28,7 @@
           </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
+
       <div class="group-title-wrapper">
         <input
           required
@@ -98,6 +108,9 @@
         <div class="div-5"></div>
       </div>
     </div>
+       <!-- </transition-group> -->
+      <!-- </draggable> -->
+
     <!-- <div class="task-wrapper flex transparent">
       <div class="task-color-box-start"></div>
       <div class="task-title"></div>
@@ -211,6 +224,10 @@ export default {
         ghostClass: "ghost",
       };
     },
+    board(){
+          return this.$store.getters.boardForDisplay
+
+    }
   },
   created() {
     this.groupToEdit = JSON.parse(JSON.stringify(this.group));

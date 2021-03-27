@@ -81,10 +81,10 @@ export default {
           groupId,
         });
 
-        this.$store.dispatch({
-          type: "sendActivity",
-          txt: `Added a comment to "${this.task.title}"`,
-        });
+        // this.$store.dispatch({
+        //   type: "sendActivity",
+        //   txt: `Added a comment to "${this.task.title}"`,
+        // });
       } catch (err) {
         console.log("err:", err);
       }

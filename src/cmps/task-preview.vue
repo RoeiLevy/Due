@@ -1,20 +1,16 @@
 <template>
   <div class="task-wrapper flex">
     <div :style="taskColor" class="task-color-box-start"></div>
-    <div class="remove-btn-wrapper">
-      <!-- <el-popconfirm lang="en" @confirm="removeTask" title="Are you sure to delete this?"> -->
-      <!-- <el-button slot="reference">Delete</el-button> -->
-      <!-- <el-button  @click="removeTask"> -->
-        <font-awesome-icon
-        @click="removeTask"
-          slot="reference"
-          class="header-icon remove-btn"
-          icon="trash"
-      />
-      <!-- </el-button> -->
-
-      <!-- </el-popconfirm> -->
-    </div>
+    <el-tooltip
+      class="item"
+      effect="dark"
+      content="Delete Task"
+      placement="top"
+    >
+      <div class="remove-btn-wrapper" @click="removeTask">
+        <font-awesome-icon class="header-icon remove-btn" icon="trash" />
+      </div>
+    </el-tooltip>
     <input
       v-if="editMode"
       ref="input"
@@ -27,32 +23,46 @@
       <label class="task-title-label" @click="handleEdit">
         {{ taskToEdit.title }}
       </label>
-      <el-badge
-        v-if="task.comments"
-        :hidden="isTaskComments"
-        :value="task.comments.length"
-        class="comment-badage"
-        type="primary"
+      <el-tooltip
+        class="item"
+        effect="dark"
+        content="Task Details"
+        placement="top"
       >
-        <font-awesome-icon
-          @click="openTaskDetails"
-          class="header-icon"
-          icon="comment"
-        />
-      </el-badge>
+        <el-badge
+          v-if="task.comments"
+          :hidden="isTaskComments"
+          :value="task.comments.length"
+          class="comment-badage"
+          type="primary"
+        >
+          <font-awesome-icon
+            @click="openTaskDetails"
+            class="header-icon"
+            icon="comment"
+          />
+        </el-badge>
+      </el-tooltip>
     </div>
     <div class="task-members-container">
-      <font-awesome-icon
-        @click="toggleAddingMember"
-        class="add-btn"
-        icon="plus"
+      <el-tooltip
+        class="item"
+        effect="dark"
+        content="Add Members"
+        placement="top"
       >
-      </font-awesome-icon>
-      <task-add-member
-        :taskMembers="task.members"
-        @toggleMember="toggleMember"
-        v-if="isAddingMember"
-      ></task-add-member>
+        <font-awesome-icon
+          @click="toggleAddingMember"
+          class="add-btn"
+          icon="plus"
+        >
+        </font-awesome-icon>
+        <task-add-member
+          :taskMembers="task.members"
+          @toggleMember="toggleMember"
+          v-if="isAddingMember"
+        ></task-add-member>
+      </el-tooltip>
       <div v-if="task.members" class="avatar-container">
         <el-badge
           type="info"
@@ -82,6 +92,39 @@
         {{ taskToEdit.status.title }}
       </h3>
       <h3 class="status-h3" v-else @click="toggleAddingStatus">Status</h3>
+      <svg
+        id="successAnimation"
+        class="animated"
+        xmlns="http://www.w3.org/2000/svg"
+        width="35"
+        height="35"
+        viewBox="0 0 70 70"
+        v-if="taskToEdit.status && taskToEdit.status.title === 'Done'"
+      >
+        <path
+          id="successAnimationResult"
+          fill="#D8D8D8"
+          d="M35,60 C21.1928813,60 10,48.8071187 10,35 C10,21.1928813 21.1928813,10 35,10 C48.8071187,10 60,21.1928813 60,35 C60,48.8071187 48.8071187,60 35,60 Z M23.6332378,33.2260427 L22.3667622,34.7739573 L34.1433655,44.40936 L47.776114,27.6305926 L46.223886,26.3694074 L33.8566345,41.59064 L23.6332378,33.2260427 Z"
+        />
+        <circle
+          id="successAnimationCircle"
+          cx="35"
+          cy="35"
+          r="24"
+          stroke="#979797"
+          stroke-width="2"
+          stroke-linecap="round"
+          fill="transparent"
+        />
+        <polyline
+          id="successAnimationCheck"
+          stroke="#979797"
+          stroke-width="2"
+          points="23 34 34 43 47 27"
+          fill="transparent"
+        />
+      </svg>
+
       <status-picker
         @setStatus="setStatus"
         @addStatus="addStatus"

@@ -1,44 +1,54 @@
 <template>
   <div class="home">
     <header class="home-header">
-      <h2 class="due">Due<span class="com">.com</span></h2>
-      <div
-        v-if="!loggedInUser || loggedInUser.fullname === 'Guest'"
-        class="nav-links"
-      >
-        <router-link to="/login">Login</router-link>
-        <span>|</span>
-        <router-link to="/signup">Sign Up</router-link>
-      </div>
-      <div v-else class="nav-links">
-        <h2 class="username" v-if="loggedInUser">
-          Hello {{ loggedInUser.fullname }}
-        </h2>
-        <span>|</span>
-        <button @click="logout" class="logout-btn">Logout</button>
+      <div class="header-container">
+        <h2 class="due">Due<span class="com">.com</span></h2>
+        <div
+          v-if="!loggedInUser || loggedInUser.fullname === 'Guest'"
+          class="nav-links"
+        >
+          <router-link to="/login">Login</router-link>
+          <span>|</span>
+          <router-link to="/signup">Sign Up</router-link>
+        </div>
+        <div v-else class="nav-links">
+          <h2 class="username" v-if="loggedInUser">
+            Hello {{ loggedInUser.fullname }}
+          </h2>
+          <span>|</span>
+          <button @click="logout" class="logout-btn">Logout</button>
+        </div>
       </div>
     </header>
+
     <main class="main-content flex column">
-      <section class="info-container flex column">
-        <!-- <h1>DUE</h1> -->
-        <div class="logo-container">
-          <img class="logo" src="@/assets/imgs/logo.png" />
+      <div class="title-wrapper">
+        <h1>Stay in control</h1>
+      </div>
+
+      <div class="desc-wrapper">
+        <h4 class="desc">
+          A platform for work management, including tracking projects,
+          deadlines, and team collaboration.
+        </h4>
+      </div>
+
+      <div class="btn-wrapper">
+        <el-button @click="pushRoute" class="get-started" type="success"
+          >Get Started<span>❯</span>
+        </el-button>
+      </div>
+      <div class="bottom-wrapper">
+        <div class="img-wrapper">
+          <img src="@/assets/monday.png" />
         </div>
-        <div class="desc">
-          <h2>
-            Planning, tracking and delivering your team’s best work has never
-            been easier.
-          </h2>
-          <h4>
-            Manage and control your team projects. A platform for work
-            management, including tracking projects, deadlines, and team
-            collaboration.
+        <div class="desc2-wrapper">
+          <h4 class="desc2">
+            Planning, tracking and delivering your team’s best work <br> has never
+             been easier.
           </h4>
         </div>
-      </section>
-      <el-button @click="pushRoute" class="get-started" type="success" round
-        >Get Started</el-button
-      >
+      </div>
     </main>
   </div>
 </template>

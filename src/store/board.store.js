@@ -8,9 +8,12 @@ export const boardStore = {
         isTaskDetails: false,
         isBoardActivities: false,
         isCloseScreen: false,
-        isNotificatiosOpen: false
+        isNotificationsOpen: false
     },
     getters: {
+        isNotificatiosOpen(state) {
+            return state.isNotificationsOpen
+        },
         isCloseScreen(state) {
             return state.isCloseScreen
         },
@@ -37,12 +40,18 @@ export const boardStore = {
         },
         isBoardActivities(state) {
             return state.isBoardActivities
+        },
+        boardActivities(state) {
+            return state.currBoard.activities
         }
+
     },
     mutations: {
-        toggleNotifications(state) {
-            state.isNotificatiosOpen = !state.isNotificatiosOpen
-            console.log('notification', state.isNotificatiosOpen);
+        openNotifications(state) {
+            state.isNotificationsOpen = true
+        },
+        closeNotifications(state) {
+            state.isNotificationsOpen = false
         },
         toggleCloseScreen(state) {
             state.isCloseScreen = !state.isCloseScreen

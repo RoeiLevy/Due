@@ -99,7 +99,7 @@
         width="35"
         height="35"
         viewBox="0 0 70 70"
-        v-if="taskToEdit.status.title === 'Done'"
+        v-if="taskToEdit.status && taskToEdit.status.title === 'Done'"
       >
         <path
           id="successAnimationResult"

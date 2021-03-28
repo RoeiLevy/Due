@@ -1,6 +1,6 @@
 <template>
   <div class="board-surface">
-    <loader v-if="!boardToEdit"/>
+    <loader v-if="!boardToEdit" />
     <app-header />
     <div v-if="boardToEdit" class="flex board" ref="screen">
       <div
@@ -239,7 +239,7 @@ import boardMembers from "../cmps/board-members";
 import { boardService } from "../services/board.service";
 import { utilService } from "../services/util.service";
 import { socketService } from "../services/socket.service";
-import loader from '../cmps/loader.vue';
+import loader from "../cmps/loader.vue";
 
 export default {
   name: "board",
@@ -598,7 +598,6 @@ export default {
   },
   computed: {
     filteredBoard() {
-      console.log("filterBy:", this.filterBy);
       var board = JSON.parse(JSON.stringify(this.boardToEdit));
       if (this.filterBy.txt || this.filterBy.member) {
         board.groups.forEach((group, idx) => {
@@ -620,11 +619,10 @@ export default {
             }
           });
         });
+        board.groups = board.groups.filter((group) => {
+          if (group.tasks && group.tasks.length > 0) return group;
+        });
       }
-      board.groups = board.groups.filter((group) => {
-        if (group.tasks && group.tasks.length > 0) return group;
-      });
-      console.log("board:", board);
       return board;
     },
     loggedInUser() {

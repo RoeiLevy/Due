@@ -6,21 +6,22 @@
           <img class="logo" src="@/assets/final.png" />
           <h2 class="due">Due<span class="com">.com</span></h2>
         </div>
-        <div
-          v-if="!loggedInUser || loggedInUser.fullname === 'Guest'"
-          class="nav-links"
-        >
-          <router-link to="/login">Login</router-link>
-          <span>|</span>
-          <router-link to="/signup">Sign Up</router-link>
-        </div>
-        <div v-else class="nav-links">
-          <h2 class="username" v-if="loggedInUser">
-            Hello {{ loggedInUser.fullname }}
-          </h2>
-          <span>|</span>
-          <button @click="logout" class="logout-btn">Logout</button>
-        </div>
+        <div class="nav flex">
+          <div
+            v-if="!loggedInUser || loggedInUser.fullname === 'Guest'"
+            class="nav-links"
+          >
+            <router-link to="/login">Login</router-link>
+            <span>|</span>
+            <router-link to="/signup">Sign Up</router-link>
+          </div>
+          <div v-else class="nav-links">
+            <h2 class="username" v-if="loggedInUser">
+              Hello {{ loggedInUser.fullname }}
+            </h2>
+            <span>|</span>
+            <button @click="logout" class="logout-btn">Logout</button>
+          </div>
           <div class="switch-container">
             <p>Switch View</p>
             <el-switch
@@ -31,6 +32,7 @@
             >
             </el-switch>
           </div>
+        </div>
       </div>
     </header>
     <!-- <header class="home-header">
@@ -178,6 +180,12 @@ export default {
           message: "Delete canceled",
         });
       }
+    },
+      async logout() {
+      await this.$store.dispatch("logout");
+      this.$router.push("/login");
+      try {
+      } catch (err) {}
     },
   },
   computed: {

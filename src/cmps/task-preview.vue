@@ -20,9 +20,11 @@
       class="task-title-input"
     />
     <div v-else class="task-title">
+    <el-tooltip class="item task-tooltip" effect="dark" :content="taskToEdit.title" placement="top">
       <label class="task-title-label" @click="handleEdit">
         {{ taskToEdit.title }}
       </label>
+    </el-tooltip>
       <el-tooltip
         class="item"
         effect="dark"

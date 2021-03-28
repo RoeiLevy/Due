@@ -601,10 +601,15 @@ export default {
       if (this.filterBy.txt || this.filterBy.member) {
         board.groups.forEach((group, idx) => {
           group.tasks = group.tasks.filter((task) => {
-            if (task.title && task.title.includes(this.filterBy.txt))
+            if (
+              task.title &&
+              this.filterBy.txt &&
+              task.title.toLowerCase().includes(this.filterBy.txt.toLowerCase())
+            )
               return task;
             if (
               task.members &&
+              this.filterBy.member &&
               task.members.some(
                 (member) => member.fullname === this.filterBy.member.fullname
               )

@@ -1,25 +1,28 @@
 <template>
   <section class="board-list-container">
+    <close-screen @close="closeMenu" />
     <header class="home-header">
       <div class="header-container">
         <div class="logo-wrapper">
           <img class="logo" src="@/assets/final.png" />
           <h2 class="due">Due<span class="com">.com</span></h2>
         </div>
-        <div class="nav flex">
+        <div @click="toggleMenu" class="burger-wrapper">
+          <font-awesome-icon icon="bars" />
+        </div>
+
+        <div :class="menu" class="nav flex">
           <div
             v-if="!loggedInUser || loggedInUser.fullname === 'Guest'"
             class="nav-links"
           >
             <router-link to="/login">Login</router-link>
-            <span>|</span>
             <router-link to="/signup">Sign Up</router-link>
           </div>
           <div v-else class="nav-links">
             <h2 class="username" v-if="loggedInUser">
               Hello {{ loggedInUser.fullname }}
             </h2>
-            <span>|</span>
             <button @click="logout" class="logout-btn">Logout</button>
           </div>
           <div class="switch-container">
@@ -136,13 +139,26 @@
 <script>
 import moment from "moment";
 import boardPreview from "../cmps/board-preview.vue";
+import CloseScreen from "../cmps/close-screen.vue";
 export default {
   data() {
     return {
       viewValue: true,
+      isMenuOpen: false,
     };
   },
   methods: {
+    toggleMenu() {
+      this.isMenuOpen = !this.isMenuOpen;
+      this.$store.commit("toggleCloseScreen");
+      console.log("this.isMenuOpen:", this.isMenuOpen);
+    },
+    closeMenu() {
+      this.isMenuOpen = false;
+    },
+    closeScreen() {
+      this.$store.commit("toggleCloseScreen");
+    },
     showBoard(boardId) {
       this.$router.push(`/board/${boardId}/maintable`);
     },
@@ -181,7 +197,7 @@ export default {
         });
       }
     },
-      async logout() {
+    async logout() {
       await this.$store.dispatch("logout");
       this.$router.push("/login");
       try {
@@ -198,12 +214,19 @@ export default {
     loggedInUser() {
       return this.$store.getters.loggedInUser;
     },
+    menu() {
+      return { open: this.isMenuOpen };
+    },
   },
   created() {
     this.$store.dispatch("loadBoards");
   },
+  destroyed() {
+    this.closeScreen();
+  },
   components: {
     boardPreview,
+    CloseScreen,
   },
 };
 </script>

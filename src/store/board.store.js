@@ -55,6 +55,7 @@ export const boardStore = {
         },
         toggleCloseScreen(state) {
             state.isCloseScreen = !state.isCloseScreen
+            console.log('state.isCloseScreen:', state.isCloseScreen)
         },
         toggleIsDetails(state) {
             state.isTaskDetails = !state.isTaskDetails

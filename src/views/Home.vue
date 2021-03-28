@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <close-screen @close="closeMenu" />
     <header class="home-header">
       <div class="header-container">
         <div class="logo-wrapper">
@@ -9,24 +10,24 @@
         <div @click="toggleMenu" class="burger-wrapper">
           <font-awesome-icon icon="bars" />
         </div>
-        <div class="nav" :style="menu"> 
 
-        <div
-          v-if="!loggedInUser || loggedInUser.fullname === 'Guest'"
-          class="nav-links"
-        >
-          <router-link to="/login">Login</router-link>
-          <span>|</span>
-          <router-link to="/signup">Sign Up</router-link>
-        </div>
+        <div class="nav" :class="menu">
+          <div
+            v-if="!loggedInUser || loggedInUser.fullname === 'Guest'"
+            class="nav-links"
+          >
+            <router-link class="login" to="/login">Login</router-link>
+            <!-- <span>|</span> -->
+            <router-link class="sign-up" to="/signup">Sign Up</router-link>
+          </div>
 
-        <div v-else class="nav-links">
-          <h2 class="username" v-if="loggedInUser">
-            Hello {{ loggedInUser.fullname }}
-          </h2>
-          <span>|</span>
-          <button @click="logout" class="logout-btn">Logout</button>
-        </div>
+          <div v-else class="nav-links">
+            <h2 class="username" v-if="loggedInUser">
+              Hello {{ loggedInUser.fullname }}
+            </h2>
+            <!-- <span>|</span> -->
+            <button @click="logout" class="logout-btn">Logout</button>
+          </div>
         </div>
       </div>
     </header>
@@ -64,6 +65,8 @@
 </template>
 
 <script>
+import CloseScreen from '../cmps/close-screen.vue';
+
 export default {
   name: "home",
   data() {
@@ -74,26 +77,40 @@ export default {
   methods: {
     toggleMenu() {
       this.isMenuOpen = !this.isMenuOpen;
-      console.log('this.isMenuOpen:', this.isMenuOpen)
-      
+      this.$store.commit('toggleCloseScreen')
+      console.log("this.isMenuOpen:", this.isMenuOpen);
     },
     pushRoute() {
       this.$router.push("/board");
+      this.$store.commit('toggleCloseScreen')
     },
     async logout() {
       await this.$store.dispatch("logout");
       this.$router.push("/login");
+      this.$store.commit('toggleCloseScreen')
       try {
       } catch (err) {}
     },
+    closeMenu() {
+      this.isMenuOpen = false
+    },
+    closeScreen() {
+      this.$store.commit('toggleCloseScreen')
+    }
   },
   computed: {
     loggedInUser() {
       return this.$store.getters.loggedInUser;
     },
     menu() {
-      return { "menu-open": this.isMenuOpen };
+      return { open: this.isMenuOpen };
     },
   },
+  destroyed() {
+    this.closeScreen()
+  },
+  components: {
+    CloseScreen
+  }
 };
 </script>

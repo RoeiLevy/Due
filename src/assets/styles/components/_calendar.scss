@@ -1,0 +1,24 @@
+.calendar {
+    .vc-day {
+        height: 60px;
+        .day-wrapper {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            .task {
+                p {
+                    border-radius: 5px;
+                }
+            }
+        }
+    }
+    .groups {
+        display: flex;
+        justify-content: center;
+        p {
+            margin: 5px;
+            padding: 5px;
+            border-radius: 5px;
+        }
+    }
+}

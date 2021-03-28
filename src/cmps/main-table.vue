@@ -13,7 +13,7 @@
       >
         <transition-group type="transition">
           <group
-            v-for="group in board.groups"
+            v-for="group in boardToEdit.groups"
             :key="group.id"
             :group="group"
             @removeTask="removeTask"
@@ -76,6 +76,7 @@ export default {
       this.$emit("addNewGroup");
     },
     saveBoard() {
+      console.log('saving');
       this.$emit("saveBoard", this.boardToEdit);
     },
   },
@@ -84,7 +85,7 @@ export default {
       return {
         animation: 200,
         group: "groups",
-        // disabled: false,
+        disabled: false,
         ghostClass: "ghost",
       };
     },

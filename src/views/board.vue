@@ -1,6 +1,6 @@
 <template>
   <div class="board-surface">
-    <loader/>
+    <loader v-if="!boardToEdit"/>
     <app-header />
     <div v-if="boardToEdit" class="flex board" ref="screen">
       <div

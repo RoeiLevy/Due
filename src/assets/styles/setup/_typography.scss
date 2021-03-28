@@ -24,6 +24,15 @@
 }
 
 @font-face {
-    font-family: sofia-pro;
-    src: url(~@/assets/fonts/Sofia-Pro/sofiapro.otf);
+    font-family: sofia-pro-regular;
+    src: url(~@/assets/fonts/Sofia-Pro-Regular/sofiapro.otf);
+}
+
+@font-face {
+    font-family: sofia-pro-medium;
+    src: url(~@/assets/fonts/Sofia-Pro-Medium/sofiamedium.otf);
+}
+@font-face {
+    font-family: sofia-pro-bold;
+    src: url(~@/assets/fonts/Sofia-Pro-Bold/sofiabold.otf);
 }

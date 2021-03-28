@@ -1,5 +1,7 @@
 .board-list {
-    padding: 0 40px 40px 40px;
+    // padding: 0 40px 40px 40px;
+    padding-left: 145px;
+    padding-right: 145px;
     text-align: center;
     .card {
         height: 300px;
@@ -34,17 +36,20 @@
 .switch-container {
     padding: 20px;
     display: flex;
-    flex-direction: column;
+    // flex-direction: column;
     align-items: center;
 }
 
 .switch-container p {
-    margin: 0;
+    margin-inline-end: 5px;
+    margin-bottom: 0;
+    font-family: sofia-pro-medium, sans-serif;
+    font-size: 16px;
 }
 
 .el-switch__core {
     width: 40px;
-    height: 15px !important;
+    height: 16px !important;
 }
 
 .el-switch__core::after {

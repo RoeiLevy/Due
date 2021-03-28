@@ -1,8 +1,8 @@
 <template>
   <div class="board-surface">
+    <loader/>
     <app-header />
     <div v-if="boardToEdit" class="flex board" ref="screen">
-      
       <div
         @click="toggleCloseScreen"
         v-if="isCloseScreen"
@@ -28,14 +28,12 @@
                 v-model="boardToEdit.title"
                 @keyup.enter="saveBoard(boardToEdit)"
                 @focusout="saveBoard(boardToEdit)"
-
               />
               <div v-else>
                 <h1
                   class="board-title"
                   style="text-transform: capitalize"
                   @click="handleEdit('title')"
-                  
                 >
                   {{ boardToEdit.title }}
                 </h1>
@@ -175,9 +173,26 @@
                 </el-dropdown-menu>
               </el-dropdown> -->
             </ul>
+            <div>
+              <el-input placeholder="Search Tasks" v-model="filterBy.txt">
+              </el-input>
+              <el-select
+                v-model="filterBy.member"
+                placeholder="Search Member Tasks"
+                :clearable="true"
+              >
+                <el-option
+                  v-for="member in boardToEdit.members"
+                  :key="member.id"
+                  :label="member.fullname"
+                  :value="member"
+                >
+                </el-option>
+              </el-select>
+            </div>
           </nav>
           <router-view
-            :board="boardToEdit"
+            :board="filteredBoard"
             @saveBoard="saveBoard"
             @addNewGroup="addNewGroup"
             @removeTask="removeTask"
@@ -224,6 +239,7 @@ import boardMembers from "../cmps/board-members";
 import { boardService } from "../services/board.service";
 import { utilService } from "../services/util.service";
 import { socketService } from "../services/socket.service";
+import loader from '../cmps/loader.vue';
 
 export default {
   name: "board",
@@ -237,6 +253,10 @@ export default {
       addingView: false,
       isAddingMembers: false,
       activeTab: "mainTable",
+      filterBy: {
+        txt: null,
+        member: null,
+      },
     };
   },
   methods: {
@@ -568,17 +588,45 @@ export default {
       return activity;
     },
     addLoggedInUser() {
-      if (this.boardToEdit.members.some(m => m._id === this.loggedInUser._id)) return
-      this.boardToEdit.members.unshift(JSON.parse(JSON.stringify(this.loggedInUser)))
-      this.saveBoard()
-    }
+      if (this.boardToEdit.members.some((m) => m._id === this.loggedInUser._id))
+        return;
+      this.boardToEdit.members.unshift(
+        JSON.parse(JSON.stringify(this.loggedInUser))
+      );
+      this.saveBoard();
+    },
   },
   computed: {
-     loggedInUser() {
+    filteredBoard() {
+      console.log("filterBy:", this.filterBy);
+      var board = JSON.parse(JSON.stringify(this.boardToEdit));
+      if (this.filterBy.txt || this.filterBy.member) {
+        board.groups.forEach((group, idx) => {
+          group.tasks = group.tasks.filter((task) => {
+            if (task.title && task.title.includes(this.filterBy.txt))
+              return task;
+            if (
+              task.members &&
+              task.members.some(
+                (member) => member.fullname === this.filterBy.member.fullname
+              )
+            ) {
+              return task;
+            }
+          });
+        });
+      }
+      board.groups = board.groups.filter((group) => {
+        if (group.tasks && group.tasks.length > 0) return group;
+      });
+      console.log("board:", board);
+      return board;
+    },
+    loggedInUser() {
       return this.$store.getters.loggedInUser;
     },
     isNotificatiosOpen() {
-      return this.$store.getters.isNotificatiosOpen
+      return this.$store.getters.isNotificatiosOpen;
     },
     isCloseScreen() {
       return this.$store.getters.isCloseScreen;
@@ -618,13 +666,12 @@ export default {
   async created() {
     try {
       await this.loadBoard();
-      this.addLoggedInUser()
+      this.addLoggedInUser();
       const boardId = this.$route.params.boardId;
       socketService.emit("chat topic", boardId);
       socketService.on("get board", this.setBoard);
-      
     } catch (err) {
-      console.log('err:', err)
+      console.log("err:", err);
     }
     // socketService.setup();
     // socketService.on("add activity", this.addActivity);
@@ -644,6 +691,7 @@ export default {
     workspace,
     mainTable,
     boardMembers,
+    loader,
   },
 };
 </script>

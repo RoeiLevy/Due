@@ -1,4 +1,19 @@
 .group-container {
+    @media (max-width: $break-normal) {
+        flex: 1;
+        overflow-y: hidden;
+        overflow-x: scroll;
+        -ms-overflow-style: none !important;
+        /* IE and Edge */
+        scrollbar-width: none !important;
+        /* Firefox */
+         ::-webkit-scrollbar {
+            display: none !important;
+        }
+        div:not(:nth-child(2)):not(:first-child):not(:last-child) {
+            min-width: 150px;
+        }
+    }
     .group-title-wrapper {
         width: 100%;
         display: flex;

@@ -1,5 +1,6 @@
 <template>
   <div class="board-surface">
+    <loader/>
     <app-header />
     <div v-if="boardToEdit" class="flex board" ref="screen">
       <div
@@ -238,6 +239,7 @@ import boardMembers from "../cmps/board-members";
 import { boardService } from "../services/board.service";
 import { utilService } from "../services/util.service";
 import { socketService } from "../services/socket.service";
+import loader from '../cmps/loader.vue';
 
 export default {
   name: "board",
@@ -689,6 +691,7 @@ export default {
     workspace,
     mainTable,
     boardMembers,
+    loader,
   },
 };
 </script>

@@ -1,5 +1,11 @@
 .header-view-bar {
     border-bottom: 2px solid #e6e9ef;
+    display: flex;
+    justify-content: space-between;
+    .el-input__inner{
+        width: 150px !important;
+        margin-left: 5px;
+    }
     >* {
         display: flex;
         justify-content: center;

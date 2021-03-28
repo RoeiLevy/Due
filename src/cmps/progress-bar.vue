@@ -1,5 +1,6 @@
 <template>
   <div class="progress">
+<!-- <el-tooltip class="item" effect="dark" :content="getData" placement="bottom"> -->
     <div
       class="box"
       v-for="(status, idx) in groupStatuses"
@@ -9,7 +10,10 @@
         width: getData[idx],
       }"
       :title="groupStatuses[idx].title + ': ' + getData[idx]"
-    ></div>
+    >
+    </div>
+    <!-- </el-tooltip> -->
+
   </div>
 </template>
 

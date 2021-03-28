@@ -57,7 +57,19 @@
     <div class="board-list">
       <h2 v-if="!loggedInUser">Select Your Board</h2>
       <h2 v-else>Hello {{ loggedInUser.fullname }}</h2>
+      <el-input placeholder="Search Boards" v-model="filterBy.txt"> </el-input>
       <el-row v-if="viewValue">
+           <el-col :span="5" :offset="1" @click="addNewBoard">
+          <el-card class="card" :body-style="{ height: '100%' }">
+            <div @click="addNewBoard">
+              <i class="el-icon-plus" style="font-size: 40px"></i>
+              <div style="padding: 14px">
+                <span>Add A New Board</span>
+                <div class="bottom clearfix"></div>
+              </div>
+            </div>
+          </el-card>
+        </el-col>
         <el-col :span="5" v-for="board in boards" :key="board._id" :offset="1">
           <el-card closeable :body-style="{ padding: '0px' }" class="card">
             <el-button
@@ -80,17 +92,7 @@
             </div>
           </el-card>
         </el-col>
-        <el-col :span="5" :offset="1" @click="addNewBoard">
-          <el-card class="card" :body-style="{ height: '100%' }">
-            <div @click="addNewBoard">
-              <i class="el-icon-plus" style="font-size: 40px"></i>
-              <div style="padding: 14px">
-                <span>Add A New Board</span>
-                <div class="bottom clearfix"></div>
-              </div>
-            </div>
-          </el-card>
-        </el-col>
+     
       </el-row>
 
       <el-carousel
@@ -145,6 +147,9 @@ export default {
     return {
       viewValue: true,
       isMenuOpen: false,
+      filterBy: {
+        txt: null,
+      },
     };
   },
   methods: {
@@ -209,7 +214,13 @@ export default {
       return moment(time).fromNow();
     },
     boards() {
-      return this.$store.getters.boards;
+      var boards = this.$store.getters.boards;
+      if (this.filterBy.txt) {
+        boards = boards.filter((board) =>
+          board.title.toLowerCase().includes(this.filterBy.txt.toLowerCase())
+        );
+      }
+      return boards;
     },
     loggedInUser() {
       return this.$store.getters.loggedInUser;

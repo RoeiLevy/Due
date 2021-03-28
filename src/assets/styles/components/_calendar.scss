@@ -1,6 +1,11 @@
 .calendar {
+    .vc-weeks{
+        >*{
+            // border: 1px solid lightgray;
+        }
+    }
     .vc-day {
-        height: 60px;
+        height: 80px;
         .day-wrapper {
             display: flex;
             flex-direction: column;
@@ -8,13 +13,17 @@
             .task {
                 p {
                     border-radius: 5px;
+                    margin-bottom: 2px;
                 }
             }
         }
     }
     .groups {
         display: flex;
-        justify-content: center;
+        position: fixed;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-25%);
         p {
             margin: 5px;
             padding: 5px;

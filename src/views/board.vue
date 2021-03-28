@@ -1,6 +1,6 @@
 <template>
   <div class="board-surface">
-    <loader/>
+    <loader v-if="!boardToEdit" />
     <app-header />
     <div v-if="boardToEdit" class="flex board" ref="screen">
       <div
@@ -178,7 +178,7 @@
               </el-input>
               <el-select
                 v-model="filterBy.member"
-                placeholder="Search Member Tasks"
+                placeholder="Search Members Tasks"
                 :clearable="true"
               >
                 <el-option
@@ -239,7 +239,7 @@ import boardMembers from "../cmps/board-members";
 import { boardService } from "../services/board.service";
 import { utilService } from "../services/util.service";
 import { socketService } from "../services/socket.service";
-import loader from '../cmps/loader.vue';
+import loader from "../cmps/loader.vue";
 
 export default {
   name: "board",
@@ -598,15 +598,19 @@ export default {
   },
   computed: {
     filteredBoard() {
-      console.log("filterBy:", this.filterBy);
       var board = JSON.parse(JSON.stringify(this.boardToEdit));
       if (this.filterBy.txt || this.filterBy.member) {
         board.groups.forEach((group, idx) => {
           group.tasks = group.tasks.filter((task) => {
-            if (task.title && task.title.includes(this.filterBy.txt))
+            if (
+              task.title &&
+              this.filterBy.txt &&
+              task.title.toLowerCase().includes(this.filterBy.txt.toLowerCase())
+            )
               return task;
             if (
               task.members &&
+              this.filterBy.member &&
               task.members.some(
                 (member) => member.fullname === this.filterBy.member.fullname
               )
@@ -615,11 +619,10 @@ export default {
             }
           });
         });
+        board.groups = board.groups.filter((group) => {
+          if (group.tasks && group.tasks.length > 0) return group;
+        });
       }
-      board.groups = board.groups.filter((group) => {
-        if (group.tasks && group.tasks.length > 0) return group;
-      });
-      console.log("board:", board);
       return board;
     },
     loggedInUser() {

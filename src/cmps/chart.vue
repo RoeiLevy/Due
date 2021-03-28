@@ -23,7 +23,7 @@ export default {
       labels: this.board.statuses.map((s) => s.title),
       datasets: [
         {
-          label: "Count",
+          label: "Tasks Status Chart",
           backgroundColor: this.board.statuses.map((s) => s.color),
           data: this.getData(),
           barThickness: 100,

@@ -13,7 +13,7 @@
       >
         <transition-group type="transition">
           <group
-            v-for="group in board.groups"
+            v-for="group in boardToEdit.groups"
             :key="group.id"
             :group="group"
             @removeTask="removeTask"
@@ -38,13 +38,22 @@ import group from "./group";
 
 export default {
   props: ["board"],
-  data(){
-    return{
-      boardToEdit: null
-    }
-
+  data() {
+    return {
+      boardToEdit: null,
+    };
   },
   methods: {
+    async saveBoard() {
+      try {
+        await this.$store.dispatch({
+          type: "saveBoard",
+          boardToSave: this.boardToEdit,
+        });
+      } catch (err) {
+        console.log("err:", err);
+      }
+    },
     addTask(newTask, groupId) {
       this.$emit("addTask", newTask, groupId);
     },
@@ -75,32 +84,27 @@ export default {
     addNewGroup() {
       this.$emit("addNewGroup");
     },
-    saveBoard() {
-      this.$emit("saveBoard", this.boardToEdit);
-    },
   },
   computed: {
     dragOptions() {
       return {
         animation: 200,
         group: "groups",
-        // disabled: false,
+        disabled: false,
         ghostClass: "ghost",
       };
     },
   },
-    watch: {
-      board: function (newVal, oldVal) {
-        // console.log('oldVal', oldVal.groups)
-        // console.log('newVal', newVal.groups)
+  watch: {
+    board: function (newVal, oldVal) {
+      // console.log('oldVal', oldVal.groups)
+      // console.log('newVal', newVal.groups)
       this.boardToEdit = JSON.parse(JSON.stringify(newVal));
     },
-
-    },
-    created(){
-      this.boardToEdit = JSON.parse(JSON.stringify(this.board));
-
-    },
+  },
+  created() {
+    this.boardToEdit = JSON.parse(JSON.stringify(this.board));
+  },
   components: {
     group,
     draggable,

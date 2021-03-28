@@ -54,6 +54,24 @@
             align-items: center;
             white-space: nowrap;
         }
+        @media (max-width: $break-wide) {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            // flex: 1;
+            background-color: #f7f8fadc;
+            text-overflow: ellipsis;
+            height: 36px;
+            line-height: 36px;
+            border-right: 1.5px solid white;
+            cursor: pointer;
+            text-align: start;
+            font-size: 13px;
+            min-width: 150px; // position: relative;
+            z-index: 1000 !important;
+            position: sticky;
+            left: 10px;
+        }
     }
     .comment-badage {
         right: 20px !important;

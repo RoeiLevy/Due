@@ -173,21 +173,21 @@
               </el-dropdown> -->
             </ul>
             <div>
-                <el-input placeholder="Search Tasks" v-model="filterBy.txt">
-                </el-input>
-                <el-select
-                  v-model="filterBy.member"
-                  placeholder="Search Member Tasks"
-                  :clearable="true"
+              <el-input placeholder="Search Tasks" v-model="filterBy.txt">
+              </el-input>
+              <el-select
+                v-model="filterBy.member"
+                placeholder="Search Member Tasks"
+                :clearable="true"
+              >
+                <el-option
+                  v-for="member in boardToEdit.members"
+                  :key="member.id"
+                  :label="member.fullname"
+                  :value="member"
                 >
-                  <el-option
-                    v-for="member in boardToEdit.members"
-                    :key="member.id"
-                    :label="member.fullname"
-                    :value="member"
-                  >
-                  </el-option>
-                </el-select>
+                </el-option>
+              </el-select>
             </div>
           </nav>
           <router-view
@@ -585,6 +585,14 @@ export default {
       // console.log("created activity", activity);
       return activity;
     },
+    addLoggedInUser() {
+      if (this.boardToEdit.members.some((m) => m._id === this.loggedInUser._id))
+        return;
+      this.boardToEdit.members.unshift(
+        JSON.parse(JSON.stringify(this.loggedInUser))
+      );
+      this.saveBoard();
+    },
   },
   computed: {
     filteredBoard() {
@@ -606,12 +614,14 @@ export default {
           });
         });
       }
-      board.groups=board.groups.filter(group=>{
-        if(group.tasks&&group.tasks.length>0)
-        return group;
-      })
+      board.groups = board.groups.filter((group) => {
+        if (group.tasks && group.tasks.length > 0) return group;
+      });
       console.log("board:", board);
       return board;
+    },
+    loggedInUser() {
+      return this.$store.getters.loggedInUser;
     },
     isNotificatiosOpen() {
       return this.$store.getters.isNotificatiosOpen;
@@ -651,11 +661,16 @@ export default {
       }
     },
   },
-  created() {
-    this.loadBoard();
-    const boardId = this.$route.params.boardId;
-    socketService.emit("chat topic", boardId);
-    socketService.on("get board", this.setBoard);
+  async created() {
+    try {
+      await this.loadBoard();
+      this.addLoggedInUser();
+      const boardId = this.$route.params.boardId;
+      socketService.emit("chat topic", boardId);
+      socketService.on("get board", this.setBoard);
+    } catch (err) {
+      console.log("err:", err);
+    }
     // socketService.setup();
     // socketService.on("add activity", this.addActivity);
   },

@@ -1,7 +1,7 @@
 <template>
   <div @click="toggleMember" class="add-member-preview">
     <div class="member-view">
-      <avatar :size="40" :username="member.fullname"></avatar>
+      <avatar :size="40" :username="member.fullname" :src="member.img"></avatar>
       <h3>{{ member.fullname }}</h3>
     </div>
 

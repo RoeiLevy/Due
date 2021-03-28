@@ -38,13 +38,22 @@ import group from "./group";
 
 export default {
   props: ["board"],
-  data(){
-    return{
-      boardToEdit: null
-    }
-
+  data() {
+    return {
+      boardToEdit: null,
+    };
   },
   methods: {
+    async saveBoard() {
+      try {
+        await this.$store.dispatch({
+          type: "saveBoard",
+          boardToSave: this.boardToEdit,
+        });
+      } catch (err) {
+        console.log("err:", err);
+      }
+    },
     addTask(newTask, groupId) {
       this.$emit("addTask", newTask, groupId);
     },
@@ -75,10 +84,6 @@ export default {
     addNewGroup() {
       this.$emit("addNewGroup");
     },
-    saveBoard() {
-      console.log('saving');
-      this.$emit("saveBoard", this.boardToEdit);
-    },
   },
   computed: {
     dragOptions() {
@@ -90,18 +95,16 @@ export default {
       };
     },
   },
-    watch: {
-      board: function (newVal, oldVal) {
-        // console.log('oldVal', oldVal.groups)
-        // console.log('newVal', newVal.groups)
+  watch: {
+    board: function (newVal, oldVal) {
+      // console.log('oldVal', oldVal.groups)
+      // console.log('newVal', newVal.groups)
       this.boardToEdit = JSON.parse(JSON.stringify(newVal));
     },
-
-    },
-    created(){
-      this.boardToEdit = JSON.parse(JSON.stringify(this.board));
-
-    },
+  },
+  created() {
+    this.boardToEdit = JSON.parse(JSON.stringify(this.board));
+  },
   components: {
     group,
     draggable,

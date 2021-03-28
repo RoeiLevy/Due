@@ -55,7 +55,7 @@
         </div>
         <div class="desc2-wrapper">
           <h4 class="desc2">
-            Planning, tracking and delivering your team’s best work <br />
+            Planning, tracking and delivering your team’s best work
             has never been easier.
           </h4>
         </div>

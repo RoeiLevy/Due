@@ -1,18 +1,23 @@
 <template>
   <section class="group-container">
-          <!-- <draggable
+    <!-- <draggable
         v-model="board.groups"
         @change="saveGroup"
         v-bind="dragOptions"
       > -->
-        <!-- <transition-group type="transition"> -->
+    <!-- <transition-group type="transition"> -->
 
     <div class="flex group-header">
       <el-dropdown @command="handleCommand" class="drop-down" trigger="click">
         <span :style="groupColor" class="el-dropdown-link">
-        <el-tooltip class="item" effect="dark" content="Group Menu" placement="top-start">
-          <font-awesome-icon class="header-icon" icon="caret-square-down" />
-      </el-tooltip>
+          <el-tooltip
+            class="item"
+            effect="dark"
+            content="Group Menu"
+            placement="top-start"
+          >
+            <font-awesome-icon class="header-icon" icon="caret-square-down" />
+          </el-tooltip>
         </span>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item command="removeGroup"
@@ -38,6 +43,7 @@
           @keyup.enter="saveGroup"
           @focusout="saveGroup"
           class="group-title"
+          :style="{ color: groupToEdit.style.color }"
         />
         <div v-else>
           <h1
@@ -108,8 +114,8 @@
         <div class="div-5"></div>
       </div>
     </div>
-       <!-- </transition-group> -->
-      <!-- </draggable> -->
+    <!-- </transition-group> -->
+    <!-- </draggable> -->
 
     <!-- <div class="task-wrapper flex transparent">
       <div class="task-color-box-start"></div>
@@ -224,10 +230,9 @@ export default {
         ghostClass: "ghost",
       };
     },
-    board(){
-          return this.$store.getters.boardForDisplay
-
-    }
+    board() {
+      return this.$store.getters.boardForDisplay;
+    },
   },
   created() {
     this.groupToEdit = JSON.parse(JSON.stringify(this.group));

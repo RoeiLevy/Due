@@ -2,7 +2,6 @@
   <div class="board-surface">
     <app-header />
     <div v-if="boardToEdit" class="flex board" ref="screen">
-      
       <div
         @click="toggleCloseScreen"
         v-if="isCloseScreen"
@@ -28,14 +27,12 @@
                 v-model="boardToEdit.title"
                 @keyup.enter="saveBoard(boardToEdit)"
                 @focusout="saveBoard(boardToEdit)"
-
               />
               <div v-else>
                 <h1
                   class="board-title"
                   style="text-transform: capitalize"
                   @click="handleEdit('title')"
-                  
                 >
                   {{ boardToEdit.title }}
                 </h1>
@@ -175,9 +172,26 @@
                 </el-dropdown-menu>
               </el-dropdown> -->
             </ul>
+            <div>
+                <el-input placeholder="Search Tasks" v-model="filterBy.txt">
+                </el-input>
+                <el-select
+                  v-model="filterBy.member"
+                  placeholder="Search Member Tasks"
+                  :clearable="true"
+                >
+                  <el-option
+                    v-for="member in boardToEdit.members"
+                    :key="member.id"
+                    :label="member.fullname"
+                    :value="member"
+                  >
+                  </el-option>
+                </el-select>
+            </div>
           </nav>
           <router-view
-            :board="boardToEdit"
+            :board="filteredBoard"
             @saveBoard="saveBoard"
             @addNewGroup="addNewGroup"
             @removeTask="removeTask"
@@ -237,6 +251,10 @@ export default {
       addingView: false,
       isAddingMembers: false,
       activeTab: "mainTable",
+      filterBy: {
+        txt: null,
+        member: null,
+      },
     };
   },
   methods: {
@@ -569,8 +587,34 @@ export default {
     },
   },
   computed: {
+    filteredBoard() {
+      console.log("filterBy:", this.filterBy);
+      var board = JSON.parse(JSON.stringify(this.boardToEdit));
+      if (this.filterBy.txt || this.filterBy.member) {
+        board.groups.forEach((group, idx) => {
+          group.tasks = group.tasks.filter((task) => {
+            if (task.title && task.title.includes(this.filterBy.txt))
+              return task;
+            if (
+              task.members &&
+              task.members.some(
+                (member) => member.fullname === this.filterBy.member.fullname
+              )
+            ) {
+              return task;
+            }
+          });
+        });
+      }
+      board.groups=board.groups.filter(group=>{
+        if(group.tasks&&group.tasks.length>0)
+        return group;
+      })
+      console.log("board:", board);
+      return board;
+    },
     isNotificatiosOpen() {
-      return this.$store.getters.isNotificatiosOpen
+      return this.$store.getters.isNotificatiosOpen;
     },
     isCloseScreen() {
       return this.$store.getters.isCloseScreen;

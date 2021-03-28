@@ -76,7 +76,7 @@
           :key="member._id"
           :size="30"
           :username="member.fullname"
-          :src="member.imgUrl"
+          :src="member.img"
         ></avatar>
       </div>
       <el-avatar v-else icon="el-icon-user-solid" class="avatar"></el-avatar>

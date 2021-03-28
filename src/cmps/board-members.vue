@@ -7,7 +7,7 @@
       :key="member._id"
       :size="30"
       :username="member.fullname"
-      :src="member.imgUrl"
+      :src="member.img"
     ></avatar>
   </div>
 </template>

@@ -567,8 +567,16 @@ export default {
       // console.log("created activity", activity);
       return activity;
     },
+    addLoggedInUser() {
+      if (this.boardToEdit.members.some(m => m._id === this.loggedInUser._id)) return
+      this.boardToEdit.members.unshift(JSON.parse(JSON.stringify(this.loggedInUser)))
+      this.saveBoard()
+    }
   },
   computed: {
+     loggedInUser() {
+      return this.$store.getters.loggedInUser;
+    },
     isNotificatiosOpen() {
       return this.$store.getters.isNotificatiosOpen
     },
@@ -607,11 +615,17 @@ export default {
       }
     },
   },
-  created() {
-    this.loadBoard();
-    const boardId = this.$route.params.boardId;
-    socketService.emit("chat topic", boardId);
-    socketService.on("get board", this.setBoard);
+  async created() {
+    try {
+      await this.loadBoard();
+      this.addLoggedInUser()
+      const boardId = this.$route.params.boardId;
+      socketService.emit("chat topic", boardId);
+      socketService.on("get board", this.setBoard);
+      
+    } catch (err) {
+      console.log('err:', err)
+    }
     // socketService.setup();
     // socketService.on("add activity", this.addActivity);
   },

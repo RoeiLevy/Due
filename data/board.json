@@ -7,15 +7,11 @@
         "createdAt": 1589983468418,
         "createdBy": {
             "_id": "u101",
-            "fullname": "Abi Abambi",
+            "fullname": "Dorran",
             "imgUrl": "http://some-img"
         },
         "members": [
-            {
-                "_id": "u101",
-                "fullname": "Tal Tarablus",
-                "imgUrl": "https://www.google.com"
-            }
+
         ],
         "groups": [
             {
@@ -26,6 +22,7 @@
                         "title": "CSS - Solve Left border issue",
                         "createdAt": 1616256989417,
                         "status": null,
+                        "priority": null,
                         "id": "9WGlP",
                         "comments": []
                     },
@@ -33,6 +30,7 @@
                         "title": "Service - SAVE functionality needs refining",
                         "createdAt": 1616256992452,
                         "status": null,
+                        "priority": null,
                         "id": "VyfWY",
                         "comments": []
                     },
@@ -40,18 +38,14 @@
                         "title": "⭐ \"Sticky\" Header",
                         "createdAt": 1616259114942,
                         "status": null,
+                        "priority": null,
                         "id": "CLvWf",
                         "comments": []
                     }
                 ],
                 "style": {
                     "color": "#CE98FC"
-                },
-                "headers": [
-                    "members",
-                    "status",
-                    "dueDate"
-                ]
+                }
             },
             {
                 "id": "eMAEI",
@@ -61,6 +55,7 @@
                         "title": "Drragable Changes",
                         "createdAt": 1616257014267,
                         "status": null,
+                        "priority": null,
                         "id": "S2U8P",
                         "comments": []
                     },
@@ -68,6 +63,7 @@
                         "title": "Chart.js start from zero",
                         "createdAt": 1616257017117,
                         "status": null,
+                        "priority": null,
                         "id": "xN2qG",
                         "comments": []
                     },
@@ -75,18 +71,14 @@
                         "title": "Server planning",
                         "createdAt": 1616257019180,
                         "status": null,
+                        "priority": null,
                         "id": "IlAgm",
                         "comments": []
                     }
                 ],
                 "style": {
                     "color": "#A979FC"
-                },
-                "headers": [
-                    "members",
-                    "status",
-                    "dueDate"
-                ]
+                }
             },
             {
                 "id": "m6QcY",
@@ -96,6 +88,7 @@
                         "title": "Demo data needs detune",
                         "createdAt": 1616256995300,
                         "status": null,
+                        "priority": null,
                         "id": "tBEKX",
                         "comments": []
                     },
@@ -103,6 +96,7 @@
                         "title": "Board List prep",
                         "createdAt": 1616257021956,
                         "status": null,
+                        "priority": null,
                         "id": "dXe3r",
                         "comments": []
                     },
@@ -110,18 +104,14 @@
                         "title": "Group pitch for Sunday",
                         "createdAt": 1616257025146,
                         "status": null,
+                        
                         "id": "Hm8Tn",
                         "comments": []
                     }
                 ],
                 "style": {
                     "color": "#797BFE"
-                },
-                "headers": [
-                    "members",
-                    "status",
-                    "dueDate"
-                ]
+                }
             }
         ],
         "statuses": [
@@ -361,6 +351,22 @@
                 "title": "Stuck",
                 "color": "#e2445c"
             }
+        ],
+        "priorities": [{
+            "id": "udr2t6",
+            "title": "Important",
+            "color": "#C85A00"
+        },
+        {
+            "id": "udm074",
+            "title": "Urgent",
+            "color": "red"
+        },
+        {
+            "id": "ud1k6a",
+            "title": "Low",
+            "color": "#A8E244"
+        }
         ],
         "activities": [
             {

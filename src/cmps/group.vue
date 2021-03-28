@@ -62,7 +62,7 @@
         <label>Status</label>
       </div>
       <div class="dueDate-wrapper">
-        <label>dueDate</label>
+        <label>Due Date</label>
       </div>
       <div class="priority-wrapper">
         <label>Priority</label>

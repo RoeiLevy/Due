@@ -53,6 +53,9 @@ export const boardStore = {
         closeNotifications(state) {
             state.isNotificationsOpen = false
         },
+        shutCloseScreen(state) {
+            state.isCloseScreen = false
+        },
         toggleCloseScreen(state) {
             state.isCloseScreen = !state.isCloseScreen
             console.log('state.isCloseScreen:', state.isCloseScreen)

@@ -12,7 +12,7 @@
       v-else-if="loggedInUser"
       >{{ initials }}</span
     >
-    <span @click="go('login')" v-else title="guest">G</span>
+    <span @click="go('/login')" v-else title="guest">G</span>
     <div v-if="isMenuOpen" class="menu">
       <header>
         <img src="@/assets/imgs/logo.png" class="logo" />

@@ -3,7 +3,7 @@
     <close-screen @close="closeMenu" />
     <header class="home-header">
       <div class="header-container">
-        <div class="logo-wrapper">
+        <div @click="pushToHome" class="logo-wrapper">
           <img class="logo" src="@/assets/final.png" />
           <h2 class="due">Due<span class="com">.com</span></h2>
         </div>
@@ -17,7 +17,7 @@
             class="nav-links"
           >
             <router-link to="/login">Login</router-link>
-            <router-link to="/signup">Sign Up</router-link>
+            <router-link class="sign-up" to="/signup">Sign Up</router-link>
           </div>
           <div v-else class="nav-links">
             <h2 class="username" v-if="loggedInUser">
@@ -153,6 +153,9 @@ export default {
     };
   },
   methods: {
+    pushToHome() {
+      this.$router.push('/');
+    },
     toggleMenu() {
       this.isMenuOpen = !this.isMenuOpen;
       this.$store.commit("toggleCloseScreen");
@@ -162,7 +165,7 @@ export default {
       this.isMenuOpen = false;
     },
     closeScreen() {
-      this.$store.commit("toggleCloseScreen");
+      this.$store.commit("shutCloseScreen");
     },
     showBoard(boardId) {
       this.$router.push(`/board/${boardId}/maintable`);

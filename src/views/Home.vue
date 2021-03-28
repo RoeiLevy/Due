@@ -22,11 +22,11 @@
           </div>
 
           <div v-else class="nav-links">
+            <button @click="logout" class="logout-btn">Logout</button>
             <h2 class="username" v-if="loggedInUser">
               Hello {{ loggedInUser.fullname }}
             </h2>
             <!-- <span>|</span> -->
-            <button @click="logout" class="logout-btn">Logout</button>
           </div>
         </div>
       </div>
@@ -95,7 +95,7 @@ export default {
       this.isMenuOpen = false
     },
     closeScreen() {
-      this.$store.commit('toggleCloseScreen')
+      this.$store.commit('shutCloseScreen')
     }
   },
   computed: {

@@ -6,6 +6,11 @@
           <img class="logo" src="@/assets/final.png" />
           <h2 class="due">Due<span class="com">.com</span></h2>
         </div>
+        <div @click="toggleMenu" class="burger-wrapper">
+          <font-awesome-icon icon="bars" />
+        </div>
+        <div class="nav" :style="menu"> 
+
         <div
           v-if="!loggedInUser || loggedInUser.fullname === 'Guest'"
           class="nav-links"
@@ -14,12 +19,14 @@
           <span>|</span>
           <router-link to="/signup">Sign Up</router-link>
         </div>
+
         <div v-else class="nav-links">
           <h2 class="username" v-if="loggedInUser">
             Hello {{ loggedInUser.fullname }}
           </h2>
           <span>|</span>
           <button @click="logout" class="logout-btn">Logout</button>
+        </div>
         </div>
       </div>
     </header>
@@ -59,7 +66,17 @@
 <script>
 export default {
   name: "home",
+  data() {
+    return {
+      isMenuOpen: false,
+    };
+  },
   methods: {
+    toggleMenu() {
+      this.isMenuOpen = !this.isMenuOpen;
+      console.log('this.isMenuOpen:', this.isMenuOpen)
+      
+    },
     pushRoute() {
       this.$router.push("/board");
     },
@@ -73,6 +90,9 @@ export default {
   computed: {
     loggedInUser() {
       return this.$store.getters.loggedInUser;
+    },
+    menu() {
+      return { "menu-open": this.isMenuOpen };
     },
   },
 };

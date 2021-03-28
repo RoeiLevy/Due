@@ -2,7 +2,10 @@
   <div class="home">
     <header class="home-header">
       <div class="header-container">
-        <h2 class="due">Due<span class="com">.com</span></h2>
+        <div class="logo-wrapper">
+          <img class="logo" src="@/assets/final.png" />
+          <h2 class="due">Due<span class="com">.com</span></h2>
+        </div>
         <div
           v-if="!loggedInUser || loggedInUser.fullname === 'Guest'"
           class="nav-links"
@@ -44,8 +47,8 @@
         </div>
         <div class="desc2-wrapper">
           <h4 class="desc2">
-            Planning, tracking and delivering your team’s best work <br> has never
-             been easier.
+            Planning, tracking and delivering your team’s best work <br />
+            has never been easier.
           </h4>
         </div>
       </div>

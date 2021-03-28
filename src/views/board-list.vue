@@ -1,6 +1,41 @@
 <template>
   <section class="board-list-container">
     <header class="home-header">
+      <div class="header-container">
+        <div class="logo-wrapper">
+          <img class="logo" src="@/assets/final.png" />
+          <h2 class="due">Due<span class="com">.com</span></h2>
+        </div>
+        <div class="nav flex">
+          <div
+            v-if="!loggedInUser || loggedInUser.fullname === 'Guest'"
+            class="nav-links"
+          >
+            <router-link to="/login">Login</router-link>
+            <span>|</span>
+            <router-link to="/signup">Sign Up</router-link>
+          </div>
+          <div v-else class="nav-links">
+            <h2 class="username" v-if="loggedInUser">
+              Hello {{ loggedInUser.fullname }}
+            </h2>
+            <span>|</span>
+            <button @click="logout" class="logout-btn">Logout</button>
+          </div>
+          <div class="switch-container">
+            <p>Switch View</p>
+            <el-switch
+              class="switch"
+              v-model="viewValue"
+              active-color="#323338"
+              inactive-color="#323338"
+            >
+            </el-switch>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- <header class="home-header">
       <router-link to="/">
         <img class="logo" src="@/assets/imgs/logo.png" />
       </router-link>
@@ -14,7 +49,7 @@
         </el-switch>
         <p>Switch View</p>
       </div>
-    </header>
+    </header> -->
 
     <div class="board-list">
       <h2 v-if="!loggedInUser">Select Your Board</h2>
@@ -54,7 +89,7 @@
           </el-card>
         </el-col>
       </el-row>
-     
+
       <el-carousel
         v-else
         class="carousel"
@@ -93,7 +128,7 @@
             </div>
           </div>
         </el-carousel-item>
-      </el-carousel>     
+      </el-carousel>
     </div>
   </section>
 </template>
@@ -145,6 +180,12 @@ export default {
           message: "Delete canceled",
         });
       }
+    },
+      async logout() {
+      await this.$store.dispatch("logout");
+      this.$router.push("/login");
+      try {
+      } catch (err) {}
     },
   },
   computed: {

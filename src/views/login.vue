@@ -1,14 +1,27 @@
 <template>
   <div class="main-container">
-    <header class="home-header">
-      <router-link to="/">
-        <img class="logo" src="@/assets/imgs/logo.png" />
-      </router-link>
-      <div class="nav-links">
-        <router-link to="/login">Login</router-link>
-        <router-link to="/signup">Sign Up</router-link>
+   <header class="home-header">
+      <div class="header-container">
+        <div class="logo-wrapper">
+          <img class="logo" src="@/assets/final.png" />
+          <h2 class="due">Due<span class="com">.com</span></h2>
+        </div>
+        <div
+          v-if="!loggedInUser || loggedInUser.fullname === 'Guest'"
+          class="nav-links"
+        >
+          <router-link to="/">Home</router-link>
+        </div>
+        <div v-else class="nav-links">
+          <h2 class="username" v-if="loggedInUser">
+            Hello {{ loggedInUser.fullname }}
+          </h2>
+          <span>|</span>
+          <button @click="logout" class="logout-btn">Logout</button>
+        </div>
       </div>
     </header>
+
     <section class="login">
       <form @submit.prevent="login">
         <div class="box-container">
@@ -62,7 +75,18 @@ export default {
       } catch (err) {
         console.log('Invalid Email/Password');
       }
-    }
+    },
+     async logout() {
+      await this.$store.dispatch("logout");
+      this.$router.push("/login");
+      try {
+      } catch (err) {}
+    },
+  },
+  computed: {
+     loggedInUser() {
+      return this.$store.getters.loggedInUser;
+    },
   },
   components: {
     SocialSignUp,

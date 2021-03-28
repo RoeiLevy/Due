@@ -9,7 +9,11 @@
         width: getData[idx],
       }"
       :title="groupStatuses[idx].title + ': ' + getData[idx]"
-    ></div>
+    >
+<el-tooltip class="item" effect="dark" :content="'%'+getData[idx]" placement="bottom">
+    </el-tooltip>
+    </div>
+
   </div>
 </template>
 

@@ -17,18 +17,17 @@ export default {};
     display: flex;
     align-items: center;
     justify-content: center;
+    animation: fadeOut 3.5s;
 }
 .loader {
-  width: 30%;
-  animation: rotate 2.5s linear, fadeOut 2.5s ;
+  width: 6%;
+  animation: rotate 1s linear, fadeOut 1.5s ;
   animation-iteration-count: 1;
   transform-style: preserve-3d;
   display: flex;
-  /* align-self: center; */
-  z-index: 5000;
   position: absolute;
   opacity: 0;
-  /* top: 30%; */
+  
 }
 @keyframes fadeOut {
     0% {
@@ -36,15 +35,27 @@ export default {};
     }
     100% {
         opacity: 0;
-    display: none;
+              /* z-index: -1; */
+
+    /* display: none !important; */
     }
 }
 @keyframes rotate {
-  0% {
-    transform: rotate(0deg);
+    0% {
+        z-index: 5000;
+        transform: rotate(0deg);
+  }
+  50%{
+      transform: rotate(360deg);
+
+  }
+  51%{
+      
+      transform: rotate(0deg);
   }
   100% {
-    transform: rotate(360deg);
+      transform: rotate(360deg);
+
   }
 }
 </style>

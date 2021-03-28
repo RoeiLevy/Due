@@ -52,7 +52,9 @@
           </div>
           <div class="action">
             <font-awesome-icon class="header-icon plus" icon="filter" />
-            <h3>Filters</h3>
+            <h3 @click="isFiltering=!isFiltering">Filter</h3>
+            <el-input v-if="isFiltering" placeholder="Search Boards" v-model="filterBy.txt">
+            </el-input>
           </div>
           <div class="action">
             <font-awesome-icon class="header-icon plus" icon="search" />
@@ -86,6 +88,10 @@ export default {
   data() {
     return {
       isOpen: false,
+      isFiltering:false,
+      filterBy:{
+        txt:null
+      }
     };
   },
   methods: {
@@ -154,7 +160,13 @@ export default {
       return moment(time).fromNow();
     },
     boards() {
-      return this.$store.getters.boards;
+      var boards = this.$store.getters.boards;
+      if (this.filterBy.txt) {
+        boards = boards.filter((board) =>
+          board.title.toLowerCase().includes(this.filterBy.txt.toLowerCase())
+        );
+      }
+      return boards;
     },
     loggedInUser() {
       return this.$store.getters.loggedInUser;

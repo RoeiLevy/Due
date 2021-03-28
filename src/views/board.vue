@@ -178,7 +178,7 @@
               </el-input>
               <el-select
                 v-model="filterBy.member"
-                placeholder="Search Member Tasks"
+                placeholder="Search Members Tasks"
                 :clearable="true"
               >
                 <el-option

@@ -54,6 +54,7 @@
     <div class="board-list">
       <h2 v-if="!loggedInUser">Select Your Board</h2>
       <h2 v-else>Hello {{ loggedInUser.fullname }}</h2>
+      <el-input placeholder="Search Boards" v-model="filterBy.txt"> </el-input>
       <el-row v-if="viewValue">
         <el-col :span="5" v-for="board in boards" :key="board._id" :offset="1">
           <el-card closeable :body-style="{ padding: '0px' }" class="card">
@@ -140,6 +141,9 @@ export default {
   data() {
     return {
       viewValue: true,
+      filterBy: {
+        txt: null,
+      },
     };
   },
   methods: {
@@ -181,7 +185,7 @@ export default {
         });
       }
     },
-      async logout() {
+    async logout() {
       await this.$store.dispatch("logout");
       this.$router.push("/login");
       try {
@@ -193,7 +197,13 @@ export default {
       return moment(time).fromNow();
     },
     boards() {
-      return this.$store.getters.boards;
+      var boards = this.$store.getters.boards;
+      if (this.filterBy.txt) {
+        boards = boards.filter((board) =>
+          board.title.toLowerCase().includes(this.filterBy.txt.toLowerCase())
+        );
+      }
+      return boards;
     },
     loggedInUser() {
       return this.$store.getters.loggedInUser;

@@ -2,7 +2,7 @@
   <div class="update-preview">
     <div class="update-header">
       <div class="username-wrapper flex">
-        <avatar :username="comment.byMember.fullname"></avatar>
+        <avatar size=50 :src="comment.byMember.img" :username="comment.byMember.fullname"></avatar>
         <h5 class="fullname">{{ comment.byMember.fullname }}</h5>
       </div>
       <div class="update-time-wrapper">

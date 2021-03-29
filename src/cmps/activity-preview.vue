@@ -5,7 +5,7 @@
         <h4>{{ createdAt }}</h4>
       </div>
       <div class="activity-user-txt-wrapper">
-        <avatar :username="username"></avatar>
+        <avatar :size=30 :src="this.activity.byMember.img" :username="username"></avatar>
         <h3>{{ activity.txt }}</h3>
       </div>
     </div>

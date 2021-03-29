@@ -1,0 +1,74 @@
+@media (max-width: $break-normal) {
+    //////////////////////Task Wrapper/////////////////////
+    .task-wrapper {
+        * :hover {
+            background-color: #f7f8fa !important;
+            color: #333333 !important;
+            box-shadow: none !important;
+            filter: none !important;
+        }
+         :hover {
+            background-color: #f7f8fa !important;
+            color: #333333 !important;
+            box-shadow: none !important;
+            filter: none !important;
+        }
+        position: sticky;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-overflow: ellipsis;
+        height: 36px;
+        line-height: 36px;
+        border-right: 1.5px solid white;
+        cursor: pointer;
+        text-align: start;
+        font-size: 13px;
+        .task-title {
+            text-overflow: ellipsis;
+            overflow: visible !important;
+            background-color: #f7f8faf6 !important;
+            min-width: 150px;
+            width: fit-content;
+            z-index: 1000 !important;
+            position: sticky;
+            left: 9px;
+        }
+        .task-color-box-start {
+            z-index: 1000 !important;
+            position: sticky;
+            left: 0;
+            width: 9px !important;
+        }
+        .task-title-label {
+            width: 150px;
+            overflow: unset;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    }
+    ////////////////////PROGRESSION BAR////////////////////
+    //Make it disappear at Mobile breakpoint
+    //////////////////////TEXT EDITOR//////////////////////
+    .ql-toolbar {
+        font-size: 14px !important;
+        span {
+            display: inline;
+            margin: 0 !important;
+            button {
+                padding: 0 !important;
+                width: unset !important;
+            }
+        }
+        span button svg {
+            height: 14px !important;
+            width: 14px !important;
+        }
+    }
+}
+
+@media (max-width: $break-narrow) {
+    .el-drawer__open .el-drawer.rtl {
+        width: 100% !important;
+    }
+}

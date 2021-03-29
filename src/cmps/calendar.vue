@@ -23,13 +23,13 @@
       </template>
     </v-calendar>
     <div class="groups">
-      <p
-        v-for="group in board.groups"
-        :key="group.id"
-        :style="{ 'background-color': group.style.color }"
-      >
+      <div v-for="group in board.groups" :key="group.id">
+        <div
+          class="box"
+          :style="{ 'background-color': group.style.color }"
+        ></div>
         {{ group.title }}
-      </p>
+      </div>
     </div>
   </div>
 </template>

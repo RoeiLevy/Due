@@ -59,7 +59,7 @@
       <h2 v-else>Hello {{ loggedInUser.fullname }}</h2>
       <el-input placeholder="Search Boards" v-model="filterBy.txt"> </el-input>
       <el-row v-if="viewValue">
-           <el-col :span="5" :offset="1" @click="addNewBoard">
+        <el-col :span="5" :offset="1" @click="addNewBoard">
           <el-card class="card" :body-style="{ height: '100%' }">
             <div @click="addNewBoard">
               <i class="el-icon-plus" style="font-size: 40px"></i>
@@ -92,7 +92,6 @@
             </div>
           </el-card>
         </el-col>
-     
       </el-row>
 
       <el-carousel
@@ -154,7 +153,7 @@ export default {
   },
   methods: {
     pushToHome() {
-      this.$router.push('/');
+      this.$router.push("/");
     },
     toggleMenu() {
       this.isMenuOpen = !this.isMenuOpen;

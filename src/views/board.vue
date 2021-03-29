@@ -173,7 +173,7 @@
                 </el-dropdown-menu>
               </el-dropdown> -->
             </ul>
-            <div>
+            <div class="search-bar">
               <el-input placeholder="Search Tasks" v-model="filterBy.txt">
               </el-input>
               <el-select
@@ -560,6 +560,10 @@ export default {
     },
     setBoard(board) {
       this.boardToEdit = board;
+      this.$store.commit({
+        type: "setBoard",
+        board: JSON.parse(JSON.stringify(board)),
+      });
     },
     async addMember(email) {
       try {

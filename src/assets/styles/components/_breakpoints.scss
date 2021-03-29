@@ -1,0 +1,126 @@
+    @media (max-width: 1060px) {
+        .el-drawer__open .el-drawer.rtl {
+            width: 75% !important;
+        }
+    }
+    
+    @media (max-width: $break-normal) {
+        //////////////////////Task Wrapper/////////////////////
+        .task-wrapper {
+            * :hover {
+                background-color: #f7f8fa !important;
+                color: #333333 !important;
+                box-shadow: none !important;
+                filter: none !important;
+            }
+             :hover {
+                background-color: #f7f8fa !important;
+                color: #333333 !important;
+                box-shadow: none !important;
+                filter: none !important;
+            }
+            position: sticky;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-overflow: ellipsis;
+            height: 36px;
+            line-height: 36px;
+            border-right: 1.5px solid white;
+            cursor: pointer;
+            text-align: start;
+            font-size: 13px;
+            .task-title {
+                text-overflow: ellipsis;
+                overflow: visible !important;
+                background-color: #f7f8faf6 !important;
+                min-width: 150px;
+                width: fit-content;
+                z-index: 1000 !important;
+                position: sticky;
+                left: 9px;
+            }
+            .task-color-box-start {
+                z-index: 1000 !important;
+                position: sticky;
+                left: 0;
+                width: 9px !important;
+            }
+            .task-title-label {
+                width: 150px;
+                overflow: unset;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+        }
+        ////////////////////PROGRESSION BAR////////////////////
+        //Make it disappear at Mobile breakpoint
+        //////////////////////TEXT EDITOR//////////////////////
+        .ql-toolbar {
+            font-size: 14px !important;
+            span {
+                display: inline;
+                margin: 0 !important;
+                button {
+                    padding: 0 !important;
+                    width: unset !important;
+                }
+            }
+            span button svg {
+                height: 14px !important;
+                width: 14px !important;
+            }
+        }
+        // .el-drawer__open .el-drawer.rtl {
+        //     width: 75% !important;
+        // }
+    }
+    
+    @media (max-width: 500px) {
+        .board-actions {
+            display: unset;
+        }
+        .board .board-header {
+            padding: 20px 50px 0px 0;
+        }
+        .header-view-bar {
+            position: relative;
+            .view-nav .view {
+                color: #676879;
+                text-decoration: none;
+                padding-bottom: 4px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                font-size: 10px;
+            }
+        }
+        .header-view-bar .el-input__inner {
+            width: 80px !important;
+            height: 34px;
+            font-size: 10px !important;
+            padding: 0 !important;
+        }
+        .search-bar {
+            position: absolute;
+            top: 56px;
+            right: 0;
+            * {
+                margin-inline-end: 5px !important;
+                width: 80px !important;
+            }
+        }
+        .top-header {
+            height: unset;
+            .board-title {
+                font-size: 1.3rem !important;
+                height: unset;
+            }
+        }
+        .el-drawer__open .el-drawer.rtl {
+            width: 100% !important;
+        }
+        .progress-bar-container {
+            display: none !important;
+        }
+    }

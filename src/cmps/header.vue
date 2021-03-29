@@ -29,6 +29,13 @@
           <div @click.self="toggleNotification" class="icon-wrapper">
             <board-notifications v-if="isNotificationsOpen">
             </board-notifications>
+            <el-badge
+              @click.native="toggleNotification"
+              v-show="!hidden"
+              :value="newNotifications"
+              class="item notification-badage"
+            >
+            </el-badge>
             <font-awesome-icon
               @click="toggleNotification"
               class="header-icon"
@@ -94,7 +101,10 @@ import boardNotifications from "../cmps/board-notifications";
 
 export default {
   data() {
-    return {};
+    return {
+      newNotifications: 7,
+      hidden: false,
+    };
   },
   methods: {
     toBoardList() {
@@ -112,6 +122,12 @@ export default {
     isCloseScreen() {
       return this.$store.getters.isCloseScreen;
     },
+    notifications() {
+      return this.$store.getters.boardActivities;
+    },
+    currBoard() {
+      return this.$store.getters.boardForDisplay.activities;
+    },
   },
   watch: {
     isCloseScreen(newValue) {
@@ -120,6 +136,30 @@ export default {
         this.$store.commit("closeNotifications");
       }
     },
+    notifications: function (newVal, oldVal) {
+      console.log("newVal:", newVal);
+      console.log("oldVal:", oldVal);
+      if (!oldVal || !newVal) return;
+      if (newVal.length > oldVal.length) {
+        this.hidden = false;
+        this.newNotifications++;
+      }
+    },
+    isNotificationsOpen: function (newVal, oldVal) {
+      console.log("newVal:", newVal);
+      if (newVal) {
+        this.hidden = true;
+        this.newNotifications = 0;
+      }
+    },
+    newNotifications: function () {
+      if (this.newNotifications === 0) {
+        this.hidden = true;
+      }
+    },
+  },
+  created() {
+    if (this.newNotifications === 0) this.hidden = true;
   },
   components: {
     avatar,

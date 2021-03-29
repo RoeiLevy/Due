@@ -51,6 +51,7 @@
       </div>
       <div class="bottom-wrapper">
         <div class="img-wrapper">
+          <!-- <img src="@/assets/due.png" /> -->
           <img src="@/assets/monday.png" />
         </div>
         <div class="desc2-wrapper">

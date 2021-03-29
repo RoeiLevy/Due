@@ -1,6 +1,6 @@
 <template>
   <div class="notifications">
-    <div class="notifications-container">
+    <div v-if="notifications" class="notifications-container">
       <notification-preview
         :notification="notification"
         v-for="(notification, idx) in notifications"

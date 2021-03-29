@@ -3,7 +3,7 @@
     outline: none !important;
 }
 
-.el-drawer__header > :first-child {
+.el-drawer__header> :first-child {
     order: 1;
 }
 
@@ -36,6 +36,10 @@
     }
 }
 
+.text-editor {
+    margin: 0px 25px;
+}
+
 .updates {
     flex: 1;
     overflow: scroll;
@@ -44,6 +48,7 @@
     .updates-container,
     .text-editor {
         padding-inline-end: 20px;
+
 
         .add-comment-btn {
             width: 32px;
@@ -61,14 +66,14 @@
     }
 
     .update-preview {
-        padding: 15px;
-        padding: 15px;
+        // padding: 15px;
         border-radius: 10px;
-        border: 0.5px solid #c5c7d0;
-        margin: 15px 5px;
+        border: 0.1px solid #efefef;
+        margin: 15px 25px;
 
         .update-txt-wrapper {
             padding: 15px;
+
             img {
                 justify-self: center;
                 width: 100%;
@@ -93,14 +98,86 @@
                 margin-inline-start: 8px;
                 font-size: 16px;
             }
+        }
 
-            // .vue-avatar--wrapper {
-            //     width: 40px !important;
-            //     height: 40px !important;
-            //     font-size: 16px !important;
-            // }
+        .update-actions-wrapper {
+            display: flex;
+            height: 42px;
+
+            >*:first-child {
+                border-right: 0.1px solid #efefef;
+            }
+
+            .like-wrapper {
+                border-top: 0.1px solid #efefef;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: calc(100% - 8px);
+                height: 100%;
+                border-radius: 4px;
+                font-size: 14px;
+                font-weight: 400;
+                button {
+                    font-family: roboto-regular, sans-serif;
+                    background-color: inherit;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: calc(100% - 8px);
+                    height: calc(100% - 8px);
+                    border-radius: 4px;
+                    font-size: 14px;
+                    font-weight: 500;
+
+                    .like-icon {
+                        margin-right: 6px;
+                    }
+                }
+
+                button:hover {
+                    background-color: #e6e9ef;
+                    padding: 5px;
+                }
+            }
+
+            .reply-wrapper {
+                border-top: 0.1px solid #efefef;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: calc(100% - 8px);
+                height: 100%;
+                border-radius: 4px;
+                font-size: 14px;
+                font-weight: 400;
+
+                button {
+                    font-family: roboto-regular, sans-serif;
+                    background-color: inherit;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: calc(100% - 8px);
+                    height: calc(100% - 8px);
+                    border-radius: 4px;
+                    font-size: 14px;
+                    font-weight: 500;
+
+                    .reply-icon {
+                        margin-right: 6px;
+                    }
+                }
+
+                button:hover {
+                    background-color: #e6e9ef;
+                    padding: 5px;
+                }
+
+            }
         }
     }
+
 }
 
 .el-drawer.rtl {
@@ -146,8 +223,8 @@
         padding-right: 20px;
         padding-bottom: 50px;
 
-        > * {
-            border-top: 1px solid #c5c7d0;
+        >* {
+            border-top: 0.1px solid #efefef;
         }
 
         & :first-child {
@@ -176,6 +253,7 @@
     .activity-user-txt-wrapper {
         display: flex;
         align-items: center;
+
         h3 {
             height: 100%;
             white-space: nowrap;
@@ -212,4 +290,6 @@
     }
 }
 
-
+.ql-toolbar.ql-snow {
+    border: 0.1px solid #efefef;
+}

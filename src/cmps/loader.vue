@@ -21,7 +21,7 @@ export default {};
 }
 .loader {
   width: 6%;
-  animation: rotate 1s linear, fadeOut 1.5s ;
+  animation: rotate 0.3s linear, fadeOut 0.5s ;
   animation-iteration-count: 1;
   transform-style: preserve-3d;
   display: flex;

@@ -1,6 +1,6 @@
-    @media (max-width: 1060px) {
+    @media (max-width: 1100px) {
         .el-drawer__open .el-drawer.rtl {
-            width: 75% !important;
+            width: 85% !important;
         }
     }
     
@@ -8,6 +8,9 @@
         //////////////////////Workspace////////////////////////
         .workspace {
             display: none;
+        }
+        .el-drawer__open .el-drawer.rtl {
+            width: 90% !important;
         }
         //////////////////////Task Wrapper/////////////////////
         .task-wrapper {
@@ -75,9 +78,6 @@
                 width: 14px !important;
             }
         }
-        // .el-drawer__open .el-drawer.rtl {
-        //     width: 75% !important;
-        // }
     }
     
     @media (max-width: 500px) {

@@ -174,11 +174,11 @@
               </el-dropdown> -->
             </ul>
             <div class="search-bar">
-              <el-input placeholder="Search Tasks" v-model="filterBy.txt">
+              <el-input placeholder="Search" v-model="filterBy.txt">
               </el-input>
               <el-select
                 v-model="filterBy.member"
-                placeholder="Search Members Tasks"
+                placeholder="By Members"
                 :clearable="true"
               >
                 <el-option
@@ -466,7 +466,6 @@ export default {
       this.saveBoard();
     },
     async removeView(view) {
-      console.log("view:", view);
       const idx = this.boardToEdit.views.findIndex((v) => v === view);
       this.boardToEdit.views.splice(idx, 1);
       await this.saveBoard();
@@ -490,7 +489,6 @@ export default {
       }
     },
     activateView(view) {
-      console.log("view:", view);
       this.activeTab = view;
     },
     openBoardActivities() {

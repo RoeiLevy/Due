@@ -58,6 +58,7 @@ export const boardStore = {
         },
         toggleCloseScreen(state) {
             state.isCloseScreen = !state.isCloseScreen
+            // console.log('state.isCloseScreen:', state.isCloseScreen)
         },
         toggleIsDetails(state) {
             state.isTaskDetails = !state.isTaskDetails
@@ -67,7 +68,7 @@ export const boardStore = {
         },
         setBoard(state, { board }) {
             state.currBoard = board
-            console.log('state.currBoard is set:', state.currBoard)     
+            // console.log('state.currBoard is set:', state.currBoard)     
         },
         setBoards(state, { boards }) {
             state.boards = boards;

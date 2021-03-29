@@ -14,7 +14,7 @@
       >
         <div class="btn-surface">
           <div @click="toBoardList" class="icon-wrapper">
-            <font-awesome-icon class="header-icon" icon="th-large" />
+            <font-awesome-icon class="main-header-icon" icon="th-large" />
           </div>
         </div>
       </el-tooltip>
@@ -38,7 +38,7 @@
             </el-badge>
             <font-awesome-icon
               @click="toggleNotification"
-              class="header-icon"
+              class="main-header-icon"
               icon="bell"
             />
           </div>
@@ -48,7 +48,7 @@
       <el-tooltip class="item" effect="dark" content="Inbox" placement="right">
         <div class="btn-surface">
           <div class="icon-wrapper">
-            <font-awesome-icon class="header-icon" icon="inbox" />
+            <font-awesome-icon class="main-header-icon" icon="inbox" />
           </div>
         </div>
       </el-tooltip>
@@ -63,7 +63,7 @@
       >
         <div class="btn-surface">
           <div class="icon-wrapper">
-            <font-awesome-icon class="header-icon" icon="calendar-check" />
+            <font-awesome-icon class="main-header-icon" icon="calendar-check" />
           </div>
         </div>
       </el-tooltip>
@@ -75,14 +75,14 @@
       >
         <div class="btn-surface">
           <div class="icon-wrapper">
-            <font-awesome-icon class="header-icon" icon="user-plus" />
+            <font-awesome-icon class="main-header-icon" icon="user-plus" />
           </div>
         </div>
       </el-tooltip>
       <el-tooltip class="item" effect="dark" content="Search" placement="right">
         <div class="btn-surface">
           <div class="icon-wrapper">
-            <font-awesome-icon class="header-icon" icon="search" />
+            <font-awesome-icon class="main-header-icon" icon="search" />
           </div>
         </div>
       </el-tooltip>
@@ -102,7 +102,7 @@ import boardNotifications from "../cmps/board-notifications";
 export default {
   data() {
     return {
-      newNotifications: 7,
+      newNotifications: 1,
       hidden: false,
     };
   },
@@ -123,22 +123,30 @@ export default {
       return this.$store.getters.isCloseScreen;
     },
     notifications() {
-      return this.$store.getters.boardActivities;
+      if (!this.$store.getters.boardActivities) return;
+      const filteredNotifications = this.$store.getters.boardActivities.filter(
+        (a) => {
+          if (a.byMember) {
+            if (a.byMember._id !== this.loggedInUser._id) return a;
+          }
+        }
+      );
+      return filteredNotifications;
     },
     currBoard() {
       return this.$store.getters.boardForDisplay.activities;
     },
+    loggedInUser() {
+      return this.$store.getters.loggedInUser;
+    },
   },
   watch: {
     isCloseScreen(newValue) {
-      // console.log(`close screen is now opened: ${newValue}`);
       if (!newValue) {
         this.$store.commit("closeNotifications");
       }
     },
     notifications: function (newVal, oldVal) {
-      console.log("newVal:", newVal);
-      console.log("oldVal:", oldVal);
       if (!oldVal || !newVal) return;
       if (newVal.length > oldVal.length) {
         this.hidden = false;
@@ -146,7 +154,6 @@ export default {
       }
     },
     isNotificationsOpen: function (newVal, oldVal) {
-      console.log("newVal:", newVal);
       if (newVal) {
         this.hidden = true;
         this.newNotifications = 0;

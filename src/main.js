@@ -26,10 +26,10 @@ Vue.use(VCalendar, {
 
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faExclamationCircle, faTh, faComment, faChartLine, faPlus, faThLarge, faBell, faInbox, faCalendarCheck, faUserPlus, faSearch, faCaretSquareDown, faTrash, faClosedCaptioning, faUserFriends, faSignOutAlt, faUser, faEllipsisH, faCircle, faCheckCircle, faArrowCircleRight, faArrowCircleLeft, faChevronRight, faChevronLeft, faHome, faChartBar, faCalendarAlt, faStickyNote, faFilter, faPlusCircle, faClipboard, faBars } from '@fortawesome/free-solid-svg-icons'
+import { faExclamationCircle, faTh, faComment, faChartLine, faPlus, faThLarge, faBell, faInbox, faCalendarCheck, faUserPlus, faSearch, faCaretSquareDown, faTrash, faClosedCaptioning, faUserFriends, faSignOutAlt, faUser, faEllipsisH, faCircle, faCheckCircle, faArrowCircleRight, faArrowCircleLeft, faChevronRight, faChevronLeft, faHome, faChartBar, faCalendarAlt, faStickyNote, faFilter, faPlusCircle, faClipboard, faBars, faReply, faThumbsUp } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faExclamationCircle, faTh, faComment, faChartLine, faPlus, faThLarge, faBell, faInbox, faCalendarCheck, faUserPlus, faSearch, faCaretSquareDown, faTrash, faClosedCaptioning, faUserFriends, faSignOutAlt, faUser, faEllipsisH, faCircle, faCheckCircle, faArrowCircleLeft, faArrowCircleRight, faChevronRight, faChevronLeft, faHome, faChartBar, faCalendarAlt, faStickyNote, faFilter, faPlusCircle, faClipboard, faBars)
+library.add(faExclamationCircle, faTh, faComment, faChartLine, faPlus, faThLarge, faBell, faInbox, faCalendarCheck, faUserPlus, faSearch, faCaretSquareDown, faTrash, faClosedCaptioning, faUserFriends, faSignOutAlt, faUser, faEllipsisH, faCircle, faCheckCircle, faArrowCircleLeft, faArrowCircleRight, faChevronRight, faChevronLeft, faHome, faChartBar, faCalendarAlt, faStickyNote, faFilter, faPlusCircle, faClipboard, faBars, faReply, faThumbsUp            )
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 

@@ -3,13 +3,15 @@
             width: 85% !important;
         }
     }
-
+    
     @media (max-width: $break-normal) {
-
+        //////////////////////Workspace////////////////////////
+        .workspace {
+            display: none;
+        }
         .el-drawer__open .el-drawer.rtl {
             width: 90% !important;
         }
-
         //////////////////////Task Wrapper/////////////////////
         .task-wrapper {
             * :hover {
@@ -18,14 +20,12 @@
                 box-shadow: none !important;
                 filter: none !important;
             }
-
-            :hover {
+             :hover {
                 background-color: #f7f8fa !important;
                 color: #333333 !important;
                 box-shadow: none !important;
                 filter: none !important;
             }
-
             position: sticky;
             display: flex;
             justify-content: space-between;
@@ -37,7 +37,6 @@
             cursor: pointer;
             text-align: start;
             font-size: 13px;
-
             .task-title {
                 text-overflow: ellipsis;
                 overflow: visible !important;
@@ -48,14 +47,12 @@
                 position: sticky;
                 left: 9px;
             }
-
             .task-color-box-start {
                 z-index: 1000 !important;
                 position: sticky;
                 left: 0;
                 width: 9px !important;
             }
-
             .task-title-label {
                 width: 150px;
                 overflow: unset;
@@ -63,44 +60,47 @@
                 white-space: nowrap;
             }
         }
-
         ////////////////////PROGRESSION BAR////////////////////
         //Make it disappear at Mobile breakpoint
         //////////////////////TEXT EDITOR//////////////////////
         .ql-toolbar {
             font-size: 14px !important;
-
             span {
                 display: inline;
                 margin: 0 !important;
-
                 button {
                     padding: 0 !important;
                     width: unset !important;
                 }
             }
-
             span button svg {
                 height: 14px !important;
                 width: 14px !important;
             }
         }
-
-       
     }
-
+    
     @media (max-width: 500px) {
+        //////////////////////Board Header////////////////////
         .board-actions {
-            display: unset;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 0;
+            button:last-child {
+                padding-top: 10px;
+            }
+            button:nth-child(2) {
+                padding-bottom: 17px;
+            }
         }
-
+        .board-actions>*:not(:first-child) {
+            padding: 0;
+        }
         .board .board-header {
-            padding: 20px 50px 0px 0;
+            padding: 20px 20px 0px 0;
         }
-
         .header-view-bar {
             position: relative;
-
             .view-nav .view {
                 color: #676879;
                 text-decoration: none;
@@ -109,40 +109,63 @@
                 justify-content: space-between;
                 align-items: center;
                 font-size: 10px;
+                .view-title {
+                    padding: 7px 9px;
+                }
             }
         }
-
         .header-view-bar .el-input__inner {
             width: 80px !important;
             height: 34px;
             font-size: 10px !important;
             padding: 0 !important;
         }
-
         .search-bar {
             position: absolute;
             top: 56px;
             right: 0;
-
             * {
                 margin-inline-end: 5px !important;
                 width: 80px !important;
             }
         }
-
         .top-header {
             height: unset;
-
             .board-title {
                 font-size: 1.3rem !important;
                 height: unset;
             }
         }
-
+        //////////////////////Group Wrapper////////////////////
+        .drop-down .el-dropdown-link {
+            position: unset;
+            margin-inline-end: 10px;
+        }
+        .group-header .drop-down.el-dropdown {
+            display: flex;
+            align-items: center;
+        }
+        .add-task-wrapper {
+            width: 797px;
+        }
+        .group-title-wrapper .group-title,
+        .members-wrapper label,
+        .members-wrapper label,
+        .status-wrapper label,
+        .dueDate-wrapper label,
+        .priority-wrapper label {
+            font-size: 13px;
+        }
+        .group-header .group-title-wrapper {
+            width: 49%;
+        }
+        .group-title {
+            width: 150px;
+        }
+        ////////////////////////////////////////////////////////
         .el-drawer__open .el-drawer.rtl {
             width: 100% !important;
         }
-
         .progress-bar-container {
             display: none !important;
         }

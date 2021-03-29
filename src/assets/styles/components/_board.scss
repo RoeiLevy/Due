@@ -229,6 +229,15 @@
     }
 }
 
+.notification-badage {
+    position: absolute !important;
+    right: 2px;
+    top: 1px;
+    > {
+        border-color: transparent !important;
+    }
+}
+
 .board-title-container {
     display: flex;
     flex-direction: column;

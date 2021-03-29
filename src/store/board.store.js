@@ -42,9 +42,9 @@ export const boardStore = {
             return state.isBoardActivities
         },
         boardActivities(state) {
+            if (!state.currBoard) return
             return state.currBoard.activities
         }
-
     },
     mutations: {
         openNotifications(state) {
@@ -68,6 +68,7 @@ export const boardStore = {
         },
         setBoard(state, { board }) {
             state.currBoard = board
+            console.log('state.currBoard is set:', state.currBoard)     
         },
         setBoards(state, { boards }) {
             state.boards = boards;

@@ -174,11 +174,11 @@
               </el-dropdown> -->
             </ul>
             <div class="search-bar">
-              <el-input placeholder="Search Tasks" v-model="filterBy.txt">
+              <el-input placeholder="Search" v-model="filterBy.txt">
               </el-input>
               <el-select
                 v-model="filterBy.member"
-                placeholder="Search Members Tasks"
+                placeholder="By Members"
                 :clearable="true"
               >
                 <el-option

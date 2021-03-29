@@ -81,6 +81,19 @@
     }
     
     @media (max-width: 500px) {
+        ///////////////////social modal.//////////////////////
+        .social-modal {
+            width: 340px;
+            .email-input .el-input__inner {
+                width: 140px !important;
+            }
+        }
+        ////////////////////board notifications/////////////////
+        .board-notifications {
+            width: 330px;
+            height: 98vh;
+            top: -106px;
+        }
         //////////////////////Board Header////////////////////
         .board-actions {
             flex-direction: column;

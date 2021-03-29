@@ -14,7 +14,7 @@
       >
         <div class="btn-surface">
           <div @click="toBoardList" class="icon-wrapper">
-            <font-awesome-icon class="header-icon" icon="th-large" />
+            <font-awesome-icon class="main-header-icon" icon="th-large" />
           </div>
         </div>
       </el-tooltip>
@@ -38,7 +38,7 @@
             </el-badge>
             <font-awesome-icon
               @click="toggleNotification"
-              class="header-icon"
+              class="main-header-icon"
               icon="bell"
             />
           </div>
@@ -48,7 +48,7 @@
       <el-tooltip class="item" effect="dark" content="Inbox" placement="right">
         <div class="btn-surface">
           <div class="icon-wrapper">
-            <font-awesome-icon class="header-icon" icon="inbox" />
+            <font-awesome-icon class="main-header-icon" icon="inbox" />
           </div>
         </div>
       </el-tooltip>
@@ -63,7 +63,7 @@
       >
         <div class="btn-surface">
           <div class="icon-wrapper">
-            <font-awesome-icon class="header-icon" icon="calendar-check" />
+            <font-awesome-icon class="main-header-icon" icon="calendar-check" />
           </div>
         </div>
       </el-tooltip>
@@ -75,14 +75,14 @@
       >
         <div class="btn-surface">
           <div class="icon-wrapper">
-            <font-awesome-icon class="header-icon" icon="user-plus" />
+            <font-awesome-icon class="main-header-icon" icon="user-plus" />
           </div>
         </div>
       </el-tooltip>
       <el-tooltip class="item" effect="dark" content="Search" placement="right">
         <div class="btn-surface">
           <div class="icon-wrapper">
-            <font-awesome-icon class="header-icon" icon="search" />
+            <font-awesome-icon class="main-header-icon" icon="search" />
           </div>
         </div>
       </el-tooltip>

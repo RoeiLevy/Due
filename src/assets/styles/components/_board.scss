@@ -182,10 +182,16 @@
     flex-direction: column;
     justify-content: space-between;
     background-color: #292f4c;
-    .header-icon {
+
+    .main-header-icon {
         font-size: 20px;
         color: #ffffff;
     }
+
+    .main-header-icon> path:hover {
+        filter: none;
+    }
+
     .logo {
         width: 40px;
     }
@@ -201,9 +207,7 @@
         margin-bottom: 8px;
         background-color: #292f4c;
     }
-    .btn-surface:hover {
-        // filter: brightness(150%);
-    }
+    
     .icon-wrapper {
         display: flex;
         justify-content: center;
@@ -215,8 +219,14 @@
         border-radius: 4px;
         cursor: pointer;
         position: relative;
-        outline: none;
+        outline: none;     
     }
+    
+    .icon-wrapper:hover {
+        background-color: #3e4774;
+        // opacity: 0.5;
+    }
+
     .logo-wrapper {
         cursor: pointer;
         display: flex;

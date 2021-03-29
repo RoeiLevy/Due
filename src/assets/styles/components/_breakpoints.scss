@@ -107,10 +107,12 @@
             }
             .avatar-container {
                 width: unset;
+                margin-inline-end: 22px;
             }
         }
         .board-actions>*:not(:first-child) {
             padding: 0;
+            justify-content: flex-end;
         }
         .board .board-header {
             padding: 20px 20px 0px 0;

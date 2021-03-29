@@ -174,9 +174,32 @@
               </el-dropdown> -->
             </ul>
             <div class="search-bar">
-              <el-input placeholder="Search" v-model="filterBy.txt">
+              <font-awesome-icon
+                @click="filterMode = !filterMode"
+                v-if="!filterMode"
+                icon="search"
+              />
+              <el-input
+                @blur="filterMode = !filterMode"
+                @clear="filterMode = !filterMode"
+                v-else
+                :clearable="true"
+
+                placeholder="Search"
+                v-model="filterBy.txt"
+              >
               </el-input>
+
+              <font-awesome-icon
+                v-if="!searchMode"
+                @click="searchMode = !searchMode"
+                icon="filter"
+              />
               <el-select
+                @blur="searchMode = !searchMode"
+                @clear="searchMode = !searchMode"
+
+                v-else
                 v-model="filterBy.member"
                 placeholder="By Members"
                 :clearable="true"
@@ -257,6 +280,8 @@ export default {
         txt: null,
         member: null,
       },
+      searchMode: false,
+      filterMode: false,
     };
   },
   methods: {

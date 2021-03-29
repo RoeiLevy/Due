@@ -115,7 +115,7 @@ export default {
   },
   watch: {
     isCloseScreen(newValue) {
-      console.log(`close screen is now opened: ${newValue}`);
+      // console.log(`close screen is now opened: ${newValue}`);
       if (!newValue) {
         this.$store.commit("closeNotifications");
       }

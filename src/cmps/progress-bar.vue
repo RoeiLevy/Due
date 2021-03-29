@@ -1,19 +1,15 @@
 <template>
   <div class="progress">
-<!-- <el-tooltip class="item" effect="dark" :content="getData" placement="bottom"> -->
     <div
       class="box"
       v-for="(status, idx) in groupStatuses"
       :key="idx"
       :style="{
-        'background-color': groupStatuses[idx].color,
+        'background-color': status.color,
         width: getData[idx],
       }"
       :title="groupStatuses[idx].title + ': ' + getData[idx]"
-    >
-    </div>
-    <!-- </el-tooltip> -->
-
+    ></div>
   </div>
 </template>
 
@@ -27,16 +23,16 @@ export default {
     groupStatuses() {
       const map = [];
       this.group.tasks.forEach((task) => {
-        if (map.includes(task.status)) return;
+        if (map.includes({title:task.status.title,color:task.status.color})) return;
         else if (!task.status) {
-          if (map.includes({ title: "Empty", color: "#f7f8fa" }));
+          if (map.includes({ title: "Empty", color: "#f7f8fa" })) return;
           else map.push({ title: "Empty", color: "#f7f8fa" });
-        } else map.push(task.status);
+        } else map.push({title:task.status.title,color:task.status.color});
       });
       return map;
     },
     getData() {
-      const all = this.group.tasks.length;
+      const taskCount = this.group.tasks.length;
       var map = this.groupStatuses.reduce((map, status) => {
         map[status.title] = map[status.title] ? map[status.title] : 0;
         return map;
@@ -46,7 +42,7 @@ export default {
         else map[task.status.title]++;
       });
       map = Object.values(map);
-      map = map.map((count) => (count = (count / all) * 100 + "%"));
+      map = map.map((count) => (count = (count / taskCount) * 100 + "%"));
       return map;
     },
   },

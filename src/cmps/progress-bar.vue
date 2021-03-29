@@ -5,7 +5,7 @@
       v-for="(status, idx) in groupStatuses"
       :key="idx"
       :style="{
-        'background-color': groupStatuses[idx].color,
+        'background-color': status.color,
         width: getData[idx],
       }"
       :title="groupStatuses[idx].title + ': ' + getData[idx]"
@@ -21,20 +21,19 @@ export default {
       return this.$store.getters.statuses;
     },
     groupStatuses() {
-      const map = [];
-      this.group.tasks.forEach((task) => {
-        if (map.includes(task.status)) return;
-        else if (!task.status) {
-          if (map.includes({ title: "Empty", color: "#f7f8fa" }));
-          else map.push({ title: "Empty", color: "#f7f8fa" });
-        } else map.push(task.status);
-      });
-      return map;
+      var statuses = this.group.tasks.reduce((acc, task) => {
+        acc.push({ title: task.status.title, color: task.status.color });
+        return acc;
+      }, []);
+      const uniqueStatuses = [
+        ...new Map(statuses.map((status) => [status.title, status])).values(),
+      ];
+      return uniqueStatuses;
     },
     getData() {
-      const all = this.group.tasks.length;
+      const taskCount = this.group.tasks.length;
       var map = this.groupStatuses.reduce((map, status) => {
-        map[status.title] = map[status.title] ? map[status.title] : 0;
+        map[status.title] = 0;
         return map;
       }, {});
       this.group.tasks.forEach((task) => {
@@ -42,7 +41,8 @@ export default {
         else map[task.status.title]++;
       });
       map = Object.values(map);
-      map = map.map((count) => (count = (count / all) * 100 + "%"));
+      map = map.map((count) => (count = (count / taskCount) * 100 + "%"));
+      console.log("map:", map);
       return map;
     },
   },

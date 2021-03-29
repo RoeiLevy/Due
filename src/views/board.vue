@@ -560,6 +560,10 @@ export default {
     },
     setBoard(board) {
       this.boardToEdit = board;
+      this.$store.commit({
+        type: "setBoard",
+        board: JSON.parse(JSON.stringify(board)),
+      });
     },
     async addMember(email) {
       try {

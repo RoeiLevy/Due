@@ -173,7 +173,7 @@
                 </el-dropdown-menu>
               </el-dropdown> -->
             </ul>
-            <div>
+            <div class="search-bar">
               <el-input placeholder="Search Tasks" v-model="filterBy.txt">
               </el-input>
               <el-select

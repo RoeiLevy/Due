@@ -1,6 +1,6 @@
 <template>
   <div class="activity-log">
-    <div class="activities-container">
+    <div v-if="activities" class="activities-container">
       <h3 v-if="!activities || !activities.length">No Activities</h3>
       <activity-preview
         v-for="activity in activitiesToShow"

@@ -466,7 +466,6 @@ export default {
       this.saveBoard();
     },
     async removeView(view) {
-      console.log("view:", view);
       const idx = this.boardToEdit.views.findIndex((v) => v === view);
       this.boardToEdit.views.splice(idx, 1);
       await this.saveBoard();
@@ -490,7 +489,6 @@ export default {
       }
     },
     activateView(view) {
-      console.log("view:", view);
       this.activeTab = view;
     },
     openBoardActivities() {

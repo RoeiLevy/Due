@@ -11,12 +11,12 @@
           class="nav-links"
         >
           <router-link to="/">Home</router-link>
+          <router-link class="sign-up" to="/signup">Sign Up</router-link>
         </div>
         <div v-else class="nav-links">
           <h2 class="username" v-if="loggedInUser">
             Hello {{ loggedInUser.fullname }}
           </h2>
-          <span>|</span>
           <button @click="logout" class="logout-btn">Logout</button>
         </div>
       </div>

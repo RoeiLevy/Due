@@ -11,6 +11,7 @@
           class="nav-links"
         >
           <router-link to="/">Home</router-link>
+          <router-link class="login" to="/login">Login</router-link>
         </div>
         <div v-else class="nav-links">
           <h2 class="username" v-if="loggedInUser">

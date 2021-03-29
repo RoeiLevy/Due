@@ -20,11 +20,16 @@
       class="task-title-input"
     />
     <div v-else class="task-title">
-    <el-tooltip class="item task-tooltip" effect="dark" :content="taskToEdit.title" placement="top">
-      <label class="task-title-label" @click="handleEdit">
-        {{ taskToEdit.title }}
-      </label>
-    </el-tooltip>
+      <el-tooltip
+        class="item task-tooltip"
+        effect="dark"
+        :content="taskToEdit.title"
+        placement="top"
+      >
+        <label class="task-title-label" @click="handleEdit">
+          {{ taskToEdit.title }}
+        </label>
+      </el-tooltip>
       <el-tooltip
         class="item"
         effect="dark"
@@ -126,6 +131,14 @@
           fill="transparent"
         />
       </svg>
+      <span
+      class="error-badge"
+        v-if="
+          taskToEdit.status && taskToEdit.status.title.toLowerCase() === 'error'
+        "
+      >
+        <font-awesome-icon icon="exclamation-circle" />
+      </span>
 
       <status-picker
         @setStatus="setStatus"
@@ -201,7 +214,7 @@ export default {
             message: "Delete completed",
           });
         } catch (err) {
-          console.log("Couldn`t delete board", err);
+          console.log("Couldn`t delete task", err);
         }
       } catch (err) {
         this.$message({

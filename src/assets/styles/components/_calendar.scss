@@ -1,11 +1,13 @@
 .calendar {
-    .vc-weeks{
-        >*{
+    .vc-weeks {
+        > * {
             // border: 1px solid lightgray;
         }
     }
     .vc-day {
-        height: 80px;
+        height: 100px;
+        width: 130px;
+        border: 1px solid lightgray;
         .day-wrapper {
             display: flex;
             flex-direction: column;
@@ -14,20 +16,37 @@
                 p {
                     border-radius: 5px;
                     margin-bottom: 2px;
+                    height: 25px;
+                    border-radius: 5px;
+                    white-space: nowrap;
+                    overflow: hidden;
                 }
             }
         }
     }
     .groups {
         display: flex;
-        position: fixed;
+        justify-content: center;
+        align-items: center;
+        position: sticky;
         bottom: 0;
-        left: 50%;
-        transform: translateX(-25%);
-        p {
+        z-index: 1;
+        width: 100%;
+        background-color: white;
+        display: flex;
+        height: 50px;
+        div{
+            display: flex;
             margin: 5px;
-            padding: 5px;
-            border-radius: 5px;
+            p {
+                margin: 5px;
+                padding: 5px;
+            }
+            .box {
+                width: 15px;
+                height: 15px;
+                border-radius: 10px;
+            }
         }
     }
 }

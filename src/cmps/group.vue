@@ -36,7 +36,6 @@
 
       <div class="group-title-wrapper">
         <input
-          required
           v-if="editMode"
           ref="input"
           v-model="groupToEdit.title"
@@ -204,6 +203,10 @@ export default {
       this.$emit("removeTask", task, this.group.id);
     },
     async saveGroup() {
+      if (!this.groupToEdit.title) {
+        this.groupToEdit.title = "New Group";
+        return;
+      }
       try {
         this.editMode = false;
         await this.$emit("saveGroup", this.groupToEdit);
@@ -211,8 +214,35 @@ export default {
         console.log("err:", err);
       }
     },
-    removeGroup() {
-      this.$emit("removeGroup", this.group.id);
+    // removeGroup() {
+    //   this.$emit("removeGroup", this.group.id);
+    // },
+    async removeGroup() {
+      try {
+        await this.$confirm(
+          "This will permanently delete the Group. Continue?",
+          "Warning",
+          {
+            confirmButtonText: "OK",
+            cancelButtonText: "Cancel",
+            type: "warning",
+          }
+        );
+        try {
+          this.$emit("removeGroup", this.group.id);
+          this.$message({
+            type: "success",
+            message: "Delete completed",
+          });
+        } catch (err) {
+          console.log("Couldn`t delete group", err);
+        }
+      } catch (err) {
+        this.$message({
+          type: "info",
+          message: "Delete canceled",
+        });
+      }
     },
   },
   computed: {

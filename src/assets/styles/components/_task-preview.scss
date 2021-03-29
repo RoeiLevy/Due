@@ -231,6 +231,12 @@
                 height: 100%;
             }
         }
+        .error-badge{
+            position: absolute;
+            right: 5px;
+            color: yellow;
+            font-size: 1.5rem
+        }
     }
     .priority-container {
         @include task-cells;

@@ -247,7 +247,7 @@
     .activity-time-wrapper {
         display: flex;
         align-items: center;
-        width: 20%;
+        min-width: 90px;
     }
 
     .activity-user-txt-wrapper {

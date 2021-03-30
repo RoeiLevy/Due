@@ -17,12 +17,19 @@
     <div class="update-actions-wrapper">
       <div class="like-wrapper">
         <button>
-          <font-awesome-icon class="like-icon" icon="thumbs-up"></font-awesome-icon>
-          Like</button>
+          <font-awesome-icon
+            class="like-icon"
+            icon="thumbs-up"
+          ></font-awesome-icon>
+          Like
+        </button>
       </div>
       <div class="reply-wrapper">
         <button>
-          <font-awesome-icon class="reply-icon" icon="reply"></font-awesome-icon>
+          <font-awesome-icon
+            class="reply-icon"
+            icon="reply"
+          ></font-awesome-icon>
           Reply
         </button>
       </div>
@@ -33,6 +40,7 @@
 <script>
 import Avatar from "vue-avatar";
 import moment from "moment";
+
 
 export default {
   props: ["comment"],

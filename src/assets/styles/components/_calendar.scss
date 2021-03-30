@@ -1,9 +1,10 @@
 .calendar {
     padding-bottom: 50px;
-   .groups {
-       margin: 10px 0px;
-       font-size: 15px;
-   }
+
+    .groups {
+        margin: 10px 0px;
+        font-size: 15px;
+    }
 
     .vc-container.vc-is-expanded {
         width: 100%;
@@ -76,17 +77,26 @@
 
 
 @media(max-width: 820px) {
-    .vc-weeks {
-        display: grid;
-        grid-template-columns: auto !important;
-    }
+    // .vc-weeks {
+    //     display: grid;
+    //     grid-template-columns: auto !important;
+    // }
 
-    .vc-weekday {
-        display: none;
-    }
+    // .vc-weekday {
+    //     display: none;
+    // }
 
-    .calendar {
-        display: flex;
-        flex-direction: column-reverse;
+    // .calendar {
+    //     display: flex;
+    //     flex-direction: column-reverse;
+    // }
+   
+    .vc-day {
+        min-width: 10px;
     }
+    .calendar .vc-day .day-wrapper .task p {
+        font-size: 12px;
+        padding: 5px;
+        white-space: inherit;
+    } 
 }

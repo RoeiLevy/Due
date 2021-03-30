@@ -69,8 +69,6 @@
             <div class="board-actions">
               <board-members :members="boardToEdit.members" />
               <button @click="toggleAddingMembers">
-                <!-- <font-awesome-icon class="header-icon" icon="user-friends" />
-                Members/ -->
                 <font-awesome-icon class="header-icon plus" icon="user-plus" />
                 Invite
               </button>
@@ -134,87 +132,7 @@
                   <p>Kanban</p>
                 </div>
               </router-link>
-              <!-- </div> -->
-              <!-- v-for="(view, idx) in boardToEdit.views"
-                :key="idx" -->
-              <!-- @click.self="activateView(view)"
-                :class="{ active: isViewActive }" -->
-              <!-- {{ view }} -->
-              <!-- <div class="view-dropdown-container">
-                  <button class="view-menu-btn" style="background: none;">
-                    <font-awesome-icon
-                      class="view-menu-icon"
-                      icon="ellipsis-h"
-                    />
-                  </button>
-                  <ul class="view-dropdown">
-                    <li @click="renameView(view)">Rename</li>
-                    <li @click="KanbanView(view)">Duplicate</li>
-                    <li @click="removeView(view)">Remove</li>
-                  </ul>
-                </div> -->
-              <!-- <el-dropdown
-                class="views-drop-down add-view-wrapper"
-                trigger="click"
-                @command="addView"
-              >
-                <span class="views-el-dropdown-link add-view-wrapper">
-                  <button class="add-view-btn">
-                    <font-awesome-icon class="header-icon" icon="plus" /> Add
-                    View
-                  </button>
-                </span>
-                <el-dropdown-menu class="view-dropdown">
-                  <el-dropdown-item command="Calendar"
-                    >Calendar</el-dropdown-item
-                  >
-                  <el-dropdown-item command="Chart">Chart</el-dropdown-item>
-                  <el-dropdown-item command="Kanban">Kanban</el-dropdown-item>
-                </el-dropdown-menu>
-              </el-dropdown> -->
             </ul>
-            <div class="search-bar">
-              <div class="search" @click.stop="searchMode = true">
-                <font-awesome-icon
-                  v-if="!searchMode"
-                  icon="search"
-                  class="search-bar-icon"
-                />
-                <el-input
-                  v-else
-                  @blur="searchMode = false"
-                  placeholder="Search"
-                  v-model="filterBy.txt"
-                >
-                </el-input>
-                <p v-if="!searchMode" class="search-title">Search</p>
-              </div>
-
-              <div class="filter" @click="filterMode = !filterMode">
-                <font-awesome-icon
-                  v-if="!filterMode"
-                  icon="filter"
-                  class="search-bar-icon"
-                />
-                <el-select
-                  @blur="filterMode = !filterMode"
-                  @clear="filterMode = !filterMode"
-                  v-else
-                  v-model="filterBy.member"
-                  placeholder="By Members"
-                  :clearable="true"
-                >
-                  <el-option
-                    v-for="member in boardToEdit.members"
-                    :key="member.id"
-                    :label="member.fullname"
-                    :value="member"
-                  >
-                  </el-option>
-                </el-select>
-                <p v-if="!filterMode" class="filter-title">Filter</p>
-              </div>
-            </div>
           </nav>
           <router-view
             :board="filteredBoard"
@@ -229,20 +147,8 @@
             @deleteStatus="deleteStatus"
             @addPriority="addPriority"
             @deletePriority="deletePriority"
+            @setFilter="setFilter"
           />
-          <!-- <main-table
-            v-if="activeTab === 'mainTable'"
-            :board="boardToEdit"
-            @addNewGroup="addNewGroup"
-            @removeTask="removeTask"
-            @updateTask="updateTask"
-            @saveGroup="saveGroup"
-            @addTask="addTask"
-            @removeGroup="removeGroup"
-            @addStatus="addStatus"
-            @deleteStatus="deleteStatus"
-          ></main-table>
-          <chart v-if="activeTab === 'chart'" :board="boardToEdit"></chart> -->
         </div>
       </div>
     </div>
@@ -282,8 +188,8 @@ export default {
         txt: null,
         member: null,
       },
-      searchMode: false,
-      filterMode: false,
+      // searchMode: false,
+      // filterMode: false,
     };
   },
   methods: {
@@ -478,12 +384,6 @@ export default {
           type: "saveBoard",
           boardToSave: this.boardToEdit,
         });
-
-        // this.$store.dispatch({
-        //   type: "sendActivity",
-        //   txt: `Removed task "${task.title}"`,
-        // });
-        // Add user msg
       } catch (err) {
         console.log("err:", err);
       }
@@ -623,6 +523,9 @@ export default {
         JSON.parse(JSON.stringify(this.loggedInUser))
       );
       this.saveBoard();
+    },
+    setFilter(filterBy) {
+      this.filterBy = filterBy;
     },
   },
   computed: {

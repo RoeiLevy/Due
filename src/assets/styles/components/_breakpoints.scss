@@ -1,133 +1,98 @@
-    @media (max-width: 1100px) {
-        .el-drawer__open .el-drawer.rtl {
-            width: 85% !important;
-        }
+@media (max-width: 1100px) {
+    .el-drawer__open .el-drawer.rtl {
+        width: 85% !important;
     }
-    
-    @media (min-width: $break-narrow) {
-        .header-view-bar {
-            position: relative;
-        }
-        .search-bar {
-            position: absolute;
-            left: 124px;
-            top: 55px;
-            color: #676879;
-            // height: 26px;
-            .search,
-            .filter {
-                padding: 4px 16px;
-                cursor: pointer;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                // margin-inline-end: 10px;
-                p {
-                    margin: 0;
-                }
-                * {
-                    padding-inline-end: 5px;
-                }
-            }
-        }
-        .search:hover {
-            background-color: #e6e9ef;
-            border-radius: 4px;
-        }
-        .filter:hover {
-            background-color: #e6e9ef;
-            border-radius: 4px;
-        }
+}
+
+
+@media (max-width: $break-normal) {
+
+    //////////////////////Workspace////////////////////////
+    .workspace {
+        display: none;
     }
-    
-    @media (max-width: $break-normal) {
 
-        //////////////////////Workspace////////////////////////
-        .workspace {
-            display: none;
+    .el-drawer__open .el-drawer.rtl {
+        width: 90% !important;
+    }
+
+    //////////////////////Task Wrapper/////////////////////
+    .task-wrapper {
+        * :hover {
+            background-color: #f7f8fa !important;
+            color: #333333 !important;
+            box-shadow: none !important;
+            filter: none !important;
         }
 
-        .el-drawer__open .el-drawer.rtl {
-            width: 90% !important;
+        :hover {
+            background-color: #f7f8fa !important;
+            color: #333333 !important;
+            box-shadow: none !important;
+            filter: none !important;
         }
 
-        //////////////////////Task Wrapper/////////////////////
-        .task-wrapper {
-            * :hover {
-                background-color: #f7f8fa !important;
-                color: #333333 !important;
-                box-shadow: none !important;
-                filter: none !important;
-            }
+        position: sticky;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-overflow: ellipsis;
+        height: 36px;
+        line-height: 36px;
+        border-right: 1.5px solid white;
+        cursor: pointer;
+        text-align: start;
+        font-size: 13px;
 
-            :hover {
-                background-color: #f7f8fa !important;
-                color: #333333 !important;
-                box-shadow: none !important;
-                filter: none !important;
-            }
-
-            position: sticky;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .task-title {
             text-overflow: ellipsis;
-            height: 36px;
-            line-height: 36px;
-            border-right: 1.5px solid white;
-            cursor: pointer;
-            text-align: start;
-            font-size: 13px;
-
-            .task-title {
-                text-overflow: ellipsis;
-                overflow: visible !important;
-                background-color: #f7f8faf6 !important;
-                min-width: 150px;
-                width: fit-content;
-                z-index: 1000 !important;
-                position: sticky;
-                left: 9px;
-            }
-
-            .task-color-box-start {
-                z-index: 1000 !important;
-                position: sticky;
-                left: 0;
-                width: 9px !important;
-            }
-
-            .task-title-label {
-                width: 150px;
-                overflow: unset;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-            }
+            overflow: visible !important;
+            background-color: #f7f8faf6 !important;
+            min-width: 150px;
+            width: fit-content;
+            z-index: 1000 !important;
+            position: sticky;
+            left: 9px;
         }
 
-        ////////////////////PROGRESSION BAR////////////////////
-        //Make it disappear at Mobile breakpoint
-        //////////////////////TEXT EDITOR//////////////////////
-        .ql-toolbar {
-            font-size: 14px !important;
+        .task-color-box-start {
+            z-index: 1000 !important;
+            position: sticky;
+            left: 0;
+            width: 9px !important;
+        }
 
-            span {
-                display: inline;
-                margin: 0 !important;
-
-                button {
-                    padding: 0 !important;
-                    width: unset !important;
-                }
-            }
-
-            span button svg {
-                height: 14px !important;
-                width: 14px !important;
-            }
+        .task-title-label {
+            width: 150px;
+            overflow: unset;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
     }
-    
+
+    ////////////////////PROGRESSION BAR////////////////////
+    //Make it disappear at Mobile breakpoint
+    //////////////////////TEXT EDITOR//////////////////////
+    .ql-toolbar {
+        font-size: 14px !important;
+
+        span {
+            display: inline;
+            margin: 0 !important;
+
+            button {
+                padding: 0 !important;
+                width: unset !important;
+            }
+        }
+
+        span button svg {
+            height: 14px !important;
+            width: 14px !important;
+        }
+    }
+
+
 
     @media (max-width: 500px) {
         // ////////////////exact router/////////////
@@ -201,45 +166,6 @@
             }
         }
 
-        .header-view-bar .el-input__inner {
-            width: 80px !important;
-            height: 34px;
-            font-size: 10px !important;
-            padding: 0 !important;
-        }
-
-        .search-bar {
-            position: absolute;
-            top: 58px;
-            left: 91px;
-            color: #676879;
-            height: 26px;
-
-            .search,
-            .filter {
-                margin-inline-end: 11px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            input {
-                margin-inline-end: 5px !important;
-                width: 80px !important;
-                height: 26px !important;
-            }
-
-            p,
-            .search-bar-icon {
-                margin: 0;
-                font-size: 10px;
-            }
-
-            .search-bar-icon {
-                margin-inline-end: 5px !important;
-            }
-        }
-
         .new-group-btn {
             font-size: 10px !important;
             padding: 0 7px !important;
@@ -306,3 +232,55 @@
             width: 100%;
         }
     }
+
+    .new-group-wrapper {
+
+
+        .search-bar {
+            display: flex;
+            margin-inline-start: 5px;
+            color: #676879;
+
+            .search,
+            .filter {
+                padding: 4px 16px;
+                cursor: pointer;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 26px;
+                width: fit-content;
+                padding: 0px 7px;
+
+                p {
+                    margin: 0;
+                    font-size: 10px;
+                }
+
+                * {
+                    padding-inline-end: 5px;
+                }
+
+                .el-input__inner {
+                    width: 75px !important;
+                    height: 26px;
+                    font-size: 10px !important;
+                    padding: 0 !important;
+                    padding-inline-start: 5px !important;
+                }
+            }
+
+
+        }
+
+        .search:hover:not(.el-input__inner) {
+            background-color: #e6e9ef;
+            border-radius: 4px;
+        }
+
+        .filter:hover:not(.el-input__inner) {
+            background-color: #e6e9ef;
+            border-radius: 4px;
+        }
+    }
+}

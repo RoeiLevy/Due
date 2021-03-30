@@ -2,21 +2,26 @@
     border-bottom: 2px solid #e6e9ef;
     display: flex;
     justify-content: space-between;
+
     .el-input__inner {
         width: 150px !important;
         margin-left: 5px;
     }
+
     >* {
         display: flex;
         justify-content: center;
         align-items: center;
     }
+
     .view-nav {
         margin: 0;
         padding-left: 0;
+
         p {
             margin: 0;
         }
+
         .view {
             color: #676879;
             text-decoration: none;
@@ -25,6 +30,7 @@
             justify-content: space-between;
             align-items: center;
             font-size: 14px;
+
             .view-title {
                 padding: 7px 16px;
                 height: 40px;
@@ -32,22 +38,19 @@
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
+
                 p {
                     padding-left: 5px;
                 }
             }
         }
+
         .view-title:hover {
             background-color: #e6e9ef;
             border-radius: 4px;
         }
     }
-    .new-group-wrapper {
-        button.el-button.new-group-btn.el-button--primary {
-            background-color: #409eff;
-            border-color: #409eff;
-        }
-    }
+
     .main-table-wrapper button,
     .add-view-wrapper button {
         border: none;
@@ -57,11 +60,13 @@
         height: 32px;
         padding: 7px 20px;
     }
+
     .main-table-wrapper button:hover {
         background-color: #e6e9ef;
         cursor: pointer;
         border-radius: 4px;
     }
+
     .add-view-wrapper button:hover {
         cursor: pointer;
     }
@@ -69,7 +74,60 @@
 
 .new-group-wrapper {
     padding: 10px 0;
+    display: flex;
+    align-items: center;
+
+    button.el-button.new-group-btn.el-button--primary {
+        background-color: #409eff;
+        border-color: #409eff;
+        font-size: 14px;
+        font-family: roboto-regular, sans-serif;
+    }
+
+
+    .search-bar {
+        display: flex;
+        margin-inline-start: 5px;
+        color: #676879;
+
+        .search,
+        .filter {
+            padding: 4px 16px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            p {
+                margin: 0;
+                font-size: 14px;
+            }
+
+            * {
+                padding-inline-end: 5px;
+            }
+
+            .el-input__inner {
+                width: 150px !important;
+                height: 32px;
+                font-size: 13px !important;
+                padding: 0 !important;
+                padding-inline-start: 5px !important;
+            }
+        }
+    }
+
+    .search:hover:not(.el-input__inner) {
+        background-color: #e6e9ef;
+        border-radius: 4px;
+    }
+
+    .filter:hover:not(.el-input__inner) {
+        background-color: #e6e9ef;
+        border-radius: 4px;
+    }
 }
+
 
 .top-header {
     height: 125px;
@@ -83,6 +141,7 @@
 .board-actions {
     display: flex;
     padding-top: 10px;
+
     .avatar-container {
         position: relative;
         width: 100%;
@@ -92,23 +151,28 @@
         justify-content: center;
         flex-direction: row-reverse;
         margin-inline-end: 35px;
+
         .el-badge__content {
             border: none;
         }
+
         .members-badage {
             position: absolute;
             top: 6px;
             right: -23px;
             z-index: 2;
         }
+
         .member-avatar {
             display: inline-block;
             position: relative;
         }
+
         .member-avatar:not(:last-child) {
             margin-left: -10px !important;
         }
     }
+
     >*:not(:first-child) {
         border: none;
         outline: none;
@@ -121,12 +185,15 @@
         justify-content: center;
         align-items: center;
     }
+
     .header-icon {
         padding-right: 5px;
     }
+
     .plus {
         font-size: 16px;
     }
+
     >*:hover:not(:first-child) {
         background-color: #e6e9ef;
         cursor: pointer;
@@ -136,4 +203,4 @@
 
 .view.router-link-exact-active {
     box-shadow: 0px 2px 0px -1px #0085ff;
-}   
+}

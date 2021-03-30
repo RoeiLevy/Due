@@ -4,6 +4,50 @@
       <el-button class="new-group-btn" @click="addNewGroup" type="primary"
         >New Group</el-button
       >
+        <div class="search-bar">
+              <div class="search" @click.stop="searchMode = true">
+                <font-awesome-icon
+                  v-if="!searchMode"
+                  icon="search"
+                  class="search-bar-icon"
+                />
+                <el-input
+                  v-else
+                  @blur="searchMode = false"
+                  placeholder="Search"
+                  v-model="filterBy.txt"
+                  @input="setFilter"
+                >
+                </el-input>
+                <p v-if="!searchMode" class="search-title">Search</p>
+              </div>
+
+              <div class="filter" @click="filterMode = !filterMode">
+                <font-awesome-icon
+                  v-if="!filterMode"
+                  icon="filter"
+                  class="search-bar-icon"
+                />
+                <el-select
+                  @blur="filterMode = !filterMode"
+                  @clear="filterMode = !filterMode"
+                  v-else
+                  v-model="filterBy.member"
+                  placeholder="By Members"
+                  :clearable="true"
+                  @change="setFilter"
+                >
+                  <el-option
+                    v-for="member in boardToEdit.members"
+                    :key="member.id"
+                    :label="member.fullname"
+                    :value="member"
+                  >
+                  </el-option>
+                </el-select>
+                <p v-if="!filterMode" class="filter-title">Filter</p>
+              </div>
+            </div>
     </div>
     <div class="groups-list">
       <draggable
@@ -41,9 +85,19 @@ export default {
   data() {
     return {
       boardToEdit: null,
+        filterBy: {
+        txt: null,
+        member: null,
+      },
+      searchMode: false,
+      filterMode: false,
     };
   },
   methods: {
+    setFilter() {
+      this.$emit('setFilter', this.filterBy)
+      console.log('this.filterBy:', this.filterBy)
+    },
     async saveBoard() {
       try {
         await this.$store.dispatch({

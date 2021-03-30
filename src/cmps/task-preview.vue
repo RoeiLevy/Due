@@ -25,6 +25,7 @@
         effect="dark"
         :content="taskToEdit.title"
         placement="top"
+        :open-delay="Number(700)"	
       >
         <label class="task-title-label" @click="handleEdit">
           {{ taskToEdit.title }}
@@ -192,6 +193,7 @@ export default {
       styles: {
         "border-color": this.groupColor,
       },
+      delay: 700
     };
   },
   methods: {

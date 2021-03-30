@@ -3,7 +3,47 @@
             width: 85% !important;
         }
     }
+<<<<<<< HEAD
 
+=======
+    
+    @media (min-width: $break-narrow) {
+        .header-view-bar {
+            position: relative;
+        }
+        .search-bar {
+            position: absolute;
+            left: 124px;
+            top: 55px;
+            color: #676879;
+            // height: 26px;
+            .search,
+            .filter {
+                padding: 4px 16px;
+                cursor: pointer;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                // margin-inline-end: 10px;
+                p {
+                    margin: 0;
+                }
+                * {
+                    padding-inline-end: 5px;
+                }
+            }
+        }
+        .search:hover {
+            background-color: #e6e9ef;
+            border-radius: 4px;
+        }
+        .filter:hover {
+            background-color: #e6e9ef;
+            border-radius: 4px;
+        }
+    }
+    
+>>>>>>> 6091e37c0b6527e1c0ab51d6df50903c429d8bca
     @media (max-width: $break-normal) {
 
         //////////////////////Workspace////////////////////////
@@ -173,7 +213,7 @@
 
         .search-bar {
             position: absolute;
-            top: 55px;
+            top: 58px;
             left: 91px;
             color: #676879;
             height: 26px;

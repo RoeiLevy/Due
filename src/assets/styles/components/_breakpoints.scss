@@ -5,10 +5,13 @@
     }
     
     @media (min-width: $break-narrow) {
+        .header-view-bar {
+            position: relative;
+        }
         .search-bar {
             position: absolute;
-            left: 266px;
-            top: 201px;
+            left: 124px;
+            top: 55px;
             color: #676879;
             // height: 26px;
             .search,

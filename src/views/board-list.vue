@@ -61,7 +61,7 @@
       <el-row v-if="viewValue">
         <el-col :span="5" :offset="1" @click="addNewBoard">
           <el-card class="card" :body-style="{ height: '100%' }">
-            <div @click="addNewBoard">
+            <div class="add-new-board-card" @click="addNewBoard">
               <i class="el-icon-plus" style="font-size: 40px"></i>
               <div style="padding: 14px">
                 <span>Add A New Board</span>

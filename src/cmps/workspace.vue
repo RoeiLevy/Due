@@ -83,7 +83,7 @@ export default {
       if (currBoardId) {
         if (newBoardId === currBoardId) return;
       }
-
+this.toggleWorkspace()
       this.$router.push(`/board/${newBoardId}/maintable`);
     },
     async addNewBoard() {

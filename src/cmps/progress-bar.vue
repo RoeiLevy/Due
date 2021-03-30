@@ -21,12 +21,13 @@ export default {
       return this.$store.getters.statuses;
     },
     groupStatuses() {
+      //Get all statuses that are in use inside the group prop
       var statuses = this.group.tasks.reduce((acc, task) => {
-        if (!task.status)
-          acc.push({ title: 'Empty', color: 'gray' });
+        if (!task.status) acc.push({ title: "Empty", color: "gray" });
         else acc.push({ title: task.status.title, color: task.status.color });
         return acc;
       }, []);
+      //Using new map to remove duplicate statuses
       const uniqueStatuses = [
         ...new Map(statuses.map((status) => [status.title, status])).values(),
       ];
@@ -43,7 +44,9 @@ export default {
         else map[task.status.title]++;
       });
       map = Object.values(map);
-      map = map.map((count) => (count = (count / taskCount) * 100 + "%"));
+      map = map.map(
+        (count) => (count = (count / taskCount).toFixed(4) * 100 + "%")
+      );
       return map;
     },
   },

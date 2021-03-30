@@ -49,7 +49,6 @@ export default {
       });
       map = Object.values(map);
       map = map.map((count) => (count = (Math.floor((count / all) * 100)) + "%"));
-      // console.log('map:', map)
       return map;
     },
   },

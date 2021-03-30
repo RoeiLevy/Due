@@ -22,7 +22,9 @@ export default {
     },
     groupStatuses() {
       var statuses = this.group.tasks.reduce((acc, task) => {
-        acc.push({ title: task.status.title, color: task.status.color });
+        if (!task.status)
+          acc.push({ title: 'Empty', color: 'gray' });
+        else acc.push({ title: task.status.title, color: task.status.color });
         return acc;
       }, []);
       const uniqueStatuses = [
@@ -42,7 +44,6 @@ export default {
       });
       map = Object.values(map);
       map = map.map((count) => (count = (count / taskCount) * 100 + "%"));
-      console.log("map:", map);
       return map;
     },
   },

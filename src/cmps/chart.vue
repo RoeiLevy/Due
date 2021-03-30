@@ -26,36 +26,38 @@ export default {
           label: "Tasks Status Chart",
           backgroundColor: this.board.statuses.map((s) => s.color),
           data: this.getData(),
-          barThickness: 100,
+          barThickness: 20,
         },
       ],
     };
     const options = {
-      tooltips:{
-        titleFontSize:30,
-        bodyFontSize:25,
+      legend: {
+        display: false,
+      },
+      tooltips: {
+        titleFontSize: 15,
+        bodyFontSize: 10,
       },
       scales: {
         xAxes: [
           {
             ticks: {
-              fontSize: 25,
+              fontSize: 10,
             },
           },
         ],
         yAxes: [
           {
-
             ticks: {
-              stepSize:1,
-              beginAtZero:true,
-              fontSize: 25,
+              stepSize: 1,
+              beginAtZero: true,
+              fontSize: 15,
             },
           },
         ],
       },
     };
     this.renderChart(data, options);
-  }
+  },
 };
 </script>

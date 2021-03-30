@@ -1,576 +1,991 @@
-[
-    {
-        "title": "Due / Group Tasks",
-        "views": [],
-        "description": "Enter Board Description",
-        "thumbnail": "http://res.cloudinary.com/datgr82j1/image/upload/v1616405537/bfxcehpe4uoamw6t5c5o.png",
-        "createdAt": 1589983468418,
-        "createdBy": {
-            "_id": "u101",
-            "fullname": "Dorran",
-            "imgUrl": "http://some-img"
-        },
-        "members": [
-
-        ],
-        "groups": [
-            {
-                "id": "CDLJ1",
-                "title": "Yonatan",
-                "tasks": [
-                    {
-                        "title": "CSS - Solve Left border issue",
-                        "createdAt": 1616256989417,
-                        "status": null,
-                        "priority": null,
-                        "id": "9WGlP",
-                        "comments": []
-                    },
-                    {
-                        "title": "Service - SAVE functionality needs refining",
-                        "createdAt": 1616256992452,
-                        "status": null,
-                        "priority": null,
-                        "id": "VyfWY",
-                        "comments": []
-                    },
-                    {
-                        "title": "⭐ \"Sticky\" Header",
-                        "createdAt": 1616259114942,
-                        "status": null,
-                        "priority": null,
-                        "id": "CLvWf",
-                        "comments": []
-                    }
-                ],
-                "style": {
-                    "color": "#CE98FC"
-                }
-            },
-            {
-                "id": "eMAEI",
-                "title": "Roi",
-                "tasks": [
-                    {
-                        "title": "Drragable Changes",
-                        "createdAt": 1616257014267,
-                        "status": null,
-                        "priority": null,
-                        "id": "S2U8P",
-                        "comments": []
-                    },
-                    {
-                        "title": "Chart.js start from zero",
-                        "createdAt": 1616257017117,
-                        "status": null,
-                        "priority": null,
-                        "id": "xN2qG",
-                        "comments": []
-                    },
-                    {
-                        "title": "Server planning",
-                        "createdAt": 1616257019180,
-                        "status": null,
-                        "priority": null,
-                        "id": "IlAgm",
-                        "comments": []
-                    }
-                ],
-                "style": {
-                    "color": "#A979FC"
-                }
-            },
-            {
-                "id": "m6QcY",
-                "title": "Dorran",
-                "tasks": [
-                    {
-                        "title": "Demo data needs detune",
-                        "createdAt": 1616256995300,
-                        "status": null,
-                        "priority": null,
-                        "id": "tBEKX",
-                        "comments": []
-                    },
-                    {
-                        "title": "Board List prep",
-                        "createdAt": 1616257021956,
-                        "status": null,
-                        "priority": null,
-                        "id": "dXe3r",
-                        "comments": []
-                    },
-                    {
-                        "title": "Group pitch for Sunday",
-                        "createdAt": 1616257025146,
-                        "status": null,
-                        
-                        "id": "Hm8Tn",
-                        "comments": []
-                    }
-                ],
-                "style": {
-                    "color": "#797BFE"
-                }
-            }
-        ],
-        "statuses": [
-            {
-                "id": "udg2t6",
-                "title": "Done",
-                "color": "#00c875"
-            },
-            {
-                "id": "udm874",
-                "title": "Working on it",
-                "color": "#fdab3d"
-            },
-            {
-                "id": "ud176a",
-                "title": "Stuck",
-                "color": "#e2445c"
-            }
-        ],
-        "activities": [
-            {
-                "id": "a130",
-                "txt": "Changed Color",
-                "createdAt": 154514,
-                "byMember": {
-                    "_id": "u101",
-                    "fullname": "Abi Abambi",
-                    "imgUrl": "http://some-img"
-                },
-                "task": {
-                    "id": "c101",
-                    "title": "Replace Logo"
-                }
-            },
-            {
-                "id": "a101",
-                "txt": "Changed Color",
-                "createdAt": 154514,
-                "byMember": {
-                    "_id": "u101",
-                    "fullname": "Abi Abambi",
-                    "imgUrl": "http://some-img"
-                },
-                "task": {
-                    "id": "c101",
-                    "title": "Replace Logo"
-                }
-            },
-            {
-                "id": "a102",
-                "txt": "Changed title",
-                "createdAt": "",
-                "byMember": {
-                    "_id": "u106",
-                    "fullname": "Yonatan Mizrahi",
-                    "imgUrl": "http://some-img"
-                },
-                "task": {
-                    "id": "c103",
-                    "title": "Replace Logo"
-                }
-            }
-        ]
+{
+    "title" : "Sprint 4",
+    "thumbnail" : "http://res.cloudinary.com/datgr82j1/image/upload/v1617048478/attxwcjwfcib1pjhitd5.png",
+    "createdAt" : 1616958680121.0,
+    "createdBy" : {
+        "_id" : "60606c24a9086800159061f0",
+        "email" : "summ.pie@gmail.com",
+        "fullname" : "Dorran Gavish",
+        "img" : "http://res.cloudinary.com/datgr82j1/image/upload/v1616931875/q1rnf09njeexgfh7ouig.jpg"
     },
-    {
-        "title": "Drewl 🎨",
-        "thumbnail": "http://res.cloudinary.com/datgr82j1/image/upload/v1616405537/bfxcehpe4uoamw6t5c5o.png",
-        "views": [],
-        "description": "Enter Board Description",
-        "createdAt": 1589983468418,
-        "createdBy": {
-            "_id": "u101",
-            "fullname": "Abi Abambi",
-            "imgUrl": "http://some-img"
-        },
-        "members": [
-            {
-                "_id": "u101",
-                "fullname": "Tal Tarablus",
-                "imgUrl": "https://www.google.com"
-            }
-        ],
-        "groups": [
-            {
-                "id": "g101",
-                "title": "Pitch Ideas",
-                "style": {
-                    "color": "#3BCBFF"
-                },
-                "headers": [
-                    "members",
-                    "status",
-                    "dueDate"
-                ],
-                "tasks": [
-                    {
-                        "id": "c101",
-                        "title": "Painting App for Toddlers!"
-                    },
-                    {
-                        "title": "Drawing enables your child to draw connections between what he sees and does.",
-                        "createdAt": 1616258319420,
-                        "status": null,
-                        "id": "scptC"
-                    },
-                    {
-                        "id": "c102",
-                        "title": "Add Samples to presentation"
-                    },
-                    {
-                        "title": "Improving fine motor skills",
-                        "createdAt": 1616258291594,
-                        "status": null,
-                        "id": "uXbgU"
-                    }
-                ]
-            },
-            {
-                "id": "HUt7V",
-                "title": "App CSS",
-                "tasks": [
-                    {
-                        "title": "Add illustrations from Meg to Gallery",
-                        "createdAt": 1616258120190,
-                        "status": null,
-                        "id": "HsOan"
-                    },
-                    {
-                        "title": "Horse Illustration pixelated - Talk to Bryan",
-                        "createdAt": 1616258174209,
-                        "status": null,
-                        "id": "Hi3GI"
-                    },
-                    {
-                        "title": "Fix card-container border radius",
-                        "createdAt": 1616258189796,
-                        "status": null,
-                        "id": "EKY8P"
-                    }
-                ],
-                "style": {
-                    "color": "#8052FF"
-                },
-                "headers": [
-                    "members",
-                    "status",
-                    "dueDate"
-                ]
-            },
-            {
-                "id": "g102",
-                "title": "App / Front",
-                "style": {
-                    "color": "#B871FF"
-                },
-                "headers": [
-                    "members",
-                    "status",
-                    "dueDate"
-                ],
-                "tasks": [
-                    {
-                        "id": "c103",
-                        "title": "Demo mode - decide how many trys"
-                    },
-                    {
-                        "id": "c104",
-                        "title": "Chat with client - Talk to Sharon",
-                        "status": {
-                            "id": "udg2t6",
-                            "title": "Done",
-                            "color": "#00c875"
-                        },
-                        "comments": [
-                            {
-                                "id": "ZdPnm",
-                                "txt": "also @yaronb please CR this",
-                                "createdAt": 1590999817436,
-                                "byMember": {
-                                    "_id": "u101",
-                                    "fullname": "Tal Tarablus",
-                                    "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
-                                }
-                            }
-                        ],
-                        "members": [
-                            {
-                                "_id": "u101",
-                                "fullname": "Tal Tarablus",
-                                "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
-                            }
-                        ],
-                        "createdAt": 1590999730348,
-                        "dueDate": 16156215211,
-                        "byMember": {
-                            "_id": "u101",
-                            "username": "Tal",
-                            "fullname": "Tal Tarablus",
-                            "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
-                        },
-                        "style": {
-                            "bgColor": "#26de81"
-                        }
-                    },
-                    {
-                        "title": "Add Brushes",
-                        "createdAt": 1616258475360,
-                        "status": null,
-                        "id": "Z6rui"
-                    },
-                    {
-                        "title": "Painting Club component solve errors",
-                        "createdAt": 1616258496720,
-                        "status": {
-                            "id": "udm874",
-                            "title": "Working on it",
-                            "color": "#fdab3d"
-                        },
-                        "id": "D5ycL"
-                    }
-                ]
-            }
-        ],
-        "statuses": [
-            {
-                "id": "udg2t6",
-                "title": "Done",
-                "color": "#00c875"
-            },
-            {
-                "id": "udm874",
-                "title": "Working on it",
-                "color": "#fdab3d"
-            },
-            {
-                "id": "ud176a",
-                "title": "Stuck",
-                "color": "#e2445c"
-            }
-        ],
-        "priorities": [{
-            "id": "udr2t6",
-            "title": "Important",
-            "color": "#C85A00"
-        },
+    "members" : [ 
         {
-            "id": "udm074",
-            "title": "Urgent",
-            "color": "red"
-        },
+            "fullname" : "Guest",
+            "_id" : "guest",
+            "img" : null
+        }, 
         {
-            "id": "ud1k6a",
-            "title": "Low",
-            "color": "#A8E244"
+            "fullname" : "Guest"
+        }, 
+        {
+            "_id" : "60607afec9b7e60015949569",
+            "fullname" : "Roi Levy",
+            "img" : "http://res.cloudinary.com/datgr82j1/image/upload/v1616935677/dkuoidpufqxtjimdeoup.jpg"
+        }, 
+        {
+            "_id" : "6060d30bc668781840c742db",
+            "fullname" : "Dean Cohen",
+            "img" : ""
+        }, 
+        {
+            "_id" : "606069dba9086800159061ef",
+            "fullname" : "Yonatan Mizrahi",
+            "img" : "http://res.cloudinary.com/datgr82j1/image/upload/v1616931290/faxmkejoayz6h3afpcyz.jpg"
+        }, 
+        {
+            "_id" : "60606c24a9086800159061f0",
+            "email" : "summ.pie@gmail.com",
+            "fullname" : "Dorran Gavish",
+            "img" : "http://res.cloudinary.com/datgr82j1/image/upload/v1616931875/q1rnf09njeexgfh7ouig.jpg"
         }
-        ],
-        "activities": [
-            {
-                "id": "a101",
-                "txt": "Changed Color",
-                "createdAt": 154514,
-                "byMember": {
-                    "_id": "u101",
-                    "fullname": "Abi Abambi",
-                    "imgUrl": "http://some-img"
-                },
-                "task": {
-                    "id": "c101",
-                    "title": "Replace Logo"
+    ],
+    "groups" : [ 
+        {
+            "id" : "eb8fV",
+            "title" : "Backend",
+            "tasks" : [ 
+                {
+                    "title" : "Google Integration",
+                    "createdAt" : 1617016069739.0,
+                    "status" : null,
+                    "priority" : {
+                        "id" : "pMBgD",
+                        "color" : "#784BD1",
+                        "title" : "High"
+                    },
+                    "comments" : [],
+                    "id" : "IbGKd",
+                    "members" : [ 
+                        {
+                            "_id" : "606069dba9086800159061ef",
+                            "fullname" : "Yonatan Mizrahi",
+                            "img" : "http://res.cloudinary.com/datgr82j1/image/upload/v1616931290/faxmkejoayz6h3afpcyz.jpg"
+                        }, 
+                        {
+                            "_id" : "60607afec9b7e60015949569",
+                            "fullname" : "Roi Levy",
+                            "img" : "http://res.cloudinary.com/datgr82j1/image/upload/v1616935677/dkuoidpufqxtjimdeoup.jpg"
+                        }
+                    ],
+                    "dueDate" : "2021-03-30"
+                }, 
+                {
+                    "title" : "ASL service",
+                    "createdAt" : 1617016080915.0,
+                    "status" : null,
+                    "comments" : [],
+                    "id" : "16F2y",
+                    "members" : [ 
+                        {
+                            "_id" : "606069dba9086800159061ef",
+                            "fullname" : "Yonatan Mizrahi",
+                            "img" : "http://res.cloudinary.com/datgr82j1/image/upload/v1616931290/faxmkejoayz6h3afpcyz.jpg"
+                        }, 
+                        {
+                            "_id" : "60607afec9b7e60015949569",
+                            "fullname" : "Roi Levy",
+                            "img" : "http://res.cloudinary.com/datgr82j1/image/upload/v1616935677/dkuoidpufqxtjimdeoup.jpg"
+                        }
+                    ],
+                    "dueDate" : "2021-03-30",
+                    "priority" : {
+                        "id" : "udr2t6",
+                        "title" : "Important",
+                        "color" : "#FF7BD0"
+                    }
+                }, 
+                {
+                    "title" : "User aggregation",
+                    "createdAt" : 1616958885387.0,
+                    "status" : {
+                        "id" : "udm874",
+                        "title" : "Working on it",
+                        "color" : "#fdab3d"
+                    },
+                    "comments" : [],
+                    "id" : "ixn82",
+                    "members" : [ 
+                        {
+                            "_id" : "60607afec9b7e60015949569",
+                            "fullname" : "Roi Levy",
+                            "img" : "http://res.cloudinary.com/datgr82j1/image/upload/v1616935677/dkuoidpufqxtjimdeoup.jpg"
+                        }
+                    ],
+                    "priority" : {
+                        "color" : "#579BFC",
+                        "title" : "Medium"
+                    }
+                }, 
+                {
+                    "title" : "Setup sendGrid emails API",
+                    "createdAt" : 1617017181867.0,
+                    "status" : {
+                        "id" : "udm874",
+                        "title" : "Working on it",
+                        "color" : "#fdab3d"
+                    },
+                    "priority" : {
+                        "id" : "pMBgD",
+                        "color" : "#784BD1",
+                        "title" : "High"
+                    },
+                    "comments" : [ 
+                        {
+                            "txt" : "<p>תודה דורן</p>",
+                            "createdAt" : 1617025894113.0,
+                            "byMember" : {
+                                "_id" : "606069dba9086800159061ef",
+                                "email" : "yonatanmiz963@gmail.com",
+                                "fullname" : "Yonatan Mizrahi",
+                                "img" : "http://res.cloudinary.com/datgr82j1/image/upload/v1616931290/faxmkejoayz6h3afpcyz.jpg"
+                            }
+                        }, 
+                        {
+                            "txt" : "<p>תכבה את הראוטר ותדליק</p>",
+                            "createdAt" : 1617025865985.0,
+                            "byMember" : {
+                                "_id" : "60606c24a9086800159061f0",
+                                "email" : "summ.pie@gmail.com",
+                                "fullname" : "Dorran Gavish",
+                                "img" : "http://res.cloudinary.com/datgr82j1/image/upload/v1616931875/q1rnf09njeexgfh7ouig.jpg"
+                            }
+                        }, 
+                        {
+                            "txt" : "<p>נתקלתי בתקלה הזאת מישהו מכיר?</p><p><br></p><p><img src=\"http://res.cloudinary.com/datgr82j1/image/upload/v1617017205/zxqnfjwbin7ewtjkz440.png\"></p>",
+                            "createdAt" : 1617017224369.0,
+                            "byMember" : {
+                                "_id" : "606069dba9086800159061ef",
+                                "email" : "yonatanmiz963@gmail.com",
+                                "fullname" : "Yonatan Mizrahi",
+                                "img" : "http://res.cloudinary.com/datgr82j1/image/upload/v1616931290/faxmkejoayz6h3afpcyz.jpg"
+                            }
+                        }
+                    ],
+                    "id" : "VMjLZ",
+                    "members" : [ 
+                        {
+                            "_id" : "606069dba9086800159061ef",
+                            "fullname" : "Yonatan Mizrahi",
+                            "img" : "http://res.cloudinary.com/datgr82j1/image/upload/v1616931290/faxmkejoayz6h3afpcyz.jpg"
+                        }
+                    ],
+                    "dueDate" : "2021-03-29"
+                }, 
+                {
+                    "title" : "Socket Service",
+                    "createdAt" : 1616958853724.0,
+                    "status" : {
+                        "id" : "udg2t6",
+                        "title" : "Done",
+                        "color" : "#00c875"
+                    },
+                    "priority" : {
+                        "id" : "udr2t6",
+                        "title" : "Important",
+                        "color" : "#FF7BD0"
+                    },
+                    "comments" : [ 
+                        {
+                            "txt" : "<p>👌</p>",
+                            "createdAt" : 1617032552617.0,
+                            "byMember" : {
+                                "_id" : "60606c24a9086800159061f0",
+                                "email" : "summ.pie@gmail.com",
+                                "fullname" : "Dorran Gavish",
+                                "img" : "http://res.cloudinary.com/datgr82j1/image/upload/v1616931875/q1rnf09njeexgfh7ouig.jpg"
+                            }
+                        }, 
+                        {
+                            "txt" : "<p>כל הכבוד דין אלוף@!!!!!</p>",
+                            "createdAt" : 1617008571408.0,
+                            "byMember" : {
+                                "_id" : "60606c24a9086800159061f0",
+                                "email" : "summ.pie@gmail.com",
+                                "fullname" : "Dorran Gavish",
+                                "img" : "http://res.cloudinary.com/datgr82j1/image/upload/v1616931875/q1rnf09njeexgfh7ouig.jpg"
+                            }
+                        }
+                    ],
+                    "id" : "488DM",
+                    "members" : [ 
+                        {
+                            "_id" : "6060d30bc668781840c742db",
+                            "fullname" : "Dean Cohen",
+                            "img" : ""
+                        }, 
+                        {
+                            "_id" : "60606c24a9086800159061f0",
+                            "email" : "summ.pie@gmail.com",
+                            "fullname" : "Dorran Gavish",
+                            "img" : "http://res.cloudinary.com/datgr82j1/image/upload/v1616931875/q1rnf09njeexgfh7ouig.jpg"
+                        }
+                    ],
+                    "dueDate" : "2021-03-23"
                 }
+            ],
+            "style" : {
+                "color" : "#FFDA37"
+            },
+            "headers" : [ 
+                "members", 
+                "status", 
+                "dueDate"
+            ]
+        }, 
+        {
+            "id" : "9LTmI",
+            "title" : "cSS",
+            "tasks" : [ 
+                {
+                    "title" : "Loader Animations",
+                    "createdAt" : 1617018660153.0,
+                    "status" : {
+                        "id" : "udg2t6",
+                        "title" : "Done",
+                        "color" : "#00c875"
+                    },
+                    "priority" : null,
+                    "comments" : [],
+                    "id" : "xvuOY",
+                    "members" : [ 
+                        {
+                            "_id" : "60606c24a9086800159061f0",
+                            "email" : "summ.pie@gmail.com",
+                            "fullname" : "Dorran Gavish",
+                            "img" : "http://res.cloudinary.com/datgr82j1/image/upload/v1616931875/q1rnf09njeexgfh7ouig.jpg"
+                        }
+                    ]
+                }, 
+                {
+                    "title" : "Mobile responsiveness",
+                    "createdAt" : 1616958747006.0,
+                    "status" : {
+                        "id" : "ud176a",
+                        "title" : "Stuck",
+                        "color" : "#e2445c"
+                    },
+                    "priority" : {
+                        "id" : "pMBgD",
+                        "color" : "#784BD1",
+                        "title" : "High"
+                    },
+                    "comments" : [],
+                    "id" : "aY5ze",
+                    "members" : [ 
+                        {
+                            "_id" : "6060d30bc668781840c742db",
+                            "fullname" : "Dean Cohen",
+                            "img" : ""
+                        }, 
+                        {
+                            "_id" : "60607afec9b7e60015949569",
+                            "fullname" : "Roi Levy",
+                            "img" : "http://res.cloudinary.com/datgr82j1/image/upload/v1616935677/dkuoidpufqxtjimdeoup.jpg"
+                        }
+                    ],
+                    "dueDate" : "2021-03-27"
+                }, 
+                {
+                    "title" : "Logo",
+                    "createdAt" : 1616958784590.0,
+                    "status" : {
+                        "id" : "udm874",
+                        "title" : "Working on it",
+                        "color" : "#fdab3d"
+                    },
+                    "comments" : [ 
+                        {
+                            "txt" : "<p>whats up</p>",
+                            "createdAt" : 1617013087972.0,
+                            "byMember" : {
+                                "_id" : "606069dba9086800159061ef",
+                                "email" : "yonatanmiz963@gmail.com",
+                                "fullname" : "Yonatan Mizrahi",
+                                "img" : "http://res.cloudinary.com/datgr82j1/image/upload/v1616931290/faxmkejoayz6h3afpcyz.jpg"
+                            }
+                        }
+                    ],
+                    "id" : "Sx8Du",
+                    "members" : [ 
+                        {
+                            "_id" : "606069dba9086800159061ef",
+                            "fullname" : "Yonatan Mizrahi",
+                            "img" : "http://res.cloudinary.com/datgr82j1/image/upload/v1616931290/faxmkejoayz6h3afpcyz.jpg"
+                        }
+                    ],
+                    "priority" : {
+                        "color" : "#579BFC",
+                        "title" : "Medium"
+                    }
+                }, 
+                {
+                    "title" : "Homepage",
+                    "createdAt" : 1616959664196.0,
+                    "status" : {
+                        "id" : "udg2t6",
+                        "title" : "Done",
+                        "color" : "#00c875"
+                    },
+                    "comments" : [],
+                    "id" : "2OVgK",
+                    "members" : [ 
+                        {
+                            "_id" : "60606c24a9086800159061f0",
+                            "email" : "summ.pie@gmail.com",
+                            "fullname" : "Dorran Gavish",
+                            "img" : "http://res.cloudinary.com/datgr82j1/image/upload/v1616931875/q1rnf09njeexgfh7ouig.jpg"
+                        }
+                    ],
+                    "dueDate" : "2021-03-28",
+                    "priority" : {
+                        "color" : "#579BFC",
+                        "title" : "Medium"
+                    }
+                }
+            ],
+            "style" : {
+                "color" : "#FF5757"
+            },
+            "headers" : [ 
+                "members", 
+                "status", 
+                "dueDate"
+            ]
+        }, 
+        {
+            "id" : "0xiRh",
+            "title" : "Frontend",
+            "tasks" : [ 
+                {
+                    "title" : "Drag & Drop",
+                    "createdAt" : 1617018013203.0,
+                    "status" : null,
+                    "priority" : null,
+                    "comments" : [],
+                    "id" : "kyKZd"
+                }, 
+                {
+                    "title" : "Delete group confirm modal",
+                    "createdAt" : 1616958719904.0,
+                    "status" : {
+                        "id" : "udg2t6",
+                        "title" : "Done",
+                        "color" : "#00c875"
+                    },
+                    "priority" : {
+                        "id" : "ud1k6a",
+                        "title" : "Low",
+                        "color" : "#A9E04A"
+                    },
+                    "comments" : [],
+                    "id" : "rbI0G",
+                    "members" : [ 
+                        {
+                            "_id" : "60607afec9b7e60015949569",
+                            "fullname" : "Roi Levy",
+                            "img" : "http://res.cloudinary.com/datgr82j1/image/upload/v1616935677/dkuoidpufqxtjimdeoup.jpg"
+                        }, 
+                        {
+                            "_id" : "606069dba9086800159061ef",
+                            "fullname" : "Yonatan Mizrahi",
+                            "img" : "http://res.cloudinary.com/datgr82j1/image/upload/v1616931290/faxmkejoayz6h3afpcyz.jpg"
+                        }
+                    ]
+                }, 
+                {
+                    "title" : "Better implementation of drag and drop",
+                    "createdAt" : 1616958901242.0,
+                    "status" : {
+                        "id" : "ud176a",
+                        "title" : "Stuck",
+                        "color" : "#e2445c"
+                    },
+                    "comments" : [ 
+                        {
+                            "txt" : "<p>תעזור ליונתןןןן</p>",
+                            "createdAt" : 1616962933015.0,
+                            "byMember" : {
+                                "_id" : "60606c24a9086800159061f0",
+                                "email" : "summ.pie@gmail.com",
+                                "fullname" : "Dorran Gavish",
+                                "img" : "http://res.cloudinary.com/datgr82j1/image/upload/v1616931875/q1rnf09njeexgfh7ouig.jpg"
+                            }
+                        }
+                    ],
+                    "id" : "JQcKI",
+                    "members" : [ 
+                        {
+                            "_id" : "606069dba9086800159061ef",
+                            "fullname" : "Yonatan Mizrahi",
+                            "img" : "http://res.cloudinary.com/datgr82j1/image/upload/v1616931290/faxmkejoayz6h3afpcyz.jpg"
+                        }
+                    ],
+                    "dueDate" : "2021-03-28",
+                    "priority" : {
+                        "id" : "pMBgD",
+                        "color" : "#784BD1",
+                        "title" : "High"
+                    }
+                }, 
+                {
+                    "title" : "Filter by members",
+                    "createdAt" : 1616958831140.0,
+                    "status" : {
+                        "id" : "udg2t6",
+                        "title" : "Done",
+                        "color" : "#00c875"
+                    },
+                    "comments" : [],
+                    "id" : "erSGA",
+                    "members" : [ 
+                        {
+                            "_id" : "6060d30bc668781840c742db",
+                            "fullname" : "Dean Cohen",
+                            "img" : ""
+                        }
+                    ],
+                    "dueDate" : "2021-03-22",
+                    "priority" : {
+                        "color" : "#579BFC",
+                        "title" : "Medium"
+                    }
+                }, 
+                {
+                    "title" : "Progress Bar tooltip",
+                    "createdAt" : 1617018698963.0,
+                    "status" : {
+                        "id" : "udm874",
+                        "title" : "Working on it",
+                        "color" : "#fdab3d"
+                    },
+                    "priority" : {
+                        "color" : "#579BFC",
+                        "title" : "Medium"
+                    },
+                    "comments" : [],
+                    "id" : "rTQrK",
+                    "members" : [ 
+                        {
+                            "_id" : "60607afec9b7e60015949569",
+                            "fullname" : "Roi Levy",
+                            "img" : "http://res.cloudinary.com/datgr82j1/image/upload/v1616935677/dkuoidpufqxtjimdeoup.jpg"
+                        }
+                    ]
+                }
+            ],
+            "style" : {
+                "color" : "#3AB4FF"
+            },
+            "headers" : [ 
+                "members", 
+                "status", 
+                "dueDate"
+            ]
+        }
+    ],
+    "statuses" : [ 
+        {
+            "id" : "udg2t6",
+            "title" : "Done",
+            "color" : "#00c875"
+        }, 
+        {
+            "id" : "ud176a",
+            "title" : "Stuck",
+            "color" : "#e2445c"
+        }, 
+        {
+            "id" : "udm874",
+            "title" : "Working on it",
+            "color" : "#fdab3d"
+        }, 
+        {
+            "id" : "ezQnp",
+            "color" : "#FF0000",
+            "title" : "Error"
+        }
+    ],
+    "priorities" : [ 
+        {
+            "id" : "udr2t6",
+            "title" : "Important",
+            "color" : "#FF7BD0"
+        }, 
+        {
+            "id" : "udm074",
+            "title" : "Urgent",
+            "color" : "#FF1F1F"
+        }, 
+        {
+            "id" : "ud1k6a",
+            "title" : "Low",
+            "color" : "#A9E04A"
+        }, 
+        {
+            "id" : "pMBgD",
+            "color" : "#784BD1",
+            "title" : "High"
+        }, 
+        {
+            "color" : "#579BFC",
+            "title" : "Medium"
+        }, 
+        {
+            "color" : "#808080",
+            "title" : "Critical"
+        }
+    ],
+    "activities" : [ 
+        {
+            "id" : "RyfcJ",
+            "createdAt" : 1617091809352.0,
+            "txt" : "Removed a group",
+            "byMember" : {
+                "_id" : "60606c24a9086800159061f0",
+                "email" : "summ.pie@gmail.com",
+                "fullname" : "Dorran Gavish",
+                "img" : "http://res.cloudinary.com/datgr82j1/image/upload/v1616931875/q1rnf09njeexgfh7ouig.jpg"
+            },
+            "task" : null
+        }, 
+        {
+            "id" : "tL0gp",
+            "createdAt" : 1617091803710.0,
+            "txt" : "Created a new group",
+            "byMember" : {
+                "_id" : "60606c24a9086800159061f0",
+                "email" : "summ.pie@gmail.com",
+                "fullname" : "Dorran Gavish",
+                "img" : "http://res.cloudinary.com/datgr82j1/image/upload/v1616931875/q1rnf09njeexgfh7ouig.jpg"
+            },
+            "task" : null
+        }, 
+        {
+            "id" : "lbbNC",
+            "createdAt" : 1617090915944.0,
+            "txt" : "Removed a group",
+            "byMember" : {
+                "_id" : "60606c24a9086800159061f0",
+                "email" : "summ.pie@gmail.com",
+                "fullname" : "Dorran Gavish",
+                "img" : "http://res.cloudinary.com/datgr82j1/image/upload/v1616931875/q1rnf09njeexgfh7ouig.jpg"
+            },
+            "task" : null
+        }, 
+        {
+            "id" : "id8h1",
+            "createdAt" : 1617090831571.0,
+            "txt" : "Created a new group",
+            "byMember" : {
+                "_id" : "60606c24a9086800159061f0",
+                "email" : "summ.pie@gmail.com",
+                "fullname" : "Dorran Gavish",
+                "img" : "http://res.cloudinary.com/datgr82j1/image/upload/v1616931875/q1rnf09njeexgfh7ouig.jpg"
+            },
+            "task" : null
+        }, 
+        {
+            "id" : "TZcKb",
+            "createdAt" : 1617090501628.0,
+            "txt" : "Removed a group",
+            "byMember" : {
+                "_id" : "60606c24a9086800159061f0",
+                "email" : "summ.pie@gmail.com",
+                "fullname" : "Dorran Gavish",
+                "img" : "http://res.cloudinary.com/datgr82j1/image/upload/v1616931875/q1rnf09njeexgfh7ouig.jpg"
+            },
+            "task" : null
+        }, 
+        {
+            "id" : "km4xg",
+            "createdAt" : 1617090496088.0,
+            "txt" : "Created a new group",
+            "byMember" : {
+                "_id" : "60606c24a9086800159061f0",
+                "email" : "summ.pie@gmail.com",
+                "fullname" : "Dorran Gavish",
+                "img" : "http://res.cloudinary.com/datgr82j1/image/upload/v1616931875/q1rnf09njeexgfh7ouig.jpg"
+            },
+            "task" : null
+        }, 
+        {
+            "id" : "CU6c8",
+            "createdAt" : 1617086092825.0,
+            "txt" : "Updated task \"Setup sendGrid emails API\"",
+            "byMember" : {
+                "fullname" : "Guest",
+                "_id" : "guest",
+                "img" : null
+            },
+            "task" : {
+                "id" : "VMjLZ",
+                "title" : "Setup sendGrid emails API"
             }
-        ]
-    },
-    {
-        "title": "New Board",
-        "thumbnail": "http://res.cloudinary.com/datgr82j1/image/upload/v1616405537/bfxcehpe4uoamw6t5c5o.png",
-        "description": "Enter Board Description",
-        "createdAt": 1616259263236,
-        "createdBy": {},
-        "members": [],
-        "groups": [
-            {
-                "id": "MfZj1",
-                "title": "Group 1",
-                "tasks": [
-                    {
-                        "title": "Task 1",
-                        "createdAt": 1616259325426,
-                        "status": null,
-                        "id": "WZzoY"
-                    },
-                    {
-                        "title": "Task 2",
-                        "createdAt": 1616259337554,
-                        "status": null,
-                        "id": "NNzkl"
-                    },
-                    {
-                        "title": "Task 3",
-                        "createdAt": 1616259340382,
-                        "status": null,
-                        "id": "MFfSz"
-                    }
-                ],
-                "style": {
-                    "color": "#FB1A1A"
-                },
-                "headers": [
-                    "members",
-                    "status",
-                    "dueDate"
-                ]
+        }, 
+        {
+            "id" : "9AhJA",
+            "createdAt" : 1617086078486.0,
+            "txt" : "Removed a group",
+            "byMember" : {
+                "fullname" : "Guest",
+                "_id" : "guest",
+                "img" : null
             },
-            {
-                "id": "n8zSn",
-                "title": "Group 2",
-                "tasks": [
-                    {
-                        "title": "Task 1",
-                        "createdAt": 1616259343931,
-                        "status": null,
-                        "id": "CHIUr"
-                    },
-                    {
-                        "title": "Task 2",
-                        "createdAt": 1616259351648,
-                        "status": null,
-                        "id": "t8KOM"
-                    },
-                    {
-                        "title": "Task 3",
-                        "createdAt": 1616259353706,
-                        "status": null,
-                        "id": "FphSb"
-                    }
-                ],
-                "style": {
-                    "color": "#FF7B00"
-                },
-                "headers": [
-                    "members",
-                    "status",
-                    "dueDate"
-                ]
+            "task" : null
+        }, 
+        {
+            "id" : "vmZv0",
+            "createdAt" : 1617085994191.0,
+            "txt" : "Created a new group",
+            "byMember" : {
+                "fullname" : "Guest",
+                "_id" : "guest",
+                "img" : null
             },
-            {
-                "id": "WEER1",
-                "title": "Group 3",
-                "tasks": [
-                    {
-                        "title": "Task 1",
-                        "createdAt": 1616259359903,
-                        "status": null,
-                        "id": "1ytRM"
-                    },
-                    {
-                        "title": "Task 2",
-                        "createdAt": 1616259362323,
-                        "status": null,
-                        "id": "GbXDl"
-                    },
-                    {
-                        "title": "Task 3",
-                        "createdAt": 1616259364919,
-                        "status": null,
-                        "id": "Vr6ko"
-                    }
-                ],
-                "style": {
-                    "color": "#FFF200"
-                },
-                "headers": [
-                    "members",
-                    "status",
-                    "dueDate"
-                ]
+            "task" : null
+        }, 
+        {
+            "id" : "HIjki",
+            "createdAt" : 1617085518592.0,
+            "txt" : "Removed a group",
+            "byMember" : {
+                "fullname" : "Guest",
+                "_id" : "guest",
+                "img" : null
             },
-            {
-                "id": "xsi40",
-                "title": "Group 4",
-                "tasks": [
-                    {
-                        "title": "Task 1",
-                        "createdAt": 1616259741677,
-                        "status": null,
-                        "id": "DQjdi"
-                    },
-                    {
-                        "title": "Task 2",
-                        "createdAt": 1616259751367,
-                        "status": null,
-                        "id": "IxX1H"
-                    },
-                    {
-                        "title": "Task 3",
-                        "createdAt": 1616259754171,
-                        "status": null,
-                        "id": "kztKU"
-                    }
-                ],
-                "style": {
-                    "color": "#43F440"
-                },
-                "headers": [
-                    "members",
-                    "status",
-                    "dueDate"
-                ]
+            "task" : null
+        }, 
+        {
+            "id" : "A1n2B",
+            "createdAt" : 1617085514213.0,
+            "txt" : "Removed a group",
+            "byMember" : {
+                "fullname" : "Guest",
+                "_id" : "guest",
+                "img" : null
             },
-            {
-                "id": "Ogb4R",
-                "title": "Group 5",
-                "tasks": [
-                    {
-                        "title": "Task 1",
-                        "createdAt": 1616259787623,
-                        "status": null,
-                        "id": "cfkyZ"
-                    },
-                    {
-                        "title": "Task 2",
-                        "createdAt": 1616259808344,
-                        "status": null,
-                        "id": "LnXis"
-                    },
-                    {
-                        "title": "Task 3",
-                        "createdAt": 1616259810363,
-                        "status": null,
-                        "id": "JAvpD"
-                    }
-                ],
-                "style": {
-                    "color": "#3BDEFF"
-                },
-                "headers": [
-                    "members",
-                    "status",
-                    "dueDate"
-                ]
+            "task" : null
+        }, 
+        {
+            "id" : "1QLjc",
+            "createdAt" : 1617085500900.0,
+            "txt" : "Created a new group",
+            "byMember" : {
+                "fullname" : "Guest",
+                "_id" : "guest",
+                "img" : null
+            },
+            "task" : null
+        }, 
+        {
+            "id" : "tcbQC",
+            "createdAt" : 1617085446723.0,
+            "txt" : "Created a new group",
+            "byMember" : {
+                "fullname" : "Guest",
+                "_id" : "guest",
+                "img" : null
+            },
+            "task" : null
+        }, 
+        {
+            "id" : "5OvS3",
+            "createdAt" : 1617085439998.0,
+            "txt" : "Updated task \"Setup sendGrid emails API\"",
+            "byMember" : {
+                "fullname" : "Guest",
+                "_id" : "guest",
+                "img" : null
+            },
+            "task" : {
+                "id" : "VMjLZ",
+                "title" : "Setup sendGrid emails API"
             }
-        ],
-        "statuses": [
-            {
-                "id": "udg2t6",
-                "title": "Done",
-                "color": "#00c875"
+        }, 
+        {
+            "id" : "JAdbs",
+            "createdAt" : 1617085316649.0,
+            "txt" : "Removed a group",
+            "byMember" : {
+                "fullname" : "Guest",
+                "_id" : "guest",
+                "img" : null
             },
-            {
-                "id": "udm874",
-                "title": "Working on it",
-                "color": "#fdab3d"
+            "task" : null
+        }, 
+        {
+            "id" : "R8yQb",
+            "createdAt" : 1617085304720.0,
+            "txt" : "Created a new group",
+            "byMember" : {
+                "fullname" : "Guest",
+                "_id" : "guest",
+                "img" : null
             },
-            {
-                "id": "ud176a",
-                "title": "Stuck",
-                "color": "#e2445c"
+            "task" : null
+        }, 
+        {
+            "id" : "Xe4eG",
+            "createdAt" : 1617054028716.0,
+            "txt" : "Removed a group",
+            "byMember" : {
+                "fullname" : "Guest",
+                "_id" : "guest",
+                "img" : null
+            },
+            "task" : null
+        }, 
+        {
+            "id" : "mF38t",
+            "createdAt" : 1617054024902.0,
+            "txt" : "Created a new group",
+            "byMember" : {
+                "fullname" : "Guest",
+                "_id" : "guest",
+                "img" : null
+            },
+            "task" : null
+        }, 
+        {
+            "id" : "uNMje",
+            "createdAt" : 1617051856550.0,
+            "txt" : "Updated task \"Google Integration\"",
+            "byMember" : {
+                "_id" : "60606c24a9086800159061f0",
+                "email" : "summ.pie@gmail.com",
+                "fullname" : "Dorran Gavish",
+                "img" : "http://res.cloudinary.com/datgr82j1/image/upload/v1616931875/q1rnf09njeexgfh7ouig.jpg"
+            },
+            "task" : {
+                "id" : "IbGKd",
+                "title" : "Google Integration"
             }
-        ],
-        "activities": []
-    }
-]
+        }, 
+        {
+            "id" : "Cp5Z2",
+            "createdAt" : 1617051855313.0,
+            "txt" : "Updated task \"ASL service\"",
+            "byMember" : {
+                "_id" : "60606c24a9086800159061f0",
+                "email" : "summ.pie@gmail.com",
+                "fullname" : "Dorran Gavish",
+                "img" : "http://res.cloudinary.com/datgr82j1/image/upload/v1616931875/q1rnf09njeexgfh7ouig.jpg"
+            },
+            "task" : {
+                "id" : "16F2y",
+                "title" : "ASL service"
+            }
+        }, 
+        {
+            "id" : "npTN1",
+            "createdAt" : 1617051853651.0,
+            "txt" : "Updated task \"User aggregation\"",
+            "byMember" : {
+                "_id" : "60606c24a9086800159061f0",
+                "email" : "summ.pie@gmail.com",
+                "fullname" : "Dorran Gavish",
+                "img" : "http://res.cloudinary.com/datgr82j1/image/upload/v1616931875/q1rnf09njeexgfh7ouig.jpg"
+            },
+            "task" : {
+                "id" : "ixn82",
+                "title" : "User aggregation"
+            }
+        }, 
+        {
+            "id" : "cwhhT",
+            "createdAt" : 1617051688514.0,
+            "txt" : "Removed a group",
+            "byMember" : {
+                "_id" : "60606c24a9086800159061f0",
+                "email" : "summ.pie@gmail.com",
+                "fullname" : "Dorran Gavish",
+                "img" : "http://res.cloudinary.com/datgr82j1/image/upload/v1616931875/q1rnf09njeexgfh7ouig.jpg"
+            },
+            "task" : null
+        }, 
+        {
+            "id" : "qbEbQ",
+            "createdAt" : 1617051684145.0,
+            "txt" : "Created a new group",
+            "byMember" : {
+                "_id" : "60606c24a9086800159061f0",
+                "email" : "summ.pie@gmail.com",
+                "fullname" : "Dorran Gavish",
+                "img" : "http://res.cloudinary.com/datgr82j1/image/upload/v1616931875/q1rnf09njeexgfh7ouig.jpg"
+            },
+            "task" : null
+        }, 
+        {
+            "id" : "SfBqM",
+            "createdAt" : 1617051670585.0,
+            "txt" : "Removed a group",
+            "byMember" : {
+                "_id" : "60606c24a9086800159061f0",
+                "email" : "summ.pie@gmail.com",
+                "fullname" : "Dorran Gavish",
+                "img" : "http://res.cloudinary.com/datgr82j1/image/upload/v1616931875/q1rnf09njeexgfh7ouig.jpg"
+            },
+            "task" : null
+        }, 
+        {
+            "id" : "vwza8",
+            "createdAt" : 1617051665872.0,
+            "txt" : "Created a new group",
+            "byMember" : {
+                "_id" : "60606c24a9086800159061f0",
+                "email" : "summ.pie@gmail.com",
+                "fullname" : "Dorran Gavish",
+                "img" : "http://res.cloudinary.com/datgr82j1/image/upload/v1616931875/q1rnf09njeexgfh7ouig.jpg"
+            },
+            "task" : null
+        }, 
+        {
+            "id" : "IeRdS",
+            "createdAt" : 1617051658597.0,
+            "txt" : "Removed a group",
+            "byMember" : {
+                "_id" : "60606c24a9086800159061f0",
+                "email" : "summ.pie@gmail.com",
+                "fullname" : "Dorran Gavish",
+                "img" : "http://res.cloudinary.com/datgr82j1/image/upload/v1616931875/q1rnf09njeexgfh7ouig.jpg"
+            },
+            "task" : null
+        }, 
+        {
+            "id" : "BIQfb",
+            "createdAt" : 1617051654357.0,
+            "txt" : "Created a new group",
+            "byMember" : {
+                "_id" : "60606c24a9086800159061f0",
+                "email" : "summ.pie@gmail.com",
+                "fullname" : "Dorran Gavish",
+                "img" : "http://res.cloudinary.com/datgr82j1/image/upload/v1616931875/q1rnf09njeexgfh7ouig.jpg"
+            },
+            "task" : null
+        }, 
+        {
+            "id" : "tme07",
+            "createdAt" : 1617050012719.0,
+            "txt" : "Updated task \"Google Integration\"",
+            "byMember" : {
+                "_id" : "60606c24a9086800159061f0",
+                "email" : "summ.pie@gmail.com",
+                "fullname" : "Dorran Gavish",
+                "img" : "http://res.cloudinary.com/datgr82j1/image/upload/v1616931875/q1rnf09njeexgfh7ouig.jpg"
+            },
+            "task" : {
+                "id" : "IbGKd",
+                "title" : "Google Integration"
+            }
+        }, 
+        {
+            "id" : "CT1Hk",
+            "createdAt" : 1617046966517.0,
+            "txt" : "Updated task \"Google Integration\"",
+            "byMember" : {
+                "_id" : "60606c24a9086800159061f0",
+                "email" : "summ.pie@gmail.com",
+                "fullname" : "Dorran Gavish",
+                "img" : "http://res.cloudinary.com/datgr82j1/image/upload/v1616931875/q1rnf09njeexgfh7ouig.jpg"
+            },
+            "task" : {
+                "id" : "IbGKd",
+                "title" : "Google Integration"
+            }
+        }, 
+        {
+            "id" : "4appP",
+            "createdAt" : 1617035918801.0,
+            "txt" : "Removed a group",
+            "byMember" : {
+                "_id" : "60606c24a9086800159061f0",
+                "email" : "summ.pie@gmail.com",
+                "fullname" : "Dorran Gavish",
+                "img" : "http://res.cloudinary.com/datgr82j1/image/upload/v1616931875/q1rnf09njeexgfh7ouig.jpg"
+            },
+            "task" : null
+        }, 
+        {
+            "id" : "XKLCC",
+            "createdAt" : 1617035913165.0,
+            "txt" : "Removed a group",
+            "byMember" : {
+                "_id" : "60606c24a9086800159061f0",
+                "email" : "summ.pie@gmail.com",
+                "fullname" : "Dorran Gavish",
+                "img" : "http://res.cloudinary.com/datgr82j1/image/upload/v1616931875/q1rnf09njeexgfh7ouig.jpg"
+            },
+            "task" : null
+        }, 
+        {
+            "id" : "n15hQ",
+            "createdAt" : 1617035908972.0,
+            "txt" : "Created a new group",
+            "byMember" : {
+                "_id" : "60606c24a9086800159061f0",
+                "email" : "summ.pie@gmail.com",
+                "fullname" : "Dorran Gavish",
+                "img" : "http://res.cloudinary.com/datgr82j1/image/upload/v1616931875/q1rnf09njeexgfh7ouig.jpg"
+            },
+            "task" : null
+        }, 
+        {
+            "id" : "h4PTu",
+            "createdAt" : 1617035601612.0,
+            "txt" : "Created a new task \"ew\"",
+            "byMember" : {
+                "_id" : "60606c24a9086800159061f0",
+                "email" : "summ.pie@gmail.com",
+                "fullname" : "Dorran Gavish",
+                "img" : "http://res.cloudinary.com/datgr82j1/image/upload/v1616931875/q1rnf09njeexgfh7ouig.jpg"
+            },
+            "task" : {
+                "id" : "M4r9U",
+                "title" : "ew"
+            }
+        }, 
+        {
+            "id" : "VyuJo",
+            "createdAt" : 1617035600637.0,
+            "txt" : "Created a new task \"mew\"",
+            "byMember" : {
+                "_id" : "60606c24a9086800159061f0",
+                "email" : "summ.pie@gmail.com",
+                "fullname" : "Dorran Gavish",
+                "img" : "http://res.cloudinary.com/datgr82j1/image/upload/v1616931875/q1rnf09njeexgfh7ouig.jpg"
+            },
+            "task" : {
+                "id" : "rccw8",
+                "title" : "mew"
+            }
+        }, 
+        {
+            "id" : "u5UpK",
+            "createdAt" : 1617035599800.0,
+            "txt" : "Created a new task \"new\"",
+            "byMember" : {
+                "_id" : "60606c24a9086800159061f0",
+                "email" : "summ.pie@gmail.com",
+                "fullname" : "Dorran Gavish",
+                "img" : "http://res.cloudinary.com/datgr82j1/image/upload/v1616931875/q1rnf09njeexgfh7ouig.jpg"
+            },
+            "task" : {
+                "id" : "0Ecxy",
+                "title" : "new"
+            }
+        }, 
+        {
+            "id" : "B48t9",
+            "createdAt" : 1617035558944.0,
+            "txt" : "Created a new group",
+            "byMember" : {
+                "fullname" : "Guest",
+                "_id" : "guest",
+                "img" : null
+            },
+            "task" : null
+        }
+    ],
+    "views" : [],
+    "description" : "Final sprint"
+}

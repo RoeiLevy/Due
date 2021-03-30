@@ -8,7 +8,7 @@
         "fullname" : "Dorran Gavish",
         "img" : "http://res.cloudinary.com/datgr82j1/image/upload/v1616931875/q1rnf09njeexgfh7ouig.jpg"
     },
-    "members" : [  
+    "members" : [ 
         {
             "_id" : "6058b2e4d6dbb89200952fa4",
             "email" : "levy6162@gmail.com",
@@ -46,8 +46,7 @@
                         "title" : "Low",
                         "color" : "#A9E04A"
                     },
-                    "comments" : [
-                    ],
+                    "comments" : [],
                     "id" : "xvuOY",
                     "members" : [ 
                         {
@@ -144,9 +143,7 @@
                         "color" : "#85DEE4",
                         "title" : "Hold"
                     },
-                    "comments" : [ 
-                     
-                    ],
+                    "comments" : [],
                     "id" : "JQcKI",
                     "members" : [ 
                         {
@@ -174,9 +171,7 @@
                         "color" : "#579BFC",
                         "title" : "Medium"
                     },
-                    "comments" : [ 
-                        
-                    ],
+                    "comments" : [],
                     "id" : "kyKZd",
                     "dueDate" : "2021-04-01"
                 }, 
@@ -188,13 +183,9 @@
                         "title" : "Done",
                         "color" : "#00c875"
                     },
-                    "comments" : [ 
-                        
-                    ],
+                    "comments" : [],
                     "id" : "erSGA",
-                    "members" : [ 
-                  
-                    ],
+                    "members" : [],
                     "dueDate" : "2021-03-24",
                     "priority" : {
                         "color" : "#808080",
@@ -251,9 +242,7 @@
                         "color" : "#784BD1",
                         "title" : "High"
                     },
-                    "comments" : [ 
-                        
-                    ],
+                    "comments" : [],
                     "id" : "VMjLZ",
                     "members" : [ 
                         {
@@ -277,9 +266,7 @@
                         "color" : "#784BD1",
                         "title" : "High"
                     },
-                    "comments" : [ 
-                        
-                    ],
+                    "comments" : [],
                     "id" : "IbGKd",
                     "members" : [ 
                         {
@@ -308,13 +295,9 @@
                         "title" : "Important",
                         "color" : "#FF7BD0"
                     },
-                    "comments" : [ 
-                        
-                    ],
+                    "comments" : [],
                     "id" : "488DM",
-                    "members" : [ 
-                  
-                    ]
+                    "members" : []
                 }, 
                 {
                     "title" : "User aggregation",
@@ -431,9 +414,7 @@
             "title" : "Critical"
         }
     ],
-    "activities" : [ 
-       
-    ],
+    "activities" : [],
     "views" : [],
     "description" : "Final sprint"
 }

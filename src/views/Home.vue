@@ -52,7 +52,7 @@
       <div class="bottom-wrapper">
         <div class="img-wrapper">
           <!-- <img src="@/assets/due.png" /> -->
-          <img src="@/assets/monday.png" />
+          <img src="@/assets/homepage-due.png" />
         </div>
         <div class="desc2-wrapper">
           <h4 class="desc2">

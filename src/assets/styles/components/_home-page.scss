@@ -106,7 +106,8 @@
                 width: 50%;
 
                 img {
-                    width: 100%;
+                    width: 70%;
+                    box-shadow: 0px 0px 100px -30px #3333339e;
                 }
             }
         }
@@ -177,7 +178,7 @@
         border-right: 1px solid rgb(50, 51, 56);
         padding-inline-end: 10px;
     }
-    
+
     .nav-links>* {
         font-family: roboto-regular, sans-serif;
         padding-inline-start: 10px;
@@ -216,6 +217,14 @@
 }
 
 @media(max-width: 960px) {
+
+    .home .main-content .bottom-wrapper .img-wrapper {
+        margin-block-end: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 75%;
+    }
 
     .burger-wrapper {
         display: block;
@@ -285,8 +294,8 @@
         }
 
     }
-    
-    
+
+
     .nav.open {
         z-index: 30;
         width: 60%;
@@ -299,8 +308,9 @@
                 font-size: 3.375rem;
             }
 
-            .desc-wrapper  {
+            .desc-wrapper {
                 width: 100%;
+
                 h4 {
                     font-size: 24px;
                 }
@@ -314,7 +324,7 @@
                     font-size: 1.6rem;
                 }
             }
-        } 
+        }
     }
 }
 
@@ -323,7 +333,7 @@
     .header-container {
         padding: 0 15px;
     }
-    
+
     .home {
         .main-content {
             padding: 0;
@@ -332,8 +342,9 @@
                 font-size: 3.375rem;
             }
 
-            .desc-wrapper  {
+            .desc-wrapper {
                 width: 100%;
+
                 h4 {
                     font-size: 20px;
                 }
@@ -342,7 +353,7 @@
 
             .bottom-wrapper {
                 flex-direction: column;
-                
+
                 .img-wrapper {
                     width: 90%;
                 }
@@ -356,7 +367,7 @@
                     width: 90%;
                 }
             }
-        } 
+        }
     }
 }
 
@@ -371,8 +382,9 @@
                 font-size: 3.0rem;
             }
 
-            .desc-wrapper  {
+            .desc-wrapper {
                 width: 80%;
+
                 h4 {
                     font-size: 19px;
                 }
@@ -381,7 +393,7 @@
 
             .bottom-wrapper {
                 flex-direction: column;
-                
+
                 .img-wrapper {
                     width: 90%;
                 }
@@ -395,6 +407,6 @@
                     width: 90%;
                 }
             }
-        } 
+        }
     }
 }

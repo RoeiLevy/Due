@@ -517,8 +517,7 @@ export default {
       return activity;
     },
     addLoggedInUser() {
-      if (this.boardToEdit.members.some((m) => m._id === this.loggedInUser._id))
-        return;
+      if (this.boardToEdit.members.some((m) => m.email === this.loggedInUser.email)) return;
       this.boardToEdit.members.unshift(
         JSON.parse(JSON.stringify(this.loggedInUser))
       );

@@ -10,7 +10,6 @@ export default {
         map[member.fullname] = map[member.fullname] ? map[member.fullname] : 0;
         return map;
       }, {});
-      console.log("map:", map);
       this.board.groups.forEach((group) => {
         group.tasks.forEach((task) => {
           if (task.members) {
@@ -24,7 +23,6 @@ export default {
       for (const member in map) {
         arr.push(member);
       }
-      console.log("map:", arr);
       return Object.values(map);
     },
   },

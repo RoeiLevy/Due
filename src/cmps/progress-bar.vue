@@ -17,9 +17,6 @@
 export default {
   props: ["group"],
   computed: {
-    statuses() {
-      return this.$store.getters.statuses;
-    },
     groupStatuses() {
       //Get all statuses that are in use inside the group prop
       var statuses = this.group.tasks.reduce((acc, task) => {
@@ -31,6 +28,10 @@ export default {
       const uniqueStatuses = [
         ...new Map(statuses.map((status) => [status.title, status])).values(),
       ];
+      // {
+      //   Done:{title: "Done", color: "#00c875"},
+      //   Working on it:{title: "Done", color: "#00c875"}
+      // }
       return uniqueStatuses;
     },
     getData() {

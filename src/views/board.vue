@@ -174,7 +174,7 @@
               </el-dropdown> -->
             </ul>
             <div class="search-bar">
-              <div class="search" @click="searchMode = !searchMode">
+              <div class="search" @click.stop="searchMode = true">
                 <font-awesome-icon
                   v-if="!searchMode"
                   icon="search"
@@ -182,7 +182,7 @@
                 />
                 <el-input
                   v-else
-                  @focusout="searchMode = !searchMode"
+                  @blur="searchMode = false"
                   placeholder="Search"
                   v-model="filterBy.txt"
                 >

@@ -4,6 +4,39 @@
         }
     }
     
+    @media (min-width: $break-narrow) {
+        .search-bar {
+            position: absolute;
+            left: 266px;
+            top: 201px;
+            color: #676879;
+            // height: 26px;
+            .search,
+            .filter {
+                padding: 4px 16px;
+                cursor: pointer;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                // margin-inline-end: 10px;
+                p {
+                    margin: 0;
+                }
+                * {
+                    padding-inline-end: 5px;
+                }
+            }
+        }
+        .search:hover {
+            background-color: #e6e9ef;
+            border-radius: 4px;
+        }
+        .filter:hover {
+            background-color: #e6e9ef;
+            border-radius: 4px;
+        }
+    }
+    
     @media (max-width: $break-normal) {
         //////////////////////Workspace////////////////////////
         .workspace {
@@ -145,7 +178,7 @@
         }
         .search-bar {
             position: absolute;
-            top: 55px;
+            top: 58px;
             left: 91px;
             color: #676879;
             height: 26px;

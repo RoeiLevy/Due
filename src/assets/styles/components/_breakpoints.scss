@@ -97,6 +97,11 @@
     @media (max-width: 500px) {
         // ////////////////exact router/////////////
 
+
+        .view.router-link-exact-active {
+            box-shadow: 0px 2px 0px -1px #0085ff;
+        }
+
         ///////////////////social modal.//////////////////////
         .social-modal {
             width: 340px;

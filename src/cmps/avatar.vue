@@ -15,8 +15,8 @@
     <span @click="go('/login')" v-else title="guest">G</span>
     <div v-if="isMenuOpen" class="menu">
       <header>
-        <img src="@/assets/imgs/logo.png" class="logo" />
-        {{ loggedInUser.fullname }}
+        <img src="@/assets/imgs/logo.png" class="logo-img" />
+        <p>{{ loggedInUser.fullname }}</p>
       </header>
       <button @click="go('profile')">
         Profile

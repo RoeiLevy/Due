@@ -16,6 +16,7 @@
     justify-content: center;
     border-radius: 12px 0px 0px 0px;
     overflow-y: auto;
+
     .board-container {
         width: 100%;
         height: fit-content;
@@ -23,9 +24,11 @@
         border-left: 1px solid #e6e9ef;
         padding-inline-start: 20px;
     }
+
     .board-header {
         padding: 20px 50px 0px 30px;
     }
+
     .board-title {
         font-size: 28px;
         font-weight: 600;
@@ -34,19 +37,23 @@
         padding: 0;
         height: 45px;
     }
+
     input.board-title {
         outline: none;
         border: 1px dashed gray;
     }
+
     .board-title:hover {
         border: 1px dashed gray;
     }
+
     .board-header .board-created-by {
         font-size: 13px;
         color: $clr2;
         margin: 16px 0 0 0;
         border: 1px solid transparent;
     }
+
     // .header-view-bar {
     //     .view-nav {
     //         list-style: none;
@@ -177,19 +184,24 @@
     flex-direction: column;
     justify-content: space-between;
     background-color: #292f4c;
+
     .main-header-icon {
         font-size: 20px;
         color: #ffffff;
     }
+
     .main-header-icon>path:hover {
         filter: none;
     }
+
     .logo {
         width: 40px;
     }
+
     .top-navigation {
         flex: 1;
     }
+
     .btn-surface {
         position: relative;
         width: 100%;
@@ -199,6 +211,24 @@
         margin-bottom: 8px;
         background-color: #292f4c;
     }
+
+
+    .board-list-btn::before {
+        content: "";
+        position: absolute;
+        top: 14px;
+        width: 0;
+        height: 0;
+        border-top: 8px solid transparent;
+        border-right: 10px solid #ffffff;
+        border-bottom: 8px solid transparent;
+        transform: rotate(0deg);
+        left: 54px;
+        z-index: 1000;
+    }
+
+
+
     .icon-wrapper {
         display: flex;
         justify-content: center;
@@ -212,16 +242,19 @@
         position: relative;
         outline: none;
     }
+
     .icon-wrapper:hover {
         background-color: #3e4774;
         // opacity: 0.5;
     }
+
     .logo-wrapper {
         cursor: pointer;
         display: flex;
         justify-content: center;
         align-items: center;
         margin: 12px 0px 14px;
+
         .logo {
             width: 32px;
         }
@@ -232,6 +265,7 @@
     position: absolute !important;
     right: 2px;
     top: 1px;
+
     > {
         border-color: transparent !important;
     }

@@ -12,7 +12,7 @@
         content="Board List"
         placement="right"
       >
-        <div class="btn-surface">
+        <div class="board-list-btn btn-surface">
           <div @click="toBoardList" class="icon-wrapper">
             <font-awesome-icon class="main-header-icon" icon="th-large" />
           </div>

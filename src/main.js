@@ -15,7 +15,7 @@ import moment from 'moment'
 Vue.prototype.moment = moment
 
 locale.use('EN')
-moment.locale('en', {
+moment.updateLocale('en', {
     relativeTime: {
         future: 'in %s',
         past: '%s ago',

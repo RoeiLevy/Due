@@ -7,7 +7,7 @@ import userProfile from '../views/user-profile'
 import board from '../views/board'
 import boardList from '../views/board-list'
 import taskDetails from '../cmps/task-details'
-import chart from '../cmps/chart'
+import dashboard from '../cmps/dashboard'
 import calendar from '../cmps/calendar'
 import mainTable from '../cmps/main-table'
 import kanban from '../cmps/kanban'
@@ -43,9 +43,9 @@ const routes = [{
             ]
         },
         {
-            path: 'chart',
-            name: 'Chart',
-            component: chart,
+            path: 'dashboard',
+            name: 'Dashboard',
+            component: dashboard,
         },
         {
             path: 'calendar',

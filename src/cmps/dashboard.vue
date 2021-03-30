@@ -1,0 +1,47 @@
+<template>
+  <div class="dashboard">
+    <div class="canvas-wrapper">
+      <h3>Tasks Status Count</h3>
+      <chart :board="board"></chart>
+    </div>
+    <div class="stats">
+      <h5>Board Members : {{ board.members.length }}</h5>
+      <h5>Task Count : {{ taskCount }}</h5>
+      <h5>Done Tasks Count : {{ doneCount }}</h5>
+    </div>
+    <div class="canvas-wrapper">
+      <h3>Members Tasks Count</h3>
+      <pie :board="board"></pie>
+    </div>
+  </div>
+</template>
+
+<script>
+import chart from "./chart";
+import pie from "./pie";
+export default {
+  props: ["board"],
+  computed: {
+    taskCount() {
+      return this.board.groups.reduce((acc, group) => {
+        return acc + group.tasks.length;
+      }, 0);
+    },
+    doneCount() {
+      return this.board.groups.reduce((acc, group) => {
+        return (
+          acc +
+          group.tasks.filter((task) => {
+            if (!task.status) return;
+            return task.status.title.toLowerCase() === "done";
+          }).length
+        );
+      }, 0);
+    },
+  },
+  components: {
+    chart,
+    pie,
+  },
+};
+</script>

@@ -5,15 +5,15 @@
       v-for="(priority, idx) in groupPriorities"
       :key="idx"
       :style="{
-        'background-color': groupPriorities[idx].color,
+        'background-color': priority.color,
         width: getData[idx],
       }"
       :title="groupPriorities[idx].title + ': ' + getData[idx]"
     >
-      <div class="popover">
+      <!-- <div class="popover">
         <h5>{{ groupPriorities[idx].title }}</h5>
         {{ getData[idx] }}
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -26,15 +26,16 @@ export default {
       return this.$store.getters.priorities;
     },
     groupPriorities() {
-      const map = [];
-      this.group.tasks.forEach((task) => {
-        if (map.includes(task.priority)) return;
-        else if (!task.priority) {
-          if (map.includes({ title: "Empty", color: "#f7f8fa" }));
-          else map.push({ title: "Empty", color: "#f7f8fa" });
-        } else map.push(task.priority);
-      });
-      return map;
+      var priorities = this.group.tasks.reduce((acc, task) => {
+        if (!task.priority)
+          acc.push({ title: 'Empty', color: 'gray' });
+        else acc.push({ title: task.priority.title, color: task.priority.color });
+        return acc;
+      }, []);
+      const uniquePriorities = [
+        ...new Map(priorities.map((priority) => [priority.title, priority])).values(),
+      ];
+      return uniquePriorities;
     },
     getData() {
       const all = this.group.tasks.length;

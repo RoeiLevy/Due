@@ -96,7 +96,7 @@
               <router-link
                 class="view"
                 style="text-transform: capitalize"
-                :to="`/board/${boardToEdit._id}/chart`"
+                :to="`/board/${boardToEdit._id}/dashboard`"
               >
                 <div class="view-title">
                   <font-awesome-icon
@@ -256,7 +256,7 @@ import taskDetails from "../cmps/task-details";
 import boardActivities from "../cmps/board-activities.vue";
 import workspace from "../cmps/workspace.vue";
 import mainTable from "../cmps/main-table.vue";
-import chart from "../cmps/chart";
+import dashboard from "../cmps/dashboard";
 import boardMembers from "../cmps/board-members";
 
 import { boardService } from "../services/board.service";
@@ -715,7 +715,7 @@ export default {
     appHeader,
     draggable,
     taskDetails,
-    chart,
+    dashboard,
     socialModal,
     boardActivities,
     workspace,

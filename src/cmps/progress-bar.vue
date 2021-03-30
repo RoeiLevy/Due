@@ -8,7 +8,7 @@
         'background-color': status.color,
         width: getData[idx],
       }"
-      :title="groupStatuses[idx].title + ': ' + getData[idx]"
+      :title="status.title + ': ' + getData[idx]"
     ></div>
   </div>
 </template>

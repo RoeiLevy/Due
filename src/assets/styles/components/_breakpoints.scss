@@ -3,9 +3,6 @@
             width: 85% !important;
         }
     }
-<<<<<<< HEAD
-
-=======
     
     @media (min-width: $break-narrow) {
         .header-view-bar {
@@ -43,7 +40,6 @@
         }
     }
     
->>>>>>> 6091e37c0b6527e1c0ab51d6df50903c429d8bca
     @media (max-width: $break-normal) {
 
         //////////////////////Workspace////////////////////////
@@ -131,6 +127,7 @@
             }
         }
     }
+    
 
     @media (max-width: 500px) {
         // ////////////////exact router/////////////

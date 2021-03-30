@@ -1,9 +1,9 @@
 <template>
   <div class="dashboard">
     <div class="stats">
-      <h5>Board Members : {{ board.members.length }}</h5>
-      <h5>Task Count : {{ taskCount }}</h5>
-      <h5>Done Tasks Count : {{ doneCount }}</h5>
+      <h5><strong>Board Members</strong> : {{ board.members.length }}</h5>
+      <h5><strong>Task Count</strong> : {{ taskCount }}</h5>
+      <h5><strong>Done Tasks Count</strong> : {{ doneCount }}</h5>
     </div>
     <div class="charts">
       <div class="canvas-wrapper">

@@ -81,20 +81,38 @@
     }
     
     @media (max-width: 500px) {
+        ///////////////////social modal.//////////////////////
+        .social-modal {
+            width: 340px;
+            .email-input .el-input__inner {
+                width: 140px !important;
+            }
+        }
+        ////////////////////board notifications/////////////////
+        .board-notifications {
+            width: 330px;
+            height: 98vh;
+            top: -106px;
+        }
         //////////////////////Board Header////////////////////
         .board-actions {
             flex-direction: column;
             justify-content: space-between;
             padding: 0;
             button:last-child {
-                padding-top: 10px;
+                padding-top: 8.5px;
             }
             button:nth-child(2) {
                 padding-bottom: 17px;
             }
+            .avatar-container {
+                width: unset;
+                margin-inline-end: 22px;
+            }
         }
         .board-actions>*:not(:first-child) {
             padding: 0;
+            justify-content: flex-end;
         }
         .board .board-header {
             padding: 20px 20px 0px 0;
@@ -124,7 +142,7 @@
             position: absolute;
             top: 56px;
             right: 0;
-            * {
+            input {
                 margin-inline-end: 5px !important;
                 width: 80px !important;
             }

@@ -1,49 +1,21 @@
 <template>
   <section :class="workspaceClass" class="workspace">
-    <!-- <div class="workspace-menu-container">
-      <el-menu
-        @select="toggleCollapse"
-        class="el-menu-vertical-demo"
-        @open="handleOpen"
-        @close="handleClose"
-        :collapse="isCollapse"
-      >
-        <el-menu-item index="1">
-          <font-awesome-icon class="workspace-icon el-icon-menu" icon="chevron-right"/>
-
-          <span slot="title">{{ boardTitle() }}</span>
-        </el-menu-item>
-
-        <ul class="workspace-board-list" v-show="!isCollapse">
-          <li
-            class="board-li-workspace"
-            v-for="board in boards"
-            :key="board._id"
-            style="text-transform: capitalize"
-            @click="showBoard(board._id)"
-          >
-            {{ board.title }}
-          </li>
-        </ul>
-      </el-menu>
-    </div> -->
     <div class="workspace-menu-container">
-      <div @click="toggleWorkspace" class="menu-toggle-btn">
+      <div @click.self="toggleWorkspace" class="menu-toggle-btn">
         <font-awesome-icon
           @click="toggleWorkspace"
           v-if="!isOpen"
-          class="header-icon plus arrow-btn"
+          class="toggle-workspace-icon plus arrow-btn"
           icon="chevron-right"
         />
         <font-awesome-icon
           @click="toggleWorkspace"
           v-else
-          class="header-icon plus arrow-btn"
+          class="toggle-workspace-icon plus arrow-btn"
           icon="chevron-left"
         />
       </div>
       <div class="menu-list">
-        <!-- <span slot="title">{{ boardTitle() }}</span> -->
         <div v-show="isOpen" class="board-menu-actions">
           <h2 class="title">Board Menu</h2>
           <div @click="addNewBoard" class="action">

@@ -102,6 +102,9 @@
         cursor: pointer;
         background-color: #409EFF !important;
     }
+    .toggle-workspace-icon > path:hover {
+        filter: none;
+    }
     .arrow-btn {
         font-size: 14px;
         color: $application-border-color;

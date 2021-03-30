@@ -177,16 +177,13 @@
     flex-direction: column;
     justify-content: space-between;
     background-color: #292f4c;
-
     .main-header-icon {
         font-size: 20px;
         color: #ffffff;
     }
-
-    .main-header-icon> path:hover {
+    .main-header-icon>path:hover {
         filter: none;
     }
-
     .logo {
         width: 40px;
     }
@@ -202,7 +199,6 @@
         margin-bottom: 8px;
         background-color: #292f4c;
     }
-    
     .icon-wrapper {
         display: flex;
         justify-content: center;
@@ -214,21 +210,18 @@
         border-radius: 4px;
         cursor: pointer;
         position: relative;
-        outline: none;     
+        outline: none;
     }
-    
     .icon-wrapper:hover {
         background-color: #3e4774;
         // opacity: 0.5;
     }
-
     .logo-wrapper {
         cursor: pointer;
         display: flex;
         justify-content: center;
         align-items: center;
         margin: 12px 0px 14px;
-
         .logo {
             width: 32px;
         }

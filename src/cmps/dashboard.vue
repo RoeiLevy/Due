@@ -2,7 +2,7 @@
   <div class="dashboard">
     <div class="stats">
       <h5><strong>Board Members</strong> : {{ board.members.length }}</h5>
-      <h5><strong>Task Count</strong> : {{ taskCount }}</h5>
+      <h5><strong>Tasks Count</strong> : {{ taskCount }}</h5>
       <h5><strong>Done Tasks Count</strong> : {{ doneCount }}</h5>
     </div>
     <div class="charts">
@@ -13,7 +13,7 @@
 
       <div class="canvas-wrapper">
         <h3>Members Tasks Count</h3>
-        <pie :board="board"></pie>
+        <doughnut :board="board"></doughnut>
       </div>
     </div>
   </div>
@@ -21,7 +21,8 @@
 
 <script>
 import chart from "./chart";
-import pie from "./pie";
+import doughnut from "./doughnut";
+import Doughnut from './doughnut.vue';
 export default {
   props: ["board"],
   computed: {
@@ -44,7 +45,7 @@ export default {
   },
   components: {
     chart,
-    pie,
+    doughnut
   },
 };
 </script>

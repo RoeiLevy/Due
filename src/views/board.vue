@@ -174,30 +174,23 @@
               </el-dropdown> -->
             </ul>
             <div class="search-bar">
-              <div class="search"
-              @click="searchMode = !searchMode"
-              >
+              <div class="search" @click="searchMode = !searchMode">
                 <font-awesome-icon
                   v-if="!searchMode"
                   icon="search"
                   class="search-bar-icon"
                 />
                 <el-input
-                  @blur="searchMode = !searchMode"
-                  @clear="searchMode = !searchMode"
                   v-else
-                  :clearable="true"
+                  @focusout="searchMode = !searchMode"
                   placeholder="Search"
                   v-model="filterBy.txt"
                 >
                 </el-input>
-                <p v-if="!searchMode"
- class="search-title">Search</p>
+                <p v-if="!searchMode" class="search-title">Search</p>
               </div>
 
-              <div class="filter"
-              @click="filterMode = !filterMode"
-              >
+              <div class="filter" @click="filterMode = !filterMode">
                 <font-awesome-icon
                   v-if="!filterMode"
                   icon="filter"
@@ -219,8 +212,7 @@
                   >
                   </el-option>
                 </el-select>
-                <p v-if="!filterMode"
- class="filter-title">Filter</p>
+                <p v-if="!filterMode" class="filter-title">Filter</p>
               </div>
             </div>
           </nav>

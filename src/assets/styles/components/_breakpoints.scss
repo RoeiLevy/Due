@@ -145,7 +145,7 @@
         }
         .search-bar {
             position: absolute;
-            top: 56px;
+            top: 55px;
             left: 91px;
             color: #676879;
             height: 26px;
@@ -171,9 +171,10 @@
             }
         }
         .new-group-btn {
-            font-size: 10px;
-            padding: 0 7px;
-            height: 26px;
+            font-size: 10px !important;
+            padding: 0 7px !important;
+            height: 26px !important;
+            width: fit-content !important;
         }
         .top-header {
             height: unset;

@@ -174,44 +174,54 @@
               </el-dropdown> -->
             </ul>
             <div class="search-bar">
-              <font-awesome-icon
-                @click="filterMode = !filterMode"
-                v-if="!filterMode"
-                icon="search"
-              />
-              <el-input
-                @blur="filterMode = !filterMode"
-                @clear="filterMode = !filterMode"
-                v-else
-                :clearable="true"
-
-                placeholder="Search"
-                v-model="filterBy.txt"
+              <div class="search"
+              @click="searchMode = !searchMode"
               >
-              </el-input>
-
-              <font-awesome-icon
-                v-if="!searchMode"
-                @click="searchMode = !searchMode"
-                icon="filter"
-              />
-              <el-select
-                @blur="searchMode = !searchMode"
-                @clear="searchMode = !searchMode"
-
-                v-else
-                v-model="filterBy.member"
-                placeholder="By Members"
-                :clearable="true"
-              >
-                <el-option
-                  v-for="member in boardToEdit.members"
-                  :key="member.id"
-                  :label="member.fullname"
-                  :value="member"
+                <font-awesome-icon
+                  v-if="!searchMode"
+                  icon="search"
+                  class="search-bar-icon"
+                />
+                <el-input
+                  @blur="searchMode = !searchMode"
+                  @clear="searchMode = !searchMode"
+                  v-else
+                  :clearable="true"
+                  placeholder="Search"
+                  v-model="filterBy.txt"
                 >
-                </el-option>
-              </el-select>
+                </el-input>
+                <p v-if="!searchMode"
+ class="search-title">Search</p>
+              </div>
+
+              <div class="filter"
+              @click="filterMode = !filterMode"
+              >
+                <font-awesome-icon
+                  v-if="!filterMode"
+                  icon="filter"
+                  class="search-bar-icon"
+                />
+                <el-select
+                  @blur="filterMode = !filterMode"
+                  @clear="filterMode = !filterMode"
+                  v-else
+                  v-model="filterBy.member"
+                  placeholder="By Members"
+                  :clearable="true"
+                >
+                  <el-option
+                    v-for="member in boardToEdit.members"
+                    :key="member.id"
+                    :label="member.fullname"
+                    :value="member"
+                  >
+                  </el-option>
+                </el-select>
+                <p v-if="!filterMode"
+ class="filter-title">Filter</p>
+              </div>
             </div>
           </nav>
           <router-view

@@ -686,6 +686,10 @@ export default {
   watch: {
     $route(to, from) {
       const boardId = this.$route.params.boardId;
+      socketService.off("get board", this.setBoard);
+      socketService.terminate();
+      socketService.emit("chat topic", boardId);
+      socketService.on("get board", this.setBoard);
       this.loadBoard();
     },
     isCloseScreen(newValue) {

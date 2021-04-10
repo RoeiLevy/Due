@@ -197,7 +197,6 @@ export default {
     toggleCloseScreen() {
       this.$store.commit("toggleCloseScreen");
     },
-    // NOT USED FUNCTION v
     async addStatus(status) {
       try {
         this.boardToEdit.statuses.push(status);

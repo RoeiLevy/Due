@@ -17,7 +17,6 @@
             class="nav-links"
           >
             <router-link class="login" to="/login">Login</router-link>
-            <!-- <span>|</span> -->
             <router-link class="sign-up" to="/signup">Sign Up</router-link>
           </div>
 
@@ -26,7 +25,6 @@
             <h2 class="username" v-if="loggedInUser">
               Hello {{ loggedInUser.fullname }}
             </h2>
-            <!-- <span>|</span> -->
           </div>
         </div>
       </div>
@@ -51,13 +49,12 @@
       </div>
       <div class="bottom-wrapper">
         <div class="img-wrapper">
-          <!-- <img src="@/assets/due.png" /> -->
           <img src="@/assets/homepage-due.png" />
         </div>
         <div class="desc2-wrapper">
           <h4 class="desc2">
-            Planning, tracking and delivering your team’s best work
-            has never been easier.
+            Planning, tracking and delivering your team’s best work has never
+            been easier.
           </h4>
         </div>
       </div>
@@ -66,7 +63,7 @@
 </template>
 
 <script>
-import CloseScreen from '../cmps/close-screen.vue';
+import CloseScreen from "../cmps/close-screen.vue";
 
 export default {
   name: "home",
@@ -78,26 +75,26 @@ export default {
   methods: {
     toggleMenu() {
       this.isMenuOpen = !this.isMenuOpen;
-      this.$store.commit('toggleCloseScreen')
+      this.$store.commit("toggleCloseScreen");
       console.log("this.isMenuOpen:", this.isMenuOpen);
     },
     pushRoute() {
       this.$router.push("/board");
-      this.$store.commit('toggleCloseScreen')
+      this.$store.commit("toggleCloseScreen");
     },
     async logout() {
       await this.$store.dispatch("logout");
       this.$router.push("/login");
-      this.$store.commit('toggleCloseScreen')
+      this.$store.commit("toggleCloseScreen");
       try {
       } catch (err) {}
     },
     closeMenu() {
-      this.isMenuOpen = false
+      this.isMenuOpen = false;
     },
     closeScreen() {
-      this.$store.commit('shutCloseScreen')
-    }
+      this.$store.commit("shutCloseScreen");
+    },
   },
   computed: {
     loggedInUser() {
@@ -108,10 +105,10 @@ export default {
     },
   },
   destroyed() {
-    this.closeScreen()
+    this.closeScreen();
   },
   components: {
-    CloseScreen
-  }
+    CloseScreen,
+  },
 };
 </script>

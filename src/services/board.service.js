@@ -188,7 +188,6 @@ function getEmptyGroup() {
 
 function getEmptyTask() {
     return {
-        // id: utilService.makeId,
         title: '',
         createdAt: new Date(),
         status: null,

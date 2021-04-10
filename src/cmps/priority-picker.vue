@@ -32,7 +32,9 @@
         v-for="(priority, idx) in prioritiesToEdit"
         :key="priority.id"
       >
-        <el-color-picker v-model="prioritiesToEdit[idx].color"></el-color-picker>
+        <el-color-picker
+          v-model="prioritiesToEdit[idx].color"
+        ></el-color-picker>
         <el-input
           v-model="prioritiesToEdit[idx].title"
           closable
@@ -50,7 +52,11 @@
           <font-awesome-icon class="header-icon remove-btn" icon="trash" />
         </el-button>
       </div>
-      <div @click="startAdding()" v-if="!isAddingPriority" class="new-priority-btn">
+      <div
+        @click="startAdding()"
+        v-if="!isAddingPriority"
+        class="new-priority-btn"
+      >
         New Priority
       </div>
       <div v-else>

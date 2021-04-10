@@ -12,11 +12,11 @@
           :key="status.id"
           :style="{ 'background-color': status.color }"
         >
-          <h3>{{ status.title }} / {{taskMap[status.title].length}}</h3>
+          <h3>{{ status.title }} / {{ taskMap[status.title].length }}</h3>
           <ul>
-              <li v-for="task in taskMap[status.title]" :key="task.id">
-                  {{task.title}}
-              </li>
+            <li v-for="task in taskMap[status.title]" :key="task.id">
+              {{ task.title }}
+            </li>
           </ul>
         </div>
       </transition-group>

@@ -32,8 +32,6 @@ export default {
   props: ["drawer", "board"],
   data() {
     return {
-      // task: null,
-      // activities: null,
       activeName: "updates",
     };
   },
@@ -44,18 +42,6 @@ export default {
       if (taskId) this.$router.go(-1);
       this.$store.commit({ type: "toggleIsDetails" });
     },
-    // async getTask(taskId, groupId) {
-    //   try {
-    //     const taskToShow = await this.$store.dispatch({
-    //       type: "getTask",
-    //       taskId,
-    //       groupId,
-    //     });
-    //     this.task = taskToShow;
-    //   } catch (err) {
-    //     console.log("err:", err);
-    //   }
-    // },
     async getTaskActivities(taskId) {
       try {
         const activitiesToShow = await this.$store.dispatch({
@@ -73,18 +59,12 @@ export default {
         const editedTask = JSON.parse(JSON.stringify(this.task));
         if (!editedTask["comments"]) editedTask.comments = [];
         editedTask.comments.unshift(newComment);
-        // this.task = editedTask;
 
         const taskToShow = await this.$store.dispatch({
           type: "saveTask",
           task: editedTask,
           groupId,
         });
-
-        // this.$store.dispatch({
-        //   type: "sendActivity",
-        //   txt: `Added a comment to "${this.task.title}"`,
-        // });
       } catch (err) {
         console.log("err:", err);
       }
@@ -98,7 +78,7 @@ export default {
       return this.activeName === "updates" && this.task;
     },
     task() {
-      if (!this.drawer) return
+      if (!this.drawer) return;
       const taskId = this.$route.params.taskId;
       const groupId = this.$route.params.groupId;
 
@@ -106,7 +86,7 @@ export default {
       const taskIdx = this.board.groups[groupIdx].tasks.findIndex(
         (t) => t.id === taskId
       );
-      const taskToShow = this.board.groups[groupIdx].tasks[taskIdx]
+      const taskToShow = this.board.groups[groupIdx].tasks[taskIdx];
       return taskToShow;
     },
   },
@@ -114,18 +94,9 @@ export default {
     activityLog,
     updates,
   },
-  created() {
-  },
+  created() {},
   watch: {
-    $route(to, from) {
-      //   const taskId = this.$route.params.taskId;
-      //   const groupId = this.$route.params.groupId;
-      //   if (taskId) {
-      //     this.getTask(taskId, groupId);
-      //     this.getTaskActivities(taskId);
-      //   }
-      // },
-    },
+    $route(to, from) {},
   },
 };
 </script>

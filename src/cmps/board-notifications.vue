@@ -41,26 +41,23 @@ export default {
     board() {
       return this.$store.getters.boardForDisplay;
     },
-      loggedInUser() {
+    loggedInUser() {
       return this.$store.getters.loggedInUser;
     },
     userNotifications() {
       if (!this.board) return;
-      const filteredNotifications = this.board.activities.filter(
-        (a) => {
-          if (a.byMember) {
-            if (a.byMember._id !== this.loggedInUser._id) return a;
-          }
+      const filteredNotifications = this.board.activities.filter((a) => {
+        if (a.byMember) {
+          if (a.byMember._id !== this.loggedInUser._id) return a;
         }
-      );
+      });
       return filteredNotifications;
     },
   },
   components: {
     notifications,
   },
-  created() {
-  },
+  created() {},
   watch: {
     $route(to, from) {},
   },

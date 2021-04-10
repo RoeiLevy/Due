@@ -1,24 +1,29 @@
 .kanban {
     margin-top: 10px;
+
     span {
         gap: 10px;
         display: flex;
         flex-wrap: wrap;
+
         .kanban-item {
             width: 250px;
             height: 200px;
             overflow: auto;
             border-radius: 5px;
             cursor: -webkit-grab;
+
             h3 {
                 text-align: center;
                 padding: 5px;
                 text-transform: capitalize;
                 color: white;
             }
+
             ul {
                 list-style: none;
                 padding: 0;
+
                 li {
                     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
                     background-color: white;

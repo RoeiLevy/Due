@@ -1,7 +1,11 @@
 <template>
   <div class="notification-preview">
     <div class="avatar-wrapper">
-      <avatar :size="60" :username="notification.byMember.fullname" :src="notification.byMember.img"></avatar>
+      <avatar
+        :size="60"
+        :username="notification.byMember.fullname"
+        :src="notification.byMember.img"
+      ></avatar>
     </div>
     <div class="notification-details">
       <div class="notification-username">

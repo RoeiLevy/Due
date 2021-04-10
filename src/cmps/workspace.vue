@@ -24,8 +24,12 @@
           </div>
           <div class="action">
             <font-awesome-icon class="header-icon plus" icon="filter" />
-            <h3 @click="isFiltering=!isFiltering">Filter</h3>
-            <el-input v-if="isFiltering" placeholder="Search Boards" v-model="filterBy.txt">
+            <h3 @click="isFiltering = !isFiltering">Filter</h3>
+            <el-input
+              v-if="isFiltering"
+              placeholder="Search Boards"
+              v-model="filterBy.txt"
+            >
             </el-input>
           </div>
           <div class="action">
@@ -60,10 +64,10 @@ export default {
   data() {
     return {
       isOpen: false,
-      isFiltering:false,
-      filterBy:{
-        txt:null
-      }
+      isFiltering: false,
+      filterBy: {
+        txt: null,
+      },
     };
   },
   methods: {
@@ -83,7 +87,7 @@ export default {
       if (currBoardId) {
         if (newBoardId === currBoardId) return;
       }
-this.toggleWorkspace()
+      this.toggleWorkspace();
       this.$router.push(`/board/${newBoardId}/maintable`);
     },
     async addNewBoard() {

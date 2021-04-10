@@ -2,7 +2,13 @@
   <div class="task-add-member-modal">
     <h3>People</h3>
     <div v-if="members" class="task-members-list">
-      <member-preview :taskMembers="taskMembers" @toggleMember="toggleMember" v-for="member in members" :member="member" :key="member._id" />
+      <member-preview
+        :taskMembers="taskMembers"
+        @toggleMember="toggleMember"
+        v-for="member in members"
+        :member="member"
+        :key="member._id"
+      />
     </div>
   </div>
 </template>
@@ -11,15 +17,14 @@
 import MemberPreview from "./member-preview.vue";
 
 export default {
-  props: ['taskMembers'],
+  props: ["taskMembers"],
   data() {
-    return {
-    };
+    return {};
   },
   methods: {
     toggleMember(member) {
-      this.$emit('toggleMember', member)
-    }
+      this.$emit("toggleMember", member);
+    },
   },
   computed: {
     members() {

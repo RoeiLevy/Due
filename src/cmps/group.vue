@@ -1,12 +1,5 @@
 <template>
   <section class="group-container">
-    <!-- <draggable
-        v-model="board.groups"
-        @change="saveGroup"
-        v-bind="dragOptions"
-      > -->
-    <!-- <transition-group type="transition"> -->
-
     <div class="flex group-header">
       <el-dropdown @command="handleCommand" class="drop-down" trigger="click">
         <span :style="groupColor" class="el-dropdown-link">
@@ -113,23 +106,6 @@
         <div class="div-5"></div>
       </div>
     </div>
-    <!-- </transition-group> -->
-    <!-- </draggable> -->
-
-    <!-- <div class="task-wrapper flex transparent">
-      <div class="task-color-box-start"></div>
-      <div class="task-title"></div>
-      <div class="task-members-container"></div>
-      <div class="status-container">
-        <progress-bar :group="group"></progress-bar>
-      </div>
-      <div class="date-container"></div>
-      <div class="priority-container">
-        <progress-bar-priorities :group="group"></progress-bar-priorities>
-
-      </div>
-      <div class="task-color-box-end"></div> -->
-    <!-- </div> -->
   </section>
 </template>
 
@@ -214,9 +190,6 @@ export default {
         console.log("err:", err);
       }
     },
-    // removeGroup() {
-    //   this.$emit("removeGroup", this.group.id);
-    // },
     async removeGroup() {
       try {
         await this.$confirm(
@@ -281,5 +254,3 @@ export default {
   },
 };
 </script>
-
-<style>

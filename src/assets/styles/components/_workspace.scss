@@ -1,87 +1,12 @@
-// .workspace {
-// min-width: 50px;
-// width: fit-content;
-// margin-inline-end: 15px;
-// .workspace-menu-container * {
-//     // white-space: nowrap;
-//     // text-overflow: clip;
-//     // transition: 60s;
-// }
-//     .el-menu-vertical-demo * {
-//         white-space: nowrap;
-//         text-overflow: clip;
-//     }
-//     .el-menu.v-leave-active.horizontal-collapse-transition.v-leave-to {
-//         border-right: none;
-//         li {
-//             color: transparent;
-//         }
-//     }
-// }
-// .el-menu-vertical-demo.el-menu.el-menu--collapse.horizontal-collapse-transition {
-//     .workspace-icon .el-icon-menu {
-//         border: none;
-//         transition: none;
-//     }
-//     .el-menu-vertical-demo.el-menu--collaps {
-//         border: none;
-//         transition: none;
-//     }
-// }
-// .el-tooltip,
-// .el-icon-menu {
-//     position: unset !important;
-//     display: unset;
-// }
-// .workspace-icon.el-icon-menu {
-//     padding-bottom: 3px;
-// }
-// .el-menu-vertical-demo.el-menu--collapse {
-//     width: 30px;
-//     border-radius: 100%;
-//     height: 30px;
-//     display: flex;
-//     flex: 1;
-//     align-items: center;
-//     justify-content: center;
-//     margin: 10px;
-//     margin-top: 30px;
-//     left: 40px;
-//     border: 1px solid rgba(165, 165, 165, 0.144);
-// }
-// .el-menu-item:focus,
-// .el-menu-item:hover {
-//     background-color: unset !important;
-// }
-// .el-menu-vertical-demo:not(.el-menu--collapse) {
-//     padding: 15px;
-//     width: fit-content;
-// }
-// .workspace-menu-container {
-//     height: 100%;
-//     display: flex;
-//     position: static;
-//     left: 65px;
-// }
-// .workspace-board-list {
-//     list-style: none;
-//     padding: 0;
-// }
-// .board-li-workspace {
-//     border-bottom: 1px solid rgba(165, 165, 165, 0.459);
-//     cursor: pointer;
-//     padding-top: 7px;
-// }
-// .board-li-workspace:hover {
-//     background-color: rgba(209, 209, 209, 0.199);
-// }
 .workspace {
     position: relative;
     transition: width 0.3s;
     width: 30px;
+
     .menu-list {
         padding: 15px;
     }
+
     .menu-toggle-btn {
         transition: width 0.1s;
         border-radius: 40px;
@@ -97,26 +22,32 @@
         border: 1px solid $application-border-color;
         background-color: white;
     }
+
     .menu-toggle-btn:hover {
         width: 36px;
         cursor: pointer;
         background-color: #409EFF !important;
     }
-    .toggle-workspace-icon > path:hover {
+
+    .toggle-workspace-icon>path:hover {
         filter: none;
     }
+
     .arrow-btn {
         font-size: 14px;
         color: $application-border-color;
         backface-visibility: hidden;
     }
+
     .arrow-btn:hover {
         color: white;
         cursor: pointer;
     }
+
     .menu-toggle-btn:hover .arrow-btn {
         color: white;
     }
+
     .workspace-board-list {
         padding-left: 0px;
         padding-top: 16px;
@@ -140,16 +71,19 @@
             padding: 0 6px;
             font-size: 14px;
         }
+
         >*:hover {
             background-color: #e6e9ef;
             cursor: pointer;
         }
     }
+
     .board-menu-actions {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
         align-items: flex-start;
+
         >* {
             height: 34px;
             display: flex;
@@ -158,11 +92,12 @@
             padding: 0 6px;
             font-weight: 400;
         }
+
         .action:hover {
             background-color: #e6e9ef;
             cursor: pointer;
         }
-        
+
         .title {
             margin-bottom: 15px;
             font-size: 16px;
@@ -172,6 +107,7 @@
             align-items: center;
             justify-content: center;
         }
+
         h3 {
             padding-left: 10px;
             font-size: 14px;

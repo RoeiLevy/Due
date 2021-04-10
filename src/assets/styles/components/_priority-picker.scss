@@ -13,18 +13,22 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
     .priority-container {
         h3 {
             color: #333333;
         }
     }
+
     >*:hover {
         opacity: 1;
     }
+
     .priorities {
         h4 {
             margin: 0 auto;
         }
+
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -34,31 +38,36 @@
         padding-bottom: 10px;
         width: 100%;
     }
+
     .priority-footer {
         display: flex;
         justify-content: center;
         border-top: 1px solid lightgray;
         width: 100%;
+
         button {
             width: 100%;
             border: none;
         }
     }
+
     .edit-priorities {
         display: flex;
         flex-direction: column;
-        // align-items: center;
         flex: 1;
         height: 225px;
         overflow-y: auto;
         width: 100%;
+
         >* {
             margin: 3px;
         }
+
         input {
             width: 100px;
             border: none;
         }
+
         .priority-edit-container {
             display: flex;
             height: fit-content;
@@ -67,10 +76,12 @@
             width: 122px;
             border: 1px solid lightgray;
             border-radius: 5px;
+
             * {
                 text-overflow: ellipsis;
             }
         }
+
         .el-color-picker__trigger {
             width: 23px;
             left: -2.5px;
@@ -82,23 +93,27 @@
             margin: 0;
             height: 90%;
         }
+
         .el-color-picker__color {
             border-color: transparent;
             height: 100%;
             border-bottom-left-radius: 5px;
             border-top-left-radius: 5px;
         }
+
         .el-color-picker__color-inner {
             border-color: transparent;
             border-bottom-left-radius: 4px;
             border-top-left-radius: 4px;
         }
+
         .new-priority-btn {
             border: 1px dashed gray;
             border-radius: 5px;
             width: 122px;
             align-self: center;
         }
+
         .delete-priority-btn {
             transition: all 0.3s;
             position: absolute;
@@ -110,9 +125,11 @@
             color: #4e4f52;
         }
     }
+
     .priority-edit-container:hover .delete-priority-btn {
         opacity: 1;
     }
+
     .priority-btn {
         color: white;
         margin: 5px 0;
@@ -124,6 +141,7 @@
         align-items: center;
         border: none;
     }
+
     .priority-btn:hover {
         opacity: 0.5;
     }
@@ -153,15 +171,12 @@
 }
 
 .priority-edit-container {
-    // display: flex;
-    // flex-direction: column;
     justify-content: space-between !important;
     align-items: center;
 }
 
 .el-input__inner {
     width: 80px !important;
-    // margin-inline-start: 15px;
 }
 
 .priority-edit-container input {
@@ -169,7 +184,6 @@
 }
 
 .new-priority-add-btn {
-    // width: 30px !important;
     padding: 3px !important;
     position: absolute;
     border-radius: 100% !important;

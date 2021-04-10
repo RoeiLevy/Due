@@ -25,7 +25,7 @@
         effect="dark"
         :content="taskToEdit.title"
         placement="top"
-        :open-delay="Number(700)"	
+        :open-delay="Number(700)"
       >
         <label class="task-title-label" @click="handleEdit">
           {{ taskToEdit.title }}
@@ -133,7 +133,7 @@
         />
       </svg>
       <span
-      class="error-badge"
+        class="error-badge"
         v-if="
           taskToEdit.status && taskToEdit.status.title.toLowerCase() === 'error'
         "
@@ -193,7 +193,7 @@ export default {
       styles: {
         "border-color": this.groupColor,
       },
-      delay: 700
+      delay: 700,
     };
   },
   methods: {
@@ -209,7 +209,6 @@ export default {
           }
         );
         try {
-          // await this.$store.dispatch("removeBoard", boardId);
           this.$emit("removeTask", this.task);
           this.$message({
             type: "success",
@@ -291,11 +290,7 @@ export default {
     updateTask() {
       this.editMode = false;
       this.$emit("updateTask", this.taskToEdit);
-      // this.dueDate = null;
     },
-    // removeTask() {
-    //   this.$emit("removeTask", this.task);
-    // },
   },
   computed: {
     membersToShow() {

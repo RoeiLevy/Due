@@ -16,7 +16,7 @@ function delay(ms = 1500) {
 
 function debounce(func, wait = 700) {
     let timeout;
-    return function(...args) {
+    return function (...args) {
         const later = () => {
             clearTimeout(timeout);
             func(...args);
@@ -42,7 +42,7 @@ function makeId(length = 5) {
     return txt;
 }
 
-async function uploadImg(imgUrl)  {
+async function uploadImg(imgUrl) {
     // Defining our variables
     const UPLOAD_PRESET = 'erchqlxj' // Insert yours
     const CLOUD_NAME = 'datgr82j1' // Insert yours
@@ -53,8 +53,8 @@ async function uploadImg(imgUrl)  {
     FORM_DATA.append('upload_preset', UPLOAD_PRESET)
     // Sending a post method request to Cloudniarys' API
     try {
-         const res = await axios.post(UPLOAD_URL, FORM_DATA)
-         return res.data.url;
+        const res = await axios.post(UPLOAD_URL, FORM_DATA)
+        return res.data.url;
     } catch (err) {
         console.error('ERROR!', err)
     }
@@ -64,7 +64,7 @@ function getRandomColor() {
     var letters = '0123456789ABCDEF';
     var color = '#';
     for (var i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
+        color += letters[Math.floor(Math.random() * 16)];
     }
     return color;
-  }
+}

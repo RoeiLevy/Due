@@ -11,11 +11,7 @@
         class="header-icon"
         icon="circle"
       />
-      <font-awesome-icon
-        v-else
-        class="header-icon"
-        icon="check-circle"
-      />
+      <font-awesome-icon v-else class="header-icon" icon="check-circle" />
     </div>
   </div>
 </template>
@@ -35,7 +31,7 @@ export default {
   },
   computed: {
     isMemberChosen() {
-      if (!this.taskMembers) return
+      if (!this.taskMembers) return;
       return this.taskMembers.some((m) => m._id === this.member._id);
     },
   },
@@ -43,9 +39,7 @@ export default {
     Avatar,
   },
   watch: {
-    taskMembers: function (newVal, oldVal) {
-      // console.log('new task members', newVal);
-    },
-  }
+    taskMembers: function (newVal, oldVal) {},
+  },
 };
 </script>

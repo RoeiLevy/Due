@@ -1,0 +1,833 @@
+{
+    "title": "Sprint 4",
+    "thumbnail": "http://res.cloudinary.com/datgr82j1/image/upload/v1617141197/utlxd3gp1erzodygayvg.png",
+    "createdAt": 1616958680121.0,
+    "createdBy": {
+        "_id": "60606c24a9086800159061f0",
+        "email": "summ.pie@gmail.com",
+        "fullname": "Dorran Gavish",
+        "img": "http://res.cloudinary.com/datgr82j1/image/upload/v1616931875/q1rnf09njeexgfh7ouig.jpg"
+    },
+    "members": [
+        {
+            "fullname": "Guest",
+            "_id": "guest",
+            "img": null
+        },
+        {
+            "_id": "6058b2e4d6dbb89200952fa4",
+            "email": "levy6162@gmail.com",
+            "fullname": "Roi Levy",
+            "img": "http://res.cloudinary.com/datgr82j1/image/upload/v1616425702/z5aszmq47a4nfm5ltl0u.jpg"
+        },
+        {
+            "_id": "60606c24a9086800159061f0",
+            "email": "summ.pie@gmail.com",
+            "fullname": "Dorran Gavish",
+            "img": "http://res.cloudinary.com/datgr82j1/image/upload/v1616931875/q1rnf09njeexgfh7ouig.jpg"
+        },
+        {
+            "_id": "606069dba9086800159061ef",
+            "email": "yonatanmiz963@gmail.com",
+            "fullname": "Yonatan Mizrahi",
+            "img": "http://res.cloudinary.com/datgr82j1/image/upload/v1616931290/faxmkejoayz6h3afpcyz.jpg"
+        }
+    ],
+    "groups": [
+        {
+            "id": "eb8fV",
+            "title": "Backend",
+            "tasks": [
+                {
+                    "title": "Setup sendGrid emails API",
+                    "createdAt": 1617017181867.0,
+                    "status": {
+                        "id": "ud176a",
+                        "title": "Stuck",
+                        "color": "#e2445c"
+                    },
+                    "priority": {
+                        "id": "pMBgD",
+                        "color": "#784BD1",
+                        "title": "High"
+                    },
+                    "comments": [
+                        {
+                            "txt": "<p>Cool! can't wait to see it working, let me know if you need any help setting it up.</p>",
+                            "createdAt": 1617176008795.0,
+                            "byMember": {
+                                "_id": "60606c24a9086800159061f0",
+                                "email": "summ.pie@gmail.com",
+                                "fullname": "Dorran Gavish",
+                                "img": "http://res.cloudinary.com/datgr82j1/image/upload/v1616931875/q1rnf09njeexgfh7ouig.jpg"
+                            }
+                        },
+                        {
+                            "txt": "<p>I am creating a new API for this library, it will use it to deliver mails and send them to whoever we want.</p>",
+                            "createdAt": 1617175904259.0,
+                            "byMember": {
+                                "_id": "606069dba9086800159061ef",
+                                "email": "yonatanmiz963@gmail.com",
+                                "fullname": "Yonatan Mizrahi",
+                                "img": "http://res.cloudinary.com/datgr82j1/image/upload/v1616931290/faxmkejoayz6h3afpcyz.jpg"
+                            }
+                        }
+                    ],
+                    "id": "VMjLZ",
+                    "members": [
+                        {
+                            "_id": "606069dba9086800159061ef",
+                            "fullname": "Yonatan Mizrahi",
+                            "img": "http://res.cloudinary.com/datgr82j1/image/upload/v1616931290/faxmkejoayz6h3afpcyz.jpg"
+                        }
+                    ],
+                    "dueDate": "2021-04-02"
+                },
+                {
+                    "title": "Google Integration",
+                    "createdAt": 1617016069739.0,
+                    "status": {
+                        "id": "axDHr",
+                        "color": "#85DEE4",
+                        "title": "Hold"
+                    },
+                    "priority": {
+                        "id": "pMBgD",
+                        "color": "#784BD1",
+                        "title": "High"
+                    },
+                    "comments": [
+                        {
+                            "txt": "<p>Cant wait to see this working already.</p>",
+                            "createdAt": 1617176632996.0,
+                            "byMember": {
+                                "_id": "60607afec9b7e60015949569",
+                                "email": "levy6162@gmail.com",
+                                "fullname": "Roi Levy",
+                                "img": "http://res.cloudinary.com/datgr82j1/image/upload/v1616935677/dkuoidpufqxtjimdeoup.jpg"
+                            }
+                        }
+                    ],
+                    "id": "IbGKd",
+                    "members": [
+                        {
+                            "_id": "606069dba9086800159061ef",
+                            "fullname": "Yonatan Mizrahi",
+                            "img": "http://res.cloudinary.com/datgr82j1/image/upload/v1616931290/faxmkejoayz6h3afpcyz.jpg"
+                        },
+                        {
+                            "_id": "60607afec9b7e60015949569",
+                            "fullname": "Roi Levy",
+                            "img": "http://res.cloudinary.com/datgr82j1/image/upload/v1616935677/dkuoidpufqxtjimdeoup.jpg"
+                        }
+                    ],
+                    "dueDate": "2021-04-02"
+                },
+                {
+                    "title": "Socket Service",
+                    "createdAt": 1616958853724.0,
+                    "status": {
+                        "id": "udg2t6",
+                        "title": "Done",
+                        "color": "#00c875"
+                    },
+                    "priority": {
+                        "id": "udr2t6",
+                        "title": "Important",
+                        "color": "#FF7BD0"
+                    },
+                    "comments": [
+                        {
+                            "txt": "<p>The socket service is ready and working, we can start working on the updates component.</p>",
+                            "createdAt": 1617175539425.0,
+                            "byMember": {
+                                "_id": "606069dba9086800159061ef",
+                                "email": "yonatanmiz963@gmail.com",
+                                "fullname": "Yonatan Mizrahi",
+                                "img": "http://res.cloudinary.com/datgr82j1/image/upload/v1616931290/faxmkejoayz6h3afpcyz.jpg"
+                            }
+                        }
+                    ],
+                    "id": "488DM",
+                    "members": [
+                        {
+                            "_id": "606069dba9086800159061ef",
+                            "email": "yonatanmiz963@gmail.com",
+                            "fullname": "Yonatan Mizrahi",
+                            "img": "http://res.cloudinary.com/datgr82j1/image/upload/v1616931290/faxmkejoayz6h3afpcyz.jpg"
+                        }
+                    ],
+                    "dueDate": "2021-03-24"
+                },
+                {
+                    "title": "User aggregation",
+                    "createdAt": 1616958885387.0,
+                    "status": {
+                        "id": "udm874",
+                        "title": "Working on it",
+                        "color": "#fdab3d"
+                    },
+                    "comments": [
+                        {
+                            "txt": "<p>Yes, exactly what we need! 👍</p>",
+                            "createdAt": 1617176851960.0,
+                            "byMember": {
+                                "_id": "606069dba9086800159061ef",
+                                "email": "yonatanmiz963@gmail.com",
+                                "fullname": "Yonatan Mizrahi",
+                                "img": "http://res.cloudinary.com/datgr82j1/image/upload/v1616931290/faxmkejoayz6h3afpcyz.jpg"
+                            }
+                        },
+                        {
+                            "txt": "<p>I am creating an aggregation merging between the user and all the activities that he is related with, makes sense right?</p>",
+                            "createdAt": 1617176429651.0,
+                            "byMember": {
+                                "_id": "60607afec9b7e60015949569",
+                                "email": "levy6162@gmail.com",
+                                "fullname": "Roi Levy",
+                                "img": "http://res.cloudinary.com/datgr82j1/image/upload/v1616935677/dkuoidpufqxtjimdeoup.jpg"
+                            }
+                        }
+                    ],
+                    "id": "ixn82",
+                    "members": [
+                        {
+                            "_id": "60607afec9b7e60015949569",
+                            "fullname": "Roi Levy",
+                            "img": "http://res.cloudinary.com/datgr82j1/image/upload/v1616935677/dkuoidpufqxtjimdeoup.jpg"
+                        }
+                    ],
+                    "priority": {
+                        "color": "#579BFC",
+                        "title": "Medium"
+                    },
+                    "dueDate": "2021-04-02"
+                },
+                {
+                    "title": "ASL service",
+                    "createdAt": 1617016080915.0,
+                    "status": {
+                        "id": "udm874",
+                        "title": "Working on it",
+                        "color": "#fdab3d"
+                    },
+                    "comments": [],
+                    "id": "16F2y",
+                    "members": [
+                        {
+                            "_id": "606069dba9086800159061ef",
+                            "fullname": "Yonatan Mizrahi",
+                            "img": "http://res.cloudinary.com/datgr82j1/image/upload/v1616931290/faxmkejoayz6h3afpcyz.jpg"
+                        },
+                        {
+                            "_id": "60607afec9b7e60015949569",
+                            "fullname": "Roi Levy",
+                            "img": "http://res.cloudinary.com/datgr82j1/image/upload/v1616935677/dkuoidpufqxtjimdeoup.jpg"
+                        }
+                    ],
+                    "dueDate": "2021-04-02",
+                    "priority": {
+                        "id": "ud1k6a",
+                        "title": "Low",
+                        "color": "#A9E04A"
+                    }
+                }
+            ],
+            "style": {
+                "color": "#FFDA37"
+            },
+            "headers": [
+                "members",
+                "status",
+                "dueDate"
+            ]
+        },
+        {
+            "id": "9LTmI",
+            "title": "CSS",
+            "tasks": [
+                {
+                    "title": "Loader Animations",
+                    "createdAt": 1617018660153.0,
+                    "status": {
+                        "id": "udg2t6",
+                        "title": "Done",
+                        "color": "#00c875"
+                    },
+                    "priority": {
+                        "id": "ud1k6a",
+                        "title": "Low",
+                        "color": "#A9E04A"
+                    },
+                    "comments": [
+                        {
+                            "txt": "<p>Loader is ready and working, its a CSS animation spinning the logo.</p>",
+                            "createdAt": 1617176084640.0,
+                            "byMember": {
+                                "_id": "60606c24a9086800159061f0",
+                                "email": "summ.pie@gmail.com",
+                                "fullname": "Dorran Gavish",
+                                "img": "http://res.cloudinary.com/datgr82j1/image/upload/v1616931875/q1rnf09njeexgfh7ouig.jpg"
+                            }
+                        }
+                    ],
+                    "id": "xvuOY",
+                    "members": [
+                        {
+                            "_id": "60606c24a9086800159061f0",
+                            "email": "summ.pie@gmail.com",
+                            "fullname": "Dorran Gavish",
+                            "img": "http://res.cloudinary.com/datgr82j1/image/upload/v1616931875/q1rnf09njeexgfh7ouig.jpg"
+                        }
+                    ],
+                    "dueDate": "2021-03-25"
+                },
+                {
+                    "title": "Homepage Responsiveness",
+                    "createdAt": 1617120909231.0,
+                    "status": {
+                        "id": "udm874",
+                        "title": "Working on it",
+                        "color": "#fdab3d"
+                    },
+                    "priority": {
+                        "color": "#579BFC",
+                        "title": "Medium"
+                    },
+                    "comments": [],
+                    "id": "RmMdN",
+                    "members": [
+                        {
+                            "_id": "60607afec9b7e60015949569",
+                            "fullname": "Roi Levy",
+                            "img": "http://res.cloudinary.com/datgr82j1/image/upload/v1616935677/dkuoidpufqxtjimdeoup.jpg"
+                        }
+                    ],
+                    "dueDate": "2021-04-02"
+                }
+            ],
+            "style": {
+                "color": "#FF5757"
+            },
+            "headers": [
+                "members",
+                "status",
+                "dueDate"
+            ]
+        },
+        {
+            "id": "0xiRh",
+            "title": "Frontend",
+            "tasks": [
+                {
+                    "title": "Delete group confirm modal",
+                    "createdAt": 1616958719904.0,
+                    "status": {
+                        "id": "udg2t6",
+                        "title": "Done",
+                        "color": "#00c875"
+                    },
+                    "priority": {
+                        "id": "ud1k6a",
+                        "title": "Low",
+                        "color": "#A9E04A"
+                    },
+                    "comments": [
+                        {
+                            "txt": "<p>Looks much better now. 🙌</p>",
+                            "createdAt": 1617176710449.0,
+                            "byMember": {
+                                "_id": "60607afec9b7e60015949569",
+                                "email": "levy6162@gmail.com",
+                                "fullname": "Roi Levy",
+                                "img": "http://res.cloudinary.com/datgr82j1/image/upload/v1616935677/dkuoidpufqxtjimdeoup.jpg"
+                            }
+                        },
+                        {
+                            "txt": "<p>I have deleted the modal and replaced it with a better one.</p>",
+                            "createdAt": 1617175764801.0,
+                            "byMember": {
+                                "_id": "606069dba9086800159061ef",
+                                "email": "yonatanmiz963@gmail.com",
+                                "fullname": "Yonatan Mizrahi",
+                                "img": "http://res.cloudinary.com/datgr82j1/image/upload/v1616931290/faxmkejoayz6h3afpcyz.jpg"
+                            }
+                        }
+                    ],
+                    "id": "rbI0G",
+                    "members": [
+                        {
+                            "_id": "60607afec9b7e60015949569",
+                            "fullname": "Roi Levy",
+                            "img": "http://res.cloudinary.com/datgr82j1/image/upload/v1616935677/dkuoidpufqxtjimdeoup.jpg"
+                        },
+                        {
+                            "_id": "606069dba9086800159061ef",
+                            "fullname": "Yonatan Mizrahi",
+                            "img": "http://res.cloudinary.com/datgr82j1/image/upload/v1616931290/faxmkejoayz6h3afpcyz.jpg"
+                        }
+                    ],
+                    "dueDate": "2021-03-17"
+                },
+                {
+                    "title": "Better implementation of group drag and drop",
+                    "createdAt": 1616958901242.0,
+                    "status": {
+                        "id": "axDHr",
+                        "color": "#85DEE4",
+                        "title": "Hold"
+                    },
+                    "comments": [],
+                    "id": "JQcKI",
+                    "members": [
+                        {
+                            "_id": "606069dba9086800159061ef",
+                            "fullname": "Yonatan Mizrahi",
+                            "img": "http://res.cloudinary.com/datgr82j1/image/upload/v1616931290/faxmkejoayz6h3afpcyz.jpg"
+                        }
+                    ],
+                    "dueDate": "2021-03-28",
+                    "priority": {
+                        "id": "pMBgD",
+                        "color": "#784BD1",
+                        "title": "High"
+                    }
+                },
+                {
+                    "title": "Tasks Drag & Drop",
+                    "createdAt": 1617018013203.0,
+                    "status": {
+                        "id": "udg2t6",
+                        "title": "Done",
+                        "color": "#00c875"
+                    },
+                    "priority": {
+                        "color": "#579BFC",
+                        "title": "Medium"
+                    },
+                    "comments": [
+                        {
+                            "txt": "<p>I have seen it now! nice work! 👌</p>",
+                            "createdAt": 1617176547806.0,
+                            "byMember": {
+                                "_id": "60607afec9b7e60015949569",
+                                "email": "levy6162@gmail.com",
+                                "fullname": "Roi Levy",
+                                "img": "http://res.cloudinary.com/datgr82j1/image/upload/v1616935677/dkuoidpufqxtjimdeoup.jpg"
+                            }
+                        },
+                        {
+                            "txt": "<p>You can now move a task position, it's so cool!</p>",
+                            "createdAt": 1617176167047.0,
+                            "byMember": {
+                                "_id": "60606c24a9086800159061f0",
+                                "email": "summ.pie@gmail.com",
+                                "fullname": "Dorran Gavish",
+                                "img": "http://res.cloudinary.com/datgr82j1/image/upload/v1616931875/q1rnf09njeexgfh7ouig.jpg"
+                            }
+                        }
+                    ],
+                    "id": "kyKZd",
+                    "dueDate": "2021-04-01",
+                    "members": [
+                        {
+                            "_id": "60606c24a9086800159061f0",
+                            "email": "summ.pie@gmail.com",
+                            "fullname": "Dorran Gavish",
+                            "img": "http://res.cloudinary.com/datgr82j1/image/upload/v1616931875/q1rnf09njeexgfh7ouig.jpg"
+                        }
+                    ]
+                },
+                {
+                    "title": "Filter by members",
+                    "createdAt": 1616958831140.0,
+                    "status": {
+                        "id": "udg2t6",
+                        "title": "Done",
+                        "color": "#00c875"
+                    },
+                    "comments": [],
+                    "id": "erSGA",
+                    "members": [
+                        {
+                            "_id": "6058b2e4d6dbb89200952fa4",
+                            "email": "levy6162@gmail.com",
+                            "fullname": "Roi Levy",
+                            "img": "http://res.cloudinary.com/datgr82j1/image/upload/v1616425702/z5aszmq47a4nfm5ltl0u.jpg"
+                        }
+                    ],
+                    "dueDate": "2021-03-24",
+                    "priority": {
+                        "color": "#808080",
+                        "title": "Critical"
+                    }
+                },
+                {
+                    "title": "Progress Bar tooltip",
+                    "createdAt": 1617018698963.0,
+                    "status": {
+                        "id": "udm874",
+                        "title": "Working on it",
+                        "color": "#fdab3d"
+                    },
+                    "priority": {
+                        "color": "#579BFC",
+                        "title": "Medium"
+                    },
+                    "comments": [],
+                    "id": "rTQrK",
+                    "members": [
+                        {
+                            "_id": "60607afec9b7e60015949569",
+                            "fullname": "Roi Levy",
+                            "img": "http://res.cloudinary.com/datgr82j1/image/upload/v1616935677/dkuoidpufqxtjimdeoup.jpg"
+                        }
+                    ],
+                    "dueDate": "2021-04-01"
+                }
+            ],
+            "style": {
+                "color": "#3AB4FF"
+            },
+            "headers": [
+                "members",
+                "status",
+                "dueDate"
+            ]
+        }
+    ],
+    "statuses": [
+        {
+            "id": "udg2t6",
+            "title": "Done",
+            "color": "#00c875"
+        },
+        {
+            "id": "udm874",
+            "title": "Working on it",
+            "color": "#fdab3d"
+        },
+        {
+            "id": "axDHr",
+            "color": "#85DEE4",
+            "title": "Hold"
+        },
+        {
+            "id": "ud176a",
+            "title": "Stuck",
+            "color": "#e2445c"
+        }
+    ],
+    "priorities": [
+        {
+            "id": "udr2t6",
+            "title": "Important",
+            "color": "#FF7BD0"
+        },
+        {
+            "id": "udm074",
+            "title": "Urgent",
+            "color": "#FF1F1F"
+        },
+        {
+            "id": "ud1k6a",
+            "title": "Low",
+            "color": "#A9E04A"
+        },
+        {
+            "id": "pMBgD",
+            "color": "#784BD1",
+            "title": "High"
+        },
+        {
+            "color": "#579BFC",
+            "title": "Medium"
+        },
+        {
+            "color": "#808080",
+            "title": "Critical"
+        }
+    ],
+    "activities": [
+        {
+            "id": "MOntB",
+            "createdAt": 1617176608391.0,
+            "txt": "Updated task \"Google Integration\"",
+            "byMember": {
+                "_id": "60607afec9b7e60015949569",
+                "email": "levy6162@gmail.com",
+                "fullname": "Roi Levy",
+                "img": "http://res.cloudinary.com/datgr82j1/image/upload/v1616935677/dkuoidpufqxtjimdeoup.jpg"
+            },
+            "task": {
+                "id": "IbGKd",
+                "title": "Google Integration"
+            }
+        },
+        {
+            "id": "ZcEMn",
+            "createdAt": 1617176112275.0,
+            "txt": "Updated task \"Tasks Drag & Drop\"",
+            "byMember": {
+                "_id": "60606c24a9086800159061f0",
+                "email": "summ.pie@gmail.com",
+                "fullname": "Dorran Gavish",
+                "img": "http://res.cloudinary.com/datgr82j1/image/upload/v1616931875/q1rnf09njeexgfh7ouig.jpg"
+            },
+            "task": {
+                "id": "kyKZd",
+                "title": "Tasks Drag & Drop"
+            }
+        },
+        {
+            "id": "ZynrG",
+            "createdAt": 1617176112244.0,
+            "txt": "Updated task \"Tasks Drag & Drop\"",
+            "byMember": {
+                "_id": "60606c24a9086800159061f0",
+                "email": "summ.pie@gmail.com",
+                "fullname": "Dorran Gavish",
+                "img": "http://res.cloudinary.com/datgr82j1/image/upload/v1616931875/q1rnf09njeexgfh7ouig.jpg"
+            },
+            "task": {
+                "id": "kyKZd",
+                "title": "Tasks Drag & Drop"
+            }
+        },
+        {
+            "id": "vjfBO",
+            "createdAt": 1617175602230.0,
+            "txt": "Updated task \"Better implementation of group drag and drop\"",
+            "byMember": {
+                "_id": "606069dba9086800159061ef",
+                "email": "yonatanmiz963@gmail.com",
+                "fullname": "Yonatan Mizrahi",
+                "img": "http://res.cloudinary.com/datgr82j1/image/upload/v1616931290/faxmkejoayz6h3afpcyz.jpg"
+            },
+            "task": {
+                "id": "JQcKI",
+                "title": "Better implementation of group drag and drop"
+            }
+        },
+        {
+            "id": "RRERL",
+            "createdAt": 1617175602201.0,
+            "txt": "Updated task \"Better implementation of group drag and drop\"",
+            "byMember": {
+                "_id": "606069dba9086800159061ef",
+                "email": "yonatanmiz963@gmail.com",
+                "fullname": "Yonatan Mizrahi",
+                "img": "http://res.cloudinary.com/datgr82j1/image/upload/v1616931290/faxmkejoayz6h3afpcyz.jpg"
+            },
+            "task": {
+                "id": "JQcKI",
+                "title": "Better implementation of group drag and drop"
+            }
+        },
+        {
+            "id": "XYjpf",
+            "createdAt": 1617175571573.0,
+            "txt": "Updated task \"Google Integration\"",
+            "byMember": {
+                "_id": "606069dba9086800159061ef",
+                "email": "yonatanmiz963@gmail.com",
+                "fullname": "Yonatan Mizrahi",
+                "img": "http://res.cloudinary.com/datgr82j1/image/upload/v1616931290/faxmkejoayz6h3afpcyz.jpg"
+            },
+            "task": {
+                "id": "IbGKd",
+                "title": "Google Integration"
+            }
+        },
+        {
+            "id": "9SSsr",
+            "createdAt": 1617175452349.0,
+            "txt": "Updated task \"Google Integration\"",
+            "byMember": {
+                "_id": "606069dba9086800159061ef",
+                "email": "yonatanmiz963@gmail.com",
+                "fullname": "Yonatan Mizrahi",
+                "img": "http://res.cloudinary.com/datgr82j1/image/upload/v1616931290/faxmkejoayz6h3afpcyz.jpg"
+            },
+            "task": {
+                "id": "IbGKd",
+                "title": "Google Integration"
+            }
+        },
+        {
+            "id": "1ib5R",
+            "createdAt": 1617175442629.0,
+            "txt": "Updated task \"ASL service\"",
+            "byMember": {
+                "_id": "606069dba9086800159061ef",
+                "email": "yonatanmiz963@gmail.com",
+                "fullname": "Yonatan Mizrahi",
+                "img": "http://res.cloudinary.com/datgr82j1/image/upload/v1616931290/faxmkejoayz6h3afpcyz.jpg"
+            },
+            "task": {
+                "id": "16F2y",
+                "title": "ASL service"
+            }
+        },
+        {
+            "id": "xDdX8",
+            "createdAt": 1617175430167.0,
+            "txt": "Updated task \"Socket Service\"",
+            "byMember": {
+                "_id": "606069dba9086800159061ef",
+                "email": "yonatanmiz963@gmail.com",
+                "fullname": "Yonatan Mizrahi",
+                "img": "http://res.cloudinary.com/datgr82j1/image/upload/v1616931290/faxmkejoayz6h3afpcyz.jpg"
+            },
+            "task": {
+                "id": "488DM",
+                "title": "Socket Service"
+            }
+        },
+        {
+            "id": "Hqrsx",
+            "createdAt": 1617175425774.0,
+            "txt": "Updated task \"Homepage Responsiveness\"",
+            "byMember": {
+                "_id": "606069dba9086800159061ef",
+                "email": "yonatanmiz963@gmail.com",
+                "fullname": "Yonatan Mizrahi",
+                "img": "http://res.cloudinary.com/datgr82j1/image/upload/v1616931290/faxmkejoayz6h3afpcyz.jpg"
+            },
+            "task": {
+                "id": "RmMdN",
+                "title": "Homepage Responsiveness"
+            }
+        },
+        {
+            "id": "QftOe",
+            "createdAt": 1617175418948.0,
+            "txt": "Updated task \"Homepage Responsiveness\"",
+            "byMember": {
+                "_id": "606069dba9086800159061ef",
+                "email": "yonatanmiz963@gmail.com",
+                "fullname": "Yonatan Mizrahi",
+                "img": "http://res.cloudinary.com/datgr82j1/image/upload/v1616931290/faxmkejoayz6h3afpcyz.jpg"
+            },
+            "task": {
+                "id": "RmMdN",
+                "title": "Homepage Responsiveness"
+            }
+        },
+        {
+            "id": "AJtRC",
+            "createdAt": 1617175406333.0,
+            "txt": "Removed task \"sidebar responsiveness\"",
+            "byMember": {
+                "_id": "606069dba9086800159061ef",
+                "email": "yonatanmiz963@gmail.com",
+                "fullname": "Yonatan Mizrahi",
+                "img": "http://res.cloudinary.com/datgr82j1/image/upload/v1616931290/faxmkejoayz6h3afpcyz.jpg"
+            },
+            "task": {
+                "id": "0VAZI",
+                "title": "sidebar responsiveness"
+            }
+        },
+        {
+            "id": "DAOGb",
+            "createdAt": 1617141298934.0,
+            "txt": "Removed task \"new\"",
+            "byMember": {
+                "fullname": "Guest",
+                "_id": "guest",
+                "img": null
+            },
+            "task": {
+                "id": "Sy7JG",
+                "title": "new"
+            }
+        },
+        {
+            "id": "5I0XP",
+            "createdAt": 1617141290631.0,
+            "txt": "Created a new task \"new\"",
+            "byMember": {
+                "fullname": "Guest",
+                "_id": "guest",
+                "img": null
+            },
+            "task": {
+                "id": "Sy7JG",
+                "title": "new"
+            }
+        },
+        {
+            "id": "V866x",
+            "createdAt": 1617141284459.0,
+            "txt": "Updated task \"Filter by members\"",
+            "byMember": {
+                "fullname": "Guest",
+                "_id": "guest",
+                "img": null
+            },
+            "task": {
+                "id": "erSGA",
+                "title": "Filter by members"
+            }
+        },
+        {
+            "id": "4tynG",
+            "createdAt": 1617141283078.0,
+            "txt": "Updated task \"Filter by members\"",
+            "byMember": {
+                "fullname": "Guest",
+                "_id": "guest",
+                "img": null
+            },
+            "task": {
+                "id": "erSGA",
+                "title": "Filter by members"
+            }
+        },
+        {
+            "id": "NaPay",
+            "createdAt": 1617141280063.0,
+            "txt": "Updated task \"Drag & Drop\"",
+            "byMember": {
+                "fullname": "Guest",
+                "_id": "guest",
+                "img": null
+            },
+            "task": {
+                "id": "kyKZd",
+                "title": "Drag & Drop"
+            }
+        },
+        {
+            "id": "UthmW",
+            "createdAt": 1617141274937.0,
+            "txt": "Updated task \"Socket Service\"",
+            "byMember": {
+                "fullname": "Guest",
+                "_id": "guest",
+                "img": null
+            },
+            "task": {
+                "id": "488DM",
+                "title": "Socket Service"
+            }
+        },
+        {
+            "id": "PGrQ8",
+            "createdAt": 1617141259007.0,
+            "txt": "Updated task \"Filter by members\"",
+            "byMember": {
+                "fullname": "Guest",
+                "_id": "guest",
+                "img": null
+            },
+            "task": {
+                "id": "erSGA",
+                "title": "Filter by members"
+            }
+        }
+    ],
+    "views": [],
+    "description": "Final sprint"
+}

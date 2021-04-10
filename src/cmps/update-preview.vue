@@ -41,7 +41,6 @@
 import Avatar from "vue-avatar";
 import moment from "moment";
 
-
 export default {
   props: ["comment"],
   computed: {

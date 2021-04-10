@@ -55,23 +55,17 @@
     margin: 2px 8px;
     border-radius: 8px;
 
-    .avatar-wrapper {
-        // .vue-avatar--wrapper {
-        //     width: 60px !important;
-        //     height: 60px !important;
-        //     border: 1px solid white;
-        //     color: white !important;
-        // }
-    }
 
     .notification-details {
         display: flex;
         justify-content: space-between;
         flex-direction: column;
         margin-inline-start: 16px;
+
         .notification-username {
             display: flex;
             align-items: center;
+
             :first-child {
                 font-weight: bold;
                 margin-inline-end: 5px;
@@ -79,9 +73,10 @@
         }
     }
 
-   
+
 
 }
+
 .notification-preview:hover {
-        background-color: #d2eaff;
+    background-color: #d2eaff;
 }

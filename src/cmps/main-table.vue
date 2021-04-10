@@ -151,8 +151,6 @@ export default {
   },
   watch: {
     board: function (newVal, oldVal) {
-      // console.log('oldVal', oldVal.groups)
-      // console.log('newVal', newVal.groups)
       this.boardToEdit = JSON.parse(JSON.stringify(newVal));
     },
   },

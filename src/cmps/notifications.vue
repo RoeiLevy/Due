@@ -16,15 +16,11 @@ import notificationPreview from "./notification-preview";
 export default {
   props: ["notifications"],
   data() {
-    return {
-     
-    };
+    return {};
   },
-  methods: {
-    
-  },
+  methods: {},
   components: {
-      notificationPreview
+    notificationPreview,
   },
 };
 </script>

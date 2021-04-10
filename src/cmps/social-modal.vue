@@ -5,13 +5,23 @@
         <h3 v-if="!members || !members.length">No Members</h3>
         <div v-else class="members-list">
           <div class="member" v-for="member in members" :key="member._id">
-            <avatar :username="member.fullname" :size="30" :src="member.img"></avatar>
+            <avatar
+              :username="member.fullname"
+              :size="30"
+              :src="member.img"
+            ></avatar>
             {{ member.fullname }}
           </div>
         </div>
       </el-tab-pane>
       <el-tab-pane label="Invite" name="invite">
-        <el-input maxlength=200 size=small class="email-input" placeholder="Member Email" v-model="email">
+        <el-input
+          maxlength="200"
+          size="small"
+          class="email-input"
+          placeholder="Member Email"
+          v-model="email"
+        >
         </el-input>
         <el-button @click="addMember" type="primary">Add Member</el-button>
       </el-tab-pane>
@@ -39,7 +49,6 @@ export default {
   components: {
     Avatar,
   },
-  created() {
-  }
+  created() {},
 };
 </script>

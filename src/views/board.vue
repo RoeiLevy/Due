@@ -166,7 +166,6 @@ import workspace from "../cmps/workspace.vue";
 import mainTable from "../cmps/main-table.vue";
 import dashboard from "../cmps/dashboard";
 import boardMembers from "../cmps/board-members";
-
 import { boardService } from "../services/board.service";
 import { utilService } from "../services/util.service";
 import { socketService } from "../services/socket.service";
@@ -188,8 +187,6 @@ export default {
         txt: null,
         member: null,
       },
-      // searchMode: false,
-      // filterMode: false,
     };
   },
   methods: {
@@ -206,10 +203,6 @@ export default {
         this.boardToEdit.statuses.push(status);
         console.log("added status");
         this.saveBoard();
-        // this.$store.dispatch({
-        //   type: "sendActivity",
-        //   txt: "Created a new status",
-        // });
       } catch (err) {
         console.log("err:", err);
       }
@@ -232,10 +225,6 @@ export default {
         this.boardToEdit.priorities.push(priority);
         console.log("added priority");
         this.saveBoard();
-        // this.$store.dispatch({
-        //   type: "sendActivity",
-        //   txt: "Created a new priority",
-        // });
       } catch (err) {
         console.log("err:", err);
       }
@@ -269,10 +258,8 @@ export default {
 
         await this.$store.dispatch({
           type: "saveBoard",
-          boardToSave: this.boardToEdit, // add activity to send
+          boardToSave: this.boardToEdit,
         });
-        // this.$store.dispatch({ type: "sendActivity", txt: "Removed a group" });
-        // Add user msg
       } catch (err) {
         console.log("Couldn`t remove Group", err);
         throw err;
@@ -288,7 +275,6 @@ export default {
           type: "saveBoard",
           boardToSave: this.boardToEdit,
         });
-        // Add user msg
         return savedGroup;
       } catch (err) {
         console.log("Couldn`t Save Group", err);
@@ -314,13 +300,6 @@ export default {
           JSON.stringify(this.boardToEdit.groups[groupIdx])
         );
         const savedGroup = await this.saveGroup(groupToSave);
-        // this.$store.dispatch({
-        //   type: "sendActivity",
-        //   txt: `Created a new task "${newTask.title}"`,
-        //   task: { id: newTask.id, title: newTask.title },
-        // });
-
-        // Add user msg
         return savedGroup;
       } catch (err) {
         console.log("err:", err);
@@ -347,13 +326,6 @@ export default {
           type: "saveBoard",
           boardToSave: this.boardToEdit,
         });
-
-        // this.$store.dispatch({
-        //   type: "sendActivity",
-        //   txt: "Updated a task",
-        //   task: { id: task.id, title: task.title },
-        // });
-        // Add user msg
       } catch (err) {
         console.log("Couldn`t remove Task", err);
         throw err;
@@ -461,8 +433,6 @@ export default {
           type: "saveBoard",
           boardToSave: this.boardToEdit,
         });
-        // this.$store.dispatch({ type: "sendActivity", txt: "Added a group" });
-        // Add user msg
       } catch (err) {
         console.log("err:", err);
       }
@@ -513,11 +483,15 @@ export default {
         byMember: this.$store.getters.loggedInUser,
         task,
       };
-      // console.log("created activity", activity);
       return activity;
     },
     addLoggedInUser() {
-      if (this.boardToEdit.members.some((m) => m.email === this.loggedInUser.email)) return;
+      if (
+        this.boardToEdit.members.some(
+          (m) => m.email === this.loggedInUser.email
+        )
+      )
+        return;
       this.boardToEdit.members.unshift(
         JSON.parse(JSON.stringify(this.loggedInUser))
       );
@@ -578,9 +552,7 @@ export default {
     isTaskDetails() {
       return this.$store.getters.isTaskDetails;
     },
-    isViewActive() {
-      // return { active: this.activeTab===view };
-    },
+    isViewActive() {},
     tableActive() {
       return { active: this.mainTable };
     },
@@ -595,7 +567,6 @@ export default {
       this.loadBoard();
     },
     isCloseScreen(newValue) {
-      // console.log(`close screen is now opened: ${newValue}`);
       if (!newValue) {
         this.isAddingMembers = false;
       }
@@ -611,13 +582,10 @@ export default {
     } catch (err) {
       console.log("err:", err);
     }
-    // socketService.setup();
-    // socketService.on("add activity", this.addActivity);
   },
   destroyed() {
     socketService.off("get board", this.setBoard);
     socketService.terminate();
-    // socketService.off("add activity", this.addMsg);
   },
   components: {
     appHeader,

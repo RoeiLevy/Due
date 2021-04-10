@@ -25,15 +25,14 @@ export default {
       if (taskId) {
         const taskActivities = this.activities.filter((a) => {
           if (a.task) return a.task.id === taskId;
-      });
-      return taskActivities;
-        } else {
-          return this.activities
-        }
+        });
+        return taskActivities;
+      } else {
+        return this.activities;
+      }
     },
   },
-  created() {
-  }
+  created() {},
 };
 </script>
 

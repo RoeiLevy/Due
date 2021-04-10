@@ -38,22 +38,6 @@
         </div>
       </div>
     </header>
-    <!-- <header class="home-header">
-      <router-link to="/">
-        <img class="logo" src="@/assets/imgs/logo.png" />
-      </router-link>
-      <div class="switch-container">
-        <el-switch
-          class="switch"
-          v-model="viewValue"
-          active-color="#323338"
-          inactive-color="#323338"
-        >
-        </el-switch>
-        <p>Switch View</p>
-      </div>
-    </header> -->
-
     <div class="board-list">
       <h2 v-if="!loggedInUser">Select Your Board</h2>
       <h2 v-else>Hello {{ loggedInUser.fullname }}</h2>

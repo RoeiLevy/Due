@@ -9,12 +9,7 @@
         width: getData[idx],
       }"
       :title="groupPriorities[idx].title + ': ' + getData[idx]"
-    >
-      <!-- <div class="popover">
-        <h5>{{ groupPriorities[idx].title }}</h5>
-        {{ getData[idx] }}
-      </div> -->
-    </div>
+    ></div>
   </div>
 </template>
 
@@ -27,13 +22,15 @@ export default {
     },
     groupPriorities() {
       var priorities = this.group.tasks.reduce((acc, task) => {
-        if (!task.priority)
-          acc.push({ title: 'Empty', color: 'gray' });
-        else acc.push({ title: task.priority.title, color: task.priority.color });
+        if (!task.priority) acc.push({ title: "Empty", color: "gray" });
+        else
+          acc.push({ title: task.priority.title, color: task.priority.color });
         return acc;
       }, []);
       const uniquePriorities = [
-        ...new Map(priorities.map((priority) => [priority.title, priority])).values(),
+        ...new Map(
+          priorities.map((priority) => [priority.title, priority])
+        ).values(),
       ];
       return uniquePriorities;
     },
@@ -48,7 +45,7 @@ export default {
         else map[task.priority.title]++;
       });
       map = Object.values(map);
-      map = map.map((count) => (count = (Math.floor((count / all) * 100)) + "%"));
+      map = map.map((count) => (count = Math.floor((count / all) * 100) + "%"));
       return map;
     },
   },

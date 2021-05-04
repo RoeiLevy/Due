@@ -12,25 +12,12 @@ export const socketStore = {
         }
     },
     actions: {
-        // TODO: show on
         sendMsg(context, { msg }) {
             socketService.emit('sendMsg', msg)
         },
         getChatHistory(context, { chatId }) {
             socketService.emit('getHistory', chatId)
         },
-        // sendActivity(context, { txt, task }) {
-        //     if (!task) task = null;
-
-        //     const activity = {
-        //         id: utilService.makeId(),
-        //         createdAt: Date.now(),
-        //         txt,
-        //         byMember: context.getters.loggedInUser,
-        //         task
-        //     }
-        //     socketService.emit('new activity', activity)
-        // },
         sendBoard(context, { board }) {
             socketService.emit('send board', board)
         }

@@ -22,7 +22,7 @@
 <script>
 import chart from "./chart";
 import doughnut from "./doughnut";
-import Doughnut from "./doughnut.vue";
+
 export default {
   props: ["board"],
   computed: {

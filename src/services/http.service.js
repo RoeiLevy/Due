@@ -2,7 +2,7 @@ import Axios from 'axios'
 import {router} from '@/router'
 
 const BASE_URL = process.env.NODE_ENV === 'production'
-    ? '/api/'
+    ? 'https://due-backend.onrender.com/api/'
     : '//localhost:3030/api/'
 
 
@@ -28,6 +28,7 @@ export const httpService = {
 async function ajax(endpoint, method = 'GET', data = null) {
     // console.log('data', data);
     try {
+        console.log("🚀 ~ ajax ~ BASE_URL:", BASE_URL)
         const res = await axios({
             url: `${BASE_URL}${endpoint}`,
             method,

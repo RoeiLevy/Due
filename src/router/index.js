@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import home from '../views/home'
+import home from '../views/Home'
 import login from '../views/login'
 import signup from '../views/signup'
-import userProfile from '../views/user-profile'
+// import userProfile from '../views/user-profile'
 import board from '../views/board'
 import boardList from '../views/board-list'
 import taskDetails from '../cmps/task-details'
@@ -69,11 +69,11 @@ const routes = [{
     name: 'signup',
     component: signup
 },
-{
-    path: '/user/:userId',
-    name: 'user profile',
-    component: userProfile
-},
+// {
+//     path: '/user/:userId',
+//     name: 'user profile',
+//     component: userProfile
+// },
 ]
 
 const router = new VueRouter({
